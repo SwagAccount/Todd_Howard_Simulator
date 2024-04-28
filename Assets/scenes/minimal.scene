@@ -1,0 +1,136 @@
+{
+  "__guid": "355d462e-5774-43f7-928c-152b3e28935e",
+  "GameObjects": [
+    {
+      "__guid": "a5c15dd4-959c-4e30-9085-187e55c7c236",
+      "Name": "Commands",
+      "Position": "172.295,-149.24,-121.0655",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "CommandDealer",
+          "__guid": "e0d15ef2-abc6-43af-9539-f92cacdbaf6c",
+          "Saved": {
+            "_type": "gameobject",
+            "go": "fe2d58e1-e601-46d3-b893-fb2fdc9fb428"
+          },
+          "sceneIdSelected": "00000001"
+        }
+      ]
+    },
+    {
+      "__guid": "b32d0315-1438-4a0a-a09c-676aedebac60",
+      "Name": "Main Camera",
+      "Position": "-300,0,100",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "f899b8b4-c770-4cb8-8d3a-66b25dbbcd78",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 60,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 10
+        }
+      ]
+    },
+    {
+      "__guid": "08f7265a-54db-4e3d-9d72-29eea404878d",
+      "Name": "Directional Light",
+      "Position": "0,0,200",
+      "Rotation": "-0.2459842,0.5938582,0.2931525,0.7077327",
+      "Tags": "light_directional,light",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "Sandbox.DirectionalLight",
+          "__guid": "c97adce1-baa3-4a36-a511-735f373e2074",
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Shadows": true,
+          "SkyColor": "0.05882,0.07451,0.08235,1"
+        }
+      ]
+    },
+    {
+      "__guid": "fe2d58e1-e601-46d3-b893-fb2fdc9fb428",
+      "Name": "Saved",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Children": [
+        {
+          "__guid": "148edad2-75e6-4b37-8d87-ac27f1d7c006",
+          "Name": "Object",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "Components": [
+            {
+              "__type": "Item",
+              "__guid": "065f6b7e-5013-461f-916c-57617ab4b1fa"
+            },
+            {
+              "__type": "Attributes",
+              "__guid": "1540d98c-6049-4610-b1b8-c6295f176121",
+              "attributes": [
+                {
+                  "AttributeName": "FUCK",
+                  "intValue": 1
+                },
+                {
+                  "AttributeName": "SHIT",
+                  "vector3Value": "2,1,1"
+                }
+              ]
+            },
+            {
+              "__type": "Ids",
+              "__guid": "db0c419b-29b2-4de8-a275-47dd541ed423",
+              "refID": "00000001",
+              "sceneID": "00000001"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "Lerping": true,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "minimal",
+  "Description": "",
+  "LastSaved": "2024-04-28T21:00:11.5526151\u002B07:00",
+  "ResourceVersion": 1,
+  "__version": 1,
+  "__references": []
+}
