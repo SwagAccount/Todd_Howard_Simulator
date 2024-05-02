@@ -1,0 +1,9 @@
+{
+  "gameObject": {
+    "_type": "gameobject",
+    "prefab": "prefabs/player.prefab"
+  },
+  "ResourceVersion": 0,
+  "__version": 0,
+  "__references": []
+}

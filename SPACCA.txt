@@ -1,0 +1,6 @@
+S - Strength
+P - Perception
+A - Agility
+C - Charisma
+C - Cunning
+A - Athleticism

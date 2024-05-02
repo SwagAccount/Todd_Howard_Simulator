@@ -1,0 +1,111 @@
+{
+  "RootObject": {
+    "__guid": "9f2ee6b1-b2d8-4f2f-843f-22dcf0bd5e07",
+    "Name": "player",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "NetworkInterpolation": true,
+    "Children": [
+      {
+        "__guid": "80f3bbf7-7da1-4c80-9f97-3f66b66e148d",
+        "Name": "Camera",
+        "Position": "0,0,63.224",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkInterpolation": true,
+        "Components": [
+          {
+            "__type": "Sandbox.ScreenPanel",
+            "__guid": "1b059645-9b35-40b1-9ade-719d8afd288c",
+            "AutoScreenScale": true,
+            "Opacity": 1,
+            "Scale": 1,
+            "ZIndex": 100
+          },
+          {
+            "__type": "Interactor",
+            "__guid": "785e57ff-181d-4113-b63e-ceef10850a99",
+            "Grabber": {
+              "_type": "gameobject",
+              "go": "27356b96-eefd-44fd-bb33-06f2b8ae45e5"
+            },
+            "range": 70
+          },
+          {
+            "__type": "CrossHair",
+            "__guid": "d07848ae-8056-4581-8b93-1d671d5f22d5",
+            "Name": "Double Barrel",
+            "stats": [
+              {
+                "StatName": "Damage",
+                "Stat": "9x10"
+              },
+              {
+                "StatName": "Weight",
+                "Stat": "3.4"
+              },
+              {
+                "StatName": "Value",
+                "Stat": "400"
+              }
+            ]
+          },
+          {
+            "__type": "Sandbox.CameraComponent",
+            "__guid": "0cca57d4-40bd-4a93-bc89-5914d49845b4",
+            "BackgroundColor": "0.33333,0.46275,0.52157,1",
+            "ClearFlags": "All",
+            "FieldOfView": 60,
+            "IsMainCamera": true,
+            "Orthographic": false,
+            "OrthographicHeight": 1204,
+            "Priority": 1,
+            "RenderExcludeTags": "",
+            "RenderTags": "",
+            "TargetEye": "None",
+            "Viewport": "0,0,1,1",
+            "ZFar": 10000,
+            "ZNear": 10
+          }
+        ],
+        "Children": [
+          {
+            "__guid": "27356b96-eefd-44fd-bb33-06f2b8ae45e5",
+            "Name": "grabber",
+            "Position": "0,0,0",
+            "Enabled": true,
+            "NetworkMode": 2,
+            "NetworkInterpolation": true,
+            "Components": [
+              {
+                "__type": "Sandbox.Rigidbody",
+                "__guid": "a4f311b5-1d77-493a-82fb-7301ae445799",
+                "AngularDamping": 0,
+                "Gravity": true,
+                "LinearDamping": 0,
+                "Locking": {
+                  "X": true,
+                  "Y": true,
+                  "Z": true,
+                  "Pitch": true,
+                  "Yaw": true,
+                  "Roll": true
+                },
+                "MassOverride": 0,
+                "MotionEnabled": true,
+                "RigidbodyFlags": 0,
+                "StartAsleep": false
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
+  "__references": []
+}

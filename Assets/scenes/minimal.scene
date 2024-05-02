@@ -1,5 +1,5 @@
 {
-  "__guid": "355d462e-5774-43f7-928c-152b3e28935e",
+  "__guid": "9aa65fbc-3a89-43fe-b25b-e976e781b193",
   "GameObjects": [
     {
       "__guid": "a5c15dd4-959c-4e30-9085-187e55c7c236",
@@ -7,41 +7,22 @@
       "Position": "172.295,-149.24,-121.0655",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "CommandDealer",
-          "__guid": "e0d15ef2-abc6-43af-9539-f92cacdbaf6c",
+          "__guid": "05f3a727-7b94-48bb-af7e-07e43e16fae3",
+          "player": {
+            "_type": "component",
+            "component_id": "dbca1216-8eb5-4afd-bb8c-f3ba37b19c9c",
+            "go": "438b4461-5267-4f6a-b9e2-dfc44112b4c8",
+            "component_type": "Attributes"
+          },
           "Saved": {
             "_type": "gameobject",
             "go": "fe2d58e1-e601-46d3-b893-fb2fdc9fb428"
           },
           "sceneIdSelected": "00000001"
-        }
-      ]
-    },
-    {
-      "__guid": "b32d0315-1438-4a0a-a09c-676aedebac60",
-      "Name": "Main Camera",
-      "Position": "-300,0,100",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "Components": [
-        {
-          "__type": "Sandbox.CameraComponent",
-          "__guid": "f899b8b4-c770-4cb8-8d3a-66b25dbbcd78",
-          "BackgroundColor": "0.33333,0.46275,0.52157,1",
-          "ClearFlags": "All",
-          "FieldOfView": 60,
-          "IsMainCamera": true,
-          "Orthographic": false,
-          "OrthographicHeight": 1204,
-          "Priority": 1,
-          "RenderExcludeTags": "",
-          "RenderTags": "",
-          "TargetEye": "None",
-          "Viewport": "0,0,1,1",
-          "ZFar": 10000,
-          "ZNear": 10
         }
       ]
     },
@@ -53,6 +34,7 @@
       "Tags": "light_directional,light",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.DirectionalLight",
@@ -70,47 +52,182 @@
       "Name": "Saved",
       "Enabled": true,
       "NetworkMode": 2,
+      "NetworkInterpolation": true,
       "Children": [
         {
-          "__guid": "148edad2-75e6-4b37-8d87-ac27f1d7c006",
-          "Name": "Object",
+          "__guid": "438b4461-5267-4f6a-b9e2-dfc44112b4c8",
+          "Name": "Player",
+          "Position": "0,0,32.81264",
           "Enabled": true,
           "NetworkMode": 2,
+          "NetworkInterpolation": true,
           "Components": [
             {
-              "__type": "Item",
-              "__guid": "065f6b7e-5013-461f-916c-57617ab4b1fa"
+              "__type": "Ids",
+              "__guid": "8052c6ef-d84a-4731-a679-b639823187cb",
+              "Categories": [
+                "Player"
+              ],
+              "sceneID": "00000001"
             },
             {
               "__type": "Attributes",
-              "__guid": "1540d98c-6049-4610-b1b8-c6295f176121",
-              "attributes": [
+              "__guid": "dbca1216-8eb5-4afd-bb8c-f3ba37b19c9c",
+              "attributeSets": [
                 {
-                  "AttributeName": "FUCK",
-                  "intValue": 1
+                  "setName": "default",
+                  "attributes": [
+                    {
+                      "AttributeName": "Max Speed",
+                      "attributeType": "FLOAT",
+                      "floatValue": 285.98,
+                      "stringValue": ""
+                    },
+                    {
+                      "AttributeName": "Move Speed",
+                      "attributeType": "FLOAT",
+                      "floatValue": 453.375
+                    },
+                    {
+                      "AttributeName": "Shift Speed",
+                      "attributeType": "FLOAT",
+                      "floatValue": 235.755
+                    },
+                    {
+                      "AttributeName": "Crouch Speed",
+                      "attributeType": "FLOAT",
+                      "floatValue": 154.148
+                    },
+                    {
+                      "AttributeName": "Carry Weight",
+                      "attributeType": "FLOAT",
+                      "floatValue": 150
+                    },
+                    {
+                      "AttributeName": "health",
+                      "attributeType": "FLOAT",
+                      "floatValue": 100
+                    },
+                    {
+                      "AttributeName": "maxhealth",
+                      "attributeType": "FLOAT",
+                      "floatValue": 100
+                    },
+                    {
+                      "AttributeName": "Auto Bunny Hopping",
+                      "attributeType": "FLOAT"
+                    }
+                  ]
                 },
                 {
-                  "AttributeName": "SHIT",
-                  "vector3Value": "2,1,1"
+                  "setName": "perks",
+                  "attributes": [
+                    {
+                      "AttributeName": "athleticism",
+                      "intValue": 10
+                    }
+                  ]
                 }
-              ]
+              ],
+              "perkEffectors": [],
+              "player": {
+                "_type": "component",
+                "component_id": "dbca1216-8eb5-4afd-bb8c-f3ba37b19c9c",
+                "go": "438b4461-5267-4f6a-b9e2-dfc44112b4c8",
+                "component_type": "Attributes"
+              }
             },
             {
+              "__type": "Entity",
+              "__guid": "18b96a14-ab33-45b5-89ba-2185b7415edb",
+              "Catagories": []
+            }
+          ]
+        },
+        {
+          "__guid": "148edad2-75e6-4b37-8d87-ac27f1d7c006",
+          "Name": "Item",
+          "Position": "0,0,32.81264",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
               "__type": "Ids",
-              "__guid": "db0c419b-29b2-4de8-a275-47dd541ed423",
-              "refID": "00000001",
-              "sceneID": "00000001"
+              "__guid": "307a5b9a-f6c1-410a-a756-09811186fecc",
+              "Categories": [
+                "items",
+                "weapons",
+                "double barrel"
+              ],
+              "sceneID": "00000002"
+            },
+            {
+              "__type": "Attributes",
+              "__guid": "459530bd-22a3-470e-b467-e8f074e3b50f",
+              "attributeSets": [
+                {
+                  "setName": "default",
+                  "attributes": [
+                    {
+                      "AttributeName": "Condition",
+                      "attributeType": "FLOAT",
+                      "floatValue": 1
+                    }
+                  ]
+                }
+              ],
+              "perkEffectors": []
+            },
+            {
+              "__type": "Entity",
+              "__guid": "1a9c7e1b-8340-4b30-833e-e66056703dca",
+              "Catagories": []
             }
           ]
         }
       ]
+    },
+    {
+      "__guid": "5b72e11a-c0b4-464a-8e75-97930c4f7311",
+      "Name": "Plane",
+      "Scale": "100,100,1",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "ba7fe4af-aded-4e63-b976-a562138e83f4",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/plane.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "401e8e4d-7dd8-4a6f-ad1b-cc892ba2aa90",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "100,100,2",
+          "Static": false
+        }
+      ]
+    },
+    {
+      "__guid": "199838a6-4bd8-46f2-9da7-670bd8fe6adc",
+      "Name": "Object",
+      "Position": "353.7277,0,70",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true
     }
   ],
   "SceneProperties": {
     "FixedUpdateFrequency": 50,
-    "Lerping": true,
     "MaxFixedUpdates": 5,
     "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
     "ThreadedAnimation": true,
     "TimeScale": 1,
     "UseFixedUpdate": true,
@@ -129,7 +246,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-04-28T21:00:11.5526151\u002B07:00",
+  "LastSaved": "2024-05-02T12:17:17.7952075\u002B07:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

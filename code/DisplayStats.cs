@@ -1,8 +1,7 @@
 using Sandbox;
 
-public sealed class Item : Component
+public sealed class DisplayStats : Component
 {
-
 	protected override void OnUpdate()
 	{
 
