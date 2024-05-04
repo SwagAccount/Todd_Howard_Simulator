@@ -12,6 +12,20 @@ public sealed class Attributes : Component
 
     [Property] public Attributes player {get;set;}
 
+    public void ApplyPerksToSets()
+    {
+        foreach(AttributeSet attributeSet in attributeSets)
+        {
+            if(attributeSet.applyPerks)
+            {
+                foreach(Attribute attribute in attributeSet.attributes)
+                {
+                    attribute.ApplyPerks();
+                }
+            }
+        }
+    }
+
 	protected override void OnStart()
 	{
         ids = Components.Get<Ids>();
@@ -31,27 +45,22 @@ public sealed class Attributes : Component
             {
                 foreach(PerkEffector perkeffector in perk.Effectors)
                 {
-                    PerkEffector perkEffector = new PerkEffector();
-                    perkEffector.Catagory = perkeffector.Catagory;
-                    perkEffector.attributeName = perkeffector.attributeName;
-                    perkEffector.attributeSet = perkeffector.attributeSet;
-                    perkEffector.EffectType = perkeffector.EffectType;
-                    perkEffector.Effector = perkeffector.Effector;
+                    perkeffector.perkName = attribute.AttributeName;
                     bool addEffector = true;
-                    for (int i = 0; i < ids.Categories.Count && i < perkEffector.Catagory.Count; i++)
+                    for (int i = 0; i < ids.Categories.Count && i < perkeffector.Catagory.Count; i++)
                     {
-                        if(ids.Categories[i] != perkEffector.Catagory[i])
+                        if(ids.Categories[i] != perkeffector.Catagory[i])
                             addEffector = false;
                     }
                     if(!addEffector) break;
-                    perkEffector.perkName = attribute.AttributeName;
-                    perkEffector.multiply = (int)attribute.intValue;
-                    perkEffectors.Add(perkEffector);
+                    perkEffectors.Add(perkeffector);
                 }
                 
             }
         }
         perkEffectors = perkEffectors.OrderBy(x => x.EffectType).ToList();
+
+        ApplyPerksToSets();
 	}
     protected override void OnUpdate()
     {
@@ -59,7 +68,7 @@ public sealed class Attributes : Component
     }
 	public class AttributeSet
     {
-        int changed = 0;
+        public bool applyPerks {get;set;} = false;
         public string setName {get;set;} = "default";
         public List<Attribute> attributes {get;set;}
     }
@@ -83,6 +92,22 @@ public sealed class Attributes : Component
         Log.Info("Failed to Get Attribute From Name");
 		return null;
 	}
+
+    public int getAttributeIndex(string name, string setName = "default")
+	{
+        int i = 0;
+		foreach(Attribute attribute in getAttributeSet(setName).attributes)
+		{
+			if(attribute.AttributeName == name)
+			{
+				return i;
+			}
+            i++;
+		}
+        Log.Info("Failed to Get Attribute From Name");
+		return -1;
+	}
+
     public object ConvertFromString(string input, Attribute.AttributeType desiredType)
     {
         switch (desiredType)
@@ -164,43 +189,45 @@ public sealed class Attributes : Component
 		public AttributeType attributeType {get;set;}
         public float intValue { get; set; }
         public float floatValue { get; set; }
+        public float floatValuePerks { get; set; }
         public string stringValue { get; set; }
         public Vector3 vector3Value { get; set; }
         public Attributes attributes { get; set; }
         public bool boolValue { get; set; }
-        public bool changed { get; set;} = true;
+        public int changed { get; set;} = 0;
+        public void ApplyPerks()
+        {
+            floatValuePerks = floatValue;
+            foreach(PerkEffector perkEffector in attributes.perkEffectors)
+            {
+                Attribute attribute = attributes.player.getAttribute(perkEffector.perkName, "perks");
+                if(attribute != null)
+                {
+                    float multiplier = (float)attribute.GetValue();
+                    Log.Info(multiplier);
+                    switch(perkEffector.EffectType)
+                    {
+                        case EffectType.ADD:
+                            floatValuePerks += perkEffector.Effector*multiplier;
+                                break;
+                        case EffectType.MULTIPLY:
+                            floatValuePerks *= perkEffector.Effector*multiplier;
+                            break;
+                        case EffectType.SET:
+                            floatValuePerks = perkEffector.Effector*multiplier;
+                            break;
+                    }
+                }
+            }
+        }
         public object GetValue()
         {
-            if(!changed) return null;
-            changed = false;
             switch (attributeType)
             {
                 case AttributeType.INT:
                     return (object)intValue;
                 case AttributeType.FLOAT:
-                    {
-                        float returnFloat = floatValue;
-                        foreach(PerkEffector perkEffector in attributes.perkEffectors)
-                        {
-                            if(attributes.player.getAttribute(perkEffector.perkName, "perks") != null)
-                            {
-                                switch(perkEffector.EffectType)
-                                {
-                                    case EffectType.ADD:
-                                        returnFloat += perkEffector.Effector*perkEffector.multiply;
-                                        break;
-                                    case EffectType.MULTIPLY:
-                                        returnFloat *= perkEffector.Effector*perkEffector.multiply;
-                                        break;
-                                    case EffectType.SET:
-                                        returnFloat = perkEffector.Effector*perkEffector.multiply;
-                                        break;
-                                }
-                            }
-                            else returnFloat = 0;
-                        }
-                        return (object)returnFloat;
-                    }  
+                    return (object)floatValue;
                 case AttributeType.STRING:
                     return (object)stringValue;
                 case AttributeType.VECTOR3:
@@ -213,7 +240,7 @@ public sealed class Attributes : Component
         }
 		public void SetValue(object value)
         {
-            changed = true;
+            changed++;
             switch (attributeType)
             {
                 case AttributeType.INT:

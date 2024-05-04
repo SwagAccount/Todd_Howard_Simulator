@@ -88,8 +88,20 @@ public sealed class PlayerController : Component
     [Property] private Attributes attributes;
 
 	// Fucntions to make things slightly nicer
+    int ABH;
+    int ABHchanged = -1;
+    int MaS;
+    int MaSchanged = -1;
+    int MoS;
+    int MoSchanged = -1;
+    int SS;
+    int SSchanged = -1;
+    int CS;
+    int CSchanged = -1;
 	protected override void OnStart()
 	{
+        
+
         Body = GameObject;
         Scene.FixedUpdateFrequency = 64;
         
@@ -113,6 +125,12 @@ public sealed class PlayerController : Component
         {
             child.SetParent(GameObject);
         }
+
+        ABH = attributes.getAttributeIndex("Auto Bunny Hopping");
+        MaS = attributes.getAttributeIndex("Max Speed");
+        MoS = attributes.getAttributeIndex("Move Speed");
+        SS = attributes.getAttributeIndex("Shift Speed");
+        CS = attributes.getAttributeIndex("Crouch Speed");
 	}
 	public void Punch(in Vector3 amount) {
         ClearGround();
@@ -356,24 +374,13 @@ public sealed class PlayerController : Component
         Gizmo.Draw.LineBBox(in box);
     }
     
-	
-    
     protected override void OnFixedUpdate() {
 
-        object AutoBunnyhoppingObject = attributes.getAttribute("Auto Bunny Hopping").GetValue();
-        if(AutoBunnyhoppingObject != null ) AutoBunnyhopping = (float)AutoBunnyhoppingObject;
-
-        object MaxSpeedObject = attributes.getAttribute("Max Speed").GetValue();
-        if(MaxSpeedObject != null) MaxSpeed = (float)MaxSpeedObject;
-
-        object MoveSpeedObject = attributes.getAttribute("Move Speed").GetValue();
-        if(MoveSpeedObject != null) MoveSpeed = (float)MoveSpeedObject;
-
-        object ShiftSpeedObject = attributes.getAttribute("Shift Speed").GetValue();
-        if(ShiftSpeedObject != null) ShiftSpeed = (float)ShiftSpeedObject;
-
-        object CrouchSpeedObject = attributes.getAttribute("Crouch Speed").GetValue(); 
-        if(CrouchSpeedObject != null) CrouchSpeed = (float)CrouchSpeedObject;
+        AutoBunnyhopping = (float)attributes.attributeSets[0].attributes[ABH].floatValuePerks;
+        MaxSpeed = (float)attributes.attributeSets[0].attributes[MaS].floatValuePerks;
+        MoveSpeed = (float)attributes.attributeSets[0].attributes[MoS].floatValuePerks;
+        ShiftSpeed = (float)attributes.attributeSets[0].attributes[SS].floatValuePerks;
+        CrouchSpeed = (float) attributes.attributeSets[0].attributes[CS].floatValuePerks;
 
         if (CollisionBox == null) return;
         

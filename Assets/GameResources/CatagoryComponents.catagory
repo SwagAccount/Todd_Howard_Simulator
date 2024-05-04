@@ -1,5 +1,40 @@
 {
-  "Catagories": null,
+  "Catagories": [
+    {
+      "CatagoryName": "Player",
+      "Components": [
+        "PlayerController",
+        "BoxCollider"
+      ],
+      "Catagories": []
+    },
+    {
+      "CatagoryName": "items",
+      "Components": [
+        "ItemRenderer",
+        "Interactable"
+      ],
+      "Catagories": [
+        {
+          "CatagoryName": "weapons",
+          "Components": [],
+          "Catagories": [
+            {
+              "CatagoryName": "guns",
+              "Components": [],
+              "Catagories": [
+                {
+                  "CatagoryName": "double barrel",
+                  "Components": [],
+                  "Catagories": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "ResourceVersion": 0,
   "__version": 0,
   "__references": []

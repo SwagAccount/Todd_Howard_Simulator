@@ -75,6 +75,7 @@
               "__guid": "dbca1216-8eb5-4afd-bb8c-f3ba37b19c9c",
               "attributeSets": [
                 {
+                  "applyPerks": true,
                   "setName": "default",
                   "attributes": [
                     {
@@ -158,6 +159,7 @@
               "Categories": [
                 "items",
                 "weapons",
+                "guns",
                 "double barrel"
               ],
               "sceneID": "00000002"
@@ -246,7 +248,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-05-02T12:17:17.7952075\u002B07:00",
+  "LastSaved": "2024-05-03T14:51:38.9976313\u002B07:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

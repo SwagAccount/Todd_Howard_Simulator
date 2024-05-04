@@ -81,6 +81,14 @@ public sealed class CommandDealer : Component
 			}
 		}
 	}
+	public void RecalculatePerkEffects()
+	{
+		foreach(GameObject g in Saved.Children)
+		{
+			Attributes attributes = g.Components.Get<Attributes>();
+			attributes.ApplyPerksToSets();
+		}
+	}
 	public void ResetHeatlh()
 	{
 		foreach(GameObject g in Saved.Children)
@@ -131,6 +139,12 @@ public sealed class CommandDealer : Component
 	{
 		CommandDealer commandDealer = getCommandDealer();
 		commandDealer.ResetHeatlh();
+	}
+	[ConCmd( "RecalculatePerkEffects" )]
+	public static void RecalculatePerkEffectsTo()
+	{
+		CommandDealer commandDealer = getCommandDealer();
+		commandDealer.RecalculatePerkEffects();
 	}
 	public static CommandDealer getCommandDealer()
 	{

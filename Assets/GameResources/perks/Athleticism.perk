@@ -1,6 +1,30 @@
 {
-  "Catagory": null,
-  "attributeSet": null,
+  "Effectors": [
+    {
+      "Catagory": [
+        "Player"
+      ],
+      "attributeName": "Max Speed",
+      "attributeSet": "default",
+      "Effector": 10
+    },
+    {
+      "Catagory": [
+        "Player"
+      ],
+      "attributeName": "Move Speed",
+      "attributeSet": "default",
+      "Effector": 10
+    },
+    {
+      "Catagory": [
+        "Player"
+      ],
+      "attributeName": "Crouch Speed",
+      "attributeSet": "default",
+      "Effector": 10
+    }
+  ],
   "ResourceVersion": 0,
   "__version": 0,
   "__references": []

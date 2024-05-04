@@ -75,7 +75,7 @@ public sealed class item : GameResource
     [Property] public float Value {get;set;}
 }
 
-[GameResource("CatagoryComponents", "catagorycomponents", "Components for each catagory", Icon = "Apps")]
+[GameResource("CatagoryComponents", "catagory", "Components for each catagory", Icon = "Apps")]
 public sealed class CatagoryComponents : GameResource
 {
     [Property] public List<Entity.Catagory> Catagories {get; set;}
@@ -104,7 +104,6 @@ public class PerkEffector
     [Property] public string attributeSet {get; set;}
     public EffectType EffectType {get; set;}
     public float Effector {get;set;}
-    public int multiply;
 }
 
 [GameResource("Player", "player","A player type", Icon = "Person")]
