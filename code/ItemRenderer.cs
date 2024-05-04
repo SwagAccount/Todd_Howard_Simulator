@@ -8,7 +8,6 @@ public sealed class ItemRenderer : Component
 	protected override void OnStart()
 	{
 		ids = Components.Get<Ids>();
-		Log.Info(ids);
 		modelRenderer = Components.GetOrCreate<SkinnedModelRenderer>();
 		modelCollider = Components.GetOrCreate<ModelCollider>();
 		Components.Create<Rigidbody>();

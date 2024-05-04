@@ -66,6 +66,41 @@ public sealed class Attributes : Component
     {
 
     }
+    public static AttributeSet LoadAttributeSet(SavedAttributeSet savedAttributeSet)
+    {
+        AttributeSet AttributeSet = new AttributeSet();
+        savedAttributeSet.attributes = new List<SavedAttribute>();
+        foreach(SavedAttribute a in savedAttributeSet.attributes)
+        {
+            Attribute Attribute = new Attribute();
+            Attribute.AttributeName = a.AttributeName;
+            Attribute.attributeType = a.attributeType;
+            switch(a.attributeType)
+            {
+                case Attribute.AttributeType.INT:
+                    Attribute.intValue = a.intValue;
+                    break;
+                case Attribute.AttributeType.FLOAT:
+                    Attribute.floatValue = a.floatValue;
+                    break;
+                case Attribute.AttributeType.STRING:
+                    Attribute.stringValue = a.stringValue;
+                    break;
+                case Attribute.AttributeType.VECTOR3:
+                    Attribute.vector3Value = new Vector3(a.vector3ValueX,a.vector3ValueY,a.vector3ValueZ);
+                    break;
+                case Attribute.AttributeType.BOOL:
+                    Attribute.boolValue = a.boolValue;
+                    break;
+            }
+            AttributeSet.attributes.Add(Attribute);
+        }
+
+        AttributeSet.applyPerks = savedAttributeSet.applyPerks;
+        AttributeSet.setName = savedAttributeSet.setName;
+
+        return AttributeSet;
+    }
     public static SavedAttributeSet SaveAttributeSet(AttributeSet attributeSet)
     {
         SavedAttributeSet savedAttributeSet = new SavedAttributeSet();

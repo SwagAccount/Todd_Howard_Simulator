@@ -6,11 +6,38 @@ public sealed class CommandDealer : Component
 	[Property] public string sceneIdSelected {get;set;}
 	[Property] public Attributes player {get;set;}
 	[Property] public GameObject Saved {get;set;}
-	
+	[Property] public int nextCode {get;set;}
 
-	public void DropItem(Vector3 postion, Angles rotation, Attributes.SavedAttributeSet savedAttributeSet)
+	protected override void OnAwake()
+	{
+		foreach(GameObject c in Saved.Children)
+		{
+			Ids ids = c.Components.Get<Ids>();
+			nextCode++;
+			ids.sceneID = nextCode.ToString();
+		}
+	}
+
+	public void DropItem(Vector3 postion, Angles rotation, SaveClasses.EntitySave entitySave)
 	{
 		GameObject g = new GameObject();
+		g.SetParent(Saved);
+		g.Transform.Position = postion;
+		g.Transform.Rotation = rotation;
+		Ids ids = g.Components.Create<Ids>();
+		nextCode++;
+		ids.sceneID = nextCode.ToString();
+		ids.Categories = entitySave.Categories;
+		Entity entity = g.Components.Create<Entity>();
+		entity.displayContainer = entitySave.displayContainer;
+		entity.Container = entitySave.Container;
+		Attributes attributes = g.Components.Create<Attributes>();
+		attributes.attributeSets = new List<Attributes.AttributeSet>();
+		foreach(Attributes.SavedAttributeSet sAS in entitySave.AttributeSets)
+		{
+			attributes.attributeSets.Add(Attributes.LoadAttributeSet(sAS));
+		}
+		attributes.player = player;
 	}
 	public void SetAV(string name, string value, string attributeSet = "default")
 	{
@@ -74,11 +101,13 @@ public sealed class CommandDealer : Component
 					Attributes attributes = ids.Components.Get<Attributes>();
 					foreach(Attributes.AttributeSet attributeSet in attributes.attributeSets)
 					{
-						Log.Info($"---{attributeSet.setName}---");
+						Log.Info($"┌──{attributeSet.setName}───");
 						foreach(Attributes.Attribute attribute in attributeSet.attributes)
 						{
-							Log.Info($"|-{attribute.AttributeName} | {attribute.attributeType} => {attribute.GetValue()}");
+							Log.Info($"├{attribute.AttributeName} | {attribute.attributeType} => {attribute.GetValue()}");
 						}
+						Log.Info($"└─────");
+						
 					}
 					return;
 				}
@@ -166,6 +195,34 @@ public sealed class CommandDealer : Component
 		}
 	}
 
+	public void SelectID(string id)
+	{
+		foreach(GameObject g in Saved.Children)
+		{
+			Ids ids = g.Components.Get<Ids>();
+			if(ids != null)
+			{
+				if(ids.sceneID == id)
+				{
+					sceneIdSelected = id;
+					return;
+				}
+			}
+		}
+		Log.Info("Did not find ID.");
+	}
+
+	public void SeeAllIDs()
+	{
+		Log.Info($"┌─────");
+		foreach(GameObject c in Saved.Children)
+		{
+			Ids ids = c.Components.Get<Ids>();
+			Log.Info($"├ {ids.sceneID}: {CustomFunctions.CapitalizeWords(ids.Categories[ids.Categories.Count - 1])}");
+		}
+		Log.Info($"└─────");
+	}
+
 	public static void ValueExamples()
 	{
 		Log.Info("---Value Examples---");
@@ -175,6 +232,27 @@ public sealed class CommandDealer : Component
 		Log.Info("VECTOR3 - X,Y,Z");
 		Log.Info("BOOL - True/False (anything not 'True' = False)");
 		Log.Info("------");
+	}
+	[ConCmd( "SeeAllIDs" )]
+	public static void SelectIDsTo()
+	{
+		CommandDealer commandDealer = getCommandDealer();
+		commandDealer.SeeAllIDs();
+	}
+
+	[ConCmd( "SelectID" )]
+	public static void SelectIDTo(string id)
+	{
+		CommandDealer commandDealer = getCommandDealer();
+		commandDealer.SelectID(id);
+	}
+	[ConCmd( "SelectID_Help" )]
+	public static void SelectIDHelp()
+	{
+		Log.Info("Selects an ID to peform commands on.");
+		Log.Info("Command Structure: Id");
+		Log.Info("");
+		Log.Info("To see all IDs use SeeAllIDs");
 	}
 
 	[ConCmd( "SetAV" )]
@@ -249,7 +327,6 @@ public sealed class CommandDealer : Component
 	public static CommandDealer getCommandDealer()
 	{
 		if(Game.ActiveScene == null) throw new Exception("Did Not Grab Scene");
-		Log.Info(Game.ActiveScene.GetAllObjects(true).ElementAt<GameObject>(0));
 		CommandDealer commandDealer = Game.ActiveScene.GetAllObjects(true).ElementAt<GameObject>(1).Components.Get<CommandDealer>();
 		if(commandDealer == null) throw new Exception("Failed To Grab Command Dealer");
 		return commandDealer;
