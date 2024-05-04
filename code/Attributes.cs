@@ -66,6 +66,49 @@ public sealed class Attributes : Component
     {
 
     }
+    public static SavedAttributeSet SaveAttributeSet(AttributeSet attributeSet)
+    {
+        SavedAttributeSet savedAttributeSet = new SavedAttributeSet();
+        savedAttributeSet.attributes = new List<SavedAttribute>();
+        foreach(Attribute a in attributeSet.attributes)
+        {
+            SavedAttribute savedAttribute = new SavedAttribute();
+            savedAttribute.AttributeName = a.AttributeName;
+            savedAttribute.attributeType = a.attributeType;
+            switch(a.attributeType)
+            {
+                case Attribute.AttributeType.INT:
+                    savedAttribute.intValue = a.intValue;
+                    break;
+                case Attribute.AttributeType.FLOAT:
+                    savedAttribute.floatValue = a.floatValue;
+                    break;
+                case Attribute.AttributeType.STRING:
+                    savedAttribute.stringValue = a.stringValue;
+                    break;
+                case Attribute.AttributeType.VECTOR3:
+                    savedAttribute.vector3ValueX = a.vector3Value.x;
+                    savedAttribute.vector3ValueY = a.vector3Value.y;
+                    savedAttribute.vector3ValueZ = a.vector3Value.z;
+                    break;
+                case Attribute.AttributeType.BOOL:
+                    savedAttribute.boolValue = a.boolValue;
+                    break;
+            }
+            savedAttributeSet.attributes.Add(savedAttribute);
+        }
+
+        savedAttributeSet.applyPerks = attributeSet.applyPerks;
+        savedAttributeSet.setName = attributeSet.setName;
+
+        return savedAttributeSet;
+    }
+    public class SavedAttributeSet
+    {
+        public bool applyPerks {get;set;} = false;
+        public string setName {get;set;} = "default";
+        public List<SavedAttribute> attributes {get;set;}
+    }
 	public class AttributeSet
     {
         public bool applyPerks {get;set;} = false;
@@ -80,7 +123,7 @@ public sealed class Attributes : Component
         }
         return attributeSets[0];
     }
-	public Attribute getAttribute(string name, string setName = "default")
+	public Attribute getAttribute(string name, string setName = "default", bool logInfo = true)
 	{
 		foreach(Attribute attribute in getAttributeSet(setName).attributes)
 		{
@@ -89,9 +132,42 @@ public sealed class Attributes : Component
 				return attribute;
 			}
 		}
-        Log.Info("Failed to Get Attribute From Name");
+        if(logInfo) Log.Info("Failed to Get Attribute From Name");
 		return null;
 	}
+
+    public void AddAttribute( string value, Attribute.AttributeType attributeType,string name,string attributeSet = "default")
+    {
+        if(getAttribute(name, attributeSet, false) != null)
+        {
+            Log.Info("Attribute already exists.");
+            return;
+        }
+        Attribute attribute = new Attribute();
+        attribute.attributeType = attributeType;
+        attribute.AttributeName = name;
+
+        switch (attributeType)
+        {
+            case Attribute.AttributeType.INT:
+                attribute.intValue = ConvertToInt(value);
+                break;
+            case Attribute.AttributeType.FLOAT:
+                attribute.floatValue = ConvertToFloat(value);
+                break;
+            case Attribute.AttributeType.STRING:
+                attribute.stringValue = value;
+                break;
+            case Attribute.AttributeType.VECTOR3:
+                attribute.vector3Value = ConvertToVector3(value);
+                break;
+            case Attribute.AttributeType.BOOL:
+                attribute.boolValue = ConvertToBool(value);
+                break;
+        }
+
+        getAttributeSet(attributeSet).attributes.Add(attribute);
+    }
 
     public int getAttributeIndex(string name, string setName = "default")
 	{
@@ -110,20 +186,28 @@ public sealed class Attributes : Component
 
     public object ConvertFromString(string input, Attribute.AttributeType desiredType)
     {
-        switch (desiredType)
+        try
         {
-            case Attribute.AttributeType.INT:
-                return ConvertToInt(input);
-            case Attribute.AttributeType.FLOAT:
-                return ConvertToFloat(input);
-            case Attribute.AttributeType.STRING:
-                return input;
-            case Attribute.AttributeType.VECTOR3:
-                return ConvertToVector3(input);
-            case Attribute.AttributeType.BOOL:
-                return ConvertToBool(input);
-            default:
-                throw new InvalidOperationException("Unsupported type conversion requested.");
+            switch (desiredType)
+            {
+                case Attribute.AttributeType.INT:
+                    return ConvertToInt(input);
+                case Attribute.AttributeType.FLOAT:
+                    return ConvertToFloat(input);
+                case Attribute.AttributeType.STRING:
+                    return input;
+                case Attribute.AttributeType.VECTOR3:
+                    return ConvertToVector3(input);
+                case Attribute.AttributeType.BOOL:
+                    return ConvertToBool(input);
+                default:
+                    Log.Info("Unsupported type conversion requested.");
+                    return null;
+            }
+        }
+        catch
+        {
+            return null;
         }
     }
      private static int ConvertToInt(string input)
@@ -182,7 +266,19 @@ public sealed class Attributes : Component
     {
         return input == "True";
     }
-
+    public class SavedAttribute
+    {
+        public string AttributeName { get; set; }
+		public Attribute.AttributeType attributeType {get;set;}
+        public float intValue { get; set; }
+        public float floatValue { get; set; }
+        public float floatValuePerks { get; set; }
+        public string stringValue { get; set; }
+        public float vector3ValueX { get; set; }
+        public float vector3ValueY { get; set; }
+        public float vector3ValueZ { get; set; }
+        public bool boolValue { get; set; }
+    }
 	public class Attribute
 	{
 		public string AttributeName { get; set; }
@@ -194,7 +290,6 @@ public sealed class Attributes : Component
         public Vector3 vector3Value { get; set; }
         public Attributes attributes { get; set; }
         public bool boolValue { get; set; }
-        public int changed { get; set;} = 0;
         public void ApplyPerks()
         {
             floatValuePerks = floatValue;
@@ -240,7 +335,6 @@ public sealed class Attributes : Component
         }
 		public void SetValue(object value)
         {
-            changed++;
             switch (attributeType)
             {
                 case AttributeType.INT:

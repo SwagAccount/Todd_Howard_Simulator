@@ -2,8 +2,11 @@ using Sandbox;
 
 public sealed class SaveClasses : Component
 {
-	protected override void OnUpdate()
+	public class EntitySave
 	{
-
+		public List<string> Catagories;
+		public bool displayContainer;
+		public List<Attributes.SavedAttributeSet> AttributeSets;
+		public List<EntitySave> Container;
 	}
 }

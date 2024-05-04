@@ -42,7 +42,7 @@ public sealed class Interactor : Component
 					if(entityBody != null)
 					{
 						joint = interactable.Components.GetOrCreate<SpringJoint>();
-						joint.Frequency = 10;
+						joint.Frequency = 100;
 						joint.Body = Grabber;
 					}
 					attributes = entity.Components.Get<Attributes>();
@@ -74,8 +74,7 @@ public sealed class Interactor : Component
 			}
 		}
 
-		if(Input.Down("use")) useTime+=Time.Delta;
-		else useTime = 0;
+		
 
 		if(interactable != null)
 		{
@@ -94,6 +93,9 @@ public sealed class Interactor : Component
 			crossHair.Name = "";
 			crossHair.stats = new List<CrossHair.stat>();
 		}
+
+		if(Input.Down("use")) useTime+=Time.Delta;
+		else useTime = 0;
 	}
 	void getWeaponStats()
 	{

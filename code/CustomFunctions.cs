@@ -1,6 +1,7 @@
 
 using Sandbox;
 using System;
+using System.ComponentModel;
 using System.Globalization;
 public sealed class CustomFunctions
 {
@@ -28,7 +29,23 @@ public sealed class CustomFunctions
     public static T GetResource<T>(Ids ids, string resourceType) where T : GameResource
     {
         string path = string.Join("/", ids.Categories);
-        Log.Info($"gameresources/{path}.{resourceType}");
         return ResourceLibrary.Get<T>($"gameresources/{path}.{resourceType}");
+    }
+
+    public static SaveClasses.EntitySave SaveEntity(Entity entity)
+    {
+        SaveClasses.EntitySave newEntity = new SaveClasses.EntitySave(); 
+        newEntity.Catagories = entity.Ids.Categories;
+        newEntity.displayContainer = entity.displayContainer;
+
+        newEntity.AttributeSets = new List<Attributes.SavedAttributeSet>();
+        foreach(Attributes.AttributeSet attributeSet in entity.Attributes.attributeSets)
+        {
+            newEntity.AttributeSets.Add(Attributes.SaveAttributeSet(attributeSet));
+        }
+
+        newEntity.Container = entity.Container;
+
+        return newEntity;
     }
 }

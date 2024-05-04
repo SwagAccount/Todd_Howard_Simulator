@@ -2,9 +2,11 @@ using Sandbox;
 
 public sealed class Entity : Component
 {
-	[Property] private Attributes Attributes {get;set;}
-	[Property] private Ids Ids {get;set;}
+	[Property] public Attributes Attributes {get;set;}
+	[Property] public Ids Ids {get;set;}
 	[Property] public List<Catagory> Catagories {get;set;}
+	[Property] public bool displayContainer { get; set;}
+	[Property] public List<SaveClasses.EntitySave> Container {get;set;}
 	public class Catagory
 	{
 		public string CatagoryName {get;set;}
