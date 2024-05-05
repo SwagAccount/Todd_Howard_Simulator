@@ -233,6 +233,13 @@ public sealed class CommandDealer : Component
 		Log.Info("BOOL - True/False (anything not 'True' = False)");
 		Log.Info("------");
 	}
+
+	[ConCmd( "CalcDamage" )]
+	public static void CalcDamage(float velocity, float weight)
+	{
+		Log.Info((velocity*weight)*0.0001f);
+	}
+
 	[ConCmd( "SeeAllIDs" )]
 	public static void SelectIDsTo()
 	{

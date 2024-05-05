@@ -106,6 +106,15 @@ public class PerkEffector
     public float Effector {get;set;}
 }
 
+[GameResource("ItemTypeSort", "typesort","A way to sort an item type", Icon = "Sort")]
+public sealed class ItemTypeSort : GameResource
+{
+    public string Name {get;set;}
+    public List<ContainerUI.sortType> SortTypes {get; set;}
+}
+
+
+
 [GameResource("Player", "player","A player type", Icon = "Person")]
 public sealed class PlayerReference : GameResource
 {

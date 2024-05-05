@@ -26,9 +26,9 @@ public sealed class CustomFunctions
         return result;
     }
 
-    public static T GetResource<T>(Ids ids, string resourceType) where T : GameResource
+    public static T GetResource<T>(List<string> Categories, string resourceType) where T : GameResource
     {
-        string path = string.Join("/", ids.Categories);
+        string path = string.Join("/", Categories);
         return ResourceLibrary.Get<T>($"gameresources/{path}.{resourceType}");
     }
 

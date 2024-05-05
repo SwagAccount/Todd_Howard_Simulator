@@ -334,7 +334,6 @@ public sealed class Attributes : Component
                 if(attribute != null)
                 {
                     float multiplier = (float)attribute.GetValue();
-                    Log.Info(multiplier);
                     switch(perkEffector.EffectType)
                     {
                         case EffectType.ADD:

@@ -12,7 +12,8 @@
       "CatagoryName": "items",
       "Components": [
         "ItemRenderer",
-        "Interactable"
+        "Interactable",
+        "Pickup"
       ],
       "Catagories": [
         {

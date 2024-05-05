@@ -99,8 +99,8 @@ public sealed class Interactor : Component
 	}
 	void getWeaponStats()
 	{
-		Weapon weapon = CustomFunctions.GetResource<Weapon>(ids, "weapon");
-		item item = CustomFunctions.GetResource<item>(ids, "item");
+		Weapon weapon = CustomFunctions.GetResource<Weapon>(ids.Categories, "weapon");
+		item item = CustomFunctions.GetResource<item>(ids.Categories, "item");
 
 		CrossHair.stat newStat = new CrossHair.stat();
 		newStat.StatName = "Damage";
@@ -110,7 +110,7 @@ public sealed class Interactor : Component
 		
 		newStat = new CrossHair.stat();
 		newStat.StatName = "DPS";
-		float DPS = (weapon.shootTime)*weapon.bulletStats[0].damage*weapon.bulletStats[0].shotsPer;
+		float DPS = (1/weapon.shootTime)*weapon.bulletStats[0].damage*weapon.bulletStats[0].shotsPer;
 		newStat.Stat = $"{DPS}";
 		crossHair.stats.Add(newStat);
 
@@ -121,7 +121,7 @@ public sealed class Interactor : Component
 	}
 	void getItemStats()
 	{
-		item item = CustomFunctions.GetResource<item>(ids, "item");
+		item item = CustomFunctions.GetResource<item>(ids.Categories, "item");
 		
 		CrossHair.stat newStat = new CrossHair.stat();
 		newStat.StatName = "Weight";

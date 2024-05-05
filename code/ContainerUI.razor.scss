@@ -1,0 +1,53 @@
+ContainerUI
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	flex-direction: row;
+	font-family: 'Monofonto';
+	color: #fff;
+	.title
+	{
+		font-size: 25px;
+		font-family: Poppins;
+		
+	}
+	.centered
+	{
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		flex-direction: column;
+		width: 100%;
+		height: 100%; 
+	}
+	table 
+	{
+		width: 50%;
+		height: 50%; 
+		border:1px solid;
+	}
+	th 
+	{
+		display:flex;
+		width:100%;
+		background:#0000007e;
+		padding:0;
+	}
+	tr 
+	{
+		display:flex;
+		width:100%;
+		padding:0;
+	}
+	td 
+	{
+		flex: 1 1;
+		text-align :center;
+		
+	}
+}

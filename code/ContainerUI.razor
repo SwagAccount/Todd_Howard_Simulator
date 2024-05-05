@@ -1,0 +1,192 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using System;
+@using System.Collections.Generic;
+@using System.Linq;
+@using System.Text.RegularExpressions;
+
+<root>
+	<div class = "centered">
+		<div>
+			<div>⮜</div>
+			<div style="width: 10%; text-align: center;">@(CustomFunctions.CapitalizeWords(CurrentType))</div>
+			<div>⮞</div>
+		</div>
+		<table style="flex-direction: column">
+			<th>
+				@for(int i = 0; i < Its.SortTypes.Count; i++)
+				{
+					<td>@($"{Its.SortTypes[i]}{(SortIndex == i ? (SortDirection ? "⮝" : "⮟") : "" )}")</td>
+				}
+			</th>
+			@for(int i = 0; i < OrderedList.Count; i++)
+			{
+				
+				<tr style=@((i+1)%2 == 0 ? "background: #0002" : "background: #0000")>
+					@foreach(string s in OrderedList[i].stats)
+					{
+						<td>@s</td>
+					}
+				</tr>
+			}
+		</table>
+	</div>
+</root>
+
+@code
+{
+
+	[Property] public Entity Entity {get;set;}
+
+	public enum sortType
+	{
+		Name,
+		Weight,
+		Value,
+		DPS,
+		Damage
+	}
+
+	public float GetNameValue(SaveClasses.EntitySave entity)
+	{
+		char[] characters = entity.Categories[entity.Categories.Count-1].ToCharArray();
+		string add = "";
+		
+		for(int i = 0; i < 4; i++)
+		{
+			if(i < characters.Length)
+			{
+				add += $"{10+(char.ToUpper(characters[i]))}";
+			}
+			else
+			{
+				add += "00";
+			}
+		}
+        return 100000000-float.Parse(add);
+	} 
+
+	public float GetWeightValue(SaveClasses.EntitySave entity)
+	{
+		item item = CustomFunctions.GetResource<item>(entity.Categories, "item");
+		return item.Weight;
+	}
+
+	public float GetValueValue(SaveClasses.EntitySave entity)
+	{
+		item item = CustomFunctions.GetResource<item>(entity.Categories, "item");
+		return item.Value;
+	}
+
+	public float GetDPSValue(SaveClasses.EntitySave entity)
+	{
+		Weapon weapon = CustomFunctions.GetResource<Weapon>(entity.Categories, "weapon");
+		float DPS = (1/weapon.shootTime)*weapon.bulletStats[0].damage*weapon.bulletStats[0].shotsPer;
+		return DPS;
+	}
+
+	public float GetDamageValue(SaveClasses.EntitySave entity)
+	{
+		Weapon weapon = CustomFunctions.GetResource<Weapon>(entity.Categories, "weapon");
+		return weapon.bulletStats[0].damage;
+	}
+
+	[Property] private List<sortedItem> OrderedList {get;set;}
+	[Property] public string CurrentType {get;set;} 
+	[Property] public int SortIndex {get;set;}
+	[Property] public bool SortDirection {get;set;}
+	[Property] public ItemTypeSort Its {get;set;}
+
+	public void CalculateList()
+	{
+		List<float> floatValues = new List<float>();
+		List<sortedItem> newContainier = new List<sortedItem>();
+			
+		for(int i = 0; i < Entity.Container.Count; i++)
+		{
+			if(Entity.Container[i].Categories.Contains(CurrentType))
+			{
+				Its = ResourceLibrary.Get<ItemTypeSort>($"gameresources/itemtypesorts/{CurrentType}.typesort");
+				
+
+				sortedItem sortedItem = new sortedItem();
+				sortedItem.id = Entity.Container[i].id;
+				sortedItem.stats = new List<string>();
+				foreach(sortType s in Its.SortTypes)
+				{
+					switch(s)
+					{
+						case sortType.Name:
+							sortedItem.stats.Add(CustomFunctions.CapitalizeWords(Entity.Container[i].Categories[Entity.Container[i].Categories.Count-1]));
+							break;
+						case sortType.Weight:
+							sortedItem.stats.Add((MathF.Round(GetWeightValue(Entity.Container[i]) * 10)/10).ToString());
+							break;
+						case sortType.Value:
+							sortedItem.stats.Add(MathF.Round(GetValueValue(Entity.Container[i])).ToString());
+							break;
+						case sortType.DPS:
+							sortedItem.stats.Add(MathF.Round(GetDPSValue(Entity.Container[i])).ToString());
+							break;
+						case sortType.Damage:
+							sortedItem.stats.Add(MathF.Round(GetDamageValue(Entity.Container[i])).ToString());
+							break;
+					}
+				}
+				
+				newContainier.Add(sortedItem);
+
+				switch(Its.SortTypes[SortIndex])
+				{
+					case sortType.Name:
+						floatValues.Add(GetNameValue(Entity.Container[i]));
+						break;
+					case sortType.Weight:
+						floatValues.Add(GetWeightValue(Entity.Container[i]));
+						break;
+					case sortType.Value:
+						floatValues.Add(GetValueValue(Entity.Container[i]));
+						break;
+					case sortType.DPS:
+						floatValues.Add(GetDPSValue(Entity.Container[i]));
+						break;
+					case sortType.Damage:
+						floatValues.Add(GetDamageValue(Entity.Container[i]));
+						break;
+				}
+				
+			}
+			
+		}
+		
+
+		if(!SortDirection)
+		{
+			var combined = newContainier.Zip(floatValues, (obj, val) => new { Object = obj, Value = val })
+                              .OrderByDescending(item => item.Value)
+                              .ToList();
+			OrderedList = combined.Select(item => item.Object).ToList();
+		}
+		else
+		{
+			var combined = newContainier.Zip(floatValues, (obj, val) => new { Object = obj, Value = val })
+                              .OrderBy(item => item.Value)
+                              .ToList();
+			OrderedList = combined.Select(item => item.Object).ToList();
+		}
+
+
+        
+		
+	}
+
+	public class sortedItem
+	{
+		public int id {get;set;}
+
+		public List<string> stats {get;set;}
+	}
+	
+
+	protected override int BuildHash() => System.HashCode.Combine(Its, OrderedList , CustomFunctions.CapitalizeWords(CurrentType), SortIndex, SortDirection );
+}

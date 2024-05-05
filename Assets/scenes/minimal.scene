@@ -58,7 +58,7 @@
         {
           "__guid": "438b4461-5267-4f6a-b9e2-dfc44112b4c8",
           "Name": "Player",
-          "Position": "0,0,32.81264",
+          "Position": "32.80156,0,32.81264",
           "Enabled": true,
           "NetworkMode": 2,
           "NetworkInterpolation": true,
@@ -141,189 +141,50 @@
             },
             {
               "__type": "Entity",
-              "__guid": "18b96a14-ab33-45b5-89ba-2185b7415edb",
+              "__guid": "9d0de3cf-b3e9-43d5-bff4-cfa0ca0f1be6",
               "Catagories": [],
-              "Container": [],
-              "displayContainer": false
-            }
-          ]
-        },
-        {
-          "__guid": "943d28d5-23cf-4946-97b3-ba32b804eaa1",
-          "Name": "Item (4)",
-          "Position": "0,0,32.81264",
-          "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
-          "Components": [
-            {
-              "__type": "Ids",
-              "__guid": "fbd56bd2-8d82-4182-ad2f-026cae8e94f7",
-              "Categories": [
-                "items",
-                "weapons",
-                "guns",
-                "double barrel"
-              ],
-              "sceneID": "1"
-            },
-            {
-              "__type": "Attributes",
-              "__guid": "169c5c46-68ed-4c5e-b7c2-5c61909c528a",
-              "attributeSets": [
+              "Container": [
                 {
-                  "setName": "default",
-                  "attributes": [
-                    {
-                      "AttributeName": "Condition",
-                      "attributeType": "FLOAT",
-                      "floatValue": 1
-                    }
-                  ]
+                  "Categories": [
+                    "items",
+                    "weapons",
+                    "guns",
+                    "1911"
+                  ],
+                  "AttributeSets": [],
+                  "Container": []
+                },
+                {
+                  "Categories": [
+                    "items",
+                    "weapons",
+                    "guns",
+                    "double barrel"
+                  ],
+                  "AttributeSets": [],
+                  "Container": []
+                },
+                {
+                  "Categories": [
+                    "items",
+                    "weapons",
+                    "guns",
+                    "mp5"
+                  ],
+                  "AttributeSets": [],
+                  "Container": []
+                },
+                {
+                  "Categories": [
+                    "items",
+                    "weapons",
+                    "guns",
+                    "m16"
+                  ],
+                  "AttributeSets": [],
+                  "Container": []
                 }
               ],
-              "perkEffectors": []
-            },
-            {
-              "__type": "Entity",
-              "__guid": "faf7674d-4b74-416e-a9f7-c75bbdbd2114",
-              "Catagories": [],
-              "Container": [],
-              "displayContainer": false
-            }
-          ]
-        },
-        {
-          "__guid": "01f89f47-4ec1-40e1-ba88-7298cf905219",
-          "Name": "Item (3)",
-          "Position": "0,0,32.81264",
-          "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
-          "Components": [
-            {
-              "__type": "Ids",
-              "__guid": "d74047a3-6359-498d-93b1-bc270900be19",
-              "Categories": [
-                "items",
-                "weapons",
-                "guns",
-                "double barrel"
-              ],
-              "sceneID": "1"
-            },
-            {
-              "__type": "Attributes",
-              "__guid": "c3108ebb-94fd-48a5-b248-8d49d03198e4",
-              "attributeSets": [
-                {
-                  "setName": "default",
-                  "attributes": [
-                    {
-                      "AttributeName": "Condition",
-                      "attributeType": "FLOAT",
-                      "floatValue": 1
-                    }
-                  ]
-                }
-              ],
-              "perkEffectors": []
-            },
-            {
-              "__type": "Entity",
-              "__guid": "0fb623f5-d192-4dc5-8380-1581a9c05da2",
-              "Catagories": [],
-              "Container": [],
-              "displayContainer": false
-            }
-          ]
-        },
-        {
-          "__guid": "6d144aff-673e-433e-ac16-27c1c3643bef",
-          "Name": "Item (2)",
-          "Position": "0,0,32.81264",
-          "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
-          "Components": [
-            {
-              "__type": "Ids",
-              "__guid": "0d1fcbcc-e84b-41e5-ab3c-cabc74cf81fc",
-              "Categories": [
-                "items",
-                "weapons",
-                "guns",
-                "double barrel"
-              ],
-              "sceneID": "1"
-            },
-            {
-              "__type": "Attributes",
-              "__guid": "ece00268-efbd-403b-913f-b9fea7e5164d",
-              "attributeSets": [
-                {
-                  "setName": "default",
-                  "attributes": [
-                    {
-                      "AttributeName": "Condition",
-                      "attributeType": "FLOAT",
-                      "floatValue": 1
-                    }
-                  ]
-                }
-              ],
-              "perkEffectors": []
-            },
-            {
-              "__type": "Entity",
-              "__guid": "00f8acce-7503-458c-948f-207a0dc7a2e0",
-              "Catagories": [],
-              "Container": [],
-              "displayContainer": false
-            }
-          ]
-        },
-        {
-          "__guid": "8cb798a4-2a02-4448-b619-c17b6246bea9",
-          "Name": "Item (1)",
-          "Position": "0,0,32.81264",
-          "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
-          "Components": [
-            {
-              "__type": "Ids",
-              "__guid": "efd2e9ee-f22f-4661-95e0-08bf0b3bd233",
-              "Categories": [
-                "items",
-                "weapons",
-                "guns",
-                "double barrel"
-              ],
-              "sceneID": "1"
-            },
-            {
-              "__type": "Attributes",
-              "__guid": "83e17d86-cb49-462b-be17-de72714f6cd9",
-              "attributeSets": [
-                {
-                  "setName": "default",
-                  "attributes": [
-                    {
-                      "AttributeName": "Condition",
-                      "attributeType": "FLOAT",
-                      "floatValue": 1
-                    }
-                  ]
-                }
-              ],
-              "perkEffectors": []
-            },
-            {
-              "__type": "Entity",
-              "__guid": "0c0ce123-e958-4b8b-ab44-b8138a2c2594",
-              "Catagories": [],
-              "Container": [],
               "displayContainer": false
             }
           ]
@@ -408,6 +269,37 @@
       "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true
+    },
+    {
+      "__guid": "4e8f4ad7-f2c4-402d-8d31-945637ca578c",
+      "Name": "Object",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "f60b7ab1-7d8c-47e4-a230-8fb5596da19d",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
+        },
+        {
+          "__type": "ContainerUI",
+          "__guid": "bb556332-e01e-4db3-aa72-4ecf1446a684",
+          "CurrentType": "weapons",
+          "Entity": {
+            "_type": "component",
+            "component_id": "9d0de3cf-b3e9-43d5-bff4-cfa0ca0f1be6",
+            "go": "438b4461-5267-4f6a-b9e2-dfc44112b4c8",
+            "component_type": "Entity"
+          },
+          "OrderedList": [],
+          "SortDirection": false,
+          "SortIndex": 0
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -433,7 +325,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-05-04T22:21:51.8739035\u002B07:00",
+  "LastSaved": "2024-05-05T18:23:48.6029315\u002B07:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

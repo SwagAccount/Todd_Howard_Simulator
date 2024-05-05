@@ -1,0 +1,38 @@
+{
+  "ViewModel": null,
+  "flash": null,
+  "shootFromCam": false,
+  "shootTime": 0.5,
+  "deployTime": 0,
+  "range": 52493,
+  "clipSize": 2,
+  "hasFakeProjectile": false,
+  "modes": [],
+  "bulletStats": [
+    {
+      "shotsPer": 9,
+      "damage": 10
+    }
+  ],
+  "sound": null,
+  "fireParam": null,
+  "reloadCParam": null,
+  "reloadNoCParam": null,
+  "unDeployParam": null,
+  "LoadedParam": null,
+  "reloadMount": 1,
+  "reloadWarmTime": 0,
+  "notReloadable": false,
+  "reloadTillFull": false,
+  "cantOverReload": false,
+  "letGoAtZeroAmmo": false,
+  "stopReload": null,
+  "reloadCTime": 0.5,
+  "reloadNoCTime": 0.5,
+  "runReload": false,
+  "fovMult": 0.66,
+  "sensMult": 1,
+  "ResourceVersion": 0,
+  "__version": 0,
+  "__references": []
+}
