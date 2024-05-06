@@ -4,7 +4,9 @@
       "CatagoryName": "Player",
       "Components": [
         "PlayerController",
-        "BoxCollider"
+        "BoxCollider",
+        "ScreenPanel",
+        "ContainerInteract"
       ],
       "Catagories": []
     },
@@ -32,6 +34,20 @@
               ]
             }
           ]
+        }
+      ]
+    },
+    {
+      "CatagoryName": "containers",
+      "Components": [
+        "ItemRenderer",
+        "Interactable"
+      ],
+      "Catagories": [
+        {
+          "CatagoryName": "backpack",
+          "Components": [],
+          "Catagories": []
         }
       ]
     }

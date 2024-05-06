@@ -4,25 +4,27 @@
 @using System.Collections.Generic;
 @using System.Linq;
 @using System.Text.RegularExpressions;
+@inherits PanelComponent
 
-<root>
-	<div class = "centered">
+<root style=@($"justify-content: {Position};"))>
+	<div class = "centered" style=@($" width: {Width}%;" + (EnableMouse ? " pointer-events: all;" : ""))>
 		<div>
-			<div>⮜</div>
-			<div style="width: 10%; text-align: center;">@(CustomFunctions.CapitalizeWords(CurrentType))</div>
-			<div>⮞</div>
+			<div onclick=@(() => ChangeType(-1))>⮜</div>
+			<div style="width: 10%; justify-content: center;"><div>@(CustomFunctions.CapitalizeWords(CurrentType.ToString()))</div></div>
+			<div onclick=@(() => ChangeType(1))>⮞</div>
 		</div>
-		<table style="flex-direction: column">
+		<table style=@("flex-direction: column;" + $" width: {TableSize}%; height: {TableSize}%;")>
 			<th>
 				@for(int i = 0; i < Its.SortTypes.Count; i++)
-				{
-					<td>@($"{Its.SortTypes[i]}{(SortIndex == i ? (SortDirection ? "⮝" : "⮟") : "" )}")</td>
+				{ 
+					int capture = i;
+					<td onclick=@(() => SetSortingIndex(capture))>@($"{Its.SortTypes[i]}{(SortIndex == i ? (SortDirection ? "⮝" : "⮟") : "" )}")</td>
 				}
 			</th>
 			@for(int i = 0; i < OrderedList.Count; i++)
 			{
-				
-				<tr style=@((i+1)%2 == 0 ? "background: #0002" : "background: #0000")>
+				int capture = OrderedList[i].id;
+				<tr style=@((i+1)%2 == 0 ? "background: #0002" : "background: #0000") onclick=@(() => SelectItem(capture))>
 					@foreach(string s in OrderedList[i].stats)
 					{
 						<td>@s</td>
@@ -66,6 +68,33 @@
         return 100000000-float.Parse(add);
 	} 
 
+	public void SetSortingIndex(int index)
+	{
+		if(SortIndex == index) SortDirection = !SortDirection;
+		else SortIndex = index;
+		CalculateList();
+	}
+
+	public void SelectItem(int id)
+	{
+		MoveID = id;
+	}
+
+	public void ChangeType(int direction)
+	{
+		if (Enum.IsDefined(typeof(Types), (int)CurrentType + direction))
+		{
+			CurrentType = (Types)((int)CurrentType + direction);
+		}
+		else
+		{
+			CurrentType = direction == 1 ? (Types)0 : (Types)(Enum.GetValues(typeof(Types)).Length-1);
+		}
+		SortIndex = 0;
+		CalculateList();
+		
+	}
+
 	public float GetWeightValue(SaveClasses.EntitySave entity)
 	{
 		item item = CustomFunctions.GetResource<item>(entity.Categories, "item");
@@ -88,14 +117,27 @@
 	public float GetDamageValue(SaveClasses.EntitySave entity)
 	{
 		Weapon weapon = CustomFunctions.GetResource<Weapon>(entity.Categories, "weapon");
-		return weapon.bulletStats[0].damage;
+		return weapon.bulletStats[0].damage * weapon.bulletStats[0].shotsPer;
+	}
+
+	public enum Types
+	{
+		items,
+		weapons,
+		apparel,
+		misc
 	}
 
 	[Property] private List<sortedItem> OrderedList {get;set;}
-	[Property] public string CurrentType {get;set;} 
+	[Property] public Types CurrentType {get;set;} 
 	[Property] public int SortIndex {get;set;}
 	[Property] public bool SortDirection {get;set;}
 	[Property] public ItemTypeSort Its {get;set;}
+	[Property] public bool EnableMouse {get;set;}
+	[Property] public string Position {get;set;}
+	[Property] public float Width {get;set;} = 100f;
+	[Property] public float TableSize {get;set;} = 100f;
+	[Property] public int MoveID {get;set;} = -1;
 
 	public void CalculateList()
 	{
@@ -104,16 +146,18 @@
 			
 		for(int i = 0; i < Entity.Container.Count; i++)
 		{
-			if(Entity.Container[i].Categories.Contains(CurrentType))
+			if(Entity.Container[i].Categories.Contains(CurrentType.ToString()))
 			{
-				Its = ResourceLibrary.Get<ItemTypeSort>($"gameresources/itemtypesorts/{CurrentType}.typesort");
+				Its = ResourceLibrary.Get<ItemTypeSort>($"gameresources/itemtypesorts/{CurrentType.ToString()}.typesort");
 				
-
+				
 				sortedItem sortedItem = new sortedItem();
 				sortedItem.id = Entity.Container[i].id;
 				sortedItem.stats = new List<string>();
+				
 				foreach(sortType s in Its.SortTypes)
 				{
+					
 					switch(s)
 					{
 						case sortType.Name:
@@ -129,7 +173,9 @@
 							sortedItem.stats.Add(MathF.Round(GetDPSValue(Entity.Container[i])).ToString());
 							break;
 						case sortType.Damage:
-							sortedItem.stats.Add(MathF.Round(GetDamageValue(Entity.Container[i])).ToString());
+							Weapon weapon = CustomFunctions.GetResource<Weapon>(Entity.Container[i].Categories, "weapon");
+							string spreadMultiplier = weapon.bulletStats[0].shotsPer > 1 ? $"{weapon.bulletStats[0].shotsPer}x" : "";
+							sortedItem.stats.Add($"{spreadMultiplier}{weapon.bulletStats[0].damage}");
 							break;
 					}
 				}
@@ -187,6 +233,10 @@
 		public List<string> stats {get;set;}
 	}
 	
+	protected override void OnStart()
+	{
+		CalculateList();
+	}
 
-	protected override int BuildHash() => System.HashCode.Combine(Its, OrderedList , CustomFunctions.CapitalizeWords(CurrentType), SortIndex, SortDirection );
+	protected override int BuildHash() => System.HashCode.Combine(Width, EnableMouse, Position , Its, OrderedList , CustomFunctions.CapitalizeWords(CurrentType.ToString()), SortIndex, SortDirection );
 }

@@ -11,6 +11,8 @@ public sealed class Interactor : Component
 	Interactable interactable;
 	Interactable lastInteractable;
 	Entity entity;
+	Entity player;
+	ContainerInteract containerInteract;
 	Rigidbody entityBody;
 	Attributes attributes;
 	Ids ids;
@@ -19,6 +21,8 @@ public sealed class Interactor : Component
 	protected override void OnStart()
 	{
 		crossHair = Components.GetOrCreate<CrossHair>();
+		player = GameObject.Parent.Components.Get<Entity>();
+		containerInteract = GameObject.Parent.Components.Get<ContainerInteract>();
 	}
 	float useTime = 0;
 	protected override void OnUpdate()
@@ -33,10 +37,22 @@ public sealed class Interactor : Component
 		{
 			if(trace.Hit && trace.GameObject != lastHit)
 			{
+				entity = trace.GameObject.Components.Get<Entity>();
+				if(entity != null)
+				{
+					if(entity.displayContainer)
+					{
+						containerInteract.LookedAtContainer = entity;
+						containerInteract.State = ContainerInteract.States.Look;
+						if(Input.Pressed("use"))
+						{
+							containerInteract.State = ContainerInteract.States.Transfer;
+						}
+					}
+				}
 				interactable = trace.GameObject.Components.Get<Interactable>();
 				if(interactable != null)
 				{
-					entity = interactable.Components.Get<Entity>();
 					entityBody = interactable.Components.Get<Rigidbody>();
 					Grabber.Transform.Position = interactable.Transform.Position;
 					if(entityBody != null)
@@ -51,6 +67,7 @@ public sealed class Interactor : Component
 			}
 			else
 			{
+				containerInteract.State = ContainerInteract.States.None;
 				interactable = null;
 				if(joint!=null)
 				{

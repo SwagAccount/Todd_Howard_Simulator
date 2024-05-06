@@ -2,16 +2,18 @@
   "ViewModel": null,
   "flash": null,
   "shootFromCam": false,
-  "shootTime": 0.5,
+  "shootTime": 0.075,
   "deployTime": 0,
   "range": 52493,
-  "clipSize": 2,
+  "clipSize": 31,
   "hasFakeProjectile": false,
   "modes": [],
   "bulletStats": [
     {
-      "shotsPer": 9,
-      "damage": 10
+      "ammoType": "9mm",
+      "shotsPer": 1,
+      "damage": 9.2,
+      "bleedDamage": 0.9
     }
   ],
   "sound": null,

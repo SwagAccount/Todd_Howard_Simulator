@@ -2,8 +2,6 @@
   "Name": null,
   "SortTypes": [
     "Name",
-    "DPS",
-    "Damage",
     "Weight",
     "Value"
   ],

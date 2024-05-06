@@ -17,6 +17,20 @@ public sealed class CommandDealer : Component
 			ids.sceneID = nextCode.ToString();
 		}
 	}
+	
+	public void TransferItem(Entity from, Entity to, int id)
+	{
+		for (int i = 0; i < from.Container.Count; i++)
+		{
+			if(from.Container[i].id == id) 
+			{
+				to.Container.Add(from.Container[i]);
+				from.Container.RemoveAt(i);
+				return;
+			}
+		}
+	}
+
 
 	public void DropItem(Vector3 postion, Angles rotation, SaveClasses.EntitySave entitySave)
 	{
@@ -235,9 +249,9 @@ public sealed class CommandDealer : Component
 	}
 
 	[ConCmd( "CalcDamage" )]
-	public static void CalcDamage(float velocity, float weight)
+	public static void CalcDamage(float velocity, float weight, float diameter)
 	{
-		Log.Info((velocity*weight)*0.0001f);
+		Log.Info(MathF.Pow(weight,2f)*velocity/(700000*MathF.Pow(diameter,2f))*0.06);
 	}
 
 	[ConCmd( "SeeAllIDs" )]

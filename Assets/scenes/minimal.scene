@@ -54,6 +54,16 @@
       "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "159d0bf5-5db1-4313-bb61-c5802d2a6b20",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
+        }
+      ],
       "Children": [
         {
           "__guid": "438b4461-5267-4f6a-b9e2-dfc44112b4c8",
@@ -145,6 +155,7 @@
               "Catagories": [],
               "Container": [
                 {
+                  "id": 41235,
                   "Categories": [
                     "items",
                     "weapons",
@@ -153,8 +164,53 @@
                   ],
                   "AttributeSets": [],
                   "Container": []
-                },
+                }
+              ],
+              "displayContainer": false
+            }
+          ]
+        },
+        {
+          "__guid": "c1943ee3-4058-427c-83b4-10265e7b17c6",
+          "Name": "Container",
+          "Position": "0,0,32.81264",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Ids",
+              "__guid": "ca419a21-ab89-4765-8c35-192ecde1ec6a",
+              "Categories": [
+                "containers",
+                "backpack"
+              ],
+              "sceneID": "1"
+            },
+            {
+              "__type": "Attributes",
+              "__guid": "a70d3b82-5116-4034-a43d-3cb37b52de31",
+              "attributeSets": [
                 {
+                  "setName": "default",
+                  "attributes": [
+                    {
+                      "AttributeName": "Condition",
+                      "attributeType": "FLOAT",
+                      "floatValue": 1
+                    }
+                  ]
+                }
+              ],
+              "perkEffectors": []
+            },
+            {
+              "__type": "Entity",
+              "__guid": "d269879b-2314-4ced-8bda-487ca0f4c1a0",
+              "Catagories": [],
+              "Container": [
+                {
+                  "id": 1543,
                   "Categories": [
                     "items",
                     "weapons",
@@ -165,6 +221,7 @@
                   "Container": []
                 },
                 {
+                  "id": 3245,
                   "Categories": [
                     "items",
                     "weapons",
@@ -175,6 +232,7 @@
                   "Container": []
                 },
                 {
+                  "id": 246356,
                   "Categories": [
                     "items",
                     "weapons",
@@ -185,7 +243,7 @@
                   "Container": []
                 }
               ],
-              "displayContainer": false
+              "displayContainer": true
             }
           ]
         },
@@ -263,14 +321,6 @@
       ]
     },
     {
-      "__guid": "199838a6-4bd8-46f2-9da7-670bd8fe6adc",
-      "Name": "Object",
-      "Position": "353.7277,0,70",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true
-    },
-    {
       "__guid": "4e8f4ad7-f2c4-402d-8d31-945637ca578c",
       "Name": "Object",
       "Enabled": true,
@@ -287,17 +337,22 @@
         },
         {
           "__type": "ContainerUI",
-          "__guid": "bb556332-e01e-4db3-aa72-4ecf1446a684",
-          "CurrentType": "weapons",
+          "__guid": "76e6adf4-6ae7-43b8-add0-9a218b174da1",
+          "__enabled": false,
+          "CurrentType": "items",
+          "EnableMouse": false,
           "Entity": {
             "_type": "component",
             "component_id": "9d0de3cf-b3e9-43d5-bff4-cfa0ca0f1be6",
             "go": "438b4461-5267-4f6a-b9e2-dfc44112b4c8",
             "component_type": "Entity"
           },
+          "MoveID": -1,
           "OrderedList": [],
           "SortDirection": false,
-          "SortIndex": 0
+          "SortIndex": 0,
+          "TableSize": 100,
+          "Width": 100
         }
       ]
     }
@@ -325,7 +380,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-05-05T18:23:48.6029315\u002B07:00",
+  "LastSaved": "2024-05-06T17:29:14.0412919\u002B07:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []
