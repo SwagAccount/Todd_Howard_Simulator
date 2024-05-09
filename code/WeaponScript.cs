@@ -348,6 +348,7 @@ public sealed class WeaponScript : Component
         {
             for (int i = 0; i < weapon.reloadMount; i++)
             {
+                Log.Info("cock");
                 if(clipContent.Length-1 < weapon.clipSize && playerEntity.Attributes.attributeSets[0].attributes[ammoIndex].intValue > 0)
                 {
                     clipContent = $"{clipContent}{bulletType}";
@@ -362,7 +363,6 @@ public sealed class WeaponScript : Component
             }
             else
             {
-                
                 Reload();
             }
         }

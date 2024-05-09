@@ -37,6 +37,7 @@
 							exception_list = 
 							[
 								"Cylinder",
+								"Cylinder_001",
 							]
 						}
 					},
@@ -54,19 +55,6 @@
 						mirror_z = false
 						flip_bone_forward = false
 						swap_left_and_right_bones = false
-					},
-				]
-			},
-			{
-				_class = "Skeleton"
-				children = 
-				[
-					{
-						_class = "Bone"
-						name = "IkTarget"
-						origin = [ 0.0, 0.0, 0.0 ]
-						angles = [ 0.0, 0.0, 0.0 ]
-						do_not_discard = true
 					},
 				]
 			},
@@ -221,37 +209,29 @@
 				[
 					{
 						_class = "IKChain"
-						name = "Arm"
+						name = "Hand"
 						children = 
 						[
 							{
 								_class = "IKChainJoint"
-								name = "Bone_025"
+								name = "Bone_028"
 								children = 
 								[
 									{
 										_class = "IKChainJoint"
-										name = "Bone_027"
+										name = "Bone_029"
 										children = 
 										[
 											{
 												_class = "IKChainJoint"
-												name = "Bone_028"
-												children = 
-												[
-													{
-														_class = "IKChainJoint"
-														name = "Bone_028_end"
-														bone = "Bone_028_end"
-													},
-												]
-												bone = "Bone_028"
+												name = "Bone_030"
+												bone = "Bone_030"
 											},
 										]
-										bone = "Bone_027"
+										bone = "Bone_029"
 									},
 								]
-								bone = "Bone_025"
+								bone = "Bone_028"
 							},
 						]
 						m_bDoBonesOrientAlongPositiveX = true
@@ -259,9 +239,9 @@
 						"m_DefaultSolverSettings.m_SolverType " = "IKSOLVER_TwoBone"
 						"m_DefaultTargetSettings.m_Bone" = 
 						{
-							m_Name = "IkTarget"
+							m_Name = "Bone_030"
 						}
-						"m_DefaultTargetSettings.m_TargetSource" = "Bone"
+						"m_DefaultTargetSettings.m_TargetSource" = "Animgraph Parameter"
 						"m_Data.m_DefaultTargetSettings.m_AnimgraphParameterNamePosition" = 
 						{
 							m_id = 4294967295

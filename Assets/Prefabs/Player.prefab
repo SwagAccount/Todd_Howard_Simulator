@@ -186,806 +186,1521 @@
                 "NetworkInterpolation": true
               }
             ]
-          }
-        ]
-      },
-      {
-        "__guid": "025b136f-8fb6-4c7e-bdfc-075599930663",
-        "Flags": 0,
-        "Name": "Right",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "NetworkInterpolation": true,
-        "Components": [
+          },
           {
-            "__type": "FollowAttachment",
-            "__guid": "d00b207e-5a6d-4e8c-9ac1-dd333423248e",
-            "Arm": {
-              "_type": "component",
-              "component_id": "21e82e5a-4154-477e-a46d-14233e3a3a63",
-              "go": "9dc4ce23-9c84-4a8b-bf9f-5f01504a98b1",
-              "component_type": "SkinnedModelRenderer"
-            },
-            "attachment": "Right_Hand",
-            "Gun": {
-              "_type": "component",
-              "component_id": "1b8d80c3-dd12-4426-abf8-6643078ea3b1",
-              "go": "f3f97aed-5b31-4d45-bb12-f604db1b6aba",
-              "component_type": "SkinnedModelRenderer"
-            }
-          }
-        ],
-        "Children": [
-          {
-            "__guid": "9dc4ce23-9c84-4a8b-bf9f-5f01504a98b1",
+            "__guid": "025b136f-8fb6-4c7e-bdfc-075599930663",
             "Flags": 0,
-            "Name": "arm",
+            "Name": "Right",
+            "Position": "-0.5,-5,-6",
             "Enabled": true,
             "NetworkMode": 2,
             "NetworkInterpolation": true,
             "Components": [
               {
-                "__type": "Sandbox.SkinnedModelRenderer",
-                "__guid": "21e82e5a-4154-477e-a46d-14233e3a3a63",
-                "AnimationGraph": "models/arm.vanmgrph",
-                "BodyGroups": 18446744073709551615,
-                "CreateBoneObjects": true,
-                "Model": "models/arm.vmdl",
-                "RenderType": "On",
-                "Tint": "1,1,1,1"
+                "__type": "FollowAttachment",
+                "__guid": "d00b207e-5a6d-4e8c-9ac1-dd333423248e",
+                "Arm": {
+                  "_type": "component",
+                  "component_id": "21e82e5a-4154-477e-a46d-14233e3a3a63",
+                  "go": "9dc4ce23-9c84-4a8b-bf9f-5f01504a98b1",
+                  "component_type": "SkinnedModelRenderer"
+                },
+                "attachment": "Right_Hand",
+                "Gun": {
+                  "_type": "component",
+                  "component_id": "1b8d80c3-dd12-4426-abf8-6643078ea3b1",
+                  "go": "f3f97aed-5b31-4d45-bb12-f604db1b6aba",
+                  "component_type": "SkinnedModelRenderer"
+                },
+                "handPos": {
+                  "_type": "gameobject",
+                  "go": "63305460-fe1d-41a7-947e-d3f05f1d95f2"
+                },
+                "handTarget": {
+                  "_type": "gameobject",
+                  "go": "e4ec0083-2ade-4094-86bd-56fd6d4c32ee"
+                }
               }
             ],
             "Children": [
               {
-                "__guid": "460afd30-94a8-4ae7-9d30-103f10efde91",
-                "Flags": 4,
-                "Name": "Bone_024",
-                "Position": "-0.5893112,-1.267242,0.0000001788139",
-                "Rotation": "-0.5517983,0.5616088,0.4808255,0.3859029",
+                "__guid": "9dc4ce23-9c84-4a8b-bf9f-5f01504a98b1",
+                "Flags": 0,
+                "Name": "arm",
+                "Position": "18,0,-4",
+                "Enabled": true,
+                "NetworkMode": 2,
+                "NetworkInterpolation": true,
+                "Components": [
+                  {
+                    "__type": "Sandbox.SkinnedModelRenderer",
+                    "__guid": "21e82e5a-4154-477e-a46d-14233e3a3a63",
+                    "AnimationGraph": "models/arm.vanmgrph",
+                    "BodyGroups": 18446744073709551615,
+                    "CreateBoneObjects": true,
+                    "Model": "models/arm.vmdl",
+                    "RenderType": "On",
+                    "Tint": "1,1,1,1"
+                  }
+                ],
+                "Children": [
+                  {
+                    "__guid": "460afd30-94a8-4ae7-9d30-103f10efde91",
+                    "Flags": 0,
+                    "Name": "Bone_024",
+                    "Position": "-0.5893112,-1.267242,0.0000001788139",
+                    "Rotation": "-0.5517983,0.5616088,0.4808255,0.3859029",
+                    "Enabled": true,
+                    "NetworkMode": 2,
+                    "NetworkInterpolation": true,
+                    "Children": [
+                      {
+                        "__guid": "ed839a61-ffff-403b-99d1-0c38f67879c1",
+                        "Flags": 0,
+                        "Name": "Bone_001",
+                        "Position": "-0.8592478,-0.06127664,-0.2226852",
+                        "Rotation": "0.6119382,-0.1483933,0.7733973,0.07326493",
+                        "Enabled": true,
+                        "NetworkMode": 2,
+                        "NetworkInterpolation": true,
+                        "Children": [
+                          {
+                            "__guid": "7c006fd6-7502-43b0-8ce8-591ee562fab7",
+                            "Flags": 0,
+                            "Name": "Bone_002",
+                            "Position": "0.0000006211922,2.90875,-0.000002980232",
+                            "Rotation": "0.1185465,0.01390588,-0.1213737,0.9854044",
+                            "Enabled": true,
+                            "NetworkMode": 2,
+                            "NetworkInterpolation": true,
+                            "Children": [
+                              {
+                                "__guid": "1071392b-361a-4f06-93e1-cbea4907dc07",
+                                "Flags": 0,
+                                "Name": "Bone_003",
+                                "Position": "0.00000005374751,1.562105,-0.000002279878",
+                                "Rotation": "-0.009486007,-0.0005378509,-0.004204281,0.9999459",
+                                "Enabled": true,
+                                "NetworkMode": 2,
+                                "NetworkInterpolation": true,
+                                "Children": [
+                                  {
+                                    "__guid": "9d1ad400-8855-4b41-ae2b-09958c1a8f0f",
+                                    "Flags": 0,
+                                    "Name": "Bone_013",
+                                    "Position": "-0.000003206445,1.218327,-0.000003660098",
+                                    "Rotation": "-0.00939499,-0.05527551,-0.1034157,0.9930567",
+                                    "Enabled": true,
+                                    "NetworkMode": 2,
+                                    "NetworkInterpolation": true,
+                                    "Children": [
+                                      {
+                                        "__guid": "34c00330-bafa-4cd0-8705-3c31565e6cee",
+                                        "Flags": 0,
+                                        "Name": "Bone_013_end",
+                                        "Position": "2.299459,0.06414679,0.2507102",
+                                        "Rotation": "0.4894425,0.1293405,-0.55661,0.6587126",
+                                        "Enabled": true,
+                                        "NetworkMode": 2,
+                                        "NetworkInterpolation": true
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "__guid": "e3b9c943-5e14-47fd-b4ba-764d871bac9a",
+                        "Flags": 0,
+                        "Name": "Bone_005",
+                        "Position": "-1.350594,0.1264787,-0.3686068",
+                        "Rotation": "-0.658537,0.3606666,0.6598817,-0.02836934",
+                        "Enabled": true,
+                        "NetworkMode": 2,
+                        "NetworkInterpolation": true,
+                        "Children": [
+                          {
+                            "__guid": "04568fe7-1617-4b8a-bd52-3bfbbf2c57d5",
+                            "Flags": 0,
+                            "Name": "Bone_006",
+                            "Position": "-0.0000008866191,1.613002,0.0000007152557",
+                            "Rotation": "0.1934211,-0.1152967,-0.1838296,0.9568185",
+                            "Enabled": true,
+                            "NetworkMode": 2,
+                            "NetworkInterpolation": true,
+                            "Children": [
+                              {
+                                "__guid": "e33e7809-6b21-41b7-81cd-cf11e09920d3",
+                                "Flags": 0,
+                                "Name": "Bone_007",
+                                "Position": "-0.0000004172325,2.123513,0.000001847744",
+                                "Rotation": "-0.1814632,0.1362597,0.07553165,0.9709786",
+                                "Enabled": true,
+                                "NetworkMode": 2,
+                                "NetworkInterpolation": true,
+                                "Children": [
+                                  {
+                                    "__guid": "8905d714-1290-47da-8c6a-7cacb1d90f8b",
+                                    "Flags": 0,
+                                    "Name": "Bone_007_end",
+                                    "Position": "0.4232022,0.9413335,-1.833634",
+                                    "Rotation": "-0.4130957,-0.1139757,0.02877459,0.9030688",
+                                    "Enabled": true,
+                                    "NetworkMode": 2,
+                                    "NetworkInterpolation": true
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "__guid": "aae4772b-f0fa-4066-adfb-b625bfc6fcef",
+                        "Flags": 0,
+                        "Name": "Bone_009",
+                        "Position": "0.07765325,-0.1917312,-0.02440619",
+                        "Rotation": "0.7909582,0.02800447,-0.6110765,0.01365709",
+                        "Enabled": true,
+                        "NetworkMode": 2,
+                        "NetworkInterpolation": true,
+                        "Children": [
+                          {
+                            "__guid": "127df5e0-dfb0-4244-bc36-dcee74a27fc3",
+                            "Flags": 0,
+                            "Name": "Bone_010",
+                            "Position": "-0.000001484528,3.164618,0.000001013279",
+                            "Rotation": "0.1075937,0.002205465,0.07790153,0.9911357",
+                            "Enabled": true,
+                            "NetworkMode": 2,
+                            "NetworkInterpolation": true,
+                            "Children": [
+                              {
+                                "__guid": "b5385623-fa35-4bd9-8fd2-d122dce1af49",
+                                "Flags": 0,
+                                "Name": "Bone_011",
+                                "Position": "-0.00000410946,1.104028,0.000001266599",
+                                "Rotation": "-0.04983943,-0.0516975,0.2049547,0.9761337",
+                                "Enabled": true,
+                                "NetworkMode": 2,
+                                "NetworkInterpolation": true,
+                                "Children": [
+                                  {
+                                    "__guid": "2ce66886-8ac0-4b93-ba3c-cc974cff91f3",
+                                    "Flags": 0,
+                                    "Name": "Bone_012",
+                                    "Position": "-0.000006260349,1.088051,0.000002019107",
+                                    "Rotation": "0.03151024,-0.172166,0.15189,0.9727771",
+                                    "Enabled": true,
+                                    "NetworkMode": 2,
+                                    "NetworkInterpolation": true,
+                                    "Children": [
+                                      {
+                                        "__guid": "a041a5dd-f323-40cd-b326-c39ca856199f",
+                                        "Flags": 0,
+                                        "Name": "Bone_012_end",
+                                        "Position": "-1.860958,1.137206,1.321083",
+                                        "Rotation": "0.2396987,0.05697198,0.3215315,0.9142846",
+                                        "Enabled": true,
+                                        "NetworkMode": 2,
+                                        "NetworkInterpolation": true
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "__guid": "abdbccc4-2a7d-4666-bc74-d8fada035f26",
+                        "Flags": 0,
+                        "Name": "Bone_016",
+                        "Position": "-0.6437205,-3.236197,-0.4349956",
+                        "Rotation": "0.7818956,-0.08378664,-0.6171892,-0.02639335",
+                        "Enabled": true,
+                        "NetworkMode": 2,
+                        "NetworkInterpolation": true,
+                        "Children": [
+                          {
+                            "__guid": "81b3ffb8-9d20-41b5-97e9-b82d9f7bf68c",
+                            "Flags": 0,
+                            "Name": "Bone_017",
+                            "Position": "-0.000002234403,1.359238,0.000001095235",
+                            "Rotation": "-0.02486997,0.01347456,0.1957254,0.9802507",
+                            "Enabled": true,
+                            "NetworkMode": 2,
+                            "NetworkInterpolation": true,
+                            "Children": [
+                              {
+                                "__guid": "5de2f165-6467-48de-aa9d-bb2178aee5ea",
+                                "Flags": 0,
+                                "Name": "Bone_018",
+                                "Position": "-0.000004176166,1.442575,0.000001491978",
+                                "Rotation": "0.04533431,-0.03070382,0.1373343,0.9890103",
+                                "Enabled": true,
+                                "NetworkMode": 2,
+                                "NetworkInterpolation": true,
+                                "Children": [
+                                  {
+                                    "__guid": "14273a36-3670-4245-bbbc-631bbe04d8c3",
+                                    "Flags": 0,
+                                    "Name": "Bone_018_end",
+                                    "Position": "-2.51424,0.7892719,0.03468638",
+                                    "Rotation": "-0.0548785,0.0350936,0.4852623,0.8719388",
+                                    "Enabled": true,
+                                    "NetworkMode": 2,
+                                    "NetworkInterpolation": true
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "__guid": "d512e303-3dd9-41e3-8706-aea9d0ee2384",
+                        "Flags": 0,
+                        "Name": "Bone_020",
+                        "Position": "0.7851909,-0.03540915,0.1692965",
+                        "Rotation": "0.7914922,0.03434652,-0.6091915,0.03530301",
+                        "Enabled": true,
+                        "NetworkMode": 2,
+                        "NetworkInterpolation": true,
+                        "Children": [
+                          {
+                            "__guid": "1bf6ec6c-f331-4122-a4f6-099ee649b34b",
+                            "Flags": 0,
+                            "Name": "Bone_021",
+                            "Position": "-0.000009339302,3.321599,0.000001251697",
+                            "Rotation": "0.0265856,-0.04533529,0.2332918,0.9709856",
+                            "Enabled": true,
+                            "NetworkMode": 2,
+                            "NetworkInterpolation": true,
+                            "Children": [
+                              {
+                                "__guid": "28b0d4af-d75f-4a5e-81e0-eeae2d966b8e",
+                                "Flags": 0,
+                                "Name": "Bone_022",
+                                "Position": "-0.00001865288,0.7749034,0.000001572072",
+                                "Rotation": "0.07067103,-0.09348921,0.06690894,0.9908524",
+                                "Enabled": true,
+                                "NetworkMode": 2,
+                                "NetworkInterpolation": true,
+                                "Children": [
+                                  {
+                                    "__guid": "8eac7fa1-42d8-4d0a-8d60-475c6985502d",
+                                    "Flags": 0,
+                                    "Name": "Bone_023",
+                                    "Position": "-0.00001482503,0.4952199,0.000001532026",
+                                    "Rotation": "0.1096991,0.03703989,0.1023366,0.9879886",
+                                    "Enabled": true,
+                                    "NetworkMode": 2,
+                                    "NetworkInterpolation": true,
+                                    "Children": [
+                                      {
+                                        "__guid": "f6b00a0d-a510-4688-9dbd-bc2f56def364",
+                                        "Flags": 0,
+                                        "Name": "Bone_023_end",
+                                        "Position": "-1.391331,0.9391528,0.1004664",
+                                        "Rotation": "0.01160626,0.08855165,0.4440405,0.8915447",
+                                        "Enabled": true,
+                                        "NetworkMode": 2,
+                                        "NetworkInterpolation": true
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "__guid": "acfa3643-cb73-448a-b565-67120604313d",
+                        "Flags": 0,
+                        "Name": "Bone_025",
+                        "Position": "0.0000005066395,0.7953405,-0.00000166893",
+                        "Rotation": "-0.02158696,0.003399956,-0.07941763,0.9966018",
+                        "Enabled": true,
+                        "NetworkMode": 2,
+                        "NetworkInterpolation": true,
+                        "Children": [
+                          {
+                            "__guid": "92ab90a2-4040-4d04-b716-480abe13954e",
+                            "Flags": 0,
+                            "Name": "Bone_027",
+                            "Position": "0.000005409122,9.160342,-0.000006556511",
+                            "Rotation": "0.1235746,0.00004919267,0.2829171,0.9511505",
+                            "Enabled": true,
+                            "NetworkMode": 2,
+                            "NetworkInterpolation": true,
+                            "Children": [
+                              {
+                                "__guid": "24c04e15-543c-40e0-bd08-562dfe52d8e6",
+                                "Flags": 0,
+                                "Name": "Bone_028",
+                                "Position": "0.000007152558,9.878917,-0.000004649163",
+                                "Enabled": true,
+                                "NetworkMode": 2,
+                                "NetworkInterpolation": true,
+                                "Children": [
+                                  {
+                                    "__guid": "13bd9db8-ec61-4629-a977-624262e16e71",
+                                    "Flags": 0,
+                                    "Name": "Bone_028_end",
+                                    "Position": "0.00001752377,2.091978,-0.000005096198",
+                                    "Enabled": true,
+                                    "NetworkMode": 2,
+                                    "NetworkInterpolation": true
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "__guid": "48d041d0-f45f-44ca-8d43-2c9d2d921ef3",
+                        "Flags": 0,
+                        "Name": "Bone_015",
+                        "Position": "-0.3564142,-0.4384059,-0.1543767",
+                        "Rotation": "0.7869943,-0.009625167,-0.6128352,-0.07057205",
+                        "Enabled": true,
+                        "NetworkMode": 2,
+                        "NetworkInterpolation": true
+                      }
+                    ]
+                  },
+                  {
+                    "__guid": "c7cc7bd8-2619-43dc-b822-3c9e28b5d3c9",
+                    "Flags": 0,
+                    "Name": "bone",
+                    "Position": "-0.5893112,-1.267242,0",
+                    "Rotation": "-0.5517983,0.5616088,0.4808255,0.3859029",
+                    "Enabled": true,
+                    "NetworkMode": 2,
+                    "NetworkInterpolation": true
+                  },
+                  {
+                    "__guid": "05bdd959-5c7e-4b6a-9da5-c68e695ff00d",
+                    "Flags": 0,
+                    "Name": "IkTarget",
+                    "Position": "0,0,0",
+                    "Enabled": true,
+                    "NetworkMode": 2,
+                    "NetworkInterpolation": true
+                  },
+                  {
+                    "__guid": "ef1e067d-951b-47af-90df-7f43ec1cb23c",
+                    "Flags": 4,
+                    "Name": "Bone_028",
+                    "Position": "-19.26565,-0.6768582,4.268451",
+                    "Rotation": "-0.3001593,-0.4524401,0.7328261,-0.4100832",
+                    "Enabled": true,
+                    "NetworkMode": 2,
+                    "NetworkInterpolation": true,
+                    "Children": [
+                      {
+                        "__guid": "3fe07467-d355-496c-ae08-2d769c5b2306",
+                        "Flags": 4,
+                        "Name": "Bone_029",
+                        "Position": "0.000002861023,10.21634,-0.00000333786",
+                        "Rotation": "-0.1734607,0.8106257,-0.2606762,-0.4948183",
+                        "Enabled": true,
+                        "NetworkMode": 2,
+                        "NetworkInterpolation": true,
+                        "Children": [
+                          {
+                            "__guid": "81465f72-1063-483b-abc3-dc15b073899b",
+                            "Flags": 4,
+                            "Name": "Bone_030",
+                            "Position": "0.000004887581,9.341518,0.000004291534",
+                            "Rotation": "0.00000007823112,0.000001387671,0.0000001192093,1",
+                            "Enabled": true,
+                            "NetworkMode": 2,
+                            "NetworkInterpolation": true,
+                            "Children": [
+                              {
+                                "__guid": "b3c6f6f4-94fd-41c8-a543-4fa6b4d21b20",
+                                "Flags": 4,
+                                "Name": "Bone_024",
+                                "Position": "0,0,0",
+                                "Rotation": "-0.4677917,0.06108716,0.8816746,-0.009448322",
+                                "Enabled": true,
+                                "NetworkMode": 2,
+                                "NetworkInterpolation": true,
+                                "Children": [
+                                  {
+                                    "__guid": "1fc43fde-1474-4460-a848-17e6d6d55b8f",
+                                    "Flags": 4,
+                                    "Name": "Bone_001",
+                                    "Position": "-0.899203,-0.7378974,-0.1610754",
+                                    "Rotation": "0.6166118,-0.1279508,0.7753814,0.04692938",
+                                    "Enabled": true,
+                                    "NetworkMode": 2,
+                                    "NetworkInterpolation": true,
+                                    "Children": [
+                                      {
+                                        "__guid": "dd8c2411-92ff-487e-8dfc-98bd99a9bd74",
+                                        "Flags": 4,
+                                        "Name": "Bone_002",
+                                        "Position": "-0.0000007152557,2.908734,0.000001132488",
+                                        "Rotation": "0.1185473,0.01390236,-0.1213695,0.9854048",
+                                        "Enabled": true,
+                                        "NetworkMode": 2,
+                                        "NetworkInterpolation": true,
+                                        "Children": [
+                                          {
+                                            "__guid": "18ecc63a-9873-46a9-abd5-268fdb8544a1",
+                                            "Flags": 4,
+                                            "Name": "Bone_003",
+                                            "Position": "0.00001120567,1.562091,0.000002861023",
+                                            "Rotation": "-0.00948589,-0.0005380298,-0.004204374,0.9999461",
+                                            "Enabled": true,
+                                            "NetworkMode": 2,
+                                            "NetworkInterpolation": true,
+                                            "Children": [
+                                              {
+                                                "__guid": "3cc5d442-1a73-4217-900e-818aaf3039df",
+                                                "Flags": 4,
+                                                "Name": "Bone_013",
+                                                "Position": "0.000006198883,1.218311,0.000002384186",
+                                                "Rotation": "-0.009395243,-0.05527492,-0.1034136,0.9930569",
+                                                "Enabled": true,
+                                                "NetworkMode": 2,
+                                                "NetworkInterpolation": true,
+                                                "Children": [
+                                                  {
+                                                    "__guid": "5bc61444-7f0b-412a-afff-c4723848acee",
+                                                    "Flags": 4,
+                                                    "Name": "Bone_013_end",
+                                                    "Position": "2.299478,0.06412935,0.2507203",
+                                                    "Rotation": "0.4894437,0.1293377,-0.5566105,0.6587119",
+                                                    "Enabled": true,
+                                                    "NetworkMode": 2,
+                                                    "NetworkInterpolation": true
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "__guid": "6186abff-1187-4dff-923d-838dffd5f41b",
+                                    "Flags": 4,
+                                    "Name": "Bone_005",
+                                    "Position": "-1.402084,-0.5835798,-0.3068781",
+                                    "Rotation": "0.6703406,-0.3380181,-0.6586736,0.05036243",
+                                    "Enabled": true,
+                                    "NetworkMode": 2,
+                                    "NetworkInterpolation": true,
+                                    "Children": [
+                                      {
+                                        "__guid": "7cc77b2c-db7c-4717-a86e-51aebc156792",
+                                        "Flags": 4,
+                                        "Name": "Bone_006",
+                                        "Position": "-0.00002861023,1.612996,-0.000003218651",
+                                        "Rotation": "0.1934226,-0.1152965,-0.1838268,0.9568187",
+                                        "Enabled": true,
+                                        "NetworkMode": 2,
+                                        "NetworkInterpolation": true,
+                                        "Children": [
+                                          {
+                                            "__guid": "781faaf0-0832-4caf-8ec3-ec7fef761dc2",
+                                            "Flags": 4,
+                                            "Name": "Bone_007",
+                                            "Position": "-0.00003069639,2.123496,-0.0000004172325",
+                                            "Rotation": "-0.1814648,0.136259,0.07553016,0.9709785",
+                                            "Enabled": true,
+                                            "NetworkMode": 2,
+                                            "NetworkInterpolation": true,
+                                            "Children": [
+                                              {
+                                                "__guid": "85f7ddea-6954-4bf6-8b95-e06c93c344ee",
+                                                "Flags": 4,
+                                                "Name": "Bone_007_end",
+                                                "Position": "0.4232043,0.9413102,-1.833642",
+                                                "Rotation": "-0.4130948,-0.1139772,0.0287734,0.9030692",
+                                                "Enabled": true,
+                                                "NetworkMode": 2,
+                                                "NetworkInterpolation": true
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "__guid": "812a4b99-1d82-41a5-8ae9-e9557b3b849a",
+                                    "Flags": 4,
+                                    "Name": "Bone_009",
+                                    "Position": "0.04435581,-0.8050572,0.03713965",
+                                    "Rotation": "0.7895707,0.05487219,-0.6102567,0.03397037",
+                                    "Enabled": true,
+                                    "NetworkMode": 2,
+                                    "NetworkInterpolation": true,
+                                    "Children": [
+                                      {
+                                        "__guid": "fff4208e-99ce-43f4-9cc9-fd8e03e50f51",
+                                        "Flags": 4,
+                                        "Name": "Bone_010",
+                                        "Position": "0.000003814697,3.164608,-0.0000012815",
+                                        "Rotation": "0.1075938,0.002208936,0.07789944,0.9911359",
+                                        "Enabled": true,
+                                        "NetworkMode": 2,
+                                        "NetworkInterpolation": true,
+                                        "Children": [
+                                          {
+                                            "__guid": "54630314-3654-487b-a674-19f5688e3aa6",
+                                            "Flags": 4,
+                                            "Name": "Bone_011",
+                                            "Position": "-0.00000834465,1.104019,0.0000002384186",
+                                            "Rotation": "-0.04983939,-0.0516971,0.2049519,0.9761343",
+                                            "Enabled": true,
+                                            "NetworkMode": 2,
+                                            "NetworkInterpolation": true,
+                                            "Children": [
+                                              {
+                                                "__guid": "847f9103-3f72-4c98-9747-87e7122e641e",
+                                                "Flags": 4,
+                                                "Name": "Bone_012",
+                                                "Position": "-0.00002264977,1.088041,-0.0000001788139",
+                                                "Rotation": "0.03151115,-0.1721653,0.1518903,0.9727772",
+                                                "Enabled": true,
+                                                "NetworkMode": 2,
+                                                "NetworkInterpolation": true,
+                                                "Children": [
+                                                  {
+                                                    "__guid": "14489a84-85cc-4881-8b56-c7255c557529",
+                                                    "Flags": 4,
+                                                    "Name": "Bone_012_end",
+                                                    "Position": "-1.860993,1.137204,1.321064",
+                                                    "Rotation": "0.2396968,0.05697235,0.3215331,0.9142843",
+                                                    "Enabled": true,
+                                                    "NetworkMode": 2,
+                                                    "NetworkInterpolation": true
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "__guid": "71b90f2d-e5eb-4893-a998-f1fcfeef80ee",
+                                    "Flags": 4,
+                                    "Name": "Bone_016",
+                                    "Position": "-0.470211,-3.890906,-0.3756388",
+                                    "Rotation": "0.7842655,-0.05715678,-0.6177593,-0.00585098",
+                                    "Enabled": true,
+                                    "NetworkMode": 2,
+                                    "NetworkInterpolation": true,
+                                    "Children": [
+                                      {
+                                        "__guid": "2b6a96ba-827d-4c22-98a4-ad5ec6536c0c",
+                                        "Flags": 4,
+                                        "Name": "Bone_017",
+                                        "Position": "-0.00001108646,1.359224,-0.000002413988",
+                                        "Rotation": "-0.02486713,0.01347518,0.1957201,0.9802519",
+                                        "Enabled": true,
+                                        "NetworkMode": 2,
+                                        "NetworkInterpolation": true,
+                                        "Children": [
+                                          {
+                                            "__guid": "aea8aa6e-9d44-48ee-aa31-8c5868f255d5",
+                                            "Flags": 4,
+                                            "Name": "Bone_018",
+                                            "Position": "-0.00003743172,1.442562,-0.000003218651",
+                                            "Rotation": "0.04533635,-0.03070344,0.137333,0.9890105",
+                                            "Enabled": true,
+                                            "NetworkMode": 2,
+                                            "NetworkInterpolation": true,
+                                            "Children": [
+                                              {
+                                                "__guid": "317cf5c3-850b-4fe6-9d7f-38dde09c5a60",
+                                                "Flags": 4,
+                                                "Name": "Bone_018_end",
+                                                "Position": "-2.514278,0.7892492,0.03467375",
+                                                "Rotation": "-0.0548792,0.03509769,0.485267,0.8719361",
+                                                "Enabled": true,
+                                                "NetworkMode": 2,
+                                                "NetworkInterpolation": true
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "__guid": "73af1b30-2b65-4692-a7d6-d2fda660513a",
+                                    "Flags": 4,
+                                    "Name": "Bone_020",
+                                    "Position": "0.7397477,-0.6015474,0.2309752",
+                                    "Rotation": "0.7899013,0.06122839,-0.6076366,0.05554057",
+                                    "Enabled": true,
+                                    "NetworkMode": 2,
+                                    "NetworkInterpolation": true,
+                                    "Children": [
+                                      {
+                                        "__guid": "60ad4aa9-5489-4341-aef3-8085e97418a0",
+                                        "Flags": 4,
+                                        "Name": "Bone_021",
+                                        "Position": "-0.000003576279,3.321586,0.0000003576279",
+                                        "Rotation": "0.02658418,-0.04533387,0.2332924,0.9709855",
+                                        "Enabled": true,
+                                        "NetworkMode": 2,
+                                        "NetworkInterpolation": true,
+                                        "Children": [
+                                          {
+                                            "__guid": "04561d81-e772-4d9a-b92e-fecc9c5b7924",
+                                            "Flags": 4,
+                                            "Name": "Bone_022",
+                                            "Position": "-0.00002098083,0.7748945,0.000002145767",
+                                            "Rotation": "0.0706699,-0.09349015,0.06690988,0.9908524",
+                                            "Enabled": true,
+                                            "NetworkMode": 2,
+                                            "NetworkInterpolation": true,
+                                            "Children": [
+                                              {
+                                                "__guid": "503499de-f771-49c9-9b4a-a8db6178a740",
+                                                "Flags": 4,
+                                                "Name": "Bone_023",
+                                                "Position": "-0.00001788139,0.4952111,0.000004887581",
+                                                "Rotation": "0.1096984,0.03703913,0.1023372,0.9879885",
+                                                "Enabled": true,
+                                                "NetworkMode": 2,
+                                                "NetworkInterpolation": true,
+                                                "Children": [
+                                                  {
+                                                    "__guid": "22711c9c-ad19-4ee7-aa41-203a19a48905",
+                                                    "Flags": 4,
+                                                    "Name": "Bone_023_end",
+                                                    "Position": "-1.391347,0.9391563,0.100456",
+                                                    "Rotation": "0.01160477,0.08854986,0.4440408,0.8915448",
+                                                    "Enabled": true,
+                                                    "NetworkMode": 2,
+                                                    "NetworkInterpolation": true
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "__guid": "00e35152-26a6-4a0e-861a-aa17adee0012",
+                                    "Flags": 4,
+                                    "Name": "Bone_015",
+                                    "Position": "-0.372099,-1.080329,-0.0930196",
+                                    "Rotation": "0.7868429,0.01713124,-0.6148737,-0.05015037",
+                                    "Enabled": true,
+                                    "NetworkMode": 2,
+                                    "NetworkInterpolation": true
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "__guid": "63305460-fe1d-41a7-947e-d3f05f1d95f2",
+                "Flags": 0,
+                "Name": "Pos",
+                "Position": "0,0,0",
                 "Enabled": true,
                 "NetworkMode": 2,
                 "NetworkInterpolation": true,
                 "Children": [
                   {
-                    "__guid": "ed839a61-ffff-403b-99d1-0c38f67879c1",
-                    "Flags": 4,
-                    "Name": "Bone_001",
-                    "Position": "-0.8592478,-0.06127664,-0.2226852",
-                    "Rotation": "0.6119382,-0.1483933,0.7733973,0.07326493",
-                    "Enabled": true,
-                    "NetworkMode": 2,
-                    "NetworkInterpolation": true,
-                    "Children": [
-                      {
-                        "__guid": "7c006fd6-7502-43b0-8ce8-591ee562fab7",
-                        "Flags": 4,
-                        "Name": "Bone_002",
-                        "Position": "0.0000006211922,2.90875,-0.000002980232",
-                        "Rotation": "0.1185465,0.01390588,-0.1213737,0.9854044",
-                        "Enabled": true,
-                        "NetworkMode": 2,
-                        "NetworkInterpolation": true,
-                        "Children": [
-                          {
-                            "__guid": "1071392b-361a-4f06-93e1-cbea4907dc07",
-                            "Flags": 4,
-                            "Name": "Bone_003",
-                            "Position": "0.00000005374751,1.562105,-0.000002279878",
-                            "Rotation": "-0.009486007,-0.0005378509,-0.004204281,0.9999459",
-                            "Enabled": true,
-                            "NetworkMode": 2,
-                            "NetworkInterpolation": true,
-                            "Children": [
-                              {
-                                "__guid": "9d1ad400-8855-4b41-ae2b-09958c1a8f0f",
-                                "Flags": 4,
-                                "Name": "Bone_013",
-                                "Position": "-0.000003206445,1.218327,-0.000003660098",
-                                "Rotation": "-0.00939499,-0.05527551,-0.1034157,0.9930567",
-                                "Enabled": true,
-                                "NetworkMode": 2,
-                                "NetworkInterpolation": true,
-                                "Children": [
-                                  {
-                                    "__guid": "34c00330-bafa-4cd0-8705-3c31565e6cee",
-                                    "Flags": 4,
-                                    "Name": "Bone_013_end",
-                                    "Position": "2.299459,0.06414679,0.2507102",
-                                    "Rotation": "0.4894425,0.1293405,-0.55661,0.6587126",
-                                    "Enabled": true,
-                                    "NetworkMode": 2,
-                                    "NetworkInterpolation": true
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "__guid": "e3b9c943-5e14-47fd-b4ba-764d871bac9a",
-                    "Flags": 4,
-                    "Name": "Bone_005",
-                    "Position": "-1.350594,0.1264787,-0.3686068",
-                    "Rotation": "-0.658537,0.3606666,0.6598817,-0.02836934",
-                    "Enabled": true,
-                    "NetworkMode": 2,
-                    "NetworkInterpolation": true,
-                    "Children": [
-                      {
-                        "__guid": "04568fe7-1617-4b8a-bd52-3bfbbf2c57d5",
-                        "Flags": 4,
-                        "Name": "Bone_006",
-                        "Position": "-0.0000008866191,1.613002,0.0000007152557",
-                        "Rotation": "0.1934211,-0.1152967,-0.1838296,0.9568185",
-                        "Enabled": true,
-                        "NetworkMode": 2,
-                        "NetworkInterpolation": true,
-                        "Children": [
-                          {
-                            "__guid": "e33e7809-6b21-41b7-81cd-cf11e09920d3",
-                            "Flags": 4,
-                            "Name": "Bone_007",
-                            "Position": "-0.0000004172325,2.123513,0.000001847744",
-                            "Rotation": "-0.1814632,0.1362597,0.07553165,0.9709786",
-                            "Enabled": true,
-                            "NetworkMode": 2,
-                            "NetworkInterpolation": true,
-                            "Children": [
-                              {
-                                "__guid": "8905d714-1290-47da-8c6a-7cacb1d90f8b",
-                                "Flags": 4,
-                                "Name": "Bone_007_end",
-                                "Position": "0.4232022,0.9413335,-1.833634",
-                                "Rotation": "-0.4130957,-0.1139757,0.02877459,0.9030688",
-                                "Enabled": true,
-                                "NetworkMode": 2,
-                                "NetworkInterpolation": true
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "__guid": "aae4772b-f0fa-4066-adfb-b625bfc6fcef",
-                    "Flags": 4,
-                    "Name": "Bone_009",
-                    "Position": "0.07765325,-0.1917312,-0.02440619",
-                    "Rotation": "0.7909582,0.02800447,-0.6110765,0.01365709",
-                    "Enabled": true,
-                    "NetworkMode": 2,
-                    "NetworkInterpolation": true,
-                    "Children": [
-                      {
-                        "__guid": "127df5e0-dfb0-4244-bc36-dcee74a27fc3",
-                        "Flags": 4,
-                        "Name": "Bone_010",
-                        "Position": "-0.000001484528,3.164618,0.000001013279",
-                        "Rotation": "0.1075937,0.002205465,0.07790153,0.9911357",
-                        "Enabled": true,
-                        "NetworkMode": 2,
-                        "NetworkInterpolation": true,
-                        "Children": [
-                          {
-                            "__guid": "b5385623-fa35-4bd9-8fd2-d122dce1af49",
-                            "Flags": 4,
-                            "Name": "Bone_011",
-                            "Position": "-0.00000410946,1.104028,0.000001266599",
-                            "Rotation": "-0.04983943,-0.0516975,0.2049547,0.9761337",
-                            "Enabled": true,
-                            "NetworkMode": 2,
-                            "NetworkInterpolation": true,
-                            "Children": [
-                              {
-                                "__guid": "2ce66886-8ac0-4b93-ba3c-cc974cff91f3",
-                                "Flags": 4,
-                                "Name": "Bone_012",
-                                "Position": "-0.000006260349,1.088051,0.000002019107",
-                                "Rotation": "0.03151024,-0.172166,0.15189,0.9727771",
-                                "Enabled": true,
-                                "NetworkMode": 2,
-                                "NetworkInterpolation": true,
-                                "Children": [
-                                  {
-                                    "__guid": "a041a5dd-f323-40cd-b326-c39ca856199f",
-                                    "Flags": 4,
-                                    "Name": "Bone_012_end",
-                                    "Position": "-1.860958,1.137206,1.321083",
-                                    "Rotation": "0.2396987,0.05697198,0.3215315,0.9142846",
-                                    "Enabled": true,
-                                    "NetworkMode": 2,
-                                    "NetworkInterpolation": true
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "__guid": "abdbccc4-2a7d-4666-bc74-d8fada035f26",
-                    "Flags": 4,
-                    "Name": "Bone_016",
-                    "Position": "-0.6437205,-3.236197,-0.4349956",
-                    "Rotation": "0.7818956,-0.08378664,-0.6171892,-0.02639335",
-                    "Enabled": true,
-                    "NetworkMode": 2,
-                    "NetworkInterpolation": true,
-                    "Children": [
-                      {
-                        "__guid": "81b3ffb8-9d20-41b5-97e9-b82d9f7bf68c",
-                        "Flags": 4,
-                        "Name": "Bone_017",
-                        "Position": "-0.000002234403,1.359238,0.000001095235",
-                        "Rotation": "-0.02486997,0.01347456,0.1957254,0.9802507",
-                        "Enabled": true,
-                        "NetworkMode": 2,
-                        "NetworkInterpolation": true,
-                        "Children": [
-                          {
-                            "__guid": "5de2f165-6467-48de-aa9d-bb2178aee5ea",
-                            "Flags": 4,
-                            "Name": "Bone_018",
-                            "Position": "-0.000004176166,1.442575,0.000001491978",
-                            "Rotation": "0.04533431,-0.03070382,0.1373343,0.9890103",
-                            "Enabled": true,
-                            "NetworkMode": 2,
-                            "NetworkInterpolation": true,
-                            "Children": [
-                              {
-                                "__guid": "14273a36-3670-4245-bbbc-631bbe04d8c3",
-                                "Flags": 4,
-                                "Name": "Bone_018_end",
-                                "Position": "-2.51424,0.7892719,0.03468638",
-                                "Rotation": "-0.0548785,0.0350936,0.4852623,0.8719388",
-                                "Enabled": true,
-                                "NetworkMode": 2,
-                                "NetworkInterpolation": true
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "__guid": "d512e303-3dd9-41e3-8706-aea9d0ee2384",
-                    "Flags": 4,
-                    "Name": "Bone_020",
-                    "Position": "0.7851909,-0.03540915,0.1692965",
-                    "Rotation": "0.7914922,0.03434652,-0.6091915,0.03530301",
-                    "Enabled": true,
-                    "NetworkMode": 2,
-                    "NetworkInterpolation": true,
-                    "Children": [
-                      {
-                        "__guid": "1bf6ec6c-f331-4122-a4f6-099ee649b34b",
-                        "Flags": 4,
-                        "Name": "Bone_021",
-                        "Position": "-0.000009339302,3.321599,0.000001251697",
-                        "Rotation": "0.0265856,-0.04533529,0.2332918,0.9709856",
-                        "Enabled": true,
-                        "NetworkMode": 2,
-                        "NetworkInterpolation": true,
-                        "Children": [
-                          {
-                            "__guid": "28b0d4af-d75f-4a5e-81e0-eeae2d966b8e",
-                            "Flags": 4,
-                            "Name": "Bone_022",
-                            "Position": "-0.00001865288,0.7749034,0.000001572072",
-                            "Rotation": "0.07067103,-0.09348921,0.06690894,0.9908524",
-                            "Enabled": true,
-                            "NetworkMode": 2,
-                            "NetworkInterpolation": true,
-                            "Children": [
-                              {
-                                "__guid": "8eac7fa1-42d8-4d0a-8d60-475c6985502d",
-                                "Flags": 4,
-                                "Name": "Bone_023",
-                                "Position": "-0.00001482503,0.4952199,0.000001532026",
-                                "Rotation": "0.1096991,0.03703989,0.1023366,0.9879886",
-                                "Enabled": true,
-                                "NetworkMode": 2,
-                                "NetworkInterpolation": true,
-                                "Children": [
-                                  {
-                                    "__guid": "f6b00a0d-a510-4688-9dbd-bc2f56def364",
-                                    "Flags": 4,
-                                    "Name": "Bone_023_end",
-                                    "Position": "-1.391331,0.9391528,0.1004664",
-                                    "Rotation": "0.01160626,0.08855165,0.4440405,0.8915447",
-                                    "Enabled": true,
-                                    "NetworkMode": 2,
-                                    "NetworkInterpolation": true
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "__guid": "acfa3643-cb73-448a-b565-67120604313d",
-                    "Flags": 4,
-                    "Name": "Bone_025",
-                    "Position": "0.0000005066395,0.7953405,-0.00000166893",
-                    "Rotation": "-0.02158696,0.003399956,-0.07941763,0.9966018",
-                    "Enabled": true,
-                    "NetworkMode": 2,
-                    "NetworkInterpolation": true,
-                    "Children": [
-                      {
-                        "__guid": "92ab90a2-4040-4d04-b716-480abe13954e",
-                        "Flags": 4,
-                        "Name": "Bone_027",
-                        "Position": "0.000005409122,9.160342,-0.000006556511",
-                        "Rotation": "0.1235746,0.00004919267,0.2829171,0.9511505",
-                        "Enabled": true,
-                        "NetworkMode": 2,
-                        "NetworkInterpolation": true,
-                        "Children": [
-                          {
-                            "__guid": "24c04e15-543c-40e0-bd08-562dfe52d8e6",
-                            "Flags": 4,
-                            "Name": "Bone_028",
-                            "Position": "0.000007152558,9.878917,-0.000004649163",
-                            "Enabled": true,
-                            "NetworkMode": 2,
-                            "NetworkInterpolation": true,
-                            "Children": [
-                              {
-                                "__guid": "13bd9db8-ec61-4629-a977-624262e16e71",
-                                "Flags": 4,
-                                "Name": "Bone_028_end",
-                                "Position": "0.00001752377,2.091978,-0.000005096198",
-                                "Enabled": true,
-                                "NetworkMode": 2,
-                                "NetworkInterpolation": true
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "__guid": "48d041d0-f45f-44ca-8d43-2c9d2d921ef3",
-                    "Flags": 4,
-                    "Name": "Bone_015",
-                    "Position": "-0.3564142,-0.4384059,-0.1543767",
-                    "Rotation": "0.7869943,-0.009625167,-0.6128352,-0.07057205",
+                    "__guid": "e4ec0083-2ade-4094-86bd-56fd6d4c32ee",
+                    "Flags": 0,
+                    "Name": "Target",
+                    "Position": "0,0,0",
                     "Enabled": true,
                     "NetworkMode": 2,
                     "NetworkInterpolation": true
                   }
                 ]
-              },
-              {
-                "__guid": "c7cc7bd8-2619-43dc-b822-3c9e28b5d3c9",
-                "Flags": 0,
-                "Name": "bone",
-                "Position": "-0.5893112,-1.267242,0",
-                "Rotation": "-0.5517983,0.5616088,0.4808255,0.3859029",
-                "Enabled": true,
-                "NetworkMode": 2,
-                "NetworkInterpolation": true
-              },
-              {
-                "__guid": "05bdd959-5c7e-4b6a-9da5-c68e695ff00d",
-                "Flags": 0,
-                "Name": "IkTarget",
-                "Enabled": true,
-                "NetworkMode": 2,
-                "NetworkInterpolation": true
               }
             ]
-          }
-        ]
-      },
-      {
-        "__guid": "c9ae2b3c-6775-4128-ba85-d71e3186825d",
-        "Flags": 0,
-        "Name": "Left",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "NetworkInterpolation": true,
-        "Components": [
+          },
           {
-            "__type": "FollowAttachment",
-            "__guid": "c47e9bac-6435-4b9c-9551-5a18adc4988c",
-            "Arm": {
-              "_type": "component",
-              "component_id": "fed9a376-4b74-4261-8e9f-fe5014ce874c",
-              "go": "2ad31d7b-43e2-47a2-baae-40d91574fd5f",
-              "component_type": "SkinnedModelRenderer"
-            },
-            "attachment": "Left_Hand",
-            "Gun": {
-              "_type": "component",
-              "component_id": "1b8d80c3-dd12-4426-abf8-6643078ea3b1",
-              "go": "f3f97aed-5b31-4d45-bb12-f604db1b6aba",
-              "component_type": "SkinnedModelRenderer"
-            }
-          }
-        ],
-        "Children": [
-          {
-            "__guid": "2ad31d7b-43e2-47a2-baae-40d91574fd5f",
+            "__guid": "c9ae2b3c-6775-4128-ba85-d71e3186825d",
             "Flags": 0,
-            "Name": "arm",
+            "Name": "Left",
+            "Position": "-0.5,5,-6",
             "Enabled": true,
             "NetworkMode": 2,
             "NetworkInterpolation": true,
             "Components": [
               {
-                "__type": "Sandbox.SkinnedModelRenderer",
-                "__guid": "fed9a376-4b74-4261-8e9f-fe5014ce874c",
-                "AnimationGraph": "models/arm.vanmgrph",
-                "BodyGroups": 18446744073709551615,
-                "CreateBoneObjects": true,
-                "Model": "models/leftarm.vmdl",
-                "RenderType": "On",
-                "Tint": "1,1,1,1"
+                "__type": "FollowAttachment",
+                "__guid": "c47e9bac-6435-4b9c-9551-5a18adc4988c",
+                "Arm": {
+                  "_type": "component",
+                  "component_id": "fed9a376-4b74-4261-8e9f-fe5014ce874c",
+                  "go": "2ad31d7b-43e2-47a2-baae-40d91574fd5f",
+                  "component_type": "SkinnedModelRenderer"
+                },
+                "attachment": "Left_Hand",
+                "Gun": {
+                  "_type": "component",
+                  "component_id": "1b8d80c3-dd12-4426-abf8-6643078ea3b1",
+                  "go": "f3f97aed-5b31-4d45-bb12-f604db1b6aba",
+                  "component_type": "SkinnedModelRenderer"
+                },
+                "handPos": {
+                  "_type": "gameobject",
+                  "go": "cece68f9-c580-421e-af7d-1cec9fbee753"
+                },
+                "handTarget": {
+                  "_type": "gameobject",
+                  "go": "e7fb804d-176f-43f6-86c3-f992fde9dd95"
+                }
               }
             ],
             "Children": [
               {
-                "__guid": "d831247d-1643-4a60-bebd-5a1ec08c1e42",
-                "Flags": 4,
-                "Name": "Bone_024",
-                "Position": "-0.5893112,1.267242,0.0000001788139",
-                "Rotation": "0.5517983,0.5616088,-0.4808255,0.3859029",
+                "__guid": "2ad31d7b-43e2-47a2-baae-40d91574fd5f",
+                "Flags": 0,
+                "Name": "arm",
+                "Position": "18,0,-4",
+                "Enabled": true,
+                "NetworkMode": 2,
+                "NetworkInterpolation": true,
+                "Components": [
+                  {
+                    "__type": "Sandbox.SkinnedModelRenderer",
+                    "__guid": "fed9a376-4b74-4261-8e9f-fe5014ce874c",
+                    "AnimationGraph": "models/arm.vanmgrph",
+                    "BodyGroups": 18446744073709551615,
+                    "CreateBoneObjects": true,
+                    "Model": "models/leftarm.vmdl",
+                    "RenderType": "On",
+                    "Tint": "1,1,1,1"
+                  }
+                ],
+                "Children": [
+                  {
+                    "__guid": "d831247d-1643-4a60-bebd-5a1ec08c1e42",
+                    "Flags": 0,
+                    "Name": "Bone_024",
+                    "Position": "0.000002861023,-10.21634,-0.00000333786",
+                    "Rotation": "0.1734607,0.8106257,0.2606762,-0.4948183",
+                    "Enabled": true,
+                    "NetworkMode": 2,
+                    "NetworkInterpolation": true,
+                    "Children": [
+                      {
+                        "__guid": "06476d4f-19a9-4bac-9984-091cab0d6166",
+                        "Flags": 0,
+                        "Name": "Bone_001",
+                        "Position": "0.000004887581,-9.341518,0.000004291534",
+                        "Rotation": "-0.00000007823112,0.000001387671,-0.0000001192093,1",
+                        "Enabled": true,
+                        "NetworkMode": 2,
+                        "NetworkInterpolation": true,
+                        "Children": [
+                          {
+                            "__guid": "ecfe3aa7-0844-4afd-b5bd-0269de02b1a4",
+                            "Flags": 0,
+                            "Name": "Bone_002",
+                            "Position": "0,0,0",
+                            "Rotation": "-0.4677917,-0.06108716,0.8816746,0.009448322",
+                            "Enabled": true,
+                            "NetworkMode": 2,
+                            "NetworkInterpolation": true,
+                            "Children": [
+                              {
+                                "__guid": "a7734c7e-84e0-419d-8535-e8817bdb1ea6",
+                                "Flags": 0,
+                                "Name": "Bone_003",
+                                "Position": "-0.899203,0.7378974,-0.1610754",
+                                "Rotation": "0.6166118,0.1279508,0.7753814,-0.04692938",
+                                "Enabled": true,
+                                "NetworkMode": 2,
+                                "NetworkInterpolation": true,
+                                "Children": [
+                                  {
+                                    "__guid": "9994339e-59b6-4e9a-be99-23a091d992d3",
+                                    "Flags": 0,
+                                    "Name": "Bone_013",
+                                    "Position": "-0.0000007152557,-2.908734,0.000001132488",
+                                    "Rotation": "-0.1185473,0.01390236,0.1213695,0.9854048",
+                                    "Enabled": true,
+                                    "NetworkMode": 2,
+                                    "NetworkInterpolation": true,
+                                    "Children": [
+                                      {
+                                        "__guid": "8cb16d1e-8cb7-45e0-9867-a373653ec202",
+                                        "Flags": 0,
+                                        "Name": "Bone_013_end",
+                                        "Position": "0.4232043,-0.9413102,-1.833642",
+                                        "Rotation": "0.4130948,-0.1139772,-0.0287734,0.9030692",
+                                        "Enabled": true,
+                                        "NetworkMode": 2,
+                                        "NetworkInterpolation": true
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "__guid": "186b1abf-a8b5-47e9-8d11-3b70651226ab",
+                        "Flags": 0,
+                        "Name": "Bone_005",
+                        "Position": "0.00001120567,-1.562091,0.000002861023",
+                        "Rotation": "0.00948589,-0.0005380298,0.004204374,0.9999461",
+                        "Enabled": true,
+                        "NetworkMode": 2,
+                        "NetworkInterpolation": true,
+                        "Children": [
+                          {
+                            "__guid": "1f231a80-092a-4b09-b54b-7043fd498c09",
+                            "Flags": 0,
+                            "Name": "Bone_006",
+                            "Position": "0.000006198883,-1.218311,0.000002384186",
+                            "Rotation": "0.009395243,-0.05527492,0.1034136,0.9930569",
+                            "Enabled": true,
+                            "NetworkMode": 2,
+                            "NetworkInterpolation": true,
+                            "Children": [
+                              {
+                                "__guid": "cd1b8971-2ad8-41bb-a034-ee16bae11416",
+                                "Flags": 0,
+                                "Name": "Bone_007",
+                                "Position": "-1.402084,0.5835798,-0.3068781",
+                                "Rotation": "0.6703406,0.3380181,-0.6586736,-0.05036243",
+                                "Enabled": true,
+                                "NetworkMode": 2,
+                                "NetworkInterpolation": true,
+                                "Children": [
+                                  {
+                                    "__guid": "73730676-3624-4327-8aee-09e2efdbe684",
+                                    "Flags": 0,
+                                    "Name": "Bone_007_end",
+                                    "Position": "-1.860993,-1.137204,1.321064",
+                                    "Rotation": "-0.2396968,0.05697235,-0.3215331,0.9142843",
+                                    "Enabled": true,
+                                    "NetworkMode": 2,
+                                    "NetworkInterpolation": true
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "__guid": "2fa61e02-820a-4277-86c4-2bb12bc203db",
+                        "Flags": 0,
+                        "Name": "Bone_009",
+                        "Position": "-0.00002861023,-1.612996,-0.000003218651",
+                        "Rotation": "-0.1934226,-0.1152965,0.1838268,0.9568187",
+                        "Enabled": true,
+                        "NetworkMode": 2,
+                        "NetworkInterpolation": true,
+                        "Children": [
+                          {
+                            "__guid": "ffd10584-f8d6-45e5-a101-f93581655bf6",
+                            "Flags": 0,
+                            "Name": "Bone_010",
+                            "Position": "-0.00003069639,-2.123496,-0.0000004172325",
+                            "Rotation": "0.1814648,0.136259,-0.07553016,0.9709785",
+                            "Enabled": true,
+                            "NetworkMode": 2,
+                            "NetworkInterpolation": true,
+                            "Children": [
+                              {
+                                "__guid": "8c3c05e2-23af-418a-bda7-103f52f3758f",
+                                "Flags": 0,
+                                "Name": "Bone_011",
+                                "Position": "0.04435581,0.8050572,0.03713965",
+                                "Rotation": "0.7895707,-0.05487219,-0.6102567,-0.03397037",
+                                "Enabled": true,
+                                "NetworkMode": 2,
+                                "NetworkInterpolation": true,
+                                "Children": [
+                                  {
+                                    "__guid": "b00325e9-45fa-4369-91b5-549fd9e39fd9",
+                                    "Flags": 0,
+                                    "Name": "Bone_012",
+                                    "Position": "0.000003814697,-3.164608,-0.0000012815",
+                                    "Rotation": "-0.1075938,0.002208936,-0.07789944,0.9911359",
+                                    "Enabled": true,
+                                    "NetworkMode": 2,
+                                    "NetworkInterpolation": true,
+                                    "Children": [
+                                      {
+                                        "__guid": "265160c1-82e0-4f5e-bcef-202eb3928fde",
+                                        "Flags": 0,
+                                        "Name": "Bone_012_end",
+                                        "Position": "-2.514278,-0.7892492,0.03467375",
+                                        "Rotation": "0.0548792,0.03509769,-0.485267,0.8719361",
+                                        "Enabled": true,
+                                        "NetworkMode": 2,
+                                        "NetworkInterpolation": true
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "__guid": "23684d31-8fc4-4224-ae1f-e06dc26dfb2b",
+                        "Flags": 0,
+                        "Name": "Bone_016",
+                        "Position": "-0.00000834465,-1.104019,0.0000002384186",
+                        "Rotation": "0.04983939,-0.0516971,-0.2049519,0.9761343",
+                        "Enabled": true,
+                        "NetworkMode": 2,
+                        "NetworkInterpolation": true,
+                        "Children": [
+                          {
+                            "__guid": "2a5f7655-3c9b-4429-b750-d9759cd5facd",
+                            "Flags": 0,
+                            "Name": "Bone_017",
+                            "Position": "-0.00002264977,-1.088041,-0.0000001788139",
+                            "Rotation": "-0.03151115,-0.1721653,-0.1518903,0.9727772",
+                            "Enabled": true,
+                            "NetworkMode": 2,
+                            "NetworkInterpolation": true,
+                            "Children": [
+                              {
+                                "__guid": "8eb8c234-bf0a-420d-b691-8c3fab9fd6bc",
+                                "Flags": 0,
+                                "Name": "Bone_018",
+                                "Position": "-0.470211,3.890906,-0.3756388",
+                                "Rotation": "0.7842655,0.05715678,-0.6177593,0.00585098",
+                                "Enabled": true,
+                                "NetworkMode": 2,
+                                "NetworkInterpolation": true,
+                                "Children": [
+                                  {
+                                    "__guid": "69d448eb-c77d-47de-89fd-723e3b83aa70",
+                                    "Flags": 0,
+                                    "Name": "Bone_018_end",
+                                    "Position": "-1.391347,-0.9391563,0.100456",
+                                    "Rotation": "-0.01160477,0.08854986,-0.4440408,0.8915448",
+                                    "Enabled": true,
+                                    "NetworkMode": 2,
+                                    "NetworkInterpolation": true
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "__guid": "84901ce5-4f47-4457-8cfb-1e5d0694a19a",
+                        "Flags": 0,
+                        "Name": "Bone_020",
+                        "Position": "-0.00001108646,-1.359224,-0.000002413988",
+                        "Rotation": "0.02486713,0.01347518,-0.1957201,0.9802519",
+                        "Enabled": true,
+                        "NetworkMode": 2,
+                        "NetworkInterpolation": true,
+                        "Children": [
+                          {
+                            "__guid": "b413912f-ba85-4658-8315-e161fa9d8e03",
+                            "Flags": 0,
+                            "Name": "Bone_021",
+                            "Position": "-0.00003743172,-1.442562,-0.000003218651",
+                            "Rotation": "-0.04533635,-0.03070344,-0.137333,0.9890105",
+                            "Enabled": true,
+                            "NetworkMode": 2,
+                            "NetworkInterpolation": true,
+                            "Children": [
+                              {
+                                "__guid": "4bb02e22-b91f-430c-bff0-67513ee7c5c2",
+                                "Flags": 0,
+                                "Name": "Bone_022",
+                                "Position": "0.7397477,0.6015474,0.2309752",
+                                "Rotation": "0.7899013,-0.06122839,-0.6076366,-0.05554057",
+                                "Enabled": true,
+                                "NetworkMode": 2,
+                                "NetworkInterpolation": true,
+                                "Children": [
+                                  {
+                                    "__guid": "9d7a0ca1-5418-4138-8e20-cddc4ce83c7a",
+                                    "Flags": 0,
+                                    "Name": "Bone_023",
+                                    "Position": "-0.000003576279,-3.321586,0.0000003576279",
+                                    "Rotation": "-0.02658418,-0.04533387,-0.2332924,0.9709855",
+                                    "Enabled": true,
+                                    "NetworkMode": 2,
+                                    "NetworkInterpolation": true,
+                                    "Children": [
+                                      {
+                                        "__guid": "02ef54e6-968a-40be-86f2-5458b54abaad",
+                                        "Flags": 0,
+                                        "Name": "Bone_023_end",
+                                        "Position": "0,0,0",
+                                        "Rotation": "0,0,0,0",
+                                        "Scale": "0,0,0",
+                                        "Enabled": true,
+                                        "NetworkMode": 2,
+                                        "NetworkInterpolation": true
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "__guid": "bfac2e8e-f4ec-4b1a-a039-39051805d441",
+                        "Flags": 0,
+                        "Name": "Bone_025",
+                        "Position": "-0.00002098083,-0.7748945,0.000002145767",
+                        "Rotation": "-0.0706699,-0.09349015,-0.06690988,0.9908524",
+                        "Enabled": true,
+                        "NetworkMode": 2,
+                        "NetworkInterpolation": true,
+                        "Children": [
+                          {
+                            "__guid": "eba0bb41-1e02-42ab-a55f-80199e80886d",
+                            "Flags": 0,
+                            "Name": "Bone_027",
+                            "Position": "-0.00001788139,-0.4952111,0.000004887581",
+                            "Rotation": "-0.1096984,0.03703913,-0.1023372,0.9879885",
+                            "Enabled": true,
+                            "NetworkMode": 2,
+                            "NetworkInterpolation": true,
+                            "Children": [
+                              {
+                                "__guid": "f1ad9f2b-b52d-45c0-83d6-cdb70fe394a4",
+                                "Flags": 0,
+                                "Name": "Bone_028",
+                                "Position": "2.299478,-0.06412935,0.2507203",
+                                "Rotation": "-0.4894437,0.1293377,0.5566105,0.6587119",
+                                "Enabled": true,
+                                "NetworkMode": 2,
+                                "NetworkInterpolation": true,
+                                "Children": [
+                                  {
+                                    "__guid": "1459955a-ac96-4e05-b2b5-cb5ccf8e060c",
+                                    "Flags": 0,
+                                    "Name": "Bone_028_end",
+                                    "Position": "0,0,0",
+                                    "Rotation": "0,0,0,0",
+                                    "Scale": "0,0,0",
+                                    "Enabled": true,
+                                    "NetworkMode": 2,
+                                    "NetworkInterpolation": true
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "__guid": "f64bf58b-7c26-4f6a-81b2-0c323f6c012d",
+                        "Flags": 0,
+                        "Name": "Bone_015",
+                        "Position": "-0.372099,1.080329,-0.0930196",
+                        "Rotation": "0.7868429,-0.01713124,-0.6148737,0.05015037",
+                        "Enabled": true,
+                        "NetworkMode": 2,
+                        "NetworkInterpolation": true
+                      }
+                    ]
+                  },
+                  {
+                    "__guid": "d646a4bb-35ea-457a-81ca-b736d3586d7e",
+                    "Flags": 0,
+                    "Name": "bone",
+                    "Position": "-0.5893112,-1.267242,0",
+                    "Rotation": "-0.5517983,0.5616088,0.4808255,0.3859029",
+                    "Enabled": true,
+                    "NetworkMode": 2,
+                    "NetworkInterpolation": true
+                  },
+                  {
+                    "__guid": "2ea2b2b2-f4fb-4d7d-bc9b-62a1d663b6f6",
+                    "Flags": 0,
+                    "Name": "IkTarget",
+                    "Position": "-19.26565,0.6768582,4.268451",
+                    "Rotation": "-0.3001593,0.4524401,0.7328261,0.4100832",
+                    "Enabled": true,
+                    "NetworkMode": 2,
+                    "NetworkInterpolation": true
+                  },
+                  {
+                    "__guid": "d3700df1-10cd-4dd0-bf07-9a9052e89a5e",
+                    "Flags": 4,
+                    "Name": "Bone_028",
+                    "Position": "-19.26565,0.6768582,4.268451",
+                    "Rotation": "-0.3001593,0.4524401,0.7328261,0.4100832",
+                    "Enabled": true,
+                    "NetworkMode": 2,
+                    "NetworkInterpolation": true,
+                    "Children": [
+                      {
+                        "__guid": "131a9e13-3eb3-4a71-bbb6-bb29b3fb7757",
+                        "Flags": 4,
+                        "Name": "Bone_029",
+                        "Position": "0.000002861023,-10.21634,-0.00000333786",
+                        "Rotation": "0.1734607,0.8106257,0.2606762,-0.4948183",
+                        "Enabled": true,
+                        "NetworkMode": 2,
+                        "NetworkInterpolation": true,
+                        "Children": [
+                          {
+                            "__guid": "74f404d8-f2bd-4c88-a3b2-0a30756b0179",
+                            "Flags": 4,
+                            "Name": "Bone_030",
+                            "Position": "0.000004887581,-9.341518,0.000004291534",
+                            "Rotation": "-0.00000007823112,0.000001387671,-0.0000001192093,1",
+                            "Enabled": true,
+                            "NetworkMode": 2,
+                            "NetworkInterpolation": true,
+                            "Children": [
+                              {
+                                "__guid": "b27746e0-15e5-4aea-bc73-07c229ce0517",
+                                "Flags": 4,
+                                "Name": "Bone_024",
+                                "Position": "0.0000001192093,-0.00000500679,-0.0000008940697",
+                                "Rotation": "-0.4677917,-0.06108716,0.8816746,0.009448322",
+                                "Enabled": true,
+                                "NetworkMode": 2,
+                                "NetworkInterpolation": true,
+                                "Children": [
+                                  {
+                                    "__guid": "b625981e-23cc-4561-be2f-f66226ef08c2",
+                                    "Flags": 4,
+                                    "Name": "Bone_001",
+                                    "Position": "-0.899203,0.7378974,-0.1610754",
+                                    "Rotation": "0.6166118,0.1279508,0.7753814,-0.04692938",
+                                    "Enabled": true,
+                                    "NetworkMode": 2,
+                                    "NetworkInterpolation": true,
+                                    "Children": [
+                                      {
+                                        "__guid": "fca01204-8ec5-49ee-840e-7d48dffeb317",
+                                        "Flags": 4,
+                                        "Name": "Bone_002",
+                                        "Position": "-0.0000007152557,-2.908734,0.000001132488",
+                                        "Rotation": "-0.1185473,0.01390236,0.1213695,0.9854048",
+                                        "Enabled": true,
+                                        "NetworkMode": 2,
+                                        "NetworkInterpolation": true,
+                                        "Children": [
+                                          {
+                                            "__guid": "5cdb9041-2c5e-49a9-b125-34a85653ab00",
+                                            "Flags": 4,
+                                            "Name": "Bone_003",
+                                            "Position": "0.00001120567,-1.562091,0.000002861023",
+                                            "Rotation": "0.00948589,-0.0005380298,0.004204374,0.9999461",
+                                            "Enabled": true,
+                                            "NetworkMode": 2,
+                                            "NetworkInterpolation": true,
+                                            "Children": [
+                                              {
+                                                "__guid": "9336f997-1bb7-4775-a1b7-3f40f61a3917",
+                                                "Flags": 4,
+                                                "Name": "Bone_013",
+                                                "Position": "0.000006198883,-1.218311,0.000002384186",
+                                                "Rotation": "0.009395243,-0.05527492,0.1034136,0.9930569",
+                                                "Enabled": true,
+                                                "NetworkMode": 2,
+                                                "NetworkInterpolation": true,
+                                                "Children": [
+                                                  {
+                                                    "__guid": "b5ca8d9e-796e-48d5-82bf-98bfccaba18b",
+                                                    "Flags": 4,
+                                                    "Name": "Bone_013_end",
+                                                    "Position": "2.299478,-0.06412935,0.2507203",
+                                                    "Rotation": "-0.4894437,0.1293377,0.5566105,0.6587119",
+                                                    "Enabled": true,
+                                                    "NetworkMode": 2,
+                                                    "NetworkInterpolation": true
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "__guid": "18d2077b-6ef9-485d-bb38-6cc6ee9b4465",
+                                    "Flags": 4,
+                                    "Name": "Bone_005",
+                                    "Position": "-1.402084,0.5835798,-0.3068781",
+                                    "Rotation": "0.6703406,0.3380181,-0.6586736,-0.05036243",
+                                    "Enabled": true,
+                                    "NetworkMode": 2,
+                                    "NetworkInterpolation": true,
+                                    "Children": [
+                                      {
+                                        "__guid": "ac3abbb9-27ea-4cd7-84fd-3a650145c86d",
+                                        "Flags": 4,
+                                        "Name": "Bone_006",
+                                        "Position": "-0.00002861023,-1.612996,-0.000003218651",
+                                        "Rotation": "-0.1934226,-0.1152965,0.1838268,0.9568187",
+                                        "Enabled": true,
+                                        "NetworkMode": 2,
+                                        "NetworkInterpolation": true,
+                                        "Children": [
+                                          {
+                                            "__guid": "b5a7d9c8-22e1-4674-86e0-19f2edb05857",
+                                            "Flags": 4,
+                                            "Name": "Bone_007",
+                                            "Position": "-0.00003069639,-2.123496,-0.0000004172325",
+                                            "Rotation": "0.1814648,0.136259,-0.07553016,0.9709785",
+                                            "Enabled": true,
+                                            "NetworkMode": 2,
+                                            "NetworkInterpolation": true,
+                                            "Children": [
+                                              {
+                                                "__guid": "8d51f2fb-5ffe-43df-b495-3acdffff0745",
+                                                "Flags": 4,
+                                                "Name": "Bone_007_end",
+                                                "Position": "0.4232043,-0.9413102,-1.833642",
+                                                "Rotation": "0.4130948,-0.1139772,-0.0287734,0.9030692",
+                                                "Enabled": true,
+                                                "NetworkMode": 2,
+                                                "NetworkInterpolation": true
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "__guid": "541f43a0-fd32-49af-ad75-691f190bdf29",
+                                    "Flags": 4,
+                                    "Name": "Bone_009",
+                                    "Position": "0.04435581,0.8050572,0.03713965",
+                                    "Rotation": "0.7895707,-0.05487219,-0.6102567,-0.03397037",
+                                    "Enabled": true,
+                                    "NetworkMode": 2,
+                                    "NetworkInterpolation": true,
+                                    "Children": [
+                                      {
+                                        "__guid": "1f1e263e-ae78-4789-84f1-ae650f868ca3",
+                                        "Flags": 4,
+                                        "Name": "Bone_010",
+                                        "Position": "0.000003814697,-3.164608,-0.0000012815",
+                                        "Rotation": "-0.1075938,0.002208936,-0.07789944,0.9911359",
+                                        "Enabled": true,
+                                        "NetworkMode": 2,
+                                        "NetworkInterpolation": true,
+                                        "Children": [
+                                          {
+                                            "__guid": "098576ee-8420-43df-bb42-761db13c8b47",
+                                            "Flags": 4,
+                                            "Name": "Bone_011",
+                                            "Position": "-0.00000834465,-1.104019,0.0000002384186",
+                                            "Rotation": "0.04983939,-0.0516971,-0.2049519,0.9761343",
+                                            "Enabled": true,
+                                            "NetworkMode": 2,
+                                            "NetworkInterpolation": true,
+                                            "Children": [
+                                              {
+                                                "__guid": "59535993-a949-4cb8-a6f2-8cfdf39abaaf",
+                                                "Flags": 4,
+                                                "Name": "Bone_012",
+                                                "Position": "-0.00002264977,-1.088041,-0.0000001788139",
+                                                "Rotation": "-0.03151115,-0.1721653,-0.1518903,0.9727772",
+                                                "Enabled": true,
+                                                "NetworkMode": 2,
+                                                "NetworkInterpolation": true,
+                                                "Children": [
+                                                  {
+                                                    "__guid": "6110ebcc-c31f-40d9-928a-4e136b5cce24",
+                                                    "Flags": 4,
+                                                    "Name": "Bone_012_end",
+                                                    "Position": "-1.860993,-1.137204,1.321064",
+                                                    "Rotation": "-0.2396968,0.05697235,-0.3215331,0.9142843",
+                                                    "Enabled": true,
+                                                    "NetworkMode": 2,
+                                                    "NetworkInterpolation": true
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "__guid": "4f2be8e7-f449-4950-aea1-373707dffa95",
+                                    "Flags": 4,
+                                    "Name": "Bone_016",
+                                    "Position": "-0.470211,3.890906,-0.3756388",
+                                    "Rotation": "0.7842655,0.05715678,-0.6177593,0.00585098",
+                                    "Enabled": true,
+                                    "NetworkMode": 2,
+                                    "NetworkInterpolation": true,
+                                    "Children": [
+                                      {
+                                        "__guid": "b05cafe3-c0fd-4668-8ffd-a49136329783",
+                                        "Flags": 4,
+                                        "Name": "Bone_017",
+                                        "Position": "-0.00001108646,-1.359224,-0.000002413988",
+                                        "Rotation": "0.02486713,0.01347518,-0.1957201,0.9802519",
+                                        "Enabled": true,
+                                        "NetworkMode": 2,
+                                        "NetworkInterpolation": true,
+                                        "Children": [
+                                          {
+                                            "__guid": "a6429354-d2ca-4066-ba31-826362d0d4d8",
+                                            "Flags": 4,
+                                            "Name": "Bone_018",
+                                            "Position": "-0.00003743172,-1.442562,-0.000003218651",
+                                            "Rotation": "-0.04533635,-0.03070344,-0.137333,0.9890105",
+                                            "Enabled": true,
+                                            "NetworkMode": 2,
+                                            "NetworkInterpolation": true,
+                                            "Children": [
+                                              {
+                                                "__guid": "651b9e5e-418e-437e-a2dd-63613665e0db",
+                                                "Flags": 4,
+                                                "Name": "Bone_018_end",
+                                                "Position": "-2.514278,-0.7892492,0.03467375",
+                                                "Rotation": "0.0548792,0.03509769,-0.485267,0.8719361",
+                                                "Enabled": true,
+                                                "NetworkMode": 2,
+                                                "NetworkInterpolation": true
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "__guid": "5bad5ec6-c92d-46af-badd-24bc9510a5db",
+                                    "Flags": 4,
+                                    "Name": "Bone_020",
+                                    "Position": "0.7397477,0.6015474,0.2309752",
+                                    "Rotation": "0.7899013,-0.06122839,-0.6076366,-0.05554057",
+                                    "Enabled": true,
+                                    "NetworkMode": 2,
+                                    "NetworkInterpolation": true,
+                                    "Children": [
+                                      {
+                                        "__guid": "434fa3a3-9f38-4125-bd41-92414877c5c6",
+                                        "Flags": 4,
+                                        "Name": "Bone_021",
+                                        "Position": "-0.000003576279,-3.321586,0.0000003576279",
+                                        "Rotation": "-0.02658418,-0.04533387,-0.2332924,0.9709855",
+                                        "Enabled": true,
+                                        "NetworkMode": 2,
+                                        "NetworkInterpolation": true,
+                                        "Children": [
+                                          {
+                                            "__guid": "e8b89fc5-3dc0-426f-b1c9-4f3c3711dc80",
+                                            "Flags": 4,
+                                            "Name": "Bone_022",
+                                            "Position": "-0.00002098083,-0.7748945,0.000002145767",
+                                            "Rotation": "-0.0706699,-0.09349015,-0.06690988,0.9908524",
+                                            "Enabled": true,
+                                            "NetworkMode": 2,
+                                            "NetworkInterpolation": true,
+                                            "Children": [
+                                              {
+                                                "__guid": "b9823b07-01d3-4466-89fd-70f4ae468ec9",
+                                                "Flags": 4,
+                                                "Name": "Bone_023",
+                                                "Position": "-0.00001788139,-0.4952111,0.000004887581",
+                                                "Rotation": "-0.1096984,0.03703913,-0.1023372,0.9879885",
+                                                "Enabled": true,
+                                                "NetworkMode": 2,
+                                                "NetworkInterpolation": true,
+                                                "Children": [
+                                                  {
+                                                    "__guid": "042033c6-19d4-479f-85e3-4240e32a93e9",
+                                                    "Flags": 4,
+                                                    "Name": "Bone_023_end",
+                                                    "Position": "-1.391347,-0.9391563,0.100456",
+                                                    "Rotation": "-0.01160477,0.08854986,-0.4440408,0.8915448",
+                                                    "Enabled": true,
+                                                    "NetworkMode": 2,
+                                                    "NetworkInterpolation": true
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "__guid": "faf7af0b-d3fb-459d-b6b8-90f2d501db54",
+                                    "Flags": 4,
+                                    "Name": "Bone_015",
+                                    "Position": "-0.372099,1.080329,-0.0930196",
+                                    "Rotation": "0.7868429,-0.01713124,-0.6148737,0.05015037",
+                                    "Enabled": true,
+                                    "NetworkMode": 2,
+                                    "NetworkInterpolation": true
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "__guid": "cece68f9-c580-421e-af7d-1cec9fbee753",
+                "Flags": 0,
+                "Name": "Pos",
+                "Position": "0,0,0",
                 "Enabled": true,
                 "NetworkMode": 2,
                 "NetworkInterpolation": true,
                 "Children": [
                   {
-                    "__guid": "06476d4f-19a9-4bac-9984-091cab0d6166",
-                    "Flags": 4,
-                    "Name": "Bone_001",
-                    "Position": "-0.8592477,0.06127667,-0.2226851",
-                    "Rotation": "0.6119382,0.1483933,0.7733973,-0.07326496",
-                    "Enabled": true,
-                    "NetworkMode": 2,
-                    "NetworkInterpolation": true,
-                    "Children": [
-                      {
-                        "__guid": "ecfe3aa7-0844-4afd-b5bd-0269de02b1a4",
-                        "Flags": 4,
-                        "Name": "Bone_002",
-                        "Position": "0.0000006211922,-2.90875,-0.000002980232",
-                        "Rotation": "-0.1185465,0.01390588,0.1213737,0.9854044",
-                        "Enabled": true,
-                        "NetworkMode": 2,
-                        "NetworkInterpolation": true,
-                        "Children": [
-                          {
-                            "__guid": "a7734c7e-84e0-419d-8535-e8817bdb1ea6",
-                            "Flags": 4,
-                            "Name": "Bone_003",
-                            "Position": "0.00000005374751,-1.562105,-0.000002279878",
-                            "Rotation": "0.009486007,-0.0005378509,0.004204281,0.9999459",
-                            "Enabled": true,
-                            "NetworkMode": 2,
-                            "NetworkInterpolation": true,
-                            "Children": [
-                              {
-                                "__guid": "9994339e-59b6-4e9a-be99-23a091d992d3",
-                                "Flags": 4,
-                                "Name": "Bone_013",
-                                "Position": "-0.000003206445,-1.218327,-0.000003660098",
-                                "Rotation": "0.00939499,-0.05527551,0.1034157,0.9930567",
-                                "Enabled": true,
-                                "NetworkMode": 2,
-                                "NetworkInterpolation": true,
-                                "Children": [
-                                  {
-                                    "__guid": "8cb16d1e-8cb7-45e0-9867-a373653ec202",
-                                    "Flags": 4,
-                                    "Name": "Bone_013_end",
-                                    "Position": "2.299459,-0.06414679,0.2507102",
-                                    "Rotation": "-0.4894425,0.1293405,0.55661,0.6587126",
-                                    "Enabled": true,
-                                    "NetworkMode": 2,
-                                    "NetworkInterpolation": true
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "__guid": "186b1abf-a8b5-47e9-8d11-3b70651226ab",
-                    "Flags": 4,
-                    "Name": "Bone_005",
-                    "Position": "-1.350594,-0.1264788,-0.3686069",
-                    "Rotation": "-0.658537,-0.3606665,0.6598817,0.02836931",
-                    "Enabled": true,
-                    "NetworkMode": 2,
-                    "NetworkInterpolation": true,
-                    "Children": [
-                      {
-                        "__guid": "1f231a80-092a-4b09-b54b-7043fd498c09",
-                        "Flags": 4,
-                        "Name": "Bone_006",
-                        "Position": "-0.0000008866191,-1.613002,0.0000007152557",
-                        "Rotation": "-0.1934211,-0.1152967,0.1838296,0.9568185",
-                        "Enabled": true,
-                        "NetworkMode": 2,
-                        "NetworkInterpolation": true,
-                        "Children": [
-                          {
-                            "__guid": "cd1b8971-2ad8-41bb-a034-ee16bae11416",
-                            "Flags": 4,
-                            "Name": "Bone_007",
-                            "Position": "-0.0000004172325,-2.123513,0.000001847744",
-                            "Rotation": "0.1814632,0.1362597,-0.07553165,0.9709786",
-                            "Enabled": true,
-                            "NetworkMode": 2,
-                            "NetworkInterpolation": true,
-                            "Children": [
-                              {
-                                "__guid": "73730676-3624-4327-8aee-09e2efdbe684",
-                                "Flags": 4,
-                                "Name": "Bone_007_end",
-                                "Position": "0.4232022,-0.9413335,-1.833634",
-                                "Rotation": "0.4130957,-0.1139757,-0.02877459,0.9030688",
-                                "Enabled": true,
-                                "NetworkMode": 2,
-                                "NetworkInterpolation": true
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "__guid": "2fa61e02-820a-4277-86c4-2bb12bc203db",
-                    "Flags": 4,
-                    "Name": "Bone_009",
-                    "Position": "0.07765326,0.1917312,-0.02440619",
-                    "Rotation": "0.7909582,-0.02800456,-0.6110764,-0.01365712",
-                    "Enabled": true,
-                    "NetworkMode": 2,
-                    "NetworkInterpolation": true,
-                    "Children": [
-                      {
-                        "__guid": "ffd10584-f8d6-45e5-a101-f93581655bf6",
-                        "Flags": 4,
-                        "Name": "Bone_010",
-                        "Position": "-0.000001484528,-3.164618,0.000001013279",
-                        "Rotation": "-0.1075937,0.002205465,-0.07790153,0.9911357",
-                        "Enabled": true,
-                        "NetworkMode": 2,
-                        "NetworkInterpolation": true,
-                        "Children": [
-                          {
-                            "__guid": "8c3c05e2-23af-418a-bda7-103f52f3758f",
-                            "Flags": 4,
-                            "Name": "Bone_011",
-                            "Position": "-0.00000410946,-1.104028,0.000001266599",
-                            "Rotation": "0.04983943,-0.0516975,-0.2049547,0.9761337",
-                            "Enabled": true,
-                            "NetworkMode": 2,
-                            "NetworkInterpolation": true,
-                            "Children": [
-                              {
-                                "__guid": "b00325e9-45fa-4369-91b5-549fd9e39fd9",
-                                "Flags": 4,
-                                "Name": "Bone_012",
-                                "Position": "-0.000006260349,-1.088051,0.000002019107",
-                                "Rotation": "-0.03151024,-0.172166,-0.15189,0.9727771",
-                                "Enabled": true,
-                                "NetworkMode": 2,
-                                "NetworkInterpolation": true,
-                                "Children": [
-                                  {
-                                    "__guid": "265160c1-82e0-4f5e-bcef-202eb3928fde",
-                                    "Flags": 4,
-                                    "Name": "Bone_012_end",
-                                    "Position": "-1.860958,-1.137206,1.321083",
-                                    "Rotation": "-0.2396987,0.05697198,-0.3215315,0.9142846",
-                                    "Enabled": true,
-                                    "NetworkMode": 2,
-                                    "NetworkInterpolation": true
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "__guid": "23684d31-8fc4-4224-ae1f-e06dc26dfb2b",
-                    "Flags": 4,
-                    "Name": "Bone_016",
-                    "Position": "-0.6437202,3.236197,-0.4349955",
-                    "Rotation": "0.7818956,0.08378664,-0.6171892,0.02639332",
-                    "Enabled": true,
-                    "NetworkMode": 2,
-                    "NetworkInterpolation": true,
-                    "Children": [
-                      {
-                        "__guid": "2a5f7655-3c9b-4429-b750-d9759cd5facd",
-                        "Flags": 4,
-                        "Name": "Bone_017",
-                        "Position": "-0.000002234403,-1.359238,0.000001095235",
-                        "Rotation": "0.02486997,0.01347456,-0.1957254,0.9802507",
-                        "Enabled": true,
-                        "NetworkMode": 2,
-                        "NetworkInterpolation": true,
-                        "Children": [
-                          {
-                            "__guid": "8eb8c234-bf0a-420d-b691-8c3fab9fd6bc",
-                            "Flags": 4,
-                            "Name": "Bone_018",
-                            "Position": "-0.000004176166,-1.442575,0.000001491978",
-                            "Rotation": "-0.04533431,-0.03070382,-0.1373343,0.9890103",
-                            "Enabled": true,
-                            "NetworkMode": 2,
-                            "NetworkInterpolation": true,
-                            "Children": [
-                              {
-                                "__guid": "69d448eb-c77d-47de-89fd-723e3b83aa70",
-                                "Flags": 4,
-                                "Name": "Bone_018_end",
-                                "Position": "-2.51424,-0.7892719,0.03468638",
-                                "Rotation": "0.0548785,0.0350936,-0.4852623,0.8719388",
-                                "Enabled": true,
-                                "NetworkMode": 2,
-                                "NetworkInterpolation": true
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "__guid": "84901ce5-4f47-4457-8cfb-1e5d0694a19a",
-                    "Flags": 4,
-                    "Name": "Bone_020",
-                    "Position": "0.7851908,0.03540909,0.1692964",
-                    "Rotation": "0.7914922,-0.03434652,-0.6091914,-0.03530302",
-                    "Enabled": true,
-                    "NetworkMode": 2,
-                    "NetworkInterpolation": true,
-                    "Children": [
-                      {
-                        "__guid": "b413912f-ba85-4658-8315-e161fa9d8e03",
-                        "Flags": 4,
-                        "Name": "Bone_021",
-                        "Position": "-0.000009339302,-3.321599,0.000001251697",
-                        "Rotation": "-0.0265856,-0.04533529,-0.2332918,0.9709856",
-                        "Enabled": true,
-                        "NetworkMode": 2,
-                        "NetworkInterpolation": true,
-                        "Children": [
-                          {
-                            "__guid": "4bb02e22-b91f-430c-bff0-67513ee7c5c2",
-                            "Flags": 4,
-                            "Name": "Bone_022",
-                            "Position": "-0.00001865288,-0.7749034,0.000001572072",
-                            "Rotation": "-0.07067103,-0.09348921,-0.06690894,0.9908524",
-                            "Enabled": true,
-                            "NetworkMode": 2,
-                            "NetworkInterpolation": true,
-                            "Children": [
-                              {
-                                "__guid": "9d7a0ca1-5418-4138-8e20-cddc4ce83c7a",
-                                "Flags": 4,
-                                "Name": "Bone_023",
-                                "Position": "-0.00001482503,-0.4952199,0.000001532026",
-                                "Rotation": "-0.1096991,0.03703989,-0.1023366,0.9879886",
-                                "Enabled": true,
-                                "NetworkMode": 2,
-                                "NetworkInterpolation": true,
-                                "Children": [
-                                  {
-                                    "__guid": "02ef54e6-968a-40be-86f2-5458b54abaad",
-                                    "Flags": 4,
-                                    "Name": "Bone_023_end",
-                                    "Position": "-1.391331,-0.9391528,0.1004664",
-                                    "Rotation": "-0.01160626,0.08855165,-0.4440405,0.8915447",
-                                    "Enabled": true,
-                                    "NetworkMode": 2,
-                                    "NetworkInterpolation": true
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "__guid": "bfac2e8e-f4ec-4b1a-a039-39051805d441",
-                    "Flags": 4,
-                    "Name": "Bone_025",
-                    "Position": "0.0000005662441,-0.7953405,-0.000001635402",
-                    "Rotation": "0.02158682,0.003399938,0.07941757,0.9966019",
-                    "Enabled": true,
-                    "NetworkMode": 2,
-                    "NetworkInterpolation": true,
-                    "Children": [
-                      {
-                        "__guid": "eba0bb41-1e02-42ab-a55f-80199e80886d",
-                        "Flags": 4,
-                        "Name": "Bone_027",
-                        "Position": "0.000002980232,-9.160339,-0.000007294119",
-                        "Rotation": "-0.1235746,0.00004926324,-0.282917,0.9511503",
-                        "Enabled": true,
-                        "NetworkMode": 2,
-                        "NetworkInterpolation": true,
-                        "Children": [
-                          {
-                            "__guid": "f1ad9f2b-b52d-45c0-83d6-cdb70fe394a4",
-                            "Flags": 4,
-                            "Name": "Bone_028",
-                            "Position": "0.000007152558,-9.878917,-0.000004649163",
-                            "Enabled": true,
-                            "NetworkMode": 2,
-                            "NetworkInterpolation": true,
-                            "Children": [
-                              {
-                                "__guid": "1459955a-ac96-4e05-b2b5-cb5ccf8e060c",
-                                "Flags": 4,
-                                "Name": "Bone_028_end",
-                                "Position": "0.00001752377,-2.091978,-0.000005096198",
-                                "Enabled": true,
-                                "NetworkMode": 2,
-                                "NetworkInterpolation": true
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "__guid": "f64bf58b-7c26-4f6a-81b2-0c323f6c012d",
-                    "Flags": 4,
-                    "Name": "Bone_015",
-                    "Position": "-0.3564141,0.4384058,-0.1543767",
-                    "Rotation": "0.7869943,0.009625155,-0.6128352,0.07057201",
+                    "__guid": "e7fb804d-176f-43f6-86c3-f992fde9dd95",
+                    "Flags": 0,
+                    "Name": "Target",
+                    "Position": "0,0,0",
                     "Enabled": true,
                     "NetworkMode": 2,
                     "NetworkInterpolation": true
                   }
                 ]
-              },
-              {
-                "__guid": "d646a4bb-35ea-457a-81ca-b736d3586d7e",
-                "Flags": 0,
-                "Name": "bone",
-                "Position": "-0.5893112,-1.267242,0",
-                "Rotation": "-0.5517983,0.5616088,0.4808255,0.3859029",
-                "Enabled": true,
-                "NetworkMode": 2,
-                "NetworkInterpolation": true
-              },
-              {
-                "__guid": "2ea2b2b2-f4fb-4d7d-bc9b-62a1d663b6f6",
-                "Flags": 4,
-                "Name": "IkTarget",
-                "Enabled": true,
-                "NetworkMode": 2,
-                "NetworkInterpolation": true
               }
             ]
           }

@@ -869,7 +869,7 @@
 							m_id = 4294967295
 						}
 					}
-					m_ikChainName = "Arm"
+					m_ikChainName = "Hand"
 					m_endEffectorType = "IkEndEffector_Bone"
 					m_endEffectorAttachmentName = ""
 					m_targetType = "IkTarget_Parameter_WorldSpace"
@@ -879,10 +879,10 @@
 					{
 						m_id = 1571857449
 					}
-					m_bMatchTargetOrientation = false
+					m_bMatchTargetOrientation = true
 					m_rotationParam = 
 					{
-						m_id = 4294967295
+						m_id = 200591713
 					}
 				}
 			},
@@ -991,13 +991,13 @@
 				m_previewButton = "ANIMPARAM_BUTTON_NONE"
 				m_bUseMostRecentValue = false
 				m_bAutoReset = false
-				m_defaultValue = 1
+				m_defaultValue = 3
 				m_minValue = 0
 				m_maxValue = 100
 			},
 			{
 				_class = "CVectorAnimParameter"
-				m_name = "ArmTarget"
+				m_name = "HandPos"
 				m_id = 
 				{
 					m_id = 1571857449
@@ -1006,6 +1006,18 @@
 				m_bUseMostRecentValue = false
 				m_bAutoReset = false
 				m_defaultValue = [ 0.0, 0.0, 0.0 ]
+			},
+			{
+				_class = "CQuaternionAnimParameter"
+				m_name = "HandRot"
+				m_id = 
+				{
+					m_id = 200591713
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
+				m_defaultValue = [ 0.0, 0.0, 0.0, 1.0 ]
 			},
 		]
 	}
@@ -1052,7 +1064,7 @@
 	m_cameraSettings = 
 	{
 		m_flFov = 60.0
-		m_sLockBoneName = "dfa"
+		m_sLockBoneName = "Bone_028"
 		m_bLockCamera = false
 		m_bViewModelCamera = false
 	}
