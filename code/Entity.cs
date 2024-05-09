@@ -7,6 +7,31 @@ public sealed class Entity : Component
 	[Property] public List<Catagory> Catagories {get;set;}
 	[Property] public bool displayContainer { get; set;}
 	[Property] public List<SaveClasses.EntitySave> Container {get;set;}
+	[Property] public List<Equiped> Equips {get;set;}
+	public int getEquip(string equipType)
+	{
+		for(int i = 0; i < Equips.Count; i++)
+		{
+			if(Equips[i].equipType == equipType) return i;
+		}
+		return -1;
+	}
+	public class Equiped
+	{
+		public string equipType {get;set;}
+		public int ID {get;set;}
+		public int GetContainerIndex(Entity entity)
+		{
+			for(int i = 0; i < entity.Container.Count; i++)
+			{
+				if(entity.Container[i].id == ID)
+				{
+					return i;
+				}
+			}
+			return -1;
+		}
+	}
 	public class Catagory
 	{
 		public string CatagoryName {get;set;}

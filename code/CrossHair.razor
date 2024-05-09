@@ -3,23 +3,26 @@
 @inherits PanelComponent
 
 <root>
-	<div class="centered">
-			<div style="font-size: 10%; font-family: 'Verdana'; ">•</div>
-		</div>
+	@if(!aiming)
+	{
 		<div class="centered">
-			<div style="font-size: 20%; top: 3%">@Name</div>
+				<div style="font-size: 10%; font-family: 'Verdana'; ">•</div>
+			</div>
+			<div class="centered">
+				<div style="font-size: 20%; top: 3%">@Name</div>
+			</div>
+			<div class="centered">
+				@foreach(stat stat in stats)
+				{
+					<div style="flex-direction: column; top: 4%;width:5%;align-items: center">
+						<div style="opacity: 0.5; font-size: 10%; text-align: center;">@stat.StatName</div>
+						<div style="font-size: 20%; text-align: center;">@stat.Stat</div>
+					</div>
+				}
+				
+			</div>
 		</div>
-		<div class="centered">
-			@foreach(stat stat in stats)
-			{
-				<div style="flex-direction: column; top: 4%;width:5%;align-items: center">
-					<div style="opacity: 0.5; font-size: 10%; text-align: center;">@stat.StatName</div>
-					<div style="font-size: 20%; text-align: center;">@stat.Stat</div>
-				</div>
-			}
-			
-		</div>
-	</div>
+	}
 </root>
 
 @code
@@ -27,15 +30,18 @@
 
 	[Property] public string Name { get; set; }
 	[Property] public List<stat> stats { get; set; } = new List<stat>();
-
+	bool aiming;
 	public class stat
 	{
 		public string StatName {get;set;}
 		public string Stat {get;set;}
 	}
-
+	protected override void OnUpdate()
+	{
+		aiming = Input.Down("attack2");
+	}
 	/// <summary>
 	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
 	/// </summary>
-	protected override int BuildHash() => System.HashCode.Combine(  Name, stats );
+	protected override int BuildHash() => System.HashCode.Combine(aiming, Name, stats );
 }

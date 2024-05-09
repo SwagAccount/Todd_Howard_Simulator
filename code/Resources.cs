@@ -12,6 +12,14 @@ public sealed class Weapon : GameResource
     [Category("Weapon Configuration")][Property] public bool hasFakeProjectile { get; set; }
     [Category("Weapon Configuration")][Property] public List<Mode> modes { get; set; } = new();
     [Category("Weapon Configuration")][Property] public List<bulletStat> bulletStats { get; set; } = new();
+    [Category("Weapon Configuration")][Property] public List<Vector3> minMaxRecoilPos { get; set; }
+    [Category("Weapon Configuration")][Property] public List<Angles> minMaxRecoilRot { get; set; }
+    [Category("Weapon Configuration")][Property] public Vector3 targetPosIdle { get; set; }
+    [Category("Weapon Configuration")][Property] public Angles targetRotIdle { get; set; }
+    [Category("Weapon Configuration")][Property] public Vector3 targetPosAim { get; set; }
+    [Category("Weapon Configuration")][Property] public Angles targetRotAim { get; set; }
+    [Category("Weapon Configuration")][Property] public Vector3 targetPosRun { get; set; }
+    [Category("Weapon Configuration")][Property] public Angles targetRotRun { get; set; }
 
     [Category("Audio and Visual Effects")][Property] public SoundEvent sound { get; set; }
     [Category("Audio and Visual Effects")][Property] public string fireParam { get; set; }
@@ -19,6 +27,13 @@ public sealed class Weapon : GameResource
     [Category("Audio and Visual Effects")][Property] public string reloadNoCParam { get; set; }
     [Category("Audio and Visual Effects")][Property] public string unDeployParam { get; set; }
     [Category("Audio and Visual Effects")][Property] public string LoadedParam { get; set; }
+    [Category("Audio and Visual Effects")][Property] public float recoilReset { get; set; }
+    [Category("Audio and Visual Effects")][Property] public float posSpeed { get; set; }
+    [Category("Audio and Visual Effects")][Property] public float rotSpeed { get; set; }
+    [Category("Audio and Visual Effects")][Property] public float swayYaw { get; set; }
+    [Category("Audio and Visual Effects")][Property] public float swayPitch { get; set; }
+    [Category("Audio and Visual Effects")][Property] public List<int> leftHand { get; set; }
+    [Category("Audio and Visual Effects")][Property] public List<int> rightHand { get; set; }
 
     [Category("Reload Mechanics")][Property] public int reloadMount { get; set; }
     [Category("Reload Mechanics")][Property] public float reloadWarmTime { get; set; }
@@ -119,4 +134,51 @@ public sealed class ItemTypeSort : GameResource
 public sealed class PlayerReference : GameResource
 {
     [Property] public GameObject gameObject {get;set;}
+}
+
+[GameResource("BulletHoleDataBase", "bhdb","Collection of all bullet holes", Icon = "Golf Course")]
+public sealed class BulletHoleDB : GameResource
+{
+	[Property] public List<BulletHoleData> bulletHoles {get;set;} = new();
+	[Property] public int defaultHole {get;set;}
+	public class BulletHoleData
+    {
+        [Property] public List<string> bulletholeNames {get; set;}  = new();
+        [Property] public List<GameObject> bulletHoles {get; set;} = new();
+    }
+    public int GetRandomNumberInRange(int minNumber, int maxNumber)
+	{
+		return (int)(Game.Random.NextInt64() * (maxNumber - minNumber) + minNumber);
+	}
+    public GameObject FindBulletHoleByMaterial(string mat)
+    {
+        int i = 0;
+        if(mat != null)
+        {
+            foreach (BulletHoleData item in bulletHoles)
+            {
+                bool Yes = false;
+                foreach(string s in item.bulletholeNames)
+                {
+                    if(s == mat)
+                    {
+                        Log.Info($"Found Material {mat}");
+                        Yes = true;
+                        break;
+                    }
+                }
+                if (Yes)
+                {
+                    if(item.bulletHoles.Count > 0) return item.bulletHoles[0]; 
+                    else return null;
+                }
+                i++;
+            }
+        }
+        else
+        {
+            return bulletHoles[defaultHole].bulletHoles[0];
+        }
+        return bulletHoles[defaultHole].bulletHoles[0];
+    }
 }

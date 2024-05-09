@@ -1,0 +1,72 @@
+{
+  "RootObject": {
+    "__guid": "a44444f7-3dcd-4e84-9c25-d7c873e02fb9",
+    "Name": "bholep",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "NetworkInterpolation": true,
+    "Children": [
+      {
+        "__guid": "7193506b-1632-4bdf-8848-a3026864237d",
+        "Name": "Projector",
+        "Position": "-2.165,0,0",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkInterpolation": true,
+        "Components": [
+          {
+            "__type": "Sandbox.DecalRenderer",
+            "__guid": "811db462-93d8-4a29-b8ae-53796d74e51f",
+            "CutoffAngle": 47.92,
+            "CutoffAngleSoftness": 5.21,
+            "Material": "decals/conc hit.vmat",
+            "Mod2XBlending": true,
+            "Size": "3.75,3.75,6.2",
+            "TintColor": "1,1,1,1",
+            "TriPlanar": false
+          }
+        ]
+      },
+      {
+        "__guid": "ed9aaf04-b0d1-400e-b255-9ee67afb86a5",
+        "Name": "SoundPlayer",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkInterpolation": true,
+        "Components": [
+          {
+            "__type": "Sandbox.SoundPointComponent",
+            "__guid": "f0ad363d-5980-4b41-b3a6-b3f6eff13cd9",
+            "DistanceAttenuation": false,
+            "DistanceAttenuationOverride": false,
+            "Force2d": false,
+            "MaxRepeatTime": 1,
+            "MinRepeatTime": 1,
+            "Occlusion": false,
+            "OcclusionOverride": false,
+            "OcclusionRadius": 32,
+            "Pitch": 1,
+            "PlayOnStart": true,
+            "ReflectionOverride": false,
+            "Reflections": false,
+            "Repeat": false,
+            "SoundEvent": "sounds/impacts/bullets/impact-bullet-plastic.sound",
+            "SoundOverride": false,
+            "StopOnNew": false,
+            "TargetMixer": {
+              "Name": "unknown",
+              "Id": "00000000-0000-0000-0000-000000000000"
+            },
+            "Volume": 1
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
+  "__references": []
+}

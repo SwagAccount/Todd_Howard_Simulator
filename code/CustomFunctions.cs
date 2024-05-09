@@ -48,4 +48,24 @@ public sealed class CustomFunctions
 
         return newEntity;
     }
+
+    public static GameObject GetChildAtPath(GameObject parent, List<int> path)
+    {
+
+        GameObject current = parent;
+
+        // Iterate over each index in the path
+        foreach (int index in path)
+        {
+            if (index < 0 || index >= current.Children.Count)
+            {
+                Log.Info("Index out of range: " + index);
+                return null;
+            }
+
+            current = current.Children[index];
+        }
+
+        return current;
+    }
 }

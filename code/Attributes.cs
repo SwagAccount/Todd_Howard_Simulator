@@ -305,7 +305,7 @@ public sealed class Attributes : Component
     {
         public string AttributeName { get; set; }
 		public Attribute.AttributeType attributeType {get;set;}
-        public float intValue { get; set; }
+        public int intValue { get; set; }
         public float floatValue { get; set; }
         public float floatValuePerks { get; set; }
         public string stringValue { get; set; }
@@ -318,7 +318,7 @@ public sealed class Attributes : Component
 	{
 		public string AttributeName { get; set; }
 		public AttributeType attributeType {get;set;}
-        public float intValue { get; set; }
+        public int intValue { get; set; }
         public float floatValue { get; set; }
         public float floatValuePerks { get; set; }
         public string stringValue { get; set; }
@@ -333,7 +333,7 @@ public sealed class Attributes : Component
                 Attribute attribute = attributes.player.getAttribute(perkEffector.perkName, "perks");
                 if(attribute != null)
                 {
-                    float multiplier = (float)attribute.GetValue();
+                    float multiplier = (int)attribute.GetValue();
                     switch(perkEffector.EffectType)
                     {
                         case EffectType.ADD:

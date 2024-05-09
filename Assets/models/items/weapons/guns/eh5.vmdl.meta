@@ -1,0 +1,20 @@
+{
+  "publish": {
+    "Allowed": true,
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Low Poly MP5 (animated)",
+      "Type": "model",
+      "Org": "tft",
+      "Ident": "mp5",
+      "Tags": "guns low-poly animated",
+      "Schema": 0,
+      "Resources": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Metadata": {
+        "SingleAssetSource": "models/items/weapons/guns/eh5.vmdl"
+      }
+    }
+  }
+}

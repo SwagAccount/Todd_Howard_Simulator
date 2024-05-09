@@ -69,6 +69,7 @@
           "__guid": "438b4461-5267-4f6a-b9e2-dfc44112b4c8",
           "Name": "Player",
           "Position": "32.80156,0,32.81264",
+          "Tags": "player",
           "Enabled": true,
           "NetworkMode": 2,
           "NetworkInterpolation": true,
@@ -128,6 +129,10 @@
                     {
                       "AttributeName": "Auto Bunny Hopping",
                       "attributeType": "FLOAT"
+                    },
+                    {
+                      "AttributeName": "9mm",
+                      "intValue": 1000
                     }
                   ]
                 },
@@ -160,13 +165,35 @@
                     "items",
                     "weapons",
                     "guns",
-                    "1911"
+                    "eh5"
                   ],
-                  "AttributeSets": [],
+                  "AttributeSets": [
+                    {
+                      "setName": "default",
+                      "attributes": [
+                        {
+                          "AttributeName": "Ammo",
+                          "attributeType": "STRING"
+                        },
+                        {
+                          "AttributeName": "Current Mode"
+                        },
+                        {
+                          "AttributeName": "Current Bullet"
+                        }
+                      ]
+                    }
+                  ],
                   "Container": []
                 }
               ],
-              "displayContainer": false
+              "displayContainer": false,
+              "Equips": [
+                {
+                  "equipType": "weapons",
+                  "ID": 41235
+                }
+              ]
             }
           ]
         },
@@ -226,7 +253,7 @@
                     "items",
                     "weapons",
                     "guns",
-                    "mp5"
+                    "eh5"
                   ],
                   "AttributeSets": [],
                   "Container": []
@@ -321,38 +348,171 @@
       ]
     },
     {
-      "__guid": "4e8f4ad7-f2c4-402d-8d31-945637ca578c",
-      "Name": "Object",
+      "__guid": "f91163ba-a18b-495d-b415-2960241b7da0",
+      "Name": "Cube",
+      "Position": "138.3749,3.018772,17.20144",
+      "Scale": "1,1,35.6",
       "Enabled": true,
       "NetworkMode": 2,
       "NetworkInterpolation": true,
       "Components": [
         {
-          "__type": "Sandbox.ScreenPanel",
-          "__guid": "f60b7ab1-7d8c-47e4-a230-8fb5596da19d",
-          "AutoScreenScale": true,
-          "Opacity": 1,
-          "Scale": 1,
-          "ZIndex": 100
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "f04d6a71-8a2a-47c9-88f9-68db87ebbf2a",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
         },
         {
-          "__type": "ContainerUI",
-          "__guid": "76e6adf4-6ae7-43b8-add0-9a218b174da1",
-          "__enabled": false,
-          "CurrentType": "items",
-          "EnableMouse": false,
-          "Entity": {
-            "_type": "component",
-            "component_id": "9d0de3cf-b3e9-43d5-bff4-cfa0ca0f1be6",
-            "go": "438b4461-5267-4f6a-b9e2-dfc44112b4c8",
-            "component_type": "Entity"
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "c931c370-fb8f-43bf-9309-90ec4bff49e0",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": false
+        }
+      ]
+    },
+    {
+      "__guid": "54b585d1-716b-495f-b647-7cb28a4f756c",
+      "Name": "IK Test",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "Components": [
+        {
+          "__type": "InverseKinematics",
+          "__guid": "99906948-29fd-4cf4-b4ec-616c92689d78",
+          "debug": true,
+          "elbow": {
+            "_type": "gameobject",
+            "go": "bee7c23d-1955-43d4-8849-59f95f96efcc"
           },
-          "MoveID": -1,
-          "OrderedList": [],
-          "SortDirection": false,
-          "SortIndex": 0,
-          "TableSize": 100,
-          "Width": 100
+          "forearm": {
+            "_type": "gameobject",
+            "go": "86974ee6-db0e-43a3-856f-e39159754b1b"
+          },
+          "forearm_OffsetRotation": "-10.25,90.09,0",
+          "hand": {
+            "_type": "gameobject",
+            "go": "b2b52e0a-cc9e-4bf7-a55e-3b69992721d3"
+          },
+          "hand_OffsetRotation": "1,1,1",
+          "handMatchesTargetRotation": false,
+          "target": {
+            "_type": "gameobject",
+            "go": "425f7447-ed4d-46e1-879c-629282812850"
+          },
+          "upperArm": {
+            "_type": "gameobject",
+            "go": "76a7eca9-7d61-4ef3-a116-0f08346756f1"
+          },
+          "uppperArm_OffsetRotation": "74.2,85.06,0"
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "76a7eca9-7d61-4ef3-a116-0f08346756f1",
+          "Name": "Object",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Children": [
+            {
+              "__guid": "88b18f37-5c9b-4b51-972e-17fcd13ac776",
+              "Name": "Cube",
+              "Position": "0,0,3.75",
+              "Scale": "0.03775689,0.03775689,0.15",
+              "Enabled": true,
+              "NetworkMode": 2,
+              "NetworkInterpolation": true,
+              "Components": [
+                {
+                  "__type": "Sandbox.ModelRenderer",
+                  "__guid": "f5582135-66ce-4761-b452-5d0c4a82f5ee",
+                  "BodyGroups": 18446744073709551615,
+                  "Model": "models/dev/box.vmdl",
+                  "RenderType": "On",
+                  "Tint": "1,1,1,1"
+                }
+              ]
+            },
+            {
+              "__guid": "86974ee6-db0e-43a3-856f-e39159754b1b",
+              "Name": "Object (1)",
+              "Position": "0,0,7.5",
+              "Enabled": true,
+              "NetworkMode": 2,
+              "NetworkInterpolation": true,
+              "Children": [
+                {
+                  "__guid": "4dec94ea-1385-4ea3-bf5e-cda05cf3a9c2",
+                  "Name": "Cube",
+                  "Position": "0,0,3.75",
+                  "Scale": "0.03775689,0.03775689,0.15",
+                  "Enabled": true,
+                  "NetworkMode": 2,
+                  "NetworkInterpolation": true,
+                  "Components": [
+                    {
+                      "__type": "Sandbox.ModelRenderer",
+                      "__guid": "377d9756-0726-4210-a374-7b4793e907ff",
+                      "BodyGroups": 18446744073709551615,
+                      "Model": "models/dev/box.vmdl",
+                      "RenderType": "On",
+                      "Tint": "1,1,1,1"
+                    }
+                  ]
+                },
+                {
+                  "__guid": "b2b52e0a-cc9e-4bf7-a55e-3b69992721d3",
+                  "Name": "Object (2)",
+                  "Position": "0,0,7.5",
+                  "Enabled": true,
+                  "NetworkMode": 2,
+                  "NetworkInterpolation": true,
+                  "Children": [
+                    {
+                      "__guid": "d1b67ee9-bb5c-4bff-95ab-c7538ae47eef",
+                      "Name": "Cube",
+                      "Position": "0,0,0.95",
+                      "Scale": "0.03775689,0.03775689,0.038",
+                      "Enabled": true,
+                      "NetworkMode": 2,
+                      "NetworkInterpolation": true,
+                      "Components": [
+                        {
+                          "__type": "Sandbox.ModelRenderer",
+                          "__guid": "b5073b88-e70d-4090-a965-c6dcc291131c",
+                          "BodyGroups": 18446744073709551615,
+                          "Model": "models/dev/box.vmdl",
+                          "RenderType": "On",
+                          "Tint": "1,1,1,1"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "__guid": "425f7447-ed4d-46e1-879c-629282812850",
+          "Name": "Object (1)",
+          "Position": "-0.9534121,-0.00000005682779,15.75401",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true
+        },
+        {
+          "__guid": "bee7c23d-1955-43d4-8849-59f95f96efcc",
+          "Name": "Object",
+          "Position": "-5.796623,-0.0000003455057,6.556187",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true
         }
       ]
     }
@@ -380,7 +540,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-05-06T17:29:14.0412919\u002B07:00",
+  "LastSaved": "2024-05-09T00:55:05.205643\u002B07:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

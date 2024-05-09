@@ -1,0 +1,93 @@
+{
+  "bulletHoles": [
+    {
+      "bulletholeNames": [
+        "brick",
+        "concrete",
+        "plaster",
+        "sand"
+      ],
+      "bulletHoles": [
+        {
+          "_type": "gameobject",
+          "prefab": "decals/bholec.prefab"
+        }
+      ]
+    },
+    {
+      "bulletholeNames": [
+        "default"
+      ],
+      "bulletHoles": [
+        {
+          "_type": "gameobject",
+          "prefab": "decals/bholed.prefab"
+        }
+      ]
+    },
+    {
+      "bulletholeNames": [
+        "metal",
+        "metal.sheet",
+        "metal.weapon"
+      ],
+      "bulletHoles": [
+        {
+          "_type": "gameobject",
+          "prefab": "decals/bholem.prefab"
+        }
+      ]
+    },
+    {
+      "bulletholeNames": [
+        "glass",
+        "glass.pane",
+        "glass.shard"
+      ],
+      "bulletHoles": []
+    },
+    {
+      "bulletholeNames": [
+        "plastic",
+        "plastic.hollow",
+        "plastic.sheet",
+        "plastic.sheet.watercontainer",
+        "rubber",
+        "slippy_wheels"
+      ],
+      "bulletHoles": [
+        {
+          "_type": "gameobject",
+          "prefab": "decals/bholep.prefab"
+        }
+      ]
+    },
+    {
+      "bulletholeNames": [
+        "flesh"
+      ],
+      "bulletHoles": [
+        {
+          "_type": "gameobject",
+          "prefab": "decals/bholef.prefab"
+        }
+      ]
+    },
+    {
+      "bulletholeNames": [
+        "wood",
+        "wood.sheet"
+      ],
+      "bulletHoles": [
+        {
+          "_type": "gameobject",
+          "prefab": "decals/bholew.prefab"
+        }
+      ]
+    }
+  ],
+  "defaultHole": 1,
+  "ResourceVersion": 0,
+  "__version": 0,
+  "__references": []
+}
