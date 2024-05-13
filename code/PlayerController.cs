@@ -374,7 +374,7 @@ public sealed class PlayerController : Component
         Gizmo.Draw.LineBBox(in box);
     }
     
-    protected override void OnFixedUpdate() {
+    void Onfd() {
 
         AutoBunnyhopping = (float)attributes.attributeSets[0].attributes[ABH].floatValuePerks;
         MaxSpeed = (float)attributes.attributeSets[0].attributes[MaS].floatValuePerks;
@@ -500,6 +500,104 @@ public sealed class PlayerController : Component
         } else {
             Camera.FieldOfView = Preferences.FieldOfView;
         }
+        
+        //
+        
+        AutoBunnyhopping = (float)attributes.attributeSets[0].attributes[ABH].floatValuePerks;
+        MaxSpeed = (float)attributes.attributeSets[0].attributes[MaS].floatValuePerks;
+        MoveSpeed = (float)attributes.attributeSets[0].attributes[MoS].floatValuePerks;
+        ShiftSpeed = (float)attributes.attributeSets[0].attributes[SS].floatValuePerks;
+        CrouchSpeed = (float) attributes.attributeSets[0].attributes[CS].floatValuePerks;
+
+        if (CollisionBox == null) return;
+        
+        if (CollisionBox.Scale != LastSize) {
+            CollisionBox.Scale = LastSize;
+            CollisionBox.Center = new Vector3(0, 0, LastSize.z * 0.5f);
+        }
+        
+		if ( IsProxy )
+			return;
+        
+        if (UseCustomGravity) {
+            Gravity = CustomGravity;
+        } else {
+            Gravity = Scene.PhysicsWorld.Gravity;
+        }
+
+        GatherInput();
+
+        // Crouching
+        var InitHeight = HeightGoal;
+        if (IsCrouching) {
+            HeightGoal = CroucingHeight;
+        } else {
+            var startPos = GameObject.Transform.Position;
+            var endPos = GameObject.Transform.Position + new Vector3(0, 0, StandingHeight * GameObject.Transform.Scale.z);
+            var crouchTrace = Scene.Trace.Ray(startPos, endPos)
+                                        .IgnoreGameObject(GameObject)
+                                        .Size(new BBox(new Vector3(-Radius, -Radius, 0f), new Vector3(Radius * GameObject.Transform.Scale.x, Radius * GameObject.Transform.Scale.y, 0)))
+                                        .Run();
+            if (crouchTrace.Hit) {
+                HeightGoal = CroucingHeight;
+                IsCrouching = true;
+            } else {
+                HeightGoal = StandingHeight;
+            }
+        }
+        var HeightDiff = (InitHeight - HeightGoal).Clamp(0, 10);
+        
+        InternalMoveSpeed = MoveSpeed;
+        if (IsWalking) InternalMoveSpeed = ShiftSpeed;
+        if (IsCrouching) InternalMoveSpeed = CrouchSpeed;
+        InternalMoveSpeed *= StaminaMultiplier * Weight;
+
+        Height = Height.LerpTo(HeightGoal, Time.Delta / CrouchTime.Clamp(MinCrouchTime, MaxCrouchTime));
+        
+        LastSize = new Vector3(Radius * 2, Radius * 2, HeightGoal);
+        
+        Velocity += Gravity * Time.Delta * 0.5f;
+        
+        if (AlreadyGrounded != IsOnGround) {
+            if (IsOnGround) {
+                var heightMult = Math.Abs(jumpHighestHeight - GameObject.Transform.Position.z) / 46f;
+                Stamina -= Stamina * StaminaLandingCost * 2.9625f * heightMult.Clamp(0, 1f);
+                Stamina = (Stamina * 10).FloorToInt() * 0.1f;
+                if (Stamina < 0) Stamina = 0;
+            } else {
+                jumpStartHeight = GameObject.Transform.Position.z;
+                jumpHighestHeight = GameObject.Transform.Position.z;
+            }
+        } else {
+            if(IsOnGround) ApplyFriction();
+        }
+        
+        if(IsOnGround) {
+            GroundMove();
+        } else {
+            AirMove();
+        }
+
+        AlreadyGrounded = IsOnGround;
+        
+        CrouchTime -= Time.Delta * CrouchRecoveryRate;
+        CrouchTime = CrouchTime.Clamp(0f, MaxCrouchTime);
+        
+        Stamina += StaminaRecoveryRate * Time.Delta;
+        if (Stamina > MaxStamina) Stamina = MaxStamina;
+        
+        if (HeightDiff > 0f) GameObject.Transform.Position += new Vector3(0, 0, HeightDiff * 0.5f);
+        Velocity *= GameObject.Transform.Scale;
+        Move();
+        CategorizePosition();
+        Velocity /= GameObject.Transform.Scale;
+        
+        Velocity += Gravity * Time.Delta * 0.5f;
+        
+        // Terminal velocity
+        if (Velocity.Length > 3500) Velocity = Velocity.Normal * 3500;
+
+        if (jumpHighestHeight < GameObject.Transform.Position.z) jumpHighestHeight = GameObject.Transform.Position.z;
 	}
 
 }

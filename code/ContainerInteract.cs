@@ -73,7 +73,7 @@ public sealed class ContainerInteract : Component
 				from.Enabled = false;
 				to.Enabled = true;
 				to.SortIndex = 0;
-				to.SortDirection = false;
+				to.SortDirection = -1;
 				
 				break;
 			case States.Transfer:

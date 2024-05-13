@@ -2,8 +2,10 @@ using Sandbox;
 [GameResource("Weapon", "weapon","Info for the weapon information", Icon = "construction")]
 public sealed class Weapon : GameResource
 {
-    [Category("Weapon Configuration")][Property] public GameObject ViewModel { get; set; }
     [Category("Weapon Configuration")][Property] public GameObject flash { get; set; }
+    [Category("Weapon Configuration")][Property] public bool CannotShoot { get; set; }
+    [Category("Weapon Configuration")][Property] public bool CannotReload { get; set; }
+    [Category("Weapon Configuration")][Property] public bool ExactArm { get; set; }
     [Category("Weapon Configuration")][Property] public bool shootFromCam { get; set; }
     [Category("Weapon Configuration")][Property] public float shootTime { get; set; }
     [Category("Weapon Configuration")][Property] public float deployTime { get; set; }
@@ -88,6 +90,12 @@ public sealed class item : GameResource
 {
     [Property] public float Weight {get;set;}
     [Property] public float Value {get;set;}
+}
+
+[GameResource("EquipTypes", "et", "Types to equip from inventory", Icon = "Description")]
+public sealed class EquipTypes : GameResource
+{
+    [Property] public List<string> types {get;set;}
 }
 
 [GameResource("CatagoryComponents", "catagory", "Components for each catagory", Icon = "Apps")]

@@ -60,4 +60,75 @@ public sealed class Entity : Component
 			}
 		}
 	}
+	public int getContainerItem(int id)
+	{
+		for(int i = 0; i < Container.Count; i++)
+		{
+			if(Container[i].id == id) return i;
+		}
+		return -1;
+	}
+	public bool idEquipped(int id)
+	{
+		if(Equips == null) return false;;
+		for(int i = 0; i < Equips.Count; i++)
+		{
+			if(Equips[i].ID == id) return true;
+		}
+		return false;
+	}
+	public void EquipItem(SaveClasses.EntitySave entitySave)
+	{
+		if(Equips == null) Equips = new List<Equiped>();
+		EquipTypes equipTypes = ResourceLibrary.Get<EquipTypes>("gameresources/equiptypes.et");
+		string equipType = "";
+		foreach(string s in equipTypes.types)
+		{
+			if(entitySave.Categories.Contains(s))
+			{
+				
+				equipType = s;
+				
+				break;
+			}
+		}
+		if(equipType == "") return;
+		
+		foreach(Equiped equiped in Equips)
+		{
+			if(equiped.equipType == equipType) 
+			{
+				equiped.ID = entitySave.id;
+				return;
+			}
+		}
+		Equiped newEquipped = new Equiped();
+		newEquipped.ID = entitySave.id;
+		newEquipped.equipType = equipType;
+		Equips.Add(newEquipped);
+	}
+	public bool ItemEquipped(SaveClasses.EntitySave entitySave)
+	{
+		if(Equips == null) return false;
+		for(int i = 0; i < Equips.Count; i++)
+		{
+			if(Equips[i].ID == entitySave.id)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	public void UnEquipItem(SaveClasses.EntitySave entitySave)
+	{
+		if(Equips == null) return;
+		for(int i = 0; i < Equips.Count; i++)
+		{
+			if(Equips[i].ID == entitySave.id)
+			{
+				Equips.RemoveAt(i);
+				return;
+			}
+		}
+	}
 }

@@ -79,27 +79,6 @@
 			{
 				key = 
 				{
-					m_id = 1167345046
-				}
-				value = 
-				{
-					_class = "CSequenceAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ -704.0, 112.0 ]
-					m_nNodeID = 
-					{
-						m_id = 1167345046
-					}
-					m_sNote = ""
-					m_tagSpans = [  ]
-					m_sequenceName = "shoot"
-					m_playbackSpeed = 1.0
-					m_bLoop = false
-				}
-			},
-			{
-				key = 
-				{
 					m_id = 1274590860
 				}
 				value = 
@@ -116,6 +95,26 @@
 					m_sequenceName = "ReloadWithC"
 					m_playbackSpeed = 1.0
 					m_bLoop = false
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 1382947507
+				}
+				value = 
+				{
+					_class = "CSingleFrameAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ -688.0, 112.0 ]
+					m_nNodeID = 
+					{
+						m_id = 1382947507
+					}
+					m_sNote = ""
+					m_sequenceName = "Shoot"
+					m_nFrameIndex = 0
+					m_tagSpans = [  ]
 				}
 			},
 			{
@@ -512,7 +511,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 1167345046
+									m_id = 1382947507
 								}
 								m_outputID = 
 								{

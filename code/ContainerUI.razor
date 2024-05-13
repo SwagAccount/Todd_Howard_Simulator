@@ -7,7 +7,7 @@
 @inherits PanelComponent
 
 <root style=@($"justify-content: {Position};"))>
-	<div class = "centered" style=@($" width: {Width}%;" + (EnableMouse ? " pointer-events: all;" : ""))>
+	<div class = "centered" style=@($" width: {dimentions[0]}%; height: {dimentions[1]}%;" + (EnableMouse ? " pointer-events: all;" : ""))>
 		<div>
 			<div onclick=@(() => ChangeType(-1))>⮜</div>
 			<div style="width: 10%; justify-content: center;"><div>@(CustomFunctions.CapitalizeWords(CurrentType.ToString()))</div></div>
@@ -18,16 +18,17 @@
 				@for(int i = 0; i < Its.SortTypes.Count; i++)
 				{ 
 					int capture = i;
-					<td onclick=@(() => SetSortingIndex(capture))>@($"{Its.SortTypes[i]}{(SortIndex == i ? (SortDirection ? "⮝" : "⮟") : "" )}")</td>
+					<td onclick=@(() => SetSortingIndex(capture))>@($"{Its.SortTypes[i]}{(Sort[0] == i ? (Sort[1] == 1 ? "⮝" : "⮟") : "" )}")</td>
 				}
 			</th>
 			@for(int i = 0; i < OrderedList.Count; i++)
 			{
 				int capture = OrderedList[i].id;
 				<tr style=@((i+1)%2 == 0 ? "background: #0002" : "background: #0000") onclick=@(() => SelectItem(capture))>
-					@foreach(string s in OrderedList[i].stats)
+					
+					@for(int I = 0; I < OrderedList[i].stats.Count; I++)
 					{
-						<td>@s</td>
+						<td>@($"{((Entity.idEquipped(capture) && I == 0) ? "•" : "")} {OrderedList[i].stats[I]}")</td>
 					}
 				</tr>
 			}
@@ -70,7 +71,7 @@
 
 	public void SetSortingIndex(int index)
 	{
-		if(SortIndex == index) SortDirection = !SortDirection;
+		if(SortIndex == index) SortDirection = SortDirection == 1 ? -1 : 1;
 		else SortIndex = index;
 		CalculateList();
 	}
@@ -131,11 +132,12 @@
 	[Property] private List<sortedItem> OrderedList {get;set;}
 	[Property] public Types CurrentType {get;set;} 
 	[Property] public int SortIndex {get;set;}
-	[Property] public bool SortDirection {get;set;}
+	[Property] public int SortDirection {get;set;}
 	[Property] public ItemTypeSort Its {get;set;}
 	[Property] public bool EnableMouse {get;set;}
 	[Property] public string Position {get;set;}
 	[Property] public float Width {get;set;} = 100f;
+	[Property] public float Height {get;set;} = 100f;
 	[Property] public float TableSize {get;set;} = 100f;
 	[Property] public int MoveID {get;set;} = -1;
 
@@ -206,7 +208,7 @@
 		}
 		
 
-		if(!SortDirection)
+		if(SortDirection == -1)
 		{
 			var combined = newContainier.Zip(floatValues, (obj, val) => new { Object = obj, Value = val })
                               .OrderByDescending(item => item.Value)
@@ -237,6 +239,12 @@
 	{
 		CalculateList();
 	}
-
-	protected override int BuildHash() => System.HashCode.Combine(Width, EnableMouse, Position , Its, OrderedList , CustomFunctions.CapitalizeWords(CurrentType.ToString()), SortIndex, SortDirection );
+	[Property] public List<float> dimentions {get;set;}
+	[Property] public List<float> Sort {get;set;}
+	protected override void OnUpdate()
+	{
+		dimentions = new List<float>(){Width,Height};
+		Sort = new List<float>(){SortIndex, SortDirection};
+	}
+	protected override int BuildHash() => System.HashCode.Combine(dimentions, EnableMouse, Position , Its, OrderedList , CustomFunctions.CapitalizeWords(CurrentType.ToString()), Sort, Entity);
 }

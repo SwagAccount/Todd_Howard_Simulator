@@ -128,7 +128,7 @@ public sealed class Interactor : Component
 		newStat = new CrossHair.stat();
 		newStat.StatName = "DPS";
 		float DPS = (1/weapon.shootTime)*weapon.bulletStats[0].damage*weapon.bulletStats[0].shotsPer;
-		newStat.Stat = $"{DPS}";
+		newStat.Stat = $"{MathX.FloorToInt(DPS*10)/10}";
 		crossHair.stats.Add(newStat);
 
 		newStat = new CrossHair.stat();

@@ -20,15 +20,33 @@ public sealed class CommandDealer : Component
 	
 	public void TransferItem(Entity from, Entity to, int id)
 	{
+		
+		if(from.Container == null) from.Container = new List<SaveClasses.EntitySave>();
+		if(from.Equips == null) from.Equips = new List<Entity.Equiped>();
+		
+		if(to.Container == null) to.Container = new List<SaveClasses.EntitySave>();
+		if(to.Equips == null) to.Equips = new List<Entity.Equiped>();
+		
 		for (int i = 0; i < from.Container.Count; i++)
 		{
+			
 			if(from.Container[i].id == id) 
 			{
+				for(int I = 0; I < from.Equips.Count; I++)
+				{
+					
+					if(from.Equips[i].ID == id)
+					{
+						from.Equips.RemoveAt(i);
+						break;
+					}
+				}
 				to.Container.Add(from.Container[i]);
 				from.Container.RemoveAt(i);
 				return;
 			}
 		}
+		
 	}
 
 

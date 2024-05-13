@@ -3,6 +3,7 @@
   "GameObjects": [
     {
       "__guid": "a5c15dd4-959c-4e30-9085-187e55c7c236",
+      "Flags": 0,
       "Name": "Commands",
       "Position": "172.295,-149.24,-121.0655",
       "Enabled": true,
@@ -29,6 +30,7 @@
     },
     {
       "__guid": "08f7265a-54db-4e3d-9d72-29eea404878d",
+      "Flags": 0,
       "Name": "Directional Light",
       "Position": "0,0,200",
       "Rotation": "-0.2459842,0.5938582,0.2931525,0.7077327",
@@ -50,6 +52,7 @@
     },
     {
       "__guid": "fe2d58e1-e601-46d3-b893-fb2fdc9fb428",
+      "Flags": 0,
       "Name": "Saved",
       "Enabled": true,
       "NetworkMode": 2,
@@ -67,6 +70,7 @@
       "Children": [
         {
           "__guid": "438b4461-5267-4f6a-b9e2-dfc44112b4c8",
+          "Flags": 0,
           "Name": "Player",
           "Position": "32.80156,0,32.81264",
           "Tags": "player",
@@ -158,47 +162,19 @@
               "__type": "Entity",
               "__guid": "9d0de3cf-b3e9-43d5-bff4-cfa0ca0f1be6",
               "Catagories": [],
-              "Container": [
-                {
-                  "id": 41235,
-                  "Categories": [
-                    "items",
-                    "weapons",
-                    "guns",
-                    "eh5"
-                  ],
-                  "AttributeSets": [
-                    {
-                      "setName": "default",
-                      "attributes": [
-                        {
-                          "AttributeName": "Ammo",
-                          "attributeType": "STRING"
-                        },
-                        {
-                          "AttributeName": "Current Mode"
-                        },
-                        {
-                          "AttributeName": "Current Bullet"
-                        }
-                      ]
-                    }
-                  ],
-                  "Container": []
-                }
-              ],
+              "Container": [],
               "displayContainer": false,
-              "Equips": [
-                {
-                  "equipType": "weapons",
-                  "ID": 41235
-                }
-              ]
+              "Equips": []
+            },
+            {
+              "__type": "Inventory",
+              "__guid": "dc2d81f1-da5d-4957-9e17-63ac52ae3095"
             }
           ]
         },
         {
           "__guid": "c1943ee3-4058-427c-83b4-10265e7b17c6",
+          "Flags": 0,
           "Name": "Container",
           "Position": "0,0,32.81264",
           "Enabled": true,
@@ -235,48 +211,16 @@
               "__type": "Entity",
               "__guid": "d269879b-2314-4ced-8bda-487ca0f4c1a0",
               "Catagories": [],
-              "Container": [
-                {
-                  "id": 1543,
-                  "Categories": [
-                    "items",
-                    "weapons",
-                    "guns",
-                    "double barrel"
-                  ],
-                  "AttributeSets": [],
-                  "Container": []
-                },
-                {
-                  "id": 3245,
-                  "Categories": [
-                    "items",
-                    "weapons",
-                    "guns",
-                    "eh5"
-                  ],
-                  "AttributeSets": [],
-                  "Container": []
-                },
-                {
-                  "id": 246356,
-                  "Categories": [
-                    "items",
-                    "weapons",
-                    "guns",
-                    "m16"
-                  ],
-                  "AttributeSets": [],
-                  "Container": []
-                }
-              ],
-              "displayContainer": true
+              "Container": [],
+              "displayContainer": true,
+              "Equips": []
             }
           ]
         },
         {
           "__guid": "148edad2-75e6-4b37-8d87-ac27f1d7c006",
-          "Name": "Item",
+          "Flags": 0,
+          "Name": "eh5",
           "Position": "0,0,32.81264",
           "Enabled": true,
           "NetworkMode": 2,
@@ -289,7 +233,7 @@
                 "items",
                 "weapons",
                 "guns",
-                "double barrel"
+                "eh5"
               ],
               "sceneID": "1"
             },
@@ -300,6 +244,16 @@
                 {
                   "setName": "default",
                   "attributes": [
+                    {
+                      "AttributeName": "Ammo",
+                      "attributeType": "STRING"
+                    },
+                    {
+                      "AttributeName": "Current Mode"
+                    },
+                    {
+                      "AttributeName": "Current Bullet"
+                    },
                     {
                       "AttributeName": "Condition",
                       "attributeType": "FLOAT",
@@ -315,7 +269,8 @@
               "__guid": "1a9c7e1b-8340-4b30-833e-e66056703dca",
               "Catagories": [],
               "Container": [],
-              "displayContainer": false
+              "displayContainer": false,
+              "Equips": []
             }
           ]
         }
@@ -323,6 +278,7 @@
     },
     {
       "__guid": "5b72e11a-c0b4-464a-8e75-97930c4f7311",
+      "Flags": 0,
       "Name": "Plane",
       "Scale": "100,100,1",
       "Enabled": true,
@@ -342,13 +298,14 @@
           "__guid": "401e8e4d-7dd8-4a6f-ad1b-cc892ba2aa90",
           "Center": "0,0,0",
           "IsTrigger": false,
-          "Scale": "100,100,2",
+          "Scale": "100,100,4",
           "Static": true
         }
       ]
     },
     {
       "__guid": "f91163ba-a18b-495d-b415-2960241b7da0",
+      "Flags": 0,
       "Name": "Cube",
       "Position": "138.3749,3.018772,17.20144",
       "Scale": "1,1,35.6",
@@ -371,148 +328,6 @@
           "IsTrigger": false,
           "Scale": "50,50,50",
           "Static": false
-        }
-      ]
-    },
-    {
-      "__guid": "54b585d1-716b-495f-b647-7cb28a4f756c",
-      "Name": "IK Test",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "Components": [
-        {
-          "__type": "InverseKinematics",
-          "__guid": "99906948-29fd-4cf4-b4ec-616c92689d78",
-          "debug": true,
-          "elbow": {
-            "_type": "gameobject",
-            "go": "bee7c23d-1955-43d4-8849-59f95f96efcc"
-          },
-          "forearm": {
-            "_type": "gameobject",
-            "go": "86974ee6-db0e-43a3-856f-e39159754b1b"
-          },
-          "forearm_OffsetRotation": "-10.25,90.09,0",
-          "hand": {
-            "_type": "gameobject",
-            "go": "b2b52e0a-cc9e-4bf7-a55e-3b69992721d3"
-          },
-          "hand_OffsetRotation": "1,1,1",
-          "handMatchesTargetRotation": false,
-          "target": {
-            "_type": "gameobject",
-            "go": "425f7447-ed4d-46e1-879c-629282812850"
-          },
-          "upperArm": {
-            "_type": "gameobject",
-            "go": "76a7eca9-7d61-4ef3-a116-0f08346756f1"
-          },
-          "uppperArm_OffsetRotation": "74.2,85.06,0"
-        }
-      ],
-      "Children": [
-        {
-          "__guid": "76a7eca9-7d61-4ef3-a116-0f08346756f1",
-          "Name": "Object",
-          "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
-          "Children": [
-            {
-              "__guid": "88b18f37-5c9b-4b51-972e-17fcd13ac776",
-              "Name": "Cube",
-              "Position": "0,0,3.75",
-              "Scale": "0.03775689,0.03775689,0.15",
-              "Enabled": true,
-              "NetworkMode": 2,
-              "NetworkInterpolation": true,
-              "Components": [
-                {
-                  "__type": "Sandbox.ModelRenderer",
-                  "__guid": "f5582135-66ce-4761-b452-5d0c4a82f5ee",
-                  "BodyGroups": 18446744073709551615,
-                  "Model": "models/dev/box.vmdl",
-                  "RenderType": "On",
-                  "Tint": "1,1,1,1"
-                }
-              ]
-            },
-            {
-              "__guid": "86974ee6-db0e-43a3-856f-e39159754b1b",
-              "Name": "Object (1)",
-              "Position": "0,0,7.5",
-              "Enabled": true,
-              "NetworkMode": 2,
-              "NetworkInterpolation": true,
-              "Children": [
-                {
-                  "__guid": "4dec94ea-1385-4ea3-bf5e-cda05cf3a9c2",
-                  "Name": "Cube",
-                  "Position": "0,0,3.75",
-                  "Scale": "0.03775689,0.03775689,0.15",
-                  "Enabled": true,
-                  "NetworkMode": 2,
-                  "NetworkInterpolation": true,
-                  "Components": [
-                    {
-                      "__type": "Sandbox.ModelRenderer",
-                      "__guid": "377d9756-0726-4210-a374-7b4793e907ff",
-                      "BodyGroups": 18446744073709551615,
-                      "Model": "models/dev/box.vmdl",
-                      "RenderType": "On",
-                      "Tint": "1,1,1,1"
-                    }
-                  ]
-                },
-                {
-                  "__guid": "b2b52e0a-cc9e-4bf7-a55e-3b69992721d3",
-                  "Name": "Object (2)",
-                  "Position": "0,0,7.5",
-                  "Enabled": true,
-                  "NetworkMode": 2,
-                  "NetworkInterpolation": true,
-                  "Children": [
-                    {
-                      "__guid": "d1b67ee9-bb5c-4bff-95ab-c7538ae47eef",
-                      "Name": "Cube",
-                      "Position": "0,0,0.95",
-                      "Scale": "0.03775689,0.03775689,0.038",
-                      "Enabled": true,
-                      "NetworkMode": 2,
-                      "NetworkInterpolation": true,
-                      "Components": [
-                        {
-                          "__type": "Sandbox.ModelRenderer",
-                          "__guid": "b5073b88-e70d-4090-a965-c6dcc291131c",
-                          "BodyGroups": 18446744073709551615,
-                          "Model": "models/dev/box.vmdl",
-                          "RenderType": "On",
-                          "Tint": "1,1,1,1"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "__guid": "425f7447-ed4d-46e1-879c-629282812850",
-          "Name": "Object (1)",
-          "Position": "-0.9534121,-0.00000005682779,15.75401",
-          "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true
-        },
-        {
-          "__guid": "bee7c23d-1955-43d4-8849-59f95f96efcc",
-          "Name": "Object",
-          "Position": "-5.796623,-0.0000003455057,6.556187",
-          "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true
         }
       ]
     }
@@ -540,7 +355,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-05-09T00:55:05.205643\u002B07:00",
+  "LastSaved": "2024-05-13T19:33:23.6542684\u002B07:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

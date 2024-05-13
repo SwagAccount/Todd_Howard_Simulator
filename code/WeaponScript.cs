@@ -6,6 +6,7 @@ public sealed class WeaponScript : Component
 	[Property] public Weapon weapon {get;set;}
 	[Property] public SkinnedModelRenderer SkinnedModel {get;set;}
 	[Property] public PlayerController playerController {get;set;}
+	[Property] public bool inInv {get;set;}
 	[Property] public int WeaponIndex {get;set;}
 	[Property] public bool canShoot {get;set;}
 	[Property] private List<string> bulletIgnore{ get; set; }
@@ -29,14 +30,13 @@ public sealed class WeaponScript : Component
     bool startreload;
     Vector3 gpos;
 	Angles gang;
-    [Property ] bool pauseGun = false;
+    [Property] public bool pauseGun {get;set;}= false;
     int gunEquipSlot;
     int lastGunEquipSlot = -1;
 	protected override void OnStart()
 	{
 		playerController = GameObject.Parent.Parent.Components.Get<PlayerController>();
 		playerEntity = GameObject.Parent.Parent.Components.Get<Entity>();
-        gunEquipSlot = playerEntity.getEquip("weapons");
 	}
 	[Property] int currentMode;
 	[Property] int bulletType;
@@ -44,40 +44,48 @@ public sealed class WeaponScript : Component
 
     [Property] int weaponSlot;
     int lastWeaponSlot = -1;
+    bool lastInInv;
 	protected override void OnUpdate()
 	{
-        weaponSlot = playerEntity.Equips[gunEquipSlot].GetContainerIndex(playerEntity);
+        gunEquipSlot = playerEntity.getEquip("weapons");
+        if(gunEquipSlot > -1 && !inInv) weaponSlot = playerEntity.Equips[gunEquipSlot].GetContainerIndex(playerEntity);
 
 
-        if(gunEquipSlot != lastGunEquipSlot || weaponSlot != lastWeaponSlot)
+        if((gunEquipSlot != lastGunEquipSlot && !inInv) || weaponSlot != lastWeaponSlot || inInv != lastInInv)
         {
             changeGun();
         }
         
         mainFov = 90; //settings.fovValue
+        GunPosition();
         if(!pauseGun)
         {
             if(weapon!=null)
             {
 
                 gunInput();
-                GunPosition();
+                
                 if(weapon.LoadedParam != "") SkinnedModel.Set(weapon.LoadedParam, clipContent.Length-1 > 0);
+                if(gunEquipSlot != -1 && !inInv)
+                {
+                    playerEntity.Container[WeaponIndex].AttributeSets[0].attributes[0].stringValue = clipContent.Length > 1 ? clipContent.Substring(1) : "";
+                    playerEntity.Container[WeaponIndex].AttributeSets[0].attributes[1].intValue = currentMode;
+                    playerEntity.Container[WeaponIndex].AttributeSets[0].attributes[2].intValue = bulletType;
+                }
+                
             }
         }
 
         
 
         
-        
+        lastInInv = inInv;
         lastWeaponSlot = weaponSlot;
         lastGunEquipSlot = gunEquipSlot;
-		playerEntity.Container[WeaponIndex].AttributeSets[0].attributes[0].stringValue = clipContent.Length > 1 ? clipContent.Substring(1) : "";
-		playerEntity.Container[WeaponIndex].AttributeSets[0].attributes[1].intValue = currentMode;
-		playerEntity.Container[WeaponIndex].AttributeSets[0].attributes[2].intValue = bulletType;
+		
 	}
 	int ammoIndex;
-	bool isReloading;
+	[Property] bool isReloading {get;set;}
     bool cantShoot;
 	float targetFov;
 	int shotsFired = 0;
@@ -87,7 +95,11 @@ public sealed class WeaponScript : Component
 	async void gunInput()
 	{
         
-		ammoIndex = playerEntity.Attributes.getAttributeIndex(weapon.bulletStats[bulletType].ammoType, "default");
+        if(weapon.CannotShoot && weapon.CannotReload)
+        {
+            return;
+        }
+		if(!weapon.CannotReload) ammoIndex = playerEntity.Attributes.getAttributeIndex(weapon.bulletStats[bulletType].ammoType, "default");
 
 		if (Input.Pressed("changeAmmoType") && !isReloading)
         {
@@ -112,20 +124,20 @@ public sealed class WeaponScript : Component
         }
 		if (!weapon.notReloadable)
         {
-            if(!cantShoot && Input.Pressed("reload") && playerEntity.Attributes.attributeSets[0].attributes[ammoIndex].intValue > 0)
+            if(!weapon.CannotReload && !cantShoot && Input.Pressed("reload") && playerEntity.Attributes.attributeSets[0].attributes[ammoIndex].intValue > 0)
             {
                 Log.Info("Try Reload");
                 toReload();
             }
         }
-        if (canShoot && Input.Pressed("attack1") && clipContent.Length-1 >= weapon.modes[currentMode].ammoNeeded && !cantShoot)
+        if (!weapon.CannotShoot && canShoot && Input.Pressed("attack1") && clipContent.Length-1 >= weapon.modes[currentMode].ammoNeeded && !cantShoot && !isReloading)
         {
             isReloading = false;
             if(SkinnedModel != null) SkinnedModel.Set(weapon.fireParam, true);
             await Task.DelayRealtimeSeconds(weapon.modes[currentMode].timeBeforeShooting);
             Shoot();
         }
-        else if (weapon.modes[currentMode].buttonHold && canShoot && Input.Down("attack1") && clipContent.Length-1 >= weapon.modes[currentMode].ammoNeeded && !cantShoot)
+        else if (!weapon.CannotShoot && weapon.modes[currentMode].buttonHold && canShoot && Input.Down("attack1") && clipContent.Length-1 >= weapon.modes[currentMode].ammoNeeded && !cantShoot && !isReloading)
         {
             isReloading = false;
             if(SkinnedModel != null) SkinnedModel.Set(weapon.fireParam, true);
@@ -136,12 +148,12 @@ public sealed class WeaponScript : Component
 	}
 	async void toReload()
     {
-        Log.Info("Reloading");
         if (!weapon.cantOverReload && clipContent.Length-1 >= weapon.clipSize)
         {
             return;
         }
         isReloading = true;
+        
 		if(clipContent.Length-1 > 0)
         {
             if(SkinnedModel != null) SkinnedModel.Set(weapon.reloadCParam, true);
@@ -152,6 +164,7 @@ public sealed class WeaponScript : Component
         }
         await Task.DelayRealtimeSeconds(weapon.reloadWarmTime);
         Reload();
+        
     }
 	public double GetRandomNumberInRange(double minNumber, double maxNumber)
 	{
@@ -159,7 +172,7 @@ public sealed class WeaponScript : Component
 	}
 	async void Reload()
     {
-        Log.Info("Reload animation");
+        
         cantShoot = false;
         shotsFired = 0;
         float length = weapon.reloadNoCTime;
@@ -186,7 +199,7 @@ public sealed class WeaponScript : Component
     }
 	private Vector3 GetShotDirection()
     {
-        
+        cam = Scene.Camera;
         Vector3 shotDirection = (SkinnedModel.GetAttachment("Tip")?? default).Forward;
         if (weapon.shootFromCam)
         {
@@ -204,7 +217,7 @@ public sealed class WeaponScript : Component
     }
 	async void Shoot()
     {
-        if (clipContent.Length-1 <= 0 && !weapon.notReloadable)
+        if (!weapon.CannotReload && clipContent.Length-1 <= 0 && !weapon.notReloadable)
         {
             toReload();
             return;
@@ -232,7 +245,8 @@ public sealed class WeaponScript : Component
             sP.SoundEvent = weapon.sound;
             sP.StartSound();
         }
-        Log.Info(int.Parse($"{clipContent[1]}"));
+        
+        
         for (int i = 0; i < weapon.bulletStats[int.Parse($"{clipContent[1]}")].shotsPer; i++)
         {
             Vector3 rayDirection = GetShotDirection();
@@ -246,7 +260,6 @@ public sealed class WeaponScript : Component
 				var sTR = Scene.Trace.Ray(rayPosition,rayPosition+(rayDirection * weapon.range)).Size(1f).IgnoreGameObject(playerController.GameObject).WithoutTags(bulletIgnore.ToArray()).UseHitboxes().Run();
                 if(sTR.GameObject != null || sTR.Hitbox != null)
                 {
-                    
                     float dm = 1;
                     GameObject bh = bHoleDB.FindBulletHoleByMaterial(sTR.Surface.ResourceName);
                     if(bh!=null)
@@ -263,7 +276,6 @@ public sealed class WeaponScript : Component
                             foreach(string s in tags)
                             {
                                 tag = s;
-                                Log.Info($"Damage Multiplier of {s}");
                                 break; 
                             }
                             dm = tag.ToFloat();
@@ -343,12 +355,10 @@ public sealed class WeaponScript : Component
     }
 	private void ResetReload()
     {
-        Log.Info("Finish Reload");
         if (isReloading)
         {
             for (int i = 0; i < weapon.reloadMount; i++)
             {
-                Log.Info("cock");
                 if(clipContent.Length-1 < weapon.clipSize && playerEntity.Attributes.attributeSets[0].attributes[ammoIndex].intValue > 0)
                 {
                     clipContent = $"{clipContent}{bulletType}";
@@ -397,19 +407,20 @@ public sealed class WeaponScript : Component
        
         float A = MathF.Sqrt(rayDis+(rayDis+1));
         
-        float angle = (trace.Hit && !float.IsNaN(-MathF.Acos(trace.Distance/(rayDis+1))) && !float.IsNaN(-MathF.Acos(trace.Distance/(rayDis+1)))) ? ((-MathF.Acos(trace.Distance/(rayDis+1)) * 180 / MathF.PI) - cam.GameObject.Parent.Transform.LocalRotation.Angles().pitch) : 0f;
+        float angle = gunEquipSlot == -1 ? 0 : (trace.Hit && !float.IsNaN(-MathF.Acos(trace.Distance/(rayDis+1))) && !float.IsNaN(-MathF.Acos(trace.Distance/(rayDis+1)))) ? ((-MathF.Acos(trace.Distance/(rayDis+1)) * 180 / MathF.PI) - cam.GameObject.Parent.Transform.LocalRotation.Angles().pitch) : 0f;
         
         recoilOffsetPos = Vector3.Lerp(recoilOffsetPos,Vector3.Zero,weapon.recoilReset*Time.Delta);
         recoilOffsetRot = Angles.Lerp(recoilOffsetRot,Angles.Zero,weapon.recoilReset*Time.Delta);
         //cam.FieldOfView = MathX.Lerp(cam.FieldOfView, targetFov,weapon.posSpeed*Time.Delta);
 		gpos = Vector3.Lerp(gpos, targetPos, weapon.posSpeed*Time.Delta);
 		gang = Angles.Lerp(gang, targetAngles, weapon.rotSpeed*Time.Delta);
-        sway = Angles.Lerp(sway,new Angles(Input.AnalogLook.pitch*weapon.swayPitch*Preferences.Sensitivity,Input.AnalogLook.yaw*Preferences.Sensitivity*weapon.swayYaw,0),swaySmooth*Time.Delta);
+        sway = playerController.Enabled ? Angles.Lerp(sway,new Angles(Input.AnalogLook.pitch*weapon.swayPitch*Preferences.Sensitivity,Input.AnalogLook.yaw*Preferences.Sensitivity*weapon.swayYaw,0),swaySmooth*Time.Delta) : Angles.Zero;
         SkinnedModel.Transform.LocalPosition = gpos+recoilOffsetPos;
         SkinnedModel.Transform.LocalRotation = gang+recoilOffsetRot+(new Angles(1,0,0)*angle)+sway;
 	}
     async void changeGun()
     {
+        gunEquipSlot = playerEntity.getEquip("weapons");
         if(weapon!=null)
         {
             pauseGun = true;
@@ -417,32 +428,33 @@ public sealed class WeaponScript : Component
             await Task.DelayRealtimeSeconds(weapon.deployTime);
         }
 
-
-        weapon = CustomFunctions.GetResource<Weapon>(playerEntity.Container[weaponSlot].Categories, "weapon");
-        SkinnedModel.CreateBoneObjects = false;
-        SkinnedModel.Model = Model.Load($"models/{string.Join("/", playerEntity.Container[weaponSlot].Categories)}.vmdl");
-        SkinnedModel.AnimationGraph = AnimationGraph.Load($"models/{string.Join("/", playerEntity.Container[weaponSlot].Categories)}.vanmgrph");
-        SkinnedModel.CreateBoneObjects = true;
-        clipContent = ".";
-        clipContent += playerEntity.Container[weaponSlot].AttributeSets[0].attributes[0].stringValue;
-		currentMode = playerEntity.Container[weaponSlot].AttributeSets[0].attributes[1].intValue;
-		bulletType = playerEntity.Container[weaponSlot].AttributeSets[0].attributes[2].intValue;
-        //leftHand.followed = noGunHandLPos;
-        //rightHand.followed = noGunHandRPos;
-        /*if(selectedGun != "")
+        if(inInv)
         {
-            GameObject newGun = findGun(selectedGun).Clone();
-            newGun.Parent = GameObject;
-            newGun.Transform.LocalPosition = Vector3.Zero;
-            newGun.Transform.LocalRotation = Angles.Zero;
-            weapon = newGun.Components.Get<GunValues>();
-            followHands();
+            weapon = ResourceLibrary.Get<Weapon>("gameresources/phone.weapon");
+            SkinnedModel.Model = Model.Load($"models/phoneweapon.vmdl");
+            SkinnedModel.AnimationGraph = AnimationGraph.Load($"models/phoneweapon.vanmgrph");
+            clipContent = ".";
+        }
+        else if (gunEquipSlot == -1)
+        {
+            weapon = ResourceLibrary.Get<Weapon>("gameresources/punch.weapon");
+            SkinnedModel.Model = Model.Load($"models/punch.vmdl");
+            SkinnedModel.AnimationGraph = AnimationGraph.Load($"models/punch.vanmgrph");
+            clipContent = ".0";
         }
         else
         {
-            weapon = null;
+            weapon = CustomFunctions.GetResource<Weapon>(playerEntity.Container[weaponSlot].Categories, "weapon");
+            SkinnedModel.Model = Model.Load($"models/{string.Join("/", playerEntity.Container[weaponSlot].Categories)}.vmdl");
+            SkinnedModel.AnimationGraph = AnimationGraph.Load($"models/{string.Join("/", playerEntity.Container[weaponSlot].Categories)}.vanmgrph");
+            clipContent = ".";
+            clipContent += playerEntity.Container[weaponSlot].AttributeSets[0].attributes[0].stringValue;
+            currentMode = playerEntity.Container[weaponSlot].AttributeSets[0].attributes[1].intValue;
+            bulletType = playerEntity.Container[weaponSlot].AttributeSets[0].attributes[2].intValue;
         }
-        */
+        SkinnedModel.Transform.LocalPosition = weapon.targetPosIdle;
+        SkinnedModel.Transform.LocalRotation = weapon.targetRotIdle;
+        await Task.DelayRealtimeSeconds(weapon.deployTime);
         pauseGun = false;
 		
     }

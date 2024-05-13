@@ -239,7 +239,7 @@
 						"m_DefaultSolverSettings.m_SolverType " = "IKSOLVER_TwoBone"
 						"m_DefaultTargetSettings.m_Bone" = 
 						{
-							m_Name = "Bone_030"
+							m_Name = "target"
 						}
 						"m_DefaultTargetSettings.m_TargetSource" = "Animgraph Parameter"
 						"m_Data.m_DefaultTargetSettings.m_AnimgraphParameterNamePosition" = 
@@ -253,6 +253,20 @@
 						"m_Data.m_bParentJointRequiresAlignment" = true
 					},
 				]
+			},
+			{
+				_class = "BoneMarkupList"
+				children = 
+				[
+					{
+						_class = "BoneMarkup"
+						target_bone = "target"
+						ignore_Translation = false
+						ignore_rotation = false
+						do_not_discard = false
+					},
+				]
+				bone_cull_type = "Aggressive"
 			},
 		]
 		model_archetype = ""

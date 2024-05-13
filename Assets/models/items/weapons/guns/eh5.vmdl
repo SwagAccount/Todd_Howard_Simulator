@@ -57,6 +57,7 @@
 						ignore_Translation = false
 						ignore_rotation = false
 						do_not_discard = false
+						hidden = false
 					},
 					{
 						_class = "BoneMarkup"
@@ -64,6 +65,7 @@
 						ignore_Translation = false
 						ignore_rotation = false
 						do_not_discard = false
+						hidden = false
 					},
 				]
 				bone_cull_type = "Aggressive"
@@ -75,6 +77,35 @@
 					{
 						_class = "AnimFile"
 						name = "Idle"
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 0
+								event_keys = 
+								{
+									TypeName = "LPose"
+									Int = 3
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = ""
+								}
+							},
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 0
+								event_keys = 
+								{
+									TypeName = "RPose"
+									Int = 4
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = ""
+								}
+							},
+						]
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -98,6 +129,61 @@
 					{
 						_class = "AnimFile"
 						name = "Reload"
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 0
+								event_keys = 
+								{
+									TypeName = "LPose"
+									Int = 3
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = ""
+								}
+							},
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 0
+								event_keys = 
+								{
+									TypeName = "RPose"
+									Int = 4
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = ""
+								}
+							},
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 68
+								event_keys = 
+								{
+									TypeName = "LPose"
+									Int = 1
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = ""
+								}
+							},
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 80
+								event_keys = 
+								{
+									TypeName = "LPose"
+									Int = 3
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = ""
+								}
+							},
+						]
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -121,6 +207,87 @@
 					{
 						_class = "AnimFile"
 						name = "ReloadWithC"
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 0
+								event_keys = 
+								{
+									TypeName = "LPose"
+									Int = 3
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = ""
+								}
+							},
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 0
+								event_keys = 
+								{
+									TypeName = "RPose"
+									Int = 4
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = ""
+								}
+							},
+						]
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						disable_interpolation = false
+						enable_scale = false
+						source_filename = "models/items/weapons/guns/eh5.fbx"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 4
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "Shoot"
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 0
+								event_keys = 
+								{
+									TypeName = "LPose"
+									Int = 3
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = ""
+								}
+							},
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 0
+								event_keys = 
+								{
+									TypeName = "RPose"
+									Int = 5
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = ""
+								}
+							},
+						]
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -143,30 +310,36 @@
 					},
 					{
 						_class = "AnimFile"
-						name = "Shoot"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						disable_interpolation = false
-						enable_scale = false
-						source_filename = "models/items/weapons/guns/eh5.fbx"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 6
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
 						name = "Deploy"
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 0
+								event_keys = 
+								{
+									TypeName = "LPose"
+									Int = 3
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = ""
+								}
+							},
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 0
+								event_keys = 
+								{
+									TypeName = "RPose"
+									Int = 4
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = ""
+								}
+							},
+						]
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -190,6 +363,35 @@
 					{
 						_class = "AnimFileReverse"
 						name = "UnDelpoy"
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 0
+								event_keys = 
+								{
+									TypeName = "LPose"
+									Int = 3
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = ""
+								}
+							},
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 0
+								event_keys = 
+								{
+									TypeName = "RPose"
+									Int = 4
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = ""
+								}
+							},
+						]
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -219,16 +421,12 @@
 				[
 					{
 						_class = "ModelModifier_ScaleAndMirror"
-						scale = 0.058
+						scale = 0.067976
 						mirror_x = false
 						mirror_y = false
 						mirror_z = false
 						flip_bone_forward = false
 						swap_left_and_right_bones = false
-					},
-					{
-						_class = "ModelModifier_Translate"
-						translation = [ 0.0, 0.0, 0.0 ]
 					},
 				]
 			},
@@ -240,8 +438,8 @@
 						_class = "Attachment"
 						name = "Right_Hand"
 						parent_bone = "Bone_001"
-						relative_origin = [ -6.98276, -16.2759, 28.137932 ]
-						relative_angles = [ 13.5, -178.0, 172.5 ]
+						relative_origin = [ -4.04555, -19.2715, 25.641403 ]
+						relative_angles = [ 17.9, -180.0, -180.0 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -249,8 +447,8 @@
 						_class = "Attachment"
 						name = "Left_Hand"
 						parent_bone = "Bone_007"
-						relative_origin = [ 3.5, -26.637899, 19.7759 ]
-						relative_angles = [ -48.599998, 155.399994, 65.800003 ]
+						relative_origin = [ -23.3612, -34.8064, -5.781546 ]
+						relative_angles = [ 81.0, -168.399994, -167.5 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -262,6 +460,36 @@
 						relative_angles = [ -0.0, 89.999901, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
+					},
+				]
+			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsHullFile"
+						name = "eh5"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = false
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/items/weapons/guns/eh5.fbx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
 					},
 				]
 			},
