@@ -35,6 +35,7 @@ public sealed class CustomFunctions
     public static SaveClasses.EntitySave SaveEntity(Entity entity)
     {
         SaveClasses.EntitySave newEntity = new SaveClasses.EntitySave(); 
+        newEntity.id = entity.Ids.sceneID;
         newEntity.Categories = entity.Ids.Categories;
         newEntity.displayContainer = entity.displayContainer;
 

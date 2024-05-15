@@ -3,7 +3,7 @@ using Sandbox;
 
 public sealed class CommandDealer : Component
 {
-	[Property] public string sceneIdSelected {get;set;}
+	[Property] public int sceneIdSelected {get;set;}
 	[Property] public Attributes player {get;set;}
 	[Property] public GameObject Saved {get;set;}
 	[Property] public int nextCode {get;set;}
@@ -14,7 +14,7 @@ public sealed class CommandDealer : Component
 		{
 			Ids ids = c.Components.Get<Ids>();
 			nextCode++;
-			ids.sceneID = nextCode.ToString();
+			ids.sceneID = nextCode;
 		}
 	}
 	
@@ -58,7 +58,7 @@ public sealed class CommandDealer : Component
 		g.Transform.Rotation = rotation;
 		Ids ids = g.Components.Create<Ids>();
 		nextCode++;
-		ids.sceneID = nextCode.ToString();
+		ids.sceneID = nextCode;
 		ids.Categories = entitySave.Categories;
 		Entity entity = g.Components.Create<Entity>();
 		entity.displayContainer = entitySave.displayContainer;
@@ -227,7 +227,7 @@ public sealed class CommandDealer : Component
 		}
 	}
 
-	public void SelectID(string id)
+	public void SelectID(int id)
 	{
 		foreach(GameObject g in Saved.Children)
 		{
@@ -280,7 +280,7 @@ public sealed class CommandDealer : Component
 	}
 
 	[ConCmd( "SelectID" )]
-	public static void SelectIDTo(string id)
+	public static void SelectIDTo(int id)
 	{
 		CommandDealer commandDealer = getCommandDealer();
 		commandDealer.SelectID(id);

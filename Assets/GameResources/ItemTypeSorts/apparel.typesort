@@ -1,0 +1,11 @@
+{
+  "Name": null,
+  "SortTypes": [
+    "Name",
+    "Weight",
+    "Value"
+  ],
+  "ResourceVersion": 0,
+  "__version": 0,
+  "__references": []
+}

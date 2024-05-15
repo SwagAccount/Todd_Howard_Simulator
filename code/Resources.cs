@@ -37,6 +37,7 @@ public sealed class Weapon : GameResource
     [Category("Audio and Visual Effects")][Property] public List<int> leftHand { get; set; }
     [Category("Audio and Visual Effects")][Property] public List<int> rightHand { get; set; }
 
+    [Category("Reload Mechanics")][Property] public bool interuptReload { get; set; }
     [Category("Reload Mechanics")][Property] public int reloadMount { get; set; }
     [Category("Reload Mechanics")][Property] public float reloadWarmTime { get; set; }
     [Category("Reload Mechanics")][Property] public bool notReloadable { get; set; }

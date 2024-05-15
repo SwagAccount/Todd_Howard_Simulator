@@ -17,7 +17,7 @@ public sealed class WeaponScript : Component
 	[Property] public GameObject noGunHandRPos { get; set; }
 	[Property] private GameObject gunSound { get; set; }
 	[Property] private BulletHoleDB bHoleDB { get; set; }
-	[Property] private Entity playerEntity { get; set; }
+	[Property] public Entity playerEntity { get; set; }
 	[Property] private CameraComponent cam { get; set; }
 	[Property] private float swaySmooth { get; set; }  = 0.5f;
 	[Property] private float cameraBlockDis { get; set; }  = 50f;
@@ -65,7 +65,7 @@ public sealed class WeaponScript : Component
 
                 gunInput();
                 
-                if(weapon.LoadedParam != "") SkinnedModel.Set(weapon.LoadedParam, clipContent.Length-1 > 0);
+                if(weapon.LoadedParam != null) SkinnedModel.Set(weapon.LoadedParam, clipContent.Length-1 > 0);
                 if(gunEquipSlot != -1 && !inInv)
                 {
                     playerEntity.Container[WeaponIndex].AttributeSets[0].attributes[0].stringValue = clipContent.Length > 1 ? clipContent.Substring(1) : "";
@@ -130,19 +130,19 @@ public sealed class WeaponScript : Component
                 toReload();
             }
         }
-        if (!weapon.CannotShoot && canShoot && Input.Pressed("attack1") && clipContent.Length-1 >= weapon.modes[currentMode].ammoNeeded && !cantShoot && !isReloading)
+        if (!weapon.CannotShoot && canShoot && Input.Pressed("attack1") && clipContent.Length-1 >= weapon.modes[currentMode].ammoNeeded && !cantShoot && (!isReloading || weapon.interuptReload))
         {
-            isReloading = false;
             if(SkinnedModel != null) SkinnedModel.Set(weapon.fireParam, true);
             await Task.DelayRealtimeSeconds(weapon.modes[currentMode].timeBeforeShooting);
             Shoot();
+            isReloading = false;
         }
-        else if (!weapon.CannotShoot && weapon.modes[currentMode].buttonHold && canShoot && Input.Down("attack1") && clipContent.Length-1 >= weapon.modes[currentMode].ammoNeeded && !cantShoot && !isReloading)
+        else if (!weapon.CannotShoot && weapon.modes[currentMode].buttonHold && canShoot && Input.Down("attack1") && clipContent.Length-1 >= weapon.modes[currentMode].ammoNeeded && !cantShoot && (!isReloading || weapon.interuptReload))
         {
-            isReloading = false;
             if(SkinnedModel != null) SkinnedModel.Set(weapon.fireParam, true);
             await Task.DelayRealtimeSeconds(weapon.modes[currentMode].timeBeforeShooting);
             Shoot();
+            isReloading = false;
         }
         
 	}
@@ -230,6 +230,7 @@ public sealed class WeaponScript : Component
         {
             if(SkinnedModel != null) SkinnedModel.Set(weapon.fireParam, true);
         }
+        if(isReloading) await Task.Frame();
         cantShoot = true;
         Recoil();
         if(weapon.flash!=null)
@@ -325,8 +326,8 @@ public sealed class WeaponScript : Component
         }
         
         shotsFired++;
-
-        for(int b = 0; b < weapon.modes[currentMode].ammoUse; b++) clipContent = clipContent.Length-1 > 1 ? clipContent.Substring(2) : ".";
+        
+        for(int b = 0; b < weapon.modes[currentMode].ammoUse; b++) clipContent = clipContent.Length > 1 ? $".{clipContent.Substring(2)}" : ".";
 
         if (shotsFired < weapon.modes[currentMode].shotsPerShoot)
         {
@@ -407,7 +408,7 @@ public sealed class WeaponScript : Component
        
         float A = MathF.Sqrt(rayDis+(rayDis+1));
         
-        float angle = gunEquipSlot == -1 ? 0 : (trace.Hit && !float.IsNaN(-MathF.Acos(trace.Distance/(rayDis+1))) && !float.IsNaN(-MathF.Acos(trace.Distance/(rayDis+1)))) ? ((-MathF.Acos(trace.Distance/(rayDis+1)) * 180 / MathF.PI) - cam.GameObject.Parent.Transform.LocalRotation.Angles().pitch) : 0f;
+        float angle = 0;// gunEquipSlot == -1 ? 0 : (trace.Hit && !float.IsNaN(-MathF.Acos(trace.Distance/(rayDis+1))) && !float.IsNaN(-MathF.Acos(trace.Distance/(rayDis+1)))) ? ((-MathF.Acos(trace.Distance/(rayDis+1)) * 180 / MathF.PI) - cam.GameObject.Parent.Transform.LocalRotation.Angles().pitch) : 0f;
         
         recoilOffsetPos = Vector3.Lerp(recoilOffsetPos,Vector3.Zero,weapon.recoilReset*Time.Delta);
         recoilOffsetRot = Angles.Lerp(recoilOffsetRot,Angles.Zero,weapon.recoilReset*Time.Delta);

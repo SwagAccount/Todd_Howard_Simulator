@@ -18,6 +18,7 @@ public sealed class FollowAttachment : Component
 
 	protected override void OnPreRender()
 	{
+		
 		if(WeaponScript.weapon.ExactArm)
 		{
 			Arm.BoneMergeTarget = Gun;
@@ -38,7 +39,16 @@ public sealed class FollowAttachment : Component
 			Arm.Set("HandPoseRight", RPose);
 		}
 		
-		
+		int apparelEquipSlot = WeaponScript.playerEntity.getEquip("apparel");
+		if(apparelEquipSlot != -1)
+		{
+			int weaponSlot = WeaponScript.playerEntity.Equips[apparelEquipSlot].GetContainerIndex(WeaponScript.playerEntity);
+			Arm.Model = Model.Load($"models/{string.Join("/", WeaponScript.playerEntity.Container[weaponSlot].Categories)}-arms.vmdl");
+		}
+		else
+		{
+			Arm.Model = Model.Load("models/arms.vmdl");
+		}
 
 		Gun.OnGenericEvent = (a) =>
         {

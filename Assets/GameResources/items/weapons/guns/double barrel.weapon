@@ -1,39 +1,69 @@
 {
-  "ViewModel": null,
   "flash": null,
+  "CannotShoot": false,
+  "CannotReload": false,
+  "ExactArm": false,
   "shootFromCam": false,
   "shootTime": 0.1,
   "deployTime": 0,
   "range": 52493,
   "clipSize": 2,
   "hasFakeProjectile": false,
-  "modes": [],
+  "modes": [
+    {
+      "ammoUse": 1,
+      "ammoNeeded": 1
+    }
+  ],
   "bulletStats": [
     {
-      "ammoType": "Buckshot",
+      "ammoType": "9mm",
       "shotsPer": 10,
+      "spreadX": 0.05,
+      "spreadY": 0.05,
       "damage": 5
     }
   ],
+  "minMaxRecoilPos": [
+    "-2,0,0",
+    "-3,0,0.6"
+  ],
+  "minMaxRecoilRot": [
+    "-4.2,-3,-6",
+    "4.2,3,-9"
+  ],
+  "targetPosIdle": "7.599999,-1.3,-3.199999",
+  "targetRotIdle": "0,90,0",
+  "targetPosAim": "7.6,0,-1.8",
+  "targetRotAim": "0,90,0",
+  "targetPosRun": "0,0,0",
+  "targetRotRun": "0,0,0",
   "sound": null,
-  "fireParam": null,
-  "reloadCParam": null,
-  "reloadNoCParam": null,
-  "unDeployParam": null,
-  "LoadedParam": null,
+  "fireParam": "Fire",
+  "reloadCParam": "reloadC",
+  "reloadNoCParam": "reloadNoC",
+  "unDeployParam": "unDeploy",
+  "LoadedParam": "",
+  "recoilReset": 5,
+  "posSpeed": 10,
+  "rotSpeed": 10,
+  "swayYaw": 0.6,
+  "swayPitch": 0.6,
+  "leftHand": [],
+  "rightHand": [],
+  "interuptReload": true,
   "reloadMount": 1,
-  "reloadWarmTime": 0,
+  "reloadWarmTime": 0.916,
   "notReloadable": false,
-  "reloadTillFull": false,
+  "reloadTillFull": true,
   "cantOverReload": false,
   "letGoAtZeroAmmo": false,
-  "stopReload": null,
-  "reloadCTime": 0.5,
-  "reloadNoCTime": 0.5,
+  "stopReload": "finishReload",
+  "reloadCTime": 0.812,
+  "reloadNoCTime": 0.812,
   "runReload": false,
   "fovMult": 0.66,
   "sensMult": 1,
-  "ResourceVersion": 0,
   "__version": 0,
   "__references": []
 }
