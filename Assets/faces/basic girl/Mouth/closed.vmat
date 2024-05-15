@@ -8,7 +8,7 @@ Layer0
 	TextureAmbientOcclusion "materials/default/default_ao.tga"
 
 	//---- Color ----
-	TextureColor "faces/basic guy/mouth/angry.png"
+	TextureColor "faces/basic girl/mouth/closed.png"
 
 	//---- Fog ----
 	g_bFogEnabled "1"

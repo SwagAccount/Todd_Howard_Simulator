@@ -520,6 +520,7 @@
             "go": "4377b6c4-3f72-4b08-bcb7-01b6154a71b0",
             "component_type": "SkinnedModelRenderer"
           },
+          "BlinkRate": 1,
           "Body": {
             "_type": "component",
             "component_id": "d92d538e-10eb-498b-9f63-0e6c0e00568a",
@@ -536,6 +537,27 @@
             ],
             "AttributeSets": [],
             "Container": []
+          },
+          "Expression": "",
+          "FaceStrech": "3,3",
+          "FaceType": "basic guy",
+          "LeftEye": {
+            "_type": "component",
+            "component_id": "fbcdf0df-e5e7-44b5-9bc6-f08be1f19dc4",
+            "go": "8d7f47e9-22d5-4315-a0cd-1220baf33446",
+            "component_type": "DecalRenderer"
+          },
+          "Mouth": {
+            "_type": "component",
+            "component_id": "4ad78d17-31db-4416-9213-3a3e619bb7bd",
+            "go": "f19f4e6a-3f56-4757-b6cc-1a309f832b4a",
+            "component_type": "DecalRenderer"
+          },
+          "RightEye": {
+            "_type": "component",
+            "component_id": "2d9d8e4a-3562-4e76-a0af-3aa56a128499",
+            "go": "17ca2ddd-41f9-4f89-b778-be8c0f058487",
+            "component_type": "DecalRenderer"
           },
           "SkinColour": 0.7,
           "SkinColourGradient": {
@@ -558,7 +580,9 @@
               }
             ],
             "alpha": []
-          }
+          },
+          "Talking": false,
+          "TalkRate": 1
         }
       ],
       "Children": [
@@ -775,8 +799,8 @@
                                       "__guid": "f19f4e6a-3f56-4757-b6cc-1a309f832b4a",
                                       "Flags": 0,
                                       "Name": "mouth",
-                                      "Position": "-0.00004073792,-0.9572509,5.403047",
-                                      "Rotation": "0.6123723,0.6123728,-0.3535531,0.3535533",
+                                      "Position": "-0.00003815172,0.06958792,5.735445",
+                                      "Rotation": "-0.522998,-0.5229985,0.4758913,-0.4758918",
                                       "Enabled": true,
                                       "NetworkMode": 2,
                                       "NetworkInterpolation": true,
@@ -797,9 +821,9 @@
                                     {
                                       "__guid": "17ca2ddd-41f9-4f89-b778-be8c0f058487",
                                       "Flags": 0,
-                                      "Name": "eye (1)",
+                                      "Name": "eye",
                                       "Position": "1.233,3.972996,4.924437",
-                                      "Rotation": "0.4521519,0.4521519,-0.543653,0.543653",
+                                      "Rotation": "-0.4521518,0.4521518,-0.5436533,-0.5436532",
                                       "Enabled": true,
                                       "NetworkMode": 2,
                                       "NetworkInterpolation": true,
@@ -811,7 +835,7 @@
                                           "CutoffAngleSoftness": 5,
                                           "Material": "faces/basic guy/eye/open.vmat",
                                           "Mod2XBlending": false,
-                                          "Size": "3,3,3",
+                                          "Size": "3,3,-3",
                                           "TintColor": "1,1,1,1",
                                           "TriPlanar": false
                                         }
@@ -1040,7 +1064,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-05-15T15:25:54.7629201\u002B07:00",
+  "LastSaved": "2024-05-15T19:55:23.2186205\u002B07:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

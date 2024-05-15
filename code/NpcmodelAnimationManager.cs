@@ -19,6 +19,10 @@ public sealed class NpcmodelAnimationManager : Component
 	[Category("Face")][Property] private DecalRenderer Mouth {get;set;}
 	float Talk;
 	float Blink;
+
+	Vector3 lWigg;
+	Vector3 rWigg;
+	Vector3 mWigg;
 	protected override void OnUpdate()
 	{
 		Body.Tint = SkinColourGradient.Evaluate(SkinColour);
@@ -37,9 +41,17 @@ public sealed class NpcmodelAnimationManager : Component
 		Talk += Time.Delta * TalkRate * 20f;
 		Blink += Time.Delta * BlinkRate * 1.25f;
 
-		LeftEye.Size = new Vector3(FaceStrech.x,FaceStrech.y,3);
-		RightEye.Size = new Vector3(FaceStrech.x,FaceStrech.y,3);
-		Mouth.Size = new Vector3(FaceStrech.x,FaceStrech.y,3);
+		lWigg += Vector3.Random/20;
+		mWigg += Vector3.Random/20;
+		rWigg += Vector3.Random/20;
+
+		lWigg = lWigg.Clamp(Vector3.Zero, Vector3.One/20);
+		rWigg = rWigg.Clamp(Vector3.Zero, Vector3.One/20);
+		mWigg = mWigg.Clamp(Vector3.Zero, Vector3.One/20);
+
+		LeftEye.Size = new Vector3(FaceStrech.x,FaceStrech.y,3) + lWigg*FaceStrech.Length;
+		RightEye.Size = new Vector3(FaceStrech.x, FaceStrech.y,-3) + rWigg*FaceStrech.Length;
+		Mouth.Size = new Vector3(FaceStrech.x,FaceStrech.y,3) + mWigg*FaceStrech.Length;
 		Mouth.Material = Talking && MathF.Sin(Talk) >= 0 ? getFaceMaterial("mouth", true, true, "open","closed") : getFaceMaterial("mouth", true, false, "open", "closed");
 
 		Material eyeMat = MathF.Sin(Blink) >= -0.99f ? getFaceMaterial("eye", false, false, "closed","open") : getFaceMaterial("eye", false, true, "closed","open");
@@ -63,8 +75,8 @@ public sealed class NpcmodelAnimationManager : Component
 		string directory = $"faces/{FaceType}/{type}/{Expression}.vmat";
 		if(!getAlt)
 		{
-			Log.Info(FileSystem.Data.FileExists("gameresources/catagorycomponents.catagory"));
-			if(FileSystem.Data.FileExists(directory))
+
+			if(FileSystem.Mounted.FileExists(directory))
 				return Material.Load(directory);
 			else
 				return Material.Load($"faces/{FaceType}/{type}/{defaultName}.vmat");
