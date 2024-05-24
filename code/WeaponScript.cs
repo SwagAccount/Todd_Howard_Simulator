@@ -124,7 +124,7 @@ public sealed class WeaponScript : Component
         }
 		if (!weapon.notReloadable)
         {
-            if(!weapon.CannotReload && !cantShoot && Input.Pressed("reload") && playerEntity.Attributes.attributeSets[0].attributes[ammoIndex].intValue > 0)
+            if(!weapon.CannotReload && !cantShoot && Input.Pressed("reload") && playerEntity.Attributes.attributeSets[0].attributes[ammoIndex].intValue > 0 && !isReloading)
             {
                 Log.Info("Try Reload");
                 toReload();
@@ -137,7 +137,7 @@ public sealed class WeaponScript : Component
             Shoot();
             isReloading = false;
         }
-        else if (!weapon.CannotShoot && weapon.modes[currentMode].buttonHold && canShoot && Input.Down("attack1") && clipContent.Length-1 >= weapon.modes[currentMode].ammoNeeded && !cantShoot && (!isReloading || weapon.interuptReload))
+        else if (!weapon.CannotShoot && weapon.modes[currentMode].buttonHold && canShoot && Input.Down("attack1") && clipContent.Length-1 >= weapon.modes[currentMode].ammoNeeded && !cantShoot && ((!isReloading && clipContent.Length > 1) || weapon.interuptReload))
         {
             if(SkinnedModel != null) SkinnedModel.Set(weapon.fireParam, true);
             await Task.DelayRealtimeSeconds(weapon.modes[currentMode].timeBeforeShooting);

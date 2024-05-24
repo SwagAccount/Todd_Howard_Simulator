@@ -1,3 +1,4 @@
+using System;
 using Sandbox;
 [GameResource("Weapon", "weapon","Info for the weapon information", Icon = "construction")]
 public sealed class Weapon : GameResource
@@ -105,6 +106,11 @@ public sealed class CatagoryComponents : GameResource
     [Property] public List<Entity.Catagory> Catagories {get; set;}
 }
 
+[GameResource("Npc Logic", "logic", "Logic for an NPC", Icon = "Person")]
+public sealed class NPCLogic : GameResource
+{
+    [Property] public Action action {get;set;}
+}
 
 [GameResource("Perk", "perk", "A perk", Icon = "Grade")]
 public sealed class Perk : GameResource

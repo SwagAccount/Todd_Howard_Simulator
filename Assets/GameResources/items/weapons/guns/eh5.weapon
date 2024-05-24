@@ -27,12 +27,12 @@
     }
   ],
   "minMaxRecoilPos": [
-    "-1,0,0",
-    "-1.5,0,0.3"
+    "-0.4,0,0",
+    "-0.6,0,0.12"
   ],
   "minMaxRecoilRot": [
-    "-3,-1.5,-2.1",
-    "-4.5,1.5,2.1"
+    "-1.2,-0.6,-0.84",
+    "-1.8,0.6,0.84"
   ],
   "targetPosIdle": "10.40001,-3.049999,-7.599999",
   "targetRotIdle": "0,0,0",
@@ -53,6 +53,7 @@
   "swayPitch": 0.6,
   "leftHand": [],
   "rightHand": [],
+  "interuptReload": false,
   "reloadMount": 30,
   "reloadWarmTime": 0,
   "notReloadable": false,

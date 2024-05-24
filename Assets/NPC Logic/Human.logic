@@ -1,0 +1,40 @@
+{
+  "action": {
+    "__version": 7,
+    "__guid": "3de5b0bf-6561-4b9d-aa38-ee92719a6da7",
+    "UserData": {
+      "Title": "Action",
+      "ReferencedComponentTypes": []
+    },
+    "Variables": [],
+    "Nodes": [
+      {
+        "Id": 0,
+        "Type": "input"
+      },
+      {
+        "Id": 1,
+        "Type": "log.info",
+        "UserData": {
+          "Position": "240,64"
+        }
+      }
+    ],
+    "Links": [
+      {
+        "SrcId": 0,
+        "SrcName": "_signal",
+        "DstId": 1,
+        "DstName": "_signal"
+      },
+      {
+        "Value": "spongebobs massive balls",
+        "DstId": 1,
+        "DstName": "args",
+        "DstIndex": 0
+      }
+    ]
+  },
+  "__version": 0,
+  "__references": []
+}

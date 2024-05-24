@@ -3,6 +3,7 @@ using Sandbox;
 
 public sealed class NpcmodelAnimationManager : Component
 {
+	[Category("Body")][Property] private BioGenders BiologicalGender {get;set;}
 	[Category("Body")][Property] private float SkinColour {get;set;}
 	[Category("Body")][Property] private SaveClasses.EntitySave Clothes {get; set;}
 	[Category("Body")][Property] private SkinnedModelRenderer Body {get; set;}
@@ -23,18 +24,24 @@ public sealed class NpcmodelAnimationManager : Component
 	Vector3 lWigg;
 	Vector3 rWigg;
 	Vector3 mWigg;
+	List<string> BioGendersStrings = new List<string>(){"male","female"};
+	public enum BioGenders
+	{
+		male = 0,
+		female = 1
+	}
 	protected override void OnUpdate()
 	{
 		Body.Tint = SkinColourGradient.Evaluate(SkinColour);
 		if(Clothes.Categories.Count > 0)
 		{
-			Body.Model = Model.Load($"models/{string.Join("/", Clothes.Categories)}-body.vmdl");
-			Apparel.Model = Model.Load($"models/{string.Join("/", Clothes.Categories)}-apparel.vmdl");
+			Body.Model = Model.Load($"models/{string.Join("/", Clothes.Categories)}-body-{BioGendersStrings[(int)BiologicalGender]}.vmdl");
+			Apparel.Model = Model.Load($"models/{string.Join("/", Clothes.Categories)}-apparel-{BioGendersStrings[(int)BiologicalGender]}.vmdl");
 			Apparel.GameObject.Enabled = true;
 		}
 		else
 		{
-			Body.Model = Model.Load($"models/items/apparel/nude.vmdl");
+			Body.Model = Model.Load($"models/items/apparel/nude-{BioGendersStrings[(int)BiologicalGender]}.vmdl");
 			Apparel.GameObject.Enabled = false;
 		}
 
