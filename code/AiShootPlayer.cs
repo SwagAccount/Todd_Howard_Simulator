@@ -6,18 +6,9 @@ using static CustomFunctions;
 
 public class AIShootPlayer : AIState
 {
-	int MaxAttackDistanceI;
-	int DistanceResistanceI;
-	int RandomMovementDisI;
-	int RandomMoveChanceI;
-	int BrainI;
 	public void Enter( Aiagent agent )
 	{
-		BrainI = agent.Attributes.getAttributeSetIndex("Brain");
-		MaxAttackDistanceI = agent.Attributes.getAttributeIndex("MaxAttackDistance","Brain");
-		DistanceResistanceI = agent.Attributes.getAttributeIndex("DistanceResistance","Brain");
-		RandomMovementDisI = agent.Attributes.getAttributeIndex("RandomMovementDis","Brain");
-		RandomMoveChanceI = agent.Attributes.getAttributeIndex("RandomMoveChance","Brain");
+		
 	}
 
 	public void Exit( Aiagent agent )
@@ -36,7 +27,8 @@ public class AIShootPlayer : AIState
 	{
 		Vector3 direction = Vector3.Random;
 		direction.z=0;
-		RandomPos = agent.Transform.Position + direction.Normal*GetAttributeFloatUsingIndexs(agent.Attributes, BrainI, RandomMovementDisI)*((Game.Random.Next(0,50)+50)/100f);
+		//add random move chance thingy here
+		RandomPos = agent.Transform.Position + direction.Normal*0.5f*((Game.Random.Next(0,50)+50)/100f);
 	}
 	float timer;
 	float lastHealth;
@@ -55,9 +47,14 @@ public class AIShootPlayer : AIState
 		agent.Controller.UpdateRotation = false;
 		agent.Controller.Speed = agent.speed.floatValue*2;
 		float DistanceToOpp = Vector3.DistanceBetween(agent.Transform.Position, agent.Opp.Transform.Position);
-		float MaxAttackDistance = GetAttributeFloatUsingIndexs(agent.Attributes, BrainI, MaxAttackDistanceI) * (1+(1-agent.Health.floatValue/agent.MaxHealth.floatValue));
-		float DistanceResistance = GetAttributeFloatUsingIndexs(agent.Attributes, BrainI, DistanceResistanceI);
-		float RandomMoveChance = GetAttributeFloatUsingIndexs(agent.Attributes, BrainI, RandomMoveChanceI);
+		float MaxAttackDistance = CalculateEffectiveDistance((
+			agent.weapon.weapon.minMaxRecoilPos[0].Length + agent.weapon.weapon.minMaxRecoilPos[1].Length)/2,
+			agent.weapon.weapon.bulletStats[0].spreadX+agent.weapon.weapon.bulletStats[0].spreadY,
+			16,
+			0.5f,
+			agent.weapon.weapon.modes[0].buttonHold);
+		float DistanceResistance = MaxAttackDistance/10;
+		float RandomMoveChance = 0.5f;
 
 		if(MathF.Abs(DistanceToOpp - MaxAttackDistance) > DistanceResistance) GoToDesiredDistance = true;
 		

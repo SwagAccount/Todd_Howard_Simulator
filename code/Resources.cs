@@ -178,7 +178,6 @@ public sealed class BulletHoleDB : GameResource
                 {
                     if(s == mat)
                     {
-                        Log.Info($"Found Material {mat}");
                         Yes = true;
                         break;
                     }

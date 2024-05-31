@@ -266,6 +266,12 @@ public sealed class CommandDealer : Component
 		Log.Info("------");
 	}
 
+	[ConCmd( "CalcDis" )]
+	public static void CalcDis(float recoilAngle, float bulletSpread, float targetRadius, float desiredHitProbability, bool auto)
+	{
+		Log.Info(CustomFunctions.CalculateEffectiveDistance(recoilAngle,bulletSpread,targetRadius,desiredHitProbability, auto));
+	}
+
 	[ConCmd( "CalcDamage" )]
 	public static void CalcDamage(float velocity, float weight, float diameter)
 	{

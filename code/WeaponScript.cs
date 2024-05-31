@@ -297,7 +297,7 @@ public sealed class WeaponScript : Component
                         bulletHole.SetParent(parent);
                     }
                     
-                    Log.Info($"hit :{sTR.GameObject.Name}");
+
                     Health healthScript = sTR.GameObject.Components.Get<Health>();
                     if (healthScript != null && !sTR.GameObject.Tags.Has("player"))
                     {

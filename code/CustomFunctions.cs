@@ -74,4 +74,25 @@ public sealed class CustomFunctions
     {
         return attributes.attributeSets[set].attributes[attribute].floatValue;
     }
+
+    
+    public static float CalculateEffectiveDistance(float recoilAngle, float bulletSpread, float targetRadius, float desiredHitProbability, bool auto)
+    {
+        
+        bulletSpread = MathF.Atan(bulletSpread) + (recoilAngle * (MathF.PI/180f) * (auto ? 6 : 1));
+        Log.Info(bulletSpread * (180f/MathF.PI));
+        for(int i = 0; i < 1000; i++)
+        {
+            float distance = 1000-i;
+            float spreadRadius = distance * MathF.Tan(bulletSpread / 2);
+            float hitProbability = targetRadius / (2 * spreadRadius);
+            if (spreadRadius == 0) hitProbability = 1;
+            else hitProbability = MathF.Max(0, MathF.Min(1, hitProbability));
+
+            if(hitProbability > desiredHitProbability) return distance;
+        }
+
+        return 0;
+        
+    }
 }

@@ -45,6 +45,7 @@ public sealed class NpcmodelAnimationManager : Component
 		controller = GameObject.Parent.Components.Get<CharacterController>();
 	}
 	Vector3 lastPos;
+	string lastClothes;
 	protected override void OnPreRender()
 	{
 		
@@ -76,21 +77,32 @@ public sealed class NpcmodelAnimationManager : Component
 		Vector2 localVel = new Vector2(forwardVelocity,rightVelocity).Normal;
 
 		//Gizmo.Draw.Text($"Forward: {Math.Round(localVel.x*100)/100} | Right: {Math.Round(localVel.y*100)/100}",Transform.World);
-
+		string ClothesName = "";
+		if(Clothes.Categories.Count>0)
+		{
+			ClothesName = Clothes.Categories[Clothes.Categories.Count-1];
+		}
 		Body.Set("VelX", localVel.x);
 		Body.Set("VelY", localVel.y);
 		Body.Set("Action", Action);
 		Body.Tint = SkinColourGradient.Evaluate(SkinColour);
-		if(Clothes.Categories.Count > 0)
+		if(Clothes.Categories.Count > 0 && ClothesName != lastClothes)
 		{
+
+			
 			Body.Model = Model.Load($"models/{string.Join("/", Clothes.Categories)}-body.vmdl");
 			Apparel.Model = Model.Load($"models/{string.Join("/", Clothes.Categories)}-apparel.vmdl");
 			Apparel.GameObject.Enabled = true;
+
 		}
-		else
+		else if (ClothesName != lastClothes)
 		{
+
+
 			Body.Model = Model.Load($"models/items/apparel/nude.vmdl");
 			Apparel.GameObject.Enabled = false;
+			
+			
 		}
 
 		Talk += Time.Delta * TalkRate * 20f;
@@ -122,9 +134,22 @@ public sealed class NpcmodelAnimationManager : Component
 			LeftEye.Enabled = false;
 			RightEye.Enabled = false;
 		}
-
+		lastClothes = ClothesName;
 	}
+	void resetBody()
+	{
+		GameObject bodyObject = Body.GameObject;
+		GameObject apparelObject = Apparel.GameObject;
 
+		Body.Destroy();
+		Apparel.Destroy();
+
+		Body = bodyObject.Components.Create<SkinnedModelRenderer>();
+		Apparel = apparelObject.Components.Create<SkinnedModelRenderer>();
+
+		Body.AnimationGraph = AnimationGraph.Load("models/items/apparel/person.vanmgrph");
+		Apparel.BoneMergeTarget = Body;
+	}
 	Material getFaceMaterial(string type, bool hasAlt, bool getAlt, string altName, string defaultName)
 	{
 		string directory = $"faces/{FaceType}/{type}/{Expression}.vmat";

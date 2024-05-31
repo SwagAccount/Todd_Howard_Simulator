@@ -68,7 +68,7 @@ public sealed class Npcweapon : Component
 		
 	}
 	[Property] SkinnedModelRenderer SkinnedModel {get;set;}
-	Weapon weapon;
+	public Weapon weapon;
 	[Property] string clipContent;
 	bool pauseGun;
 	int weaponSlot;
@@ -177,8 +177,8 @@ public sealed class Npcweapon : Component
         float randompitch = (float)GetRandomNumberInRange(weapon.minMaxRecoilRot[0].pitch, weapon.minMaxRecoilRot[1].pitch);
         float  randomyaw = (float)GetRandomNumberInRange(weapon.minMaxRecoilRot[0].yaw, weapon.minMaxRecoilRot[1].yaw);
         float randomroll = (float)GetRandomNumberInRange(weapon.minMaxRecoilRot[0].roll, weapon.minMaxRecoilRot[1].roll);
-        recoilOffsetPos += new Vector3(randomx,randomy,randomz);
-        recoilOffsetRot += new Angles(randompitch,randomyaw,randomroll);
+        recoilOffsetPos += new Vector3(randomx,randomy,randomz)*2;
+        recoilOffsetRot += new Angles(randompitch,randomyaw,randomroll)*2;
     }
 	int shotsFired;
 	bool cantShoot;
@@ -232,7 +232,6 @@ public sealed class Npcweapon : Component
 
 	async void Shoot()
     {
-		Log.Info("shot");
         if (!weapon.CannotReload && clipContent.Length-1 <= 0 && !weapon.notReloadable)
         {
             Reload();
@@ -311,7 +310,6 @@ public sealed class Npcweapon : Component
                         bulletHole.SetParent(parent);
                     }
                     
-                    Log.Info($"hit :{sTR.GameObject.Name}");
                     Health healthScript = sTR.GameObject.Components.Get<Health>();
                     if (healthScript != null && !sTR.GameObject.Tags.Has("player"))
                     {
@@ -397,7 +395,7 @@ public sealed class Npcweapon : Component
 	}
 	void GunPos()
 	{
-		Rotation lookatRot = Rotation.LookAt((aiagent.Opp.Transform.Position+Vector3.Up*40)-SkinnedModel.Transform.Position );
+		Rotation lookatRot = Rotation.LookAt(Scene.Camera.Transform.Position-SkinnedModel.Transform.Position );
 		recoilOffsetPos = Vector3.Lerp(recoilOffsetPos,Vector3.Zero,weapon.recoilReset*Time.Delta);
 		recoilOffsetRot = Angles.Lerp(recoilOffsetRot,Angles.Zero,weapon.recoilReset*Time.Delta);
 		GunRotate.Transform.LocalPosition = weapon.targetPosNPC + recoilOffsetPos;
