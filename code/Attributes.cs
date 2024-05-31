@@ -158,6 +158,14 @@ public sealed class Attributes : Component
         }
         return attributeSets[0];
     }
+    public int getAttributeSetIndex(string name)
+    {
+        for(int i = 0; i < attributeSets.Count; i++)
+        {
+            if(attributeSets[i].setName == name) return i;
+        }
+        return -1;
+    }
 	public Attribute getAttribute(string name, string setName = "default", bool logInfo = true)
 	{
 		foreach(Attribute attribute in getAttributeSet(setName).attributes)

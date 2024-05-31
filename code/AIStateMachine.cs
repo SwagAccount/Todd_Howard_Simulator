@@ -1,14 +1,20 @@
+using System;
+
 public class AIStateMachine
 {
-    public List<AIState> states;
+    public AIState[] states;
     public Aiagent agent;
-    public AIStateID currentState;
+    [Property] public AIStateID currentState {get;set;}
 
     public AIStateMachine(Aiagent agent) 
     {
+        
         this.agent = agent;
-        int numStates = System.Enum.GetNames<AIStateID>().Length;
-        states = new List<AIState>(numStates);
+        
+        int numStates = Enum.GetNames<AIStateID>().Length;
+
+        states = new AIState[numStates];
+
     }
 
     public void RegisterState(AIState state)

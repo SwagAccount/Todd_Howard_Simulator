@@ -210,6 +210,18 @@
           "KeyboardCode": "enter",
           "GamepadCode": "None",
           "GroupName": "Other"
+        },
+        {
+          "Name": "changeAmmoType",
+          "KeyboardCode": "V",
+          "GamepadCode": "None",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "changeMode",
+          "KeyboardCode": "B",
+          "GamepadCode": "None",
+          "GroupName": "Other"
         }
       ],
       "__guid": "f016791e-36a2-4790-8a0f-7c886c310264"

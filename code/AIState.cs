@@ -4,9 +4,7 @@ using Sandbox;
 
 public enum AIStateID 
 {
-    Patrol,
-    ShootPlayer,
-    Idle
+    ShootPlayer
 }
 public interface AIState 
 {

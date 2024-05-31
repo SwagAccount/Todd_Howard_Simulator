@@ -6,7 +6,7 @@ public sealed class NpcmodelAnimationManager : Component
 	[Category("Body")][Property] private BioGenders BiologicalGender {get;set;}
 	[Category("Body")][Property] private float SkinColour {get;set;}
 	[Category("Body")][Property] private SaveClasses.EntitySave Clothes {get; set;}
-	[Category("Body")][Property] private SkinnedModelRenderer Body {get; set;}
+	[Category("Body")][Property] public SkinnedModelRenderer Body {get; set;}
 	[Category("Body")][Property] private SkinnedModelRenderer Apparel {get; set;}
 	[Category("Body")][Property] private Gradient SkinColourGradient {get; set;}
 	[Category("Face")][Property] private Vector2 FaceStrech {get;set;} = new Vector2(3,3);
@@ -18,6 +18,15 @@ public sealed class NpcmodelAnimationManager : Component
 	[Category("Face")][Property] private DecalRenderer LeftEye {get;set;}
 	[Category("Face")][Property] private DecalRenderer RightEye {get;set;}
 	[Category("Face")][Property] private DecalRenderer Mouth {get;set;}
+	[Category("Animation")][Property] private CharacterController controller {get;set;}
+	[Category("Animation")][Property] private int Action {get;set;}
+	[Category("Animation")][Property] public bool leftHandEnabled {get;set;}
+	[Category("Animation")][Property] public GameObject leftHandTarget;
+	[Category("Animation")][Property] public bool rightHandEnabled {get;set;}
+	[Category("Animation")][Property] public GameObject rightHandTarget;
+
+
+
 	float Talk;
 	float Blink;
 
@@ -30,18 +39,57 @@ public sealed class NpcmodelAnimationManager : Component
 		male = 0,
 		female = 1
 	}
-	protected override void OnUpdate()
+
+	protected override void OnStart()
 	{
+		controller = GameObject.Parent.Components.Get<CharacterController>();
+	}
+	Vector3 lastPos;
+	protected override void OnPreRender()
+	{
+		
+		if(rightHandEnabled)
+		{
+			Body.Set("ik.hand_right.enabled", true);
+			Body.Set("ik.hand_right.position", rightHandTarget.Transform.Position);
+			Body.Set("ik.hand_right.rotation", rightHandTarget.Transform.Rotation);
+		} 
+		if(leftHandEnabled)
+		{
+			Body.Set("ik.hand_left.enabled", true);
+			Body.Set("ik.hand_left.position", leftHandTarget.Transform.Position);
+			Body.Set("ik.hand_left.rotation", leftHandTarget.Transform.Rotation);
+		}
+
+		Vector3 velocity = Transform.Position-lastPos;
+
+        Vector3 forward = Transform.World.Forward;
+
+        Vector3 right = Transform.World.Right;
+
+        float forwardVelocity = Vector3.Dot(velocity, forward);
+
+        float rightVelocity = Vector3.Dot(velocity, right);
+
+		lastPos = Transform.Position;
+
+		Vector2 localVel = new Vector2(forwardVelocity,rightVelocity).Normal;
+
+		//Gizmo.Draw.Text($"Forward: {Math.Round(localVel.x*100)/100} | Right: {Math.Round(localVel.y*100)/100}",Transform.World);
+
+		Body.Set("VelX", localVel.x);
+		Body.Set("VelY", localVel.y);
+		Body.Set("Action", Action);
 		Body.Tint = SkinColourGradient.Evaluate(SkinColour);
 		if(Clothes.Categories.Count > 0)
 		{
-			Body.Model = Model.Load($"models/{string.Join("/", Clothes.Categories)}-body-{BioGendersStrings[(int)BiologicalGender]}.vmdl");
-			Apparel.Model = Model.Load($"models/{string.Join("/", Clothes.Categories)}-apparel-{BioGendersStrings[(int)BiologicalGender]}.vmdl");
+			Body.Model = Model.Load($"models/{string.Join("/", Clothes.Categories)}-body.vmdl");
+			Apparel.Model = Model.Load($"models/{string.Join("/", Clothes.Categories)}-apparel.vmdl");
 			Apparel.GameObject.Enabled = true;
 		}
 		else
 		{
-			Body.Model = Model.Load($"models/items/apparel/nude-{BioGendersStrings[(int)BiologicalGender]}.vmdl");
+			Body.Model = Model.Load($"models/items/apparel/nude.vmdl");
 			Apparel.GameObject.Enabled = false;
 		}
 

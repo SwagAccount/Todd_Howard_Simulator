@@ -4,7 +4,7 @@
   "CannotReload": true,
   "ExactArm": true,
   "shootFromCam": true,
-  "shootTime": 0,
+  "shootTime": 0.866,
   "deployTime": 0.633,
   "range": 50,
   "clipSize": 0,
@@ -18,7 +18,8 @@
   "bulletStats": [
     {
       "shotsForce": 1,
-      "shotsPer": 1
+      "shotsPer": 1,
+      "damage": 4
     }
   ],
   "minMaxRecoilPos": [
@@ -48,6 +49,7 @@
   "swayPitch": 0.6,
   "leftHand": [],
   "rightHand": [],
+  "interuptReload": false,
   "reloadMount": 0,
   "reloadWarmTime": 0,
   "notReloadable": false,
@@ -60,6 +62,6 @@
   "runReload": false,
   "fovMult": 0.66,
   "sensMult": 1,
-  "__version": 0,
-  "__references": []
+  "__references": [],
+  "__version": 0
 }

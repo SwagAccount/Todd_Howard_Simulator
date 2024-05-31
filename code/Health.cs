@@ -8,7 +8,7 @@ public sealed class Health : Component
 	protected override void OnStart()
 	{
 		attributes = Components.Get<Attributes>();
-		health = attributes.getAttribute("health", "default");
+		health = attributes.getAttribute("Health");
 	}
 
 	public void DealDamage(float amount)
@@ -23,6 +23,6 @@ public sealed class Health : Component
 
 	public void resetHealth()
 	{
-		health.floatValue = attributes.getAttribute("maxhealth", "default").floatValue;
+		health.floatValue = attributes.getAttribute("MaxHealth").floatValue;
 	}
 }

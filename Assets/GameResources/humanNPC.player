@@ -1,0 +1,8 @@
+{
+  "gameObject": {
+    "_type": "gameobject",
+    "prefab": "prefabs/npcmodelnanimation.prefab"
+  },
+  "__references": [],
+  "__version": 0
+}

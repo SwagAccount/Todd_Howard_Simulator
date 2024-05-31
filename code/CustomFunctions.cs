@@ -69,4 +69,9 @@ public sealed class CustomFunctions
 
         return current;
     }
+
+    public static float GetAttributeFloatUsingIndexs(Attributes attributes, int set, int attribute)
+    {
+        return attributes.attributeSets[set].attributes[attribute].floatValue;
+    }
 }

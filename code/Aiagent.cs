@@ -1,16 +1,45 @@
+using System;
 using Sandbox;
 
 public sealed class Aiagent : Component
 {
-	public AIStateMachine stateMachine;
+	[Property] public Entity Opp {get;set;}
+	[Property] public NpcmodelAnimationManager npcmodelAnimationManager {get;set;}
+	[Property] public AIStateMachine stateMachine {get;set;}
 	[Property] public AIStateID initialState {get;set;}
+	[Property] public NavMeshCharacter Controller {get;set;}
+	[Property] public Npcweapon weapon {get;set;}
+	public Attributes Attributes {get; set;}
+	public Attributes.Attribute Health {get;set;}
+	public Attributes.Attribute MaxHealth {get;set;}
+	public Attributes.Attribute speed {get;set;}
 	protected override void OnStart()
 	{
+		weapon = Components.Get<Npcweapon>();
+		Controller = Components.GetOrCreate<NavMeshCharacter>();
+		Attributes = Components.Get<Attributes>();
+		Controller.Height = Attributes.getAttribute("Height","NavMeshController").floatValue;
+		Controller.Radius = Attributes.getAttribute("Radius","NavMeshController").floatValue;
+		speed = Attributes.getAttribute("Max Speed","NavMeshController");
+		Controller.Acceleration = Attributes.getAttribute("Acceleration","NavMeshController").floatValue;
 		stateMachine = new AIStateMachine(this);
+		//Log.Info(stateMachine.states.Count);
+		stateMachine.RegisterState(new AIShootPlayer());
 		stateMachine.ChangeState(initialState);
+		Health = Attributes.getAttribute("Health");
+		MaxHealth = Attributes.getAttribute("MaxHealth");
+		npcmodelAnimationManager = GameObject.Children[0].Components.Get<NpcmodelAnimationManager>();
+		Opp = GameObject.Parent.Children[0].Components.Get<Entity>();
 	}
 	protected override void OnUpdate()
 	{
 		stateMachine.Update();
+	}
+	public void faceOpp()
+	{
+		Angles angles = Rotation.LookAt(Opp.Transform.Position- Transform.Position);
+		angles.pitch = 0;
+		angles.roll = 0;
+		Transform.Rotation = angles;
 	}
 }

@@ -37,6 +37,7 @@ public sealed class WeaponScript : Component
 	{
 		playerController = GameObject.Parent.Parent.Components.Get<PlayerController>();
 		playerEntity = GameObject.Parent.Parent.Components.Get<Entity>();
+        bHoleDB = ResourceLibrary.Get<BulletHoleDB>("gameresources/bhole.bhdb");
 	}
 	[Property] int currentMode;
 	[Property] int bulletType;
@@ -87,6 +88,7 @@ public sealed class WeaponScript : Component
 	int ammoIndex;
 	[Property] bool isReloading {get;set;}
     bool cantShoot;
+    bool delayingShot;
 	float targetFov;
 	int shotsFired = 0;
     Vector3 recoilOffsetPos;
@@ -130,16 +132,19 @@ public sealed class WeaponScript : Component
                 toReload();
             }
         }
-        if (!weapon.CannotShoot && canShoot && Input.Pressed("attack1") && clipContent.Length-1 >= weapon.modes[currentMode].ammoNeeded && !cantShoot && (!isReloading || weapon.interuptReload))
+        if (!weapon.CannotShoot && canShoot && Input.Pressed("attack1") && clipContent.Length-1 >= weapon.modes[currentMode].ammoNeeded && !delayingShot && !cantShoot && (!isReloading || weapon.interuptReload))
         {
             if(SkinnedModel != null) SkinnedModel.Set(weapon.fireParam, true);
+            delayingShot = true;
             await Task.DelayRealtimeSeconds(weapon.modes[currentMode].timeBeforeShooting);
             Shoot();
             isReloading = false;
         }
-        else if (!weapon.CannotShoot && weapon.modes[currentMode].buttonHold && canShoot && Input.Down("attack1") && clipContent.Length-1 >= weapon.modes[currentMode].ammoNeeded && !cantShoot && ((!isReloading && clipContent.Length > 1) || weapon.interuptReload))
+        else if (!weapon.CannotShoot && weapon.modes[currentMode].buttonHold && canShoot && Input.Down("attack1") && clipContent.Length-1 >= weapon.modes[currentMode].ammoNeeded && !delayingShot && !cantShoot && ((!isReloading && clipContent.Length > 1) || weapon.interuptReload))
         {
             if(SkinnedModel != null) SkinnedModel.Set(weapon.fireParam, true);
+            delayingShot = true;
+            cantShoot = true;
             await Task.DelayRealtimeSeconds(weapon.modes[currentMode].timeBeforeShooting);
             Shoot();
             isReloading = false;
@@ -217,6 +222,7 @@ public sealed class WeaponScript : Component
     }
 	async void Shoot()
     {
+        delayingShot = false;
         if (!weapon.CannotReload && clipContent.Length-1 <= 0 && !weapon.notReloadable)
         {
             toReload();
@@ -230,8 +236,8 @@ public sealed class WeaponScript : Component
         {
             if(SkinnedModel != null) SkinnedModel.Set(weapon.fireParam, true);
         }
-        if(isReloading) await Task.Frame();
         cantShoot = true;
+        if(isReloading) await Task.Frame();
         Recoil();
         if(weapon.flash!=null)
         {

@@ -50,9 +50,33 @@
           "Catagories": []
         }
       ]
+    },
+    {
+      "CatagoryName": "npc",
+      "Components": [
+        "Aiagent",
+        "Health"
+      ],
+      "Catagories": [
+        {
+          "CatagoryName": "humanoid",
+          "Components": [
+            "HumanModelGetter",
+            "Health",
+            "Npcweapon",
+            "NavMeshCharacter"
+          ],
+          "Catagories": [
+            {
+              "CatagoryName": "human",
+              "Components": [],
+              "Catagories": []
+            }
+          ]
+        }
+      ]
     }
   ],
-  "ResourceVersion": 0,
-  "__version": 0,
-  "__references": []
+  "__references": [],
+  "__version": 0
 }

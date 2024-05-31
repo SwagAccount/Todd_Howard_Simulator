@@ -1,0 +1,7 @@
+{
+  "Title": "Character Controller Nav Mesh Agent",
+  "Type": "library",
+  "Org": "local",
+  "Ident": "charactercontrollernavmeshagent",
+  "Schema": 1
+}

@@ -20,6 +20,7 @@ public sealed class Weapon : GameResource
     [Category("Weapon Configuration")][Property] public Vector3 targetPosIdle { get; set; }
     [Category("Weapon Configuration")][Property] public Angles targetRotIdle { get; set; }
     [Category("Weapon Configuration")][Property] public Vector3 targetPosAim { get; set; }
+    [Category("Weapon Configuration")][Property] public Vector3 targetPosNPC { get; set; }
     [Category("Weapon Configuration")][Property] public Angles targetRotAim { get; set; }
     [Category("Weapon Configuration")][Property] public Vector3 targetPosRun { get; set; }
     [Category("Weapon Configuration")][Property] public Angles targetRotRun { get; set; }
