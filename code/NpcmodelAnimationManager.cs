@@ -6,6 +6,7 @@ public sealed class NpcmodelAnimationManager : Component
 	[Category("Body")][Property] private BioGenders BiologicalGender {get;set;}
 	[Category("Body")][Property] private float SkinColour {get;set;}
 	[Category("Body")][Property] private SaveClasses.EntitySave Clothes {get; set;}
+	[Category("Body")][Property] public SkinnedModelRenderer Animations {get; set;}
 	[Category("Body")][Property] public SkinnedModelRenderer Body {get; set;}
 	[Category("Body")][Property] private SkinnedModelRenderer Apparel {get; set;}
 	[Category("Body")][Property] private Gradient SkinColourGradient {get; set;}
@@ -51,15 +52,15 @@ public sealed class NpcmodelAnimationManager : Component
 		
 		if(rightHandEnabled)
 		{
-			Body.Set("ik.hand_right.enabled", true);
-			Body.Set("ik.hand_right.position", rightHandTarget.Transform.Position);
-			Body.Set("ik.hand_right.rotation", rightHandTarget.Transform.Rotation);
+			Animations.Set("ik.hand_right.enabled", true);
+			Animations.Set("ik.hand_right.position", rightHandTarget.Transform.Position);
+			Animations.Set("ik.hand_right.rotation", rightHandTarget.Transform.Rotation);
 		} 
 		if(leftHandEnabled)
 		{
-			Body.Set("ik.hand_left.enabled", true);
-			Body.Set("ik.hand_left.position", leftHandTarget.Transform.Position);
-			Body.Set("ik.hand_left.rotation", leftHandTarget.Transform.Rotation);
+			Animations.Set("ik.hand_left.enabled", true);
+			Animations.Set("ik.hand_left.position", leftHandTarget.Transform.Position);
+			Animations.Set("ik.hand_left.rotation", leftHandTarget.Transform.Rotation);
 		}
 
 		Vector3 velocity = Transform.Position-lastPos;
@@ -82,17 +83,19 @@ public sealed class NpcmodelAnimationManager : Component
 		{
 			ClothesName = Clothes.Categories[Clothes.Categories.Count-1];
 		}
-		Body.Set("VelX", localVel.x);
-		Body.Set("VelY", localVel.y);
-		Body.Set("Action", Action);
+		Animations.Set("VelX", localVel.x);
+		Animations.Set("VelY", localVel.y);
+		Animations.Set("Action", Action);
 		Body.Tint = SkinColourGradient.Evaluate(SkinColour);
 		if(Clothes.Categories.Count > 0 && ClothesName != lastClothes)
 		{
-
-			
+			Body.Model = null;
 			Body.Model = Model.Load($"models/{string.Join("/", Clothes.Categories)}-body.vmdl");
+			Apparel.Model = null;
 			Apparel.Model = Model.Load($"models/{string.Join("/", Clothes.Categories)}-apparel.vmdl");
 			Apparel.GameObject.Enabled = true;
+			//Body.AnimationGraph = null;
+			//Body.AnimationGraph = AnimationGraph.Load("models/items/apparel/person.vanmgrph");
 
 		}
 		else if (ClothesName != lastClothes)

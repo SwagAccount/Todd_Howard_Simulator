@@ -16,7 +16,8 @@ public sealed class Interactor : Component
 	Rigidbody entityBody;
 	Attributes attributes;
 	Ids ids;
-
+	float oldAngularDamping;
+	float oldLinearDamping;
 	[Property] SpringJoint joint;
 	protected override void OnStart()
 	{
@@ -59,6 +60,10 @@ public sealed class Interactor : Component
 					{
 						joint = interactable.Components.GetOrCreate<SpringJoint>();
 						joint.Frequency = 100;
+						oldAngularDamping = entityBody.AngularDamping;
+						
+						oldLinearDamping = entityBody.LinearDamping;
+						
 						joint.Body = Grabber;
 					}
 					attributes = entity.Components.Get<Attributes>();
@@ -71,7 +76,7 @@ public sealed class Interactor : Component
 				interactable = null;
 				if(joint!=null)
 				{
-					joint.Destroy();
+					
 					joint = null;
 				}
 			}
@@ -98,10 +103,14 @@ public sealed class Interactor : Component
 			if(useTime > 0.1)
 			{
 				joint.Enabled = true;
+				entityBody.AngularDamping = 24f;
+				entityBody.LinearDamping = 16f;
 			}	
 			else
 			{
 				joint.Enabled = false;
+				entityBody.AngularDamping=oldAngularDamping;
+					entityBody.LinearDamping=entityBody.AngularDamping;
 				if(Input.Released("use")) interactable.Interacted = true;
 			}
 		}

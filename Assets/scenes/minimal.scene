@@ -399,6 +399,63 @@
           ]
         },
         {
+          "__guid": "6dc75b5f-7127-4cf2-b445-fccbd567a512",
+          "Flags": 0,
+          "Name": "Golden Knight Armour",
+          "Position": "-46.52471,90.37116,32.81266",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Ids",
+              "__guid": "e43de18d-dee3-444e-821e-43d7f1933f39",
+              "Categories": [
+                "items",
+                "apparel",
+                "armour",
+                "golden knight armour"
+              ],
+              "sceneID": 35682
+            },
+            {
+              "__type": "Attributes",
+              "__guid": "cb92cab5-3569-47e8-a4e4-51b9c5b2f5ff",
+              "attributeSets": [
+                {
+                  "setName": "default",
+                  "attributes": [
+                    {
+                      "AttributeName": "Ammo",
+                      "attributeType": "STRING"
+                    },
+                    {
+                      "AttributeName": "Current Mode"
+                    },
+                    {
+                      "AttributeName": "Current Bullet"
+                    },
+                    {
+                      "AttributeName": "Condition",
+                      "attributeType": "FLOAT",
+                      "floatValue": 1
+                    }
+                  ]
+                }
+              ],
+              "perkEffectors": []
+            },
+            {
+              "__type": "Entity",
+              "__guid": "a7a416c5-506c-4506-8823-cb94e80b1a21",
+              "Catagories": [],
+              "Container": [],
+              "displayContainer": false,
+              "Equips": []
+            }
+          ]
+        },
+        {
           "__guid": "54129ba6-914d-4f85-96c9-f1fa24b03a59",
           "Flags": 0,
           "Name": "casual clothes black",
@@ -460,7 +517,6 @@
           "Flags": 0,
           "Name": "TestNPC (1)",
           "Position": "-240.5973,159.8718,0.000008412673",
-          "Enabled": true,
           "NetworkMode": 2,
           "NetworkInterpolation": true,
           "Components": [
@@ -846,7 +902,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-05-31T21:41:54.5061444\u002B07:00",
+  "LastSaved": "2024-06-01T23:19:52.3842348\u002B07:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

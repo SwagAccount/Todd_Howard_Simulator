@@ -1,0 +1,260 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "DefaultMaterialGroup"
+						remaps = 
+						[
+							{
+								from = "black.vmat"
+								to = "materials/black_matte.vmat"
+							},
+							{
+								from = "chainmail.vmat"
+								to = "models/items/apparel/armour/chainmail.vmat"
+							},
+							{
+								from = "helmet.vmat"
+								to = "models/items/apparel/armour/golden knight armour helmet.vmat"
+							},
+						]
+						use_global_default = false
+						global_default_material = "materials/default.vmat"
+					},
+				]
+			},
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderMeshFile"
+						filename = "models/items/apparel/armour/golden knight armour-apparel.fbx"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"Plane_011",
+								"Plane_012",
+								"Plane_013",
+								"Plane_010",
+								"Plane_014",
+								"Cylinder",
+								"Plane_004",
+							]
+						}
+					},
+				]
+			},
+			{
+				_class = "MorphControlList"
+				children = 
+				[
+					{
+						_class = "MorphControl"
+						name = "female"
+						stereo = false
+						min_value = 0.0
+						max_value = 0.0
+					},
+				]
+			},
+			{
+				_class = "IKData"
+				children = 
+				[
+					{
+						_class = "IKChain"
+						name = "hand_left"
+						children = 
+						[
+							{
+								_class = "IKChainJoint"
+								name = "DEF_upper_arm_L"
+								children = 
+								[
+									{
+										_class = "IKChainJoint"
+										name = "DEF_forearm_L_001"
+										children = 
+										[
+											{
+												_class = "IKChainJoint"
+												name = "DEF_hand_L"
+												bone = "DEF_hand_L"
+											},
+										]
+										bone = "DEF_forearm_L"
+									},
+								]
+								bone = "DEF_upper_arm_L"
+							},
+						]
+						m_bDoBonesOrientAlongPositiveX = true
+						"m_DefaultSolverSettings.m_nNumIterations" = 6
+						"m_DefaultSolverSettings.m_SolverType " = "IKSOLVER_TwoBone"
+						"m_DefaultTargetSettings.m_Bone" = 
+						{
+							m_Name = "DEF_hand_L"
+						}
+						"m_DefaultTargetSettings.m_TargetSource" = "Animgraph Parameter"
+						"m_Data.m_DefaultTargetSettings.m_AnimgraphParameterNamePosition" = 
+						{
+							m_id = 4294967295
+						}
+						"m_Data.m_EndEffectorFixedOffsetAttachment" = 
+						{
+							m_Name = ""
+						}
+						"m_Data.m_bParentJointRequiresAlignment" = true
+					},
+					{
+						_class = "IKChain"
+						name = "hand_right"
+						children = 
+						[
+							{
+								_class = "IKChainJoint"
+								name = "DEF_upper_arm_R"
+								children = 
+								[
+									{
+										_class = "IKChainJoint"
+										name = "DEF_forearm_R_001"
+										children = 
+										[
+											{
+												_class = "IKChainJoint"
+												name = "DEF_hand_R"
+												bone = "DEF_hand_R"
+											},
+										]
+										bone = "DEF_forearm_R"
+									},
+								]
+								bone = "DEF_upper_arm_R"
+							},
+						]
+						m_bDoBonesOrientAlongPositiveX = true
+						"m_DefaultSolverSettings.m_nNumIterations" = 6
+						"m_DefaultSolverSettings.m_SolverType " = "IKSOLVER_TwoBone"
+						"m_DefaultTargetSettings.m_Bone" = 
+						{
+							m_Name = "DEF_hand_R"
+						}
+						"m_DefaultTargetSettings.m_TargetSource" = "Animgraph Parameter"
+						"m_Data.m_DefaultTargetSettings.m_AnimgraphParameterNamePosition" = 
+						{
+							m_id = 4294967295
+						}
+						"m_Data.m_EndEffectorFixedOffsetAttachment" = 
+						{
+							m_Name = ""
+						}
+						"m_Data.m_bParentJointRequiresAlignment" = true
+					},
+				]
+			},
+			{
+				_class = "ModelModifierList"
+				children = 
+				[
+					{
+						_class = "ModelModifier_ScaleAndMirror"
+						scale = 1.15
+						mirror_x = false
+						mirror_y = false
+						mirror_z = false
+						flip_bone_forward = false
+						swap_left_and_right_bones = false
+					},
+				]
+			},
+			{
+				_class = "WeightListList"
+				children = 
+				[
+					{
+						_class = "WeightList"
+						name = "Arms"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "DEF_forearm_L"
+								weight = 1.0
+							},
+							{
+								bone = "DEF_forearm_L_001"
+								weight = 1.0
+							},
+							{
+								bone = "DEF_forearm_R"
+								weight = 1.0
+							},
+							{
+								bone = "DEF_forearm_R_001"
+								weight = 1.0
+							},
+							{
+								bone = "DEF_hand_L"
+								weight = 1.0
+							},
+							{
+								bone = "DEF_hand_R"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "Shoulder"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "DEF_shoulder_L"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "Prefab"
+						target_file = "modelDocPreferbs/humananimations.vmdl_prefab"
+					},
+				]
+				default_root_bone_name = ""
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = ""
+		base_model_name = ""
+	}
+}
