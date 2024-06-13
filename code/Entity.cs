@@ -6,6 +6,7 @@ public sealed class Entity : Component
 	[Property] public Ids Ids {get;set;}
 	[Property] public List<Catagory> Catagories {get;set;}
 	[Property] public bool displayContainer { get; set;}
+	[Property] public float ContainerUpdated { get; set;}
 	[Property] public List<SaveClasses.EntitySave> Container {get;set;}
 	[Property] public List<Equiped> Equips {get;set;}
 	public int getEquip(string equipType)
@@ -75,6 +76,14 @@ public sealed class Entity : Component
 		{
 			if(Equips[i].ID == id) return true;
 		}
+		return false;
+	}
+	public bool Update()
+	{
+		if(Time.Now-ContainerUpdated < 1)
+		{
+			return true;
+		} 
 		return false;
 	}
 	public void EquipItem(SaveClasses.EntitySave entitySave)

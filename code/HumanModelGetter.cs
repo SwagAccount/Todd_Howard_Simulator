@@ -9,5 +9,8 @@ public sealed class HumanModelGetter : Component
 		gameObject.Transform.Position = Transform.Position;
 		gameObject.Transform.Rotation = Transform.Rotation;
 		gameObject.SetParent(GameObject);
+		ModelHitboxes modelHitboxes = Components.Create<ModelHitboxes>();
+		modelHitboxes.Renderer = gameObject.Components.Get<NpcmodelAnimationManager>().Animations;
+		modelHitboxes.Target = GameObject;
 	}
 }

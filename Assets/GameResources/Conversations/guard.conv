@@ -1,0 +1,15 @@
+{
+  "TextBlocks": [
+    {
+      "BlockName": "Start",
+      "Block": "I\u0027m trying to work, fuck off.",
+      "DirectTo": ""
+    }
+  ],
+  "ChoiceBlocks": [],
+  "StartTalkingOrChoosing": true,
+  "StartBlock": "Start",
+  "CurrentlyAccessedBlock": "Start",
+  "__references": [],
+  "__version": 0
+}

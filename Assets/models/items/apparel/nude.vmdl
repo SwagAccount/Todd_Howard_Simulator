@@ -229,6 +229,163 @@
 						master_morph_weight = -1.0
 						morph_weights = [  ]
 					},
+					{
+						_class = "WeightList"
+						name = "none"
+						default_weight = 0.0
+						weights = [  ]
+						master_morph_weight = 1.0
+						morph_weights = 
+						[
+							{
+								morph = "Female"
+								weight = 1.0
+							},
+						]
+					},
+				]
+			},
+			{
+				_class = "HitboxSetList"
+				children = 
+				[
+					{
+						_class = "HitboxSet"
+						name = "default"
+						children = 
+						[
+							{
+								_class = "Hitbox"
+								name = "DEF_spine_002"
+								parent_bone = "DEF_spine_002"
+								surface_property = ""
+								translation_only = false
+								tags = "1"
+								hitbox_mins = [ -5.878888, -7.139917, -4.857835 ]
+								hitbox_maxs = [ 5.878783, 3.165497, 7.74323 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "DEF_spine_003"
+								parent_bone = "DEF_spine_003"
+								surface_property = ""
+								translation_only = false
+								tags = "2"
+								hitbox_mins = [ -7.589824, -2.721729, -4.302228 ]
+								hitbox_maxs = [ 7.589698, 5.814532, 6.556383 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "DEF_spine_006"
+								parent_bone = "DEF_spine_006"
+								surface_property = ""
+								translation_only = false
+								tags = "5"
+								hitbox_mins = [ -3.150427, -4.029538, -2.707832 ]
+								hitbox_maxs = [ 3.150272, 6.070073, 6.603696 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "DEF_thigh_L_001"
+								parent_bone = "DEF_thigh_L_001"
+								surface_property = ""
+								translation_only = false
+								tags = "1"
+								hitbox_mins = [ -3.502553, -8.60005, -5.585701 ]
+								hitbox_maxs = [ 3.455417, 7.276808, 5.015251 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "DEF_shin_L"
+								parent_bone = "DEF_shin_L"
+								surface_property = ""
+								translation_only = false
+								tags = "1"
+								hitbox_mins = [ -2.579764, -2.062153, -3.20407 ]
+								hitbox_maxs = [ 2.320714, 14.686111, 4.018288 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "DEF_foot_L"
+								parent_bone = "DEF_foot_L"
+								surface_property = ""
+								translation_only = false
+								tags = "1"
+								hitbox_mins = [ -1.590653, -1.775105, -3.137983 ]
+								hitbox_maxs = [ 2.505135, 8.787075, 3.085362 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "DEF_thigh_R_001"
+								parent_bone = "DEF_thigh_R_001"
+								surface_property = ""
+								translation_only = false
+								tags = "1"
+								hitbox_mins = [ -3.455921, -8.756264, -6.231543 ]
+								hitbox_maxs = [ 3.502013, 6.061705, 5.015096 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "DEF_shin_R"
+								parent_bone = "DEF_shin_R"
+								surface_property = ""
+								translation_only = false
+								tags = "1"
+								hitbox_mins = [ -2.320445, -2.06218, -3.204765 ]
+								hitbox_maxs = [ 2.579989, 14.686089, 4.017158 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "DEF_foot_R"
+								parent_bone = "DEF_foot_R"
+								surface_property = ""
+								translation_only = false
+								tags = "1"
+								hitbox_mins = [ -2.506366, -1.77512, -3.137315 ]
+								hitbox_maxs = [ 1.589691, 8.78706, 3.084691 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "DEF_upper_arm_L_001"
+								parent_bone = "DEF_upper_arm_L_001"
+								surface_property = ""
+								translation_only = false
+								tags = "1"
+								hitbox_mins = [ -3.97804, -5.163789, -2.477247 ]
+								hitbox_maxs = [ 1.743874, 5.925816, 3.774763 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "DEF_forearm_L_001"
+								parent_bone = "DEF_forearm_L_001"
+								surface_property = ""
+								translation_only = false
+								tags = "1"
+								hitbox_mins = [ -2.738758, -4.030711, -2.029605 ]
+								hitbox_maxs = [ 0.957056, 8.145384, 3.148383 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "DEF_upper_arm_R_001"
+								parent_bone = "DEF_upper_arm_R_001"
+								surface_property = ""
+								translation_only = false
+								tags = "1"
+								hitbox_mins = [ -1.743823, -5.163726, -2.477252 ]
+								hitbox_maxs = [ 3.978086, 5.925886, 3.771511 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "DEF_forearm_R_001"
+								parent_bone = "DEF_forearm_R_001"
+								surface_property = ""
+								translation_only = false
+								tags = "1"
+								hitbox_mins = [ -0.957001, -4.030702, -2.029626 ]
+								hitbox_maxs = [ 2.738813, 8.145397, 3.148353 ]
+							},
+						]
+					},
 				]
 			},
 		]

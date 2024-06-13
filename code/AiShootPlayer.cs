@@ -8,7 +8,8 @@ public class AIShootPlayer : AIState
 {
 	public void Enter( Aiagent agent )
 	{
-		
+		agent.npcequipper.equipWeapon = true;
+		agent.npcequipper.UpdateEquips();
 	}
 
 	public void Exit( Aiagent agent )
@@ -36,6 +37,11 @@ public class AIShootPlayer : AIState
 	
 	public void Update( Aiagent agent )
 	{
+		if(agent.Opp == null)
+		{
+			agent.stateMachine.ChangeState(AIStateID.Idle);
+			return;
+		}
 		GameObject checkShoot = agent.weapon.CheckShoot();
 
 		if(checkShoot!=null)
@@ -47,7 +53,7 @@ public class AIShootPlayer : AIState
 		agent.Controller.UpdateRotation = false;
 		agent.Controller.Speed = agent.speed.floatValue*2;
 		float DistanceToOpp = Vector3.DistanceBetween(agent.Transform.Position, agent.Opp.Transform.Position);
-		float MaxAttackDistance = CalculateEffectiveDistance((
+		float MaxAttackDistance = agent.weapon.weapon == null ? 500 : CalculateEffectiveDistance((
 			agent.weapon.weapon.minMaxRecoilPos[0].Length + agent.weapon.weapon.minMaxRecoilPos[1].Length)/2,
 			agent.weapon.weapon.bulletStats[0].spreadX+agent.weapon.weapon.bulletStats[0].spreadY,
 			16,
@@ -81,7 +87,114 @@ public class AIShootPlayer : AIState
 			}
 			agent.Controller.currentTarget = RandomPos;
 		}
-		agent.faceOpp();
+		agent.faceThing(agent.Opp.GameObject);
 		lastHealth = agent.Health.floatValue;
+	}
+}
+
+public class AIDie : AIState
+{
+	public void Enter( Aiagent agent )
+	{
+		agent.npcequipper.equipWeapon = false;
+		agent.npcequipper.UpdateEquips();
+		int gunEquipSlot = agent.weapon.Entity.getEquip("weapons");
+		if(gunEquipSlot!=-1)
+		{
+			agent.weapon.DropWeapon();  
+			Log.Info("FUCK");
+		}
+		agent.npcmodelAnimationManager.Dead = true;
+		agent.weapon.Entity.displayContainer = true;
+		NavMeshCharacter navMeshCharacter = agent.Components.Get<NavMeshCharacter>();
+		navMeshCharacter.boxCollider.Destroy();
+		navMeshCharacter.characterController.Destroy();
+		navMeshCharacter.Destroy();
+	}
+
+	public void Exit( Aiagent agent )
+	{
+		
+	}
+
+	public AIStateID GetID()
+	{
+		return AIStateID.Dead;
+	}
+
+	public void Update( Aiagent agent )
+	{
+		
+	}
+}
+
+public class AIIdle : AIState
+{
+	List<int> PatrolIDs;
+	Attributes.AttributeSet defaultSet;
+	Attributes.Attribute Stare;
+	Attributes.AttributeSet patrolSet;
+	CommandDealer commandDealer;
+	GameObject player;
+	int currentPatrolPoint = -1;
+	public void Enter( Aiagent agent )
+	{
+		agent.npcequipper.equipWeapon = false;
+		agent.npcequipper.UpdateEquips();
+		Log.Info("Start");
+		agent.Controller.UpdateRotation = false;
+		commandDealer = CommandDealer.getCommandDealer();
+		patrolSet = agent.Attributes.attributeSets[agent.Attributes.getAttributeSetIndex("Patrol Points")];
+		defaultSet = agent.Attributes.attributeSets[agent.Attributes.getAttributeSetIndex("default")];
+		for(int i = 0; i < defaultSet.attributes.Count; i++)
+		{
+			if(defaultSet.attributes[i].AttributeName == "Stare")
+			{
+				Stare = defaultSet.attributes[i];
+				break;
+			}
+		}
+		if(patrolSet.attributes.Count > 0)
+		{
+			currentPatrolPoint = 0;
+			agent.Controller.currentTarget = patrolSet.attributes[currentPatrolPoint].vector3Value;
+		}
+	}
+
+	public void Exit( Aiagent agent )
+	{
+		
+	}
+
+	public AIStateID GetID()
+	{
+		return AIStateID.Idle;
+	}
+	
+	public void Update( Aiagent agent )
+	{
+		if(agent.Opp != null) agent.stateMachine.ChangeState(AIStateID.ShootPlayer);
+		if(true)
+		{
+			float distanceToPlayer = Vector3.DistanceBetween(agent.Transform.Position, agent.player.Transform.Position);
+	
+			if(distanceToPlayer < 150f)
+			{
+				
+				agent.faceThing(agent.player);
+				
+			}
+		}
+
+		if(currentPatrolPoint != -1)
+		{
+			Vector3 currentPoint = patrolSet.attributes[currentPatrolPoint].vector3Value;
+			float distanceToPoint = Vector3.DistanceBetween(agent.Transform.Position, currentPoint);
+			if(distanceToPoint<10) 
+			{
+				currentPatrolPoint++;
+				agent.Controller.currentTarget = patrolSet.attributes[currentPatrolPoint].vector3Value;
+			}
+		}
 	}
 }

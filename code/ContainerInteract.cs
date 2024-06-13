@@ -14,7 +14,8 @@ public sealed class ContainerInteract : Component
 	{
 		None,
 		Look,
-		Transfer
+		Transfer, 
+		Barter
 	}
 	protected override void OnStart()
 	{
@@ -77,6 +78,18 @@ public sealed class ContainerInteract : Component
 				
 				break;
 			case States.Transfer:
+				
+				playerController.Enabled = false;
+				interactor.Enabled = false;
+				from.Enabled = true;
+				to.Enabled = true;
+				to.EnableMouse = true;
+				if(Input.Pressed("Score"))
+				{
+					State = States.None;
+				}
+				break;
+			case States.Barter:
 				
 				playerController.Enabled = false;
 				interactor.Enabled = false;

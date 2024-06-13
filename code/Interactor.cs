@@ -7,7 +7,9 @@ public sealed class Interactor : Component
 	private CrossHair crossHair;
 	[Property] private float range {get; set;}
 	[Property] private GameObject Grabber {get; set;}
+	ConversationScript conversationScript;
 	GameObject lastHit;
+	Hitbox lastHitbox;
 	Interactable interactable;
 	Interactable lastInteractable;
 	Entity entity;
@@ -24,6 +26,7 @@ public sealed class Interactor : Component
 		crossHair = Components.GetOrCreate<CrossHair>();
 		player = GameObject.Parent.Components.Get<Entity>();
 		containerInteract = GameObject.Parent.Components.Get<ContainerInteract>();
+		conversationScript = Components.Get<ConversationScript>();
 	}
 	float useTime = 0;
 	protected override void OnUpdate()
@@ -31,13 +34,20 @@ public sealed class Interactor : Component
 		var trace = Scene.Trace.Ray(
 			Transform.Position,
 			Transform.Position+(Transform.World.Forward*range)
-		).Run();
+		).UseHitboxes().Run();
 		bool checkgrab = joint == null;
 		if(!checkgrab) checkgrab = !joint.Enabled;
 		if(checkgrab)
 		{
-			if(trace.Hit && trace.GameObject != lastHit)
+			GameObject traceGameObject = trace.GameObject;
+			if(trace.Hitbox != null)
 			{
+				traceGameObject = trace.Hitbox.GameObject;
+			}
+			if(trace.Hit)// && (trace.GameObject != lastHit || trace.Hitbox != lastHitbox))
+			{
+				//lastHit = trace.GameObject;
+				//lastHitbox = trace.Hitbox;
 				entity = trace.GameObject.Components.Get<Entity>();
 				if(entity != null)
 				{
@@ -48,6 +58,15 @@ public sealed class Interactor : Component
 						if(Input.Pressed("use"))
 						{
 							containerInteract.State = ContainerInteract.States.Transfer;
+						}
+					}
+					Attributes.Attribute convoAttribute = entity.Attributes.getAttribute("Conversation", "default", false);
+					if(convoAttribute != null)
+					{
+						if(Input.Pressed("use"))
+						{
+							conversationScript.conversation = ResourceLibrary.Get<Conversation>($"gameresources/conversations/{convoAttribute.stringValue}.conv");
+							conversationScript.talkedToEntity = entity;
 						}
 					}
 				}

@@ -57,7 +57,7 @@ public sealed class Weapon : GameResource
     [System.Serializable]
     public class Mode
     {
-        [Property] public string modeName {get; set;}
+        [KeyProperty][Property] public string modeName {get; set;}
         [Property] public int ammoUse {get; set;}
         [Property] public float timeBetweenEachShot {get; set;}
         [Property] public float timeBeforeShooting {get; set;}
@@ -65,6 +65,8 @@ public sealed class Weapon : GameResource
         [Property] public bool buttonHold {get; set;}
         [Property] public float shotsPerShoot {get; set;}
         [Property] public int ammoNeeded {get; set;}
+        
+
     }
 	[System.Serializable]
     public class bulletStat
@@ -86,6 +88,80 @@ public sealed class Weapon : GameResource
         [Property]public float projectileSpeed {get; set;}
 
     }
+}
+
+[GameResource("Conversation", "conv", "A Conversation", Icon = "Chat")]
+public sealed class Conversation : GameResource
+{
+    [Property] public List<TextBlock> TextBlocks {get;set;}
+    [Property] public List<ChoiceBlock> ChoiceBlocks {get;set;}
+    [Property] public bool StartTalkingOrChoosing {get;set;}
+    [Property] public string StartBlock {get;set;}
+    public string CurrentlyAccessedBlock {get;set;}
+    public int BlockIndex;
+
+    public int GetBlockIndex(string block, bool talkingOrChoosing)
+    {
+        if(CurrentlyAccessedBlock == block) return BlockIndex;
+        BlockIndex = -1;
+        CurrentlyAccessedBlock = block;
+        if(talkingOrChoosing)
+        {
+            for(int i = 0; i < TextBlocks.Count; i++)
+            {
+                if(TextBlocks[i].BlockName == block)
+                {
+                    BlockIndex = i;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            for(int i = 0; i < ChoiceBlocks.Count; i++)
+            {
+                if(ChoiceBlocks[i].BlockName == block)
+                {
+                    BlockIndex = i;
+                    break;
+                }
+            }
+        }
+
+        return BlockIndex;
+    }
+
+}
+
+public class TextBlock
+{
+    [KeyProperty][Property] public string BlockName {get; set;}
+    [TextArea][Property] public string Block {get;set;}
+    [Property] public bool DirectToTextBlock {get;set;}
+    [Property] public string DirectTo {get;set;}
+    [Property] public string ChangeConversationTo {get;set;}
+}
+
+public class ChoiceBlock
+{
+    [KeyProperty][Property] public string BlockName {get; set;}
+    [Property] public List<Choice> choices {get; set;}
+}
+
+public class Choice
+{
+    [KeyProperty][Property] public string ChoiceText {get;set;}
+    [Property] public List<Requirement> Requirements {get;set;}
+    [Property] public bool DirectToBarter {get;set;}
+    [Property] public bool DirectToConvoBlock {get;set;}
+    [Property] public string DirectTo {get;set;}
+}
+
+public class Requirement
+{
+    [Property] public bool notHave {get;set;}
+    [Property] public string CompletedGroup {get;set;}
+    [KeyProperty][Property] public string Completed {get;set;}
 }
 
 [GameResource("Item", "item", "Info for game item.", Icon = "Description")]

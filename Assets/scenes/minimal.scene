@@ -1,10 +1,10 @@
 {
-  "__guid": "9aa65fbc-3a89-43fe-b25b-e976e781b193",
+  "__guid": "b58c03e4-e1ae-4dc1-bfab-58c25bf3af76",
   "GameObjects": [
     {
       "__guid": "a5c15dd4-959c-4e30-9085-187e55c7c236",
       "Flags": 0,
-      "Name": "Commands",
+      "Name": "Global Crap",
       "Position": "172.295,-149.24,-121.0655",
       "Enabled": true,
       "NetworkMode": 2,
@@ -14,17 +14,21 @@
           "__type": "CommandDealer",
           "__guid": "05f3a727-7b94-48bb-af7e-07e43e16fae3",
           "nextCode": 0,
-          "player": {
-            "_type": "component",
-            "component_id": "dbca1216-8eb5-4afd-bb8c-f3ba37b19c9c",
-            "go": "438b4461-5267-4f6a-b9e2-dfc44112b4c8",
-            "component_type": "Attributes"
-          },
           "Saved": {
             "_type": "gameobject",
             "go": "fe2d58e1-e601-46d3-b893-fb2fdc9fb428"
           },
           "sceneIdSelected": 0
+        },
+        {
+          "__type": "CompletedThings",
+          "__guid": "c7ac0edc-662a-4a05-8cb8-6bca008287cc",
+          "CompletionGroups": [
+            {
+              "GroupName": "Quests",
+              "Completed": []
+            }
+          ]
         }
       ]
     },
@@ -163,6 +167,7 @@
               "__guid": "9d0de3cf-b3e9-43d5-bff4-cfa0ca0f1be6",
               "Catagories": [],
               "Container": [],
+              "ContainerUpdated": 0,
               "displayContainer": false,
               "Equips": []
             },
@@ -222,6 +227,7 @@
               "__guid": "d269879b-2314-4ced-8bda-487ca0f4c1a0",
               "Catagories": [],
               "Container": [],
+              "ContainerUpdated": 0,
               "displayContainer": true,
               "Equips": []
             }
@@ -279,6 +285,7 @@
               "__guid": "1a9c7e1b-8340-4b30-833e-e66056703dca",
               "Catagories": [],
               "Container": [],
+              "ContainerUpdated": 0,
               "displayContainer": false,
               "Equips": []
             }
@@ -336,6 +343,7 @@
               "__guid": "87ec41fc-ca04-4bbf-b679-11e1007d0c3e",
               "Catagories": [],
               "Container": [],
+              "ContainerUpdated": 0,
               "displayContainer": false,
               "Equips": []
             }
@@ -393,6 +401,7 @@
               "__guid": "6436b26b-ea42-4a74-83c3-34e4a09f62ba",
               "Catagories": [],
               "Container": [],
+              "ContainerUpdated": 0,
               "displayContainer": false,
               "Equips": []
             }
@@ -450,6 +459,7 @@
               "__guid": "a7a416c5-506c-4506-8823-cb94e80b1a21",
               "Catagories": [],
               "Container": [],
+              "ContainerUpdated": 0,
               "displayContainer": false,
               "Equips": []
             }
@@ -507,137 +517,9 @@
               "__guid": "ea03970b-4638-4cc8-ba0f-69311e5b4de7",
               "Catagories": [],
               "Container": [],
+              "ContainerUpdated": 0,
               "displayContainer": false,
               "Equips": []
-            }
-          ]
-        },
-        {
-          "__guid": "253b120f-ec4c-4f9d-b4ed-2e4c21c55c58",
-          "Flags": 0,
-          "Name": "TestNPC (1)",
-          "Position": "-240.5973,159.8718,0.000008412673",
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
-          "Components": [
-            {
-              "__type": "Attributes",
-              "__guid": "59e3a316-31d7-4e63-a4ed-7814eefd086c",
-              "attributeSets": [
-                {
-                  "setName": "NavMeshController",
-                  "attributes": [
-                    {
-                      "AttributeName": "Height",
-                      "attributeType": "FLOAT",
-                      "floatValue": 72
-                    },
-                    {
-                      "AttributeName": "Radius",
-                      "attributeType": "FLOAT",
-                      "floatValue": 6
-                    },
-                    {
-                      "AttributeName": "Max Speed",
-                      "attributeType": "FLOAT",
-                      "floatValue": 120
-                    },
-                    {
-                      "AttributeName": "Acceleration",
-                      "attributeType": "FLOAT",
-                      "floatValue": 200
-                    }
-                  ]
-                },
-                {
-                  "setName": "Brain",
-                  "attributes": []
-                },
-                {
-                  "setName": "default",
-                  "attributes": [
-                    {
-                      "AttributeName": "Health",
-                      "attributeType": "FLOAT",
-                      "floatValue": 100
-                    },
-                    {
-                      "AttributeName": "MaxHealth",
-                      "attributeType": "FLOAT",
-                      "floatValue": 100
-                    },
-                    {
-                      "AttributeName": "Gun Bone Index",
-                      "attributeType": "STRING",
-                      "stringValue": "10,0,0,0"
-                    }
-                  ]
-                }
-              ],
-              "perkEffectors": []
-            },
-            {
-              "__type": "Ids",
-              "__guid": "6a96dab7-5d57-40bc-b665-3bd36206b074",
-              "Categories": [
-                "npc",
-                "humanoid",
-                "human"
-              ],
-              "sceneID": 3567
-            },
-            {
-              "__type": "Entity",
-              "__guid": "12f598b5-5004-4665-9cd1-a9b315c74ae9",
-              "Catagories": [],
-              "Container": [
-                {
-                  "id": 34645,
-                  "Categories": [
-                    "items",
-                    "weapons",
-                    "guns",
-                    "eh5"
-                  ],
-                  "AttributeSets": [
-                    {
-                      "setName": "default",
-                      "attributes": [
-                        {
-                          "AttributeName": "Ammo",
-                          "attributeType": "STRING"
-                        },
-                        {
-                          "AttributeName": "Current Mode"
-                        },
-                        {
-                          "AttributeName": "Current Bullet"
-                        },
-                        {
-                          "AttributeName": "Condition",
-                          "attributeType": "FLOAT",
-                          "floatValue": 1
-                        }
-                      ]
-                    }
-                  ],
-                  "Container": []
-                }
-              ],
-              "displayContainer": false,
-              "Equips": [
-                {
-                  "equipType": "weapons",
-                  "ID": 34645
-                }
-              ]
-            },
-            {
-              "__type": "HealthGizmo",
-              "__guid": "6de636b1-0fa6-4925-86c7-7b2e8c39cda6",
-              "DisplayHealth": true,
-              "HealthValue": 0,
-              "Height": 80
             }
           ]
         },
@@ -645,7 +527,7 @@
           "__guid": "2735ee79-dae5-4810-86a2-4bcb913c501e",
           "Flags": 0,
           "Name": "TestNPC",
-          "Position": "-240.5973,159.8718,0.000008412673",
+          "Position": "-87.67211,159.8718,0.000008412673",
           "Enabled": true,
           "NetworkMode": 2,
           "NetworkInterpolation": true,
@@ -721,7 +603,23 @@
                       "AttributeName": "Gun Bone Index",
                       "attributeType": "STRING",
                       "stringValue": "10,0,0,0"
+                    },
+                    {
+                      "AttributeName": "Stare",
+                      "attributeType": "BOOL",
+                      "boolValue": true
+                    },
+                    {
+                      "AttributeName": "Conversation",
+                      "attributeType": "STRING",
+                      "stringValue": "guard"
                     }
+                  ]
+                },
+                {
+                  "setName": "Patrol Points",
+                  "attributes": [
+                    {}
                   ]
                 }
               ],
@@ -773,8 +671,22 @@
                     }
                   ],
                   "Container": []
+                },
+                {
+                  "id": 483648,
+                  "Categories": [
+                    "items",
+                    "apparel",
+                    "armour",
+                    "golden knight armour"
+                  ],
+                  "AttributeSets": [],
+                  "Equips": [],
+                  "PerkEffectors": [],
+                  "Container": []
                 }
               ],
+              "ContainerUpdated": 0,
               "displayContainer": false,
               "Equips": [
                 {
@@ -786,9 +698,151 @@
             {
               "__type": "HealthGizmo",
               "__guid": "136c400e-e88f-4652-9d2c-dd80145d31c2",
-              "DisplayHealth": true,
+              "DisplayHealth": false,
               "HealthValue": 0,
               "Height": 80
+            },
+            {
+              "__type": "Sandbox.ModelHitboxes",
+              "__guid": "da2fe536-ecd0-46a7-a025-a412d15e68e4"
+            },
+            {
+              "__type": "FindEnemy",
+              "__guid": "967001ee-350f-48de-9fec-ec9b9722552c"
+            }
+          ]
+        },
+        {
+          "__guid": "e72a1f49-6c74-4113-b3b6-829aade00c85",
+          "Flags": 0,
+          "Name": "TestNPC",
+          "Position": "-87.67211,0.5835419,0.000008412673",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Attributes",
+              "__guid": "854f8aa5-a9cd-479d-9d4f-a109469633af",
+              "attributeSets": [
+                {
+                  "setName": "NavMeshController",
+                  "attributes": [
+                    {
+                      "AttributeName": "Height",
+                      "attributeType": "FLOAT",
+                      "floatValue": 72
+                    },
+                    {
+                      "AttributeName": "Radius",
+                      "attributeType": "FLOAT",
+                      "floatValue": 6
+                    },
+                    {
+                      "AttributeName": "Max Speed",
+                      "attributeType": "FLOAT",
+                      "floatValue": 120
+                    },
+                    {
+                      "AttributeName": "Acceleration",
+                      "attributeType": "FLOAT",
+                      "floatValue": 200
+                    }
+                  ]
+                },
+                {
+                  "setName": "Brain",
+                  "attributes": [
+                    {
+                      "AttributeName": "MaxAttackDistance",
+                      "attributeType": "FLOAT",
+                      "floatValue": 136.6
+                    },
+                    {
+                      "AttributeName": "DistanceResistance",
+                      "attributeType": "FLOAT",
+                      "floatValue": 100
+                    },
+                    {
+                      "AttributeName": "RandomMovementDis",
+                      "attributeType": "FLOAT",
+                      "floatValue": 200
+                    },
+                    {
+                      "AttributeName": "RandomMoveChance",
+                      "attributeType": "FLOAT",
+                      "floatValue": 50
+                    }
+                  ]
+                },
+                {
+                  "setName": "default",
+                  "attributes": [
+                    {
+                      "AttributeName": "Health",
+                      "attributeType": "FLOAT",
+                      "floatValue": 100
+                    },
+                    {
+                      "AttributeName": "MaxHealth",
+                      "attributeType": "FLOAT",
+                      "floatValue": 100
+                    },
+                    {
+                      "AttributeName": "Gun Bone Index",
+                      "attributeType": "STRING",
+                      "stringValue": "10,0,0,0"
+                    },
+                    {
+                      "AttributeName": "Stare",
+                      "attributeType": "BOOL",
+                      "boolValue": true
+                    },
+                    {
+                      "AttributeName": "Conversation",
+                      "attributeType": "STRING",
+                      "stringValue": "test"
+                    }
+                  ]
+                },
+                {
+                  "setName": "Patrol Points",
+                  "attributes": [
+                    {}
+                  ]
+                }
+              ],
+              "perkEffectors": []
+            },
+            {
+              "__type": "Ids",
+              "__guid": "daa4644a-c7e2-441e-a2e5-f9af17811531",
+              "Categories": [
+                "npc",
+                "humanoid",
+                "human"
+              ],
+              "sceneID": 4563
+            },
+            {
+              "__type": "Entity",
+              "__guid": "73cc4cd7-9b82-43da-b3b9-952633e61621",
+              "Catagories": [],
+              "Container": [],
+              "ContainerUpdated": 0,
+              "displayContainer": false,
+              "Equips": []
+            },
+            {
+              "__type": "HealthGizmo",
+              "__guid": "8edb60a8-5236-4659-a32f-c1cd90fb27a2",
+              "DisplayHealth": false,
+              "HealthValue": 0,
+              "Height": 80
+            },
+            {
+              "__type": "Sandbox.ModelHitboxes",
+              "__guid": "84cdd28e-4052-4794-aa3d-737c65ab4230"
             }
           ]
         }
@@ -902,7 +956,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-06-01T23:19:52.3842348\u002B07:00",
+  "LastSaved": "2024-06-13T23:44:51.65156\u002B07:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

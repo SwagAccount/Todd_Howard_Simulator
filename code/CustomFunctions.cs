@@ -45,11 +45,35 @@ public sealed class CustomFunctions
             newEntity.AttributeSets.Add(Attributes.SaveAttributeSet(attributeSet));
         }
 
+        newEntity.PerkEffectors = entity.Attributes.perkEffectors;
+        newEntity.Equips = entity.Equips;
+
         newEntity.Container = entity.Container;
 
         return newEntity;
     }
+    public static GameObject SpawnEntity(SaveClasses.EntitySave entitySave)
+    {
 
+        GameObject NewEntity = new GameObject();
+        Entity entity = NewEntity.Components.Create<Entity>();
+        entity.Container = entitySave.Container;
+        entity.Equips = entitySave.Equips;
+		Ids ids = NewEntity.Components.Create<Ids>();
+		ids.Categories = entitySave.Categories;
+        ids.sceneID = int.Parse($"{DateTime.Now.DayOfYear}{DateTime.Now.Year}{Game.Random.Next(0,1000)}"); 
+		Attributes attributes = NewEntity.Components.Create<Attributes>();
+        attributes.attributeSets = new List<Attributes.AttributeSet>();
+        foreach(Attributes.SavedAttributeSet attributeSet in entitySave.AttributeSets)
+        {
+            attributes.attributeSets.Add(Attributes.LoadAttributeSet(attributeSet));
+        }
+        attributes.perkEffectors = entitySave.PerkEffectors;
+        
+        NewEntity.Parent = CommandDealer.getCommandDealer().Saved;
+        return NewEntity;
+    }
+    
     public static GameObject GetChildAtPath(GameObject parent, List<int> path)
     {
 

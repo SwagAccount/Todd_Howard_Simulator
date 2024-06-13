@@ -34,8 +34,9 @@ public class AIStateMachine
         GetState(currentState)?.Update(agent);
     }
 
-    public void ChangeState(AIStateID newState)
+    public void ChangeState(AIStateID newState, bool Override = false)
     {
+        if(newState == currentState && !Override) return;
         GetState(currentState)?.Exit(agent);
         currentState = newState;
         GetState(currentState)?.Enter(agent);

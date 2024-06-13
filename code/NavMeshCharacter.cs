@@ -4,7 +4,7 @@ using Sandbox.Navigation;
 
 public sealed class NavMeshCharacter : Component
 {
-	private CharacterController characterController;
+	public CharacterController characterController {get;set;}
 	[Category("Character Controller"), Property, Range(0,200)] public float Radius {get;set;} = 16f;
 	[Category("Character Controller"), Property, Range(0,200)] public float Height {get;set;} = 64f;
 	[Category("Character Controller"), Property, Range(0,50)] public float StepHeight {get;set;} = 18f;
@@ -21,11 +21,17 @@ public sealed class NavMeshCharacter : Component
 	[Category("Agent"), Property] public bool UpdateRotation {get;set;} = true;
 	[Category("Agent"), Property, Range(0,10)] public float PositionAccuracy {get;set;} = 5f;
 	[Category("Debug"), Property] public bool Gizmos {get;set;}
-
+	public BoxCollider boxCollider {get; set;}
 	protected override void OnStart()
 	{
 		currentTarget = Vector3.One * 1.54626734562345f;
-		BoxCollider boxCollider = Components.GetOrCreate<BoxCollider>();
+		GameObject g = new GameObject();
+		g.SetParent(GameObject);
+		g.Transform.Position = Transform.Position;
+		g.Transform.Rotation = Transform.Rotation;
+		g.Name = "Box Collider";
+		g.Tags.Add("IgnoreBullet");
+		boxCollider = g.Components.GetOrCreate<BoxCollider>();
 		boxCollider.Scale = new Vector3(Radius*2,Radius*2,Height);
 		boxCollider.Center = new Vector3(0,0,Height/2);
 

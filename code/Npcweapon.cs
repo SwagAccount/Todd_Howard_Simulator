@@ -9,7 +9,7 @@ public sealed class Npcweapon : Component
 	[Property] private GameObject pivot;
 	[Property] private bool fuckoff {get;set;}
 	private BulletHoleDB bHoleDB;
-	Entity Entity;
+	public Entity Entity;
 	Vector3 recoilOffsetPos;
     Angles recoilOffsetRot;
 	[Property] int gunEquipSlot;
@@ -67,12 +67,12 @@ public sealed class Npcweapon : Component
 		
 		
 	}
-	[Property] SkinnedModelRenderer SkinnedModel {get;set;}
-	public Weapon weapon;
+	[Property] public SkinnedModelRenderer SkinnedModel {get;set;}
+	[Property] public Weapon weapon {get;set;}
 	[Property] string clipContent;
 	bool pauseGun;
 	int weaponSlot;
-	int lastWeaponSlot;
+	public int lastWeaponSlot;
 
 	int currentMode;
 	GameObject GunRotate ;
@@ -114,6 +114,8 @@ public sealed class Npcweapon : Component
             GunChange();
 			
         }
+
+        if(weapon == null) return;
 
         GunPos();
 
@@ -202,6 +204,8 @@ public sealed class Npcweapon : Component
 
 	public GameObject CheckShoot()
 	{
+        if(weapon == null) return null;
+        
 		Vector3 rayDirection = (SkinnedModel.GetAttachment("Tip")?? default).Forward;
 
 		Vector3 rayPosition = (SkinnedModel.GetAttachment("Tip")?? default).Position;
@@ -359,7 +363,7 @@ public sealed class Npcweapon : Component
 
     }
 
-	async void GunChange()
+	public async void GunChange()
 	{
 		gunEquipSlot = Entity.getEquip("weapons");
 		
@@ -372,16 +376,12 @@ public sealed class Npcweapon : Component
 
         if (gunEquipSlot == -1)
         {
-			/*
-            weapon = ResourceLibrary.Get<Weapon>("gameresources/punch.weapon");
-            SkinnedModel.Model = Model.Load($"models/punch.vmdl");
-            SkinnedModel.AnimationGraph = AnimationGraph.Load($"models/punch.vanmgrph");
-            clipContent = ".0";
-			*/
+            weapon = null;
+            SkinnedModel.Enabled = false;
         }
         else
         {
-			
+			SkinnedModel.Enabled = true;
             weapon = CustomFunctions.GetResource<Weapon>(Entity.Container[weaponSlot].Categories, "weapon");
             SkinnedModel.Model = Model.Load($"models/{string.Join("/", Entity.Container[weaponSlot].Categories)}.vmdl");
             SkinnedModel.AnimationGraph = AnimationGraph.Load($"models/{string.Join("/", Entity.Container[weaponSlot].Categories)}.vanmgrph");
@@ -402,4 +402,15 @@ public sealed class Npcweapon : Component
 		GunRotate.Transform.Rotation = lookatRot;
 		SkinnedModel.Transform.LocalRotation = weapon.targetRotIdle + recoilOffsetRot;
 	}
+
+    public void DropWeapon(bool removeOld = true)
+    {
+        
+		GameObject Gun = CustomFunctions.SpawnEntity(Entity.Container[weaponSlot]);
+		Gun.Transform.Position = SkinnedModel.Transform.Position;
+		Gun.Transform.Rotation = SkinnedModel.Transform.Rotation;
+        SkinnedModel.Destroy();
+        if(removeOld) Entity.Container.RemoveAt(weaponSlot);
+        Destroy();
+    }
 }

@@ -4,12 +4,13 @@ using Sandbox;
 public sealed class CommandDealer : Component
 {
 	[Property] public int sceneIdSelected {get;set;}
-	[Property] public Attributes player {get;set;}
+	[Property] public GameObject player {get;set;}
 	[Property] public GameObject Saved {get;set;}
 	[Property] public int nextCode {get;set;}
 
 	protected override void OnAwake()
 	{
+		player = Saved.Children[0];
 		foreach(GameObject c in Saved.Children)
 		{
 			Ids ids = c.Components.Get<Ids>();
@@ -43,33 +44,34 @@ public sealed class CommandDealer : Component
 				}
 				to.Container.Add(from.Container[i]);
 				from.Container.RemoveAt(i);
+				to.ContainerUpdated = Time.Now;
+				from.ContainerUpdated = Time.Now;
 				return;
 			}
 		}
+
+		
 		
 	}
 
-
-	public void DropItem(Vector3 postion, Angles rotation, SaveClasses.EntitySave entitySave)
+	public void AddItem(Entity item, Entity to)
 	{
-		GameObject g = new GameObject();
-		g.SetParent(Saved);
-		g.Transform.Position = postion;
-		g.Transform.Rotation = rotation;
-		Ids ids = g.Components.Create<Ids>();
-		nextCode++;
-		ids.sceneID = nextCode;
-		ids.Categories = entitySave.Categories;
-		Entity entity = g.Components.Create<Entity>();
-		entity.displayContainer = entitySave.displayContainer;
-		entity.Container = entitySave.Container;
-		Attributes attributes = g.Components.Create<Attributes>();
-		attributes.attributeSets = new List<Attributes.AttributeSet>();
-		foreach(Attributes.SavedAttributeSet sAS in entitySave.AttributeSets)
+		to.Container.Add(CustomFunctions.SaveEntity(item));
+		item.GameObject.Destroy();
+		to.ContainerUpdated = Time.Now;
+	}
+	public void RemoveItem(Entity entity, int id)
+	{
+		for (int i = 0; i < entity.Container.Count; i++)
 		{
-			attributes.attributeSets.Add(Attributes.LoadAttributeSet(sAS));
+			
+			if(entity.Container[i].id == id) 
+			{
+				entity.Container.RemoveAt(i);
+				entity.ContainerUpdated = Time.Now;
+				return;
+			}
 		}
-		attributes.player = player;
 	}
 	public void SetAV(string name, string value, string attributeSet = "default")
 	{

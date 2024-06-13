@@ -25,6 +25,10 @@
 								from = "helmet.vmat"
 								to = "models/items/apparel/armour/golden knight armour helmet.vmat"
 							},
+							{
+								from = "armour.vmat"
+								to = "models/items/apparel/armour/golden knight armour armour.vmat"
+							},
 						]
 						use_global_default = false
 						global_default_material = "materials/default.vmat"
@@ -57,6 +61,7 @@
 								"Plane_014",
 								"Cylinder",
 								"Plane_004",
+								"collection",
 							]
 						}
 					},

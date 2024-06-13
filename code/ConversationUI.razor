@@ -1,0 +1,46 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+	@if(Enable)
+	{
+		<div style="width: 100%; height: 50%; align-items: center; justify-content: center;">
+			<div class="TextBox">
+				@if(TalkingOrChoosing)
+				{
+					@TalkText
+				}
+				else
+				{
+					foreach(string choice in Choices)
+					{
+						<div onclick=@(() => SelectChoice(choice)) class="ChoiceBlock">
+							<div class="Choice">@choice</div>
+						</div>
+					}
+				}
+			</div>
+		</div>
+	}
+
+</root>
+
+@code
+{
+	[Property] public bool Enable {get; set;}
+	[Property] public bool TalkingOrChoosing { get; set; }
+	[Property] public string TalkText { get; set; }
+	[Property] public List<string> Choices { get; set; }
+	[Property] public ConversationScript conversation { get; set; }
+
+	public void SelectChoice(string choice)
+	{
+		conversation.selectedChoice = choice;
+	}
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine(Enable, TalkingOrChoosing, TalkText, Choices);
+}

@@ -3,9 +3,10 @@ using Sandbox;
 
 public sealed class NpcmodelAnimationManager : Component
 {
+	[Category("Body")][Property] public bool Dead {get;set;}
 	[Category("Body")][Property] private BioGenders BiologicalGender {get;set;}
 	[Category("Body")][Property] private float SkinColour {get;set;}
-	[Category("Body")][Property] private SaveClasses.EntitySave Clothes {get; set;}
+	[Category("Body")][Property] public SaveClasses.EntitySave Clothes {get; set;}
 	[Category("Body")][Property] public SkinnedModelRenderer Animations {get; set;}
 	[Category("Body")][Property] public SkinnedModelRenderer Body {get; set;}
 	[Category("Body")][Property] private SkinnedModelRenderer Apparel {get; set;}
@@ -49,43 +50,11 @@ public sealed class NpcmodelAnimationManager : Component
 	string lastClothes;
 	protected override void OnPreRender()
 	{
-		
-		if(rightHandEnabled)
-		{
-			Animations.Set("ik.hand_right.enabled", true);
-			Animations.Set("ik.hand_right.position", rightHandTarget.Transform.Position);
-			Animations.Set("ik.hand_right.rotation", rightHandTarget.Transform.Rotation);
-		} 
-		if(leftHandEnabled)
-		{
-			Animations.Set("ik.hand_left.enabled", true);
-			Animations.Set("ik.hand_left.position", leftHandTarget.Transform.Position);
-			Animations.Set("ik.hand_left.rotation", leftHandTarget.Transform.Rotation);
-		}
-
-		Vector3 velocity = Transform.Position-lastPos;
-
-        Vector3 forward = Transform.World.Forward;
-
-        Vector3 right = Transform.World.Right;
-
-        float forwardVelocity = Vector3.Dot(velocity, forward);
-
-        float rightVelocity = Vector3.Dot(velocity, right);
-
-		lastPos = Transform.Position;
-
-		Vector2 localVel = new Vector2(forwardVelocity,rightVelocity).Normal;
-
-		//Gizmo.Draw.Text($"Forward: {Math.Round(localVel.x*100)/100} | Right: {Math.Round(localVel.y*100)/100}",Transform.World);
 		string ClothesName = "";
 		if(Clothes.Categories.Count>0)
 		{
 			ClothesName = Clothes.Categories[Clothes.Categories.Count-1];
 		}
-		Animations.Set("VelX", localVel.x);
-		Animations.Set("VelY", localVel.y);
-		Animations.Set("Action", Action);
 		Body.Tint = SkinColourGradient.Evaluate(SkinColour);
 		if(Clothes.Categories.Count > 0 && ClothesName != lastClothes)
 		{
@@ -107,6 +76,48 @@ public sealed class NpcmodelAnimationManager : Component
 			
 			
 		}
+
+		if(Dead)
+		{
+			Animations.Set("ik.hand_right.enabled", false);
+			Animations.Set("ik.hand_left.enabled", false);
+			Animations.Set("Action", 3);
+			return;
+		}
+		
+		if(rightHandEnabled)
+		{
+			Animations.Set("ik.hand_right.enabled", true);
+			Animations.Set("ik.hand_right.position", rightHandTarget.Transform.Position);
+			Animations.Set("ik.hand_right.rotation", rightHandTarget.Transform.Rotation);
+		} 
+		if(leftHandEnabled)
+		{
+			Animations.Set("ik.hand_left.enabled", true);
+			Animations.Set("ik.hand_left.position", leftHandTarget.Transform.Position);
+			Animations.Set("ik.hand_left.rotation", leftHandTarget.Transform.Rotation);
+		}
+		
+
+		Vector3 velocity = Transform.Position-lastPos;
+
+        Vector3 forward = Transform.World.Forward;
+
+        Vector3 right = Transform.World.Right;
+
+        float forwardVelocity = Vector3.Dot(velocity, forward);
+
+        float rightVelocity = Vector3.Dot(velocity, right);
+
+		lastPos = Transform.Position;
+
+		Vector2 localVel = new Vector2(forwardVelocity,rightVelocity).Normal;
+
+		//Gizmo.Draw.Text($"Forward: {Math.Round(localVel.x*100)/100} | Right: {Math.Round(localVel.y*100)/100}",Transform.World);
+		Animations.Set("VelX", localVel.x);
+		Animations.Set("VelY", localVel.y);
+		Animations.Set("Action", Action);
+		
 
 		Talk += Time.Delta * TalkRate * 20f;
 		Blink += Time.Delta * BlinkRate * 1.25f;

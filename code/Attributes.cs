@@ -29,7 +29,7 @@ public sealed class Attributes : Component
 	protected override void OnStart()
 	{
         ids = Components.Get<Ids>();
-		player = CommandDealer.getCommandDealer().player;
+		player = CommandDealer.getCommandDealer().player.Components.Get<Attributes>();
         perkEffectors = new List<PerkEffector>();
         foreach(AttributeSet aS in attributeSets)
         {
@@ -66,10 +66,11 @@ public sealed class Attributes : Component
     {
 
     }
+
     public static AttributeSet LoadAttributeSet(SavedAttributeSet savedAttributeSet)
     {
         AttributeSet AttributeSet = new AttributeSet();
-        savedAttributeSet.attributes = new List<SavedAttribute>();
+        AttributeSet.attributes = new List<Attribute>();
         foreach(SavedAttribute a in savedAttributeSet.attributes)
         {
             Attribute Attribute = new Attribute();
@@ -87,7 +88,7 @@ public sealed class Attributes : Component
                     Attribute.stringValue = a.stringValue;
                     break;
                 case Attribute.AttributeType.VECTOR3:
-                    Attribute.vector3Value = new Vector3(a.vector3ValueX,a.vector3ValueY,a.vector3ValueZ);
+                    Attribute.vector3Value = new Vector3(a.vector3ValueX,a.vector3ValueY, a.vector3ValueZ);
                     break;
                 case Attribute.AttributeType.BOOL:
                     Attribute.boolValue = a.boolValue;
@@ -141,13 +142,13 @@ public sealed class Attributes : Component
     public class SavedAttributeSet
     {
         public bool applyPerks {get;set;} = false;
-        public string setName {get;set;} = "default";
+        [KeyProperty] public string setName {get;set;} = "default";
         public List<SavedAttribute> attributes {get;set;}
     }
 	public class AttributeSet
     {
         public bool applyPerks {get;set;} = false;
-        public string setName {get;set;} = "default";
+        [KeyProperty] public string setName {get;set;} = "default";
         public List<Attribute> attributes {get;set;}
     }
     public AttributeSet getAttributeSet(string name)
@@ -311,7 +312,7 @@ public sealed class Attributes : Component
     }
     public class SavedAttribute
     {
-        public string AttributeName { get; set; }
+        [KeyProperty] public string AttributeName { get; set; }
 		public Attribute.AttributeType attributeType {get;set;}
         public int intValue { get; set; }
         public float floatValue { get; set; }
@@ -324,7 +325,7 @@ public sealed class Attributes : Component
     }
 	public class Attribute
 	{
-		public string AttributeName { get; set; }
+		[KeyProperty] public string AttributeName { get; set; }
 		public AttributeType attributeType {get;set;}
         public int intValue { get; set; }
         public float floatValue { get; set; }

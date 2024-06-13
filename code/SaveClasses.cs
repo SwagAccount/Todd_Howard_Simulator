@@ -8,6 +8,8 @@ public sealed class SaveClasses : Component
 		public List<string> Categories {get;set;}
 		public bool displayContainer {get;set;}
 		public List<Attributes.SavedAttributeSet> AttributeSets {get;set;}
+		public List<Entity.Equiped> Equips {get;set;}
+		public List<PerkEffector> PerkEffectors {get;set;}
 		public List<EntitySave> Container {get;set;}
 	}
 }

@@ -1,0 +1,39 @@
+{
+  "TextBlocks": [
+    {
+      "BlockName": "Start",
+      "Block": "I fucking hate you with a passion.",
+      "DirectTo": "Question"
+    },
+    {
+      "BlockName": "fuck you too",
+      "Block": "Ok cunt, I don\u0027t care."
+    },
+    {
+      "BlockName": "ok",
+      "Block": "yeh..."
+    }
+  ],
+  "ChoiceBlocks": [
+    {
+      "BlockName": "Question",
+      "choices": [
+        {
+          "ChoiceText": "Fuck you too.",
+          "Requirements": [],
+          "DirectTo": "fuck you too"
+        },
+        {
+          "ChoiceText": "Ok.",
+          "Requirements": [],
+          "DirectTo": "ok"
+        }
+      ]
+    }
+  ],
+  "StartTalkingOrChoosing": false,
+  "StartBlock": "Start",
+  "CurrentlyAccessedBlock": "",
+  "__references": [],
+  "__version": 0
+}

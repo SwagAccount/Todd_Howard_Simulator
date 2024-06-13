@@ -63,8 +63,9 @@
           "Components": [
             "HumanModelGetter",
             "Health",
-            "Npcweapon",
-            "NavMeshCharacter"
+            "Npcequipper",
+            "NavMeshCharacter",
+            "Npcweapon"
           ],
           "Catagories": [
             {
