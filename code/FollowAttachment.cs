@@ -4,6 +4,7 @@ public sealed class FollowAttachment : Component
 {
 	[Property] public SkinnedModelRenderer Gun {get;set;}
 	[Property] public SkinnedModelRenderer Arm {get;set;}
+	[Property] public SkinnedModelRenderer ArmApparel {get;set;}
 	[Property] public SkinnedModelRenderer Phone {get;set;}
 	[Property] public WeaponScript WeaponScript {get;set;}
 	
@@ -42,12 +43,12 @@ public sealed class FollowAttachment : Component
 		int apparelEquipSlot = WeaponScript.playerEntity.getEquip("apparel");
 		if(apparelEquipSlot != -1)
 		{
-			int weaponSlot = WeaponScript.playerEntity.Equips[apparelEquipSlot].GetContainerIndex(WeaponScript.playerEntity);
-			Arm.Model = Model.Load($"models/{string.Join("/", WeaponScript.playerEntity.Container[weaponSlot].Categories)}-arms.vmdl");
+			int slot = WeaponScript.playerEntity.Equips[apparelEquipSlot].GetContainerIndex(WeaponScript.playerEntity);
+			//ArmApparel.Model = Model.Load($"models/{string.Join("/", WeaponScript.playerEntity.Container[slot].Categories)}-arms.vmdl");
 		}
 		else
 		{
-			Arm.Model = Model.Load("models/arms.vmdl");
+			ArmApparel.Model = null;
 		}
 
 		Gun.OnGenericEvent = (a) =>

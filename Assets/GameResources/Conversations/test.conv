@@ -31,9 +31,9 @@
       ]
     }
   ],
-  "StartTalkingOrChoosing": false,
+  "StartTalkingOrChoosing": true,
   "StartBlock": "Start",
-  "CurrentlyAccessedBlock": "",
+  "CurrentlyAccessedBlock": "Start",
   "__references": [],
   "__version": 0
 }

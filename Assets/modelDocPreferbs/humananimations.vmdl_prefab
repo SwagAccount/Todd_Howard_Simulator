@@ -48,11 +48,11 @@
 						disable_compression = false
 						disable_interpolation = false
 						enable_scale = false
-						source_filename = "models/items/apparel/Nude.fbx"
+						source_filename = "models/items/apparel/idle.fbx"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
-						take = 3
+						take = 6
 						reverse = false
 					},
 					{

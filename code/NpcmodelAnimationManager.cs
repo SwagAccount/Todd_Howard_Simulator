@@ -14,8 +14,8 @@ public sealed class NpcmodelAnimationManager : Component
 	[Category("Face")][Property] private Vector2 FaceStrech {get;set;} = new Vector2(3,3);
 	[Category("Face")][Property] private string FaceType {get;set;} = "basic guy";
 	[Category("Face")][Property] private string Expression {get;set;} = "";
-	[Category("Face")][Property] private bool Talking {get;set;}
-	[Category("Face")][Property] private float TalkRate {get;set;} = 1;
+	[Category("Face")][Property] public bool Talking {get;set;}
+	[Category("Face")][Property] private float TalkRate {get;set;} = 0.1f;
 	[Category("Face")][Property] private float BlinkRate {get;set;} = 1;
 	[Category("Face")][Property] private DecalRenderer LeftEye {get;set;}
 	[Category("Face")][Property] private DecalRenderer RightEye {get;set;}
@@ -41,13 +41,14 @@ public sealed class NpcmodelAnimationManager : Component
 		male = 0,
 		female = 1
 	}
-
 	protected override void OnStart()
 	{
 		controller = GameObject.Parent.Components.Get<CharacterController>();
+		
 	}
 	Vector3 lastPos;
 	string lastClothes;
+	bool lastTalking;
 	protected override void OnPreRender()
 	{
 		string ClothesName = "";
@@ -119,8 +120,8 @@ public sealed class NpcmodelAnimationManager : Component
 		Animations.Set("Action", Action);
 		
 
-		Talk += Time.Delta * TalkRate * 20f;
 		Blink += Time.Delta * BlinkRate * 1.25f;
+		Talk -= Time.Delta;
 
 		lWigg += Vector3.Random/20;
 		mWigg += Vector3.Random/20;
@@ -133,7 +134,8 @@ public sealed class NpcmodelAnimationManager : Component
 		LeftEye.Size = new Vector3(FaceStrech.x,FaceStrech.y,3) + lWigg*FaceStrech.Length;
 		RightEye.Size = new Vector3(FaceStrech.x, FaceStrech.y,-3) + rWigg*FaceStrech.Length;
 		Mouth.Size = new Vector3(FaceStrech.x,FaceStrech.y,3) + mWigg*FaceStrech.Length;
-		Mouth.Material = Talking && MathF.Sin(Talk) >= 0 ? getFaceMaterial("mouth", true, true, "open","closed") : getFaceMaterial("mouth", true, false, "open", "closed");
+		Mouth.Material = Talk > 0 ? getFaceMaterial("mouth", true, true, "open","closed") : getFaceMaterial("mouth", true, false, "open", "closed");
+
 
 		Material eyeMat = MathF.Sin(Blink) >= -0.99f ? getFaceMaterial("eye", false, false, "closed","open") : getFaceMaterial("eye", false, true, "closed","open");
 		if(eyeMat != null)
@@ -149,6 +151,11 @@ public sealed class NpcmodelAnimationManager : Component
 			RightEye.Enabled = false;
 		}
 		lastClothes = ClothesName;
+		lastTalking = Talking;
+	}
+	public void SetTalk()
+	{
+		Talk = TalkRate;
 	}
 	void resetBody()
 	{

@@ -1,0 +1,32 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+	<div class="Wallets">
+		<div class="tr">You</div>
+		<div class="tr" style=@($"background: #0002; color: {(You < 0 ? "#f00" : "#0f0")} ;")>@(You)</div>
+	</div>
+	<div class="Price">
+		<div class="tr">Price</div>
+		<div class="tr" style=@($"background: #0002; color: {(Price > 0 ? "#f00" : "#0f0")} ;")>@($"{Price}".Replace('-','+'))</div>
+	</div>
+	<div class="Wallets">
+		<div class="tr">Vendor</div>
+		<div class="tr" style=@($"background: #0002; color: {(Vendor < 0 ? "#f00" : "#0f0")} ;")>@(Vendor)</div>
+	</div>
+</root>
+
+@code
+{
+
+	[Property] public int Price { get; set; }
+	[Property] public int You { get; set; }
+	[Property] public int Vendor { get; set; }
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine( Price , You, Vendor);
+	
+}

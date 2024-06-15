@@ -19,6 +19,7 @@ public sealed class Inventory : Component
 	bool lastInInv;
 	protected override async void OnUpdate()
 	{
+		
 		if(weaponScript == null || playerController == null)
 		{
 			playerController = Components.Get<PlayerController>();

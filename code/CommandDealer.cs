@@ -1,4 +1,5 @@
 using System;
+
 using Sandbox;
 
 public sealed class CommandDealer : Component
@@ -18,7 +19,28 @@ public sealed class CommandDealer : Component
 			ids.sceneID = nextCode;
 		}
 	}
-	
+	public int CalculatePrice(Entity entity)
+	{
+		item item = CustomFunctions.GetResource<item>(entity.Ids.Categories,"item");
+		int price = item.Value;
+		foreach(SaveClasses.EntitySave entitySave in entity.Container)
+		{
+			item item1 = CustomFunctions.GetResource<item>(entitySave.Categories,"item");
+			price += GetSavedPrice(entitySave);
+		}
+		return price;
+	}
+	public int GetSavedPrice(SaveClasses.EntitySave entity)
+	{
+		item item = CustomFunctions.GetResource<item>(entity.Categories,"item");
+		int price = item.Value;
+		foreach(SaveClasses.EntitySave entitySave in entity.Container)
+		{
+			item item1 = CustomFunctions.GetResource<item>(entitySave.Categories,"item");
+			price += GetSavedPrice(entitySave);
+		}
+		return price;
+	}
 	public void TransferItem(Entity from, Entity to, int id)
 	{
 		
@@ -35,10 +57,9 @@ public sealed class CommandDealer : Component
 			{
 				for(int I = 0; I < from.Equips.Count; I++)
 				{
-					
-					if(from.Equips[i].ID == id)
+					if(from.Equips[I].ID == id)
 					{
-						from.Equips.RemoveAt(i);
+						from.Equips.RemoveAt(I);
 						break;
 					}
 				}
@@ -231,6 +252,7 @@ public sealed class CommandDealer : Component
 
 	public void SelectID(int id)
 	{
+		int i = 0;
 		foreach(GameObject g in Saved.Children)
 		{
 			Ids ids = g.Components.Get<Ids>();
@@ -238,12 +260,32 @@ public sealed class CommandDealer : Component
 			{
 				if(ids.sceneID == id)
 				{
-					sceneIdSelected = id;
+					sceneIdSelected = i;
 					return;
 				}
 			}
+			i++;
 		}
 		Log.Info("Did not find ID.");
+	}
+	public Entity GetEntity(int id)
+	{
+		int i = 0;
+		foreach(GameObject g in Saved.Children)
+		{
+			Ids ids = g.Components.Get<Ids>();
+			if(ids != null)
+			{
+				if(ids.sceneID == id)
+				{
+					return Saved.Children[i].Components.Get<Entity>();
+				}
+			}
+			i++;
+		}
+		
+		Log.Info("Did not find ID.");
+		return null;
 	}
 
 	public void SeeAllIDs()

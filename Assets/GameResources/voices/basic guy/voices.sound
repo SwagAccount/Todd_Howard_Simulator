@@ -1,0 +1,30 @@
+{
+  "UI": false,
+  "Volume": "1.00,1.00,0",
+  "Pitch": "1.00,1.00,0",
+  "Decibels": 70,
+  "SelectionMode": "Random",
+  "Sounds": [
+    "gameresources/voices/basic guy/9.vsnd",
+    "gameresources/voices/basic guy/8.vsnd",
+    "gameresources/voices/basic guy/7.vsnd",
+    "gameresources/voices/basic guy/6.vsnd",
+    "gameresources/voices/basic guy/5.vsnd",
+    "gameresources/voices/basic guy/4.vsnd",
+    "gameresources/voices/basic guy/3.vsnd",
+    "gameresources/voices/basic guy/2.vsnd",
+    "gameresources/voices/basic guy/14.vsnd",
+    "gameresources/voices/basic guy/13.vsnd",
+    "gameresources/voices/basic guy/12.vsnd",
+    "gameresources/voices/basic guy/11.vsnd",
+    "gameresources/voices/basic guy/10.vsnd",
+    "gameresources/voices/basic guy/1.vsnd"
+  ],
+  "Occlusion": true,
+  "AirAbsorption": true,
+  "Transmission": true,
+  "OcclusionRadius": 64,
+  "DistanceAttenuation": true,
+  "__references": [],
+  "__version": 0
+}

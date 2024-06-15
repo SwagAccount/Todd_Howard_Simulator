@@ -44,16 +44,15 @@ public sealed class Interactor : Component
 			{
 				traceGameObject = trace.Hitbox.GameObject;
 			}
-			if(trace.Hit)// && (trace.GameObject != lastHit || trace.Hitbox != lastHitbox))
+			if(trace.Hit)
 			{
-				//lastHit = trace.GameObject;
-				//lastHitbox = trace.Hitbox;
 				entity = trace.GameObject.Components.Get<Entity>();
+				
 				if(entity != null)
 				{
 					if(entity.displayContainer)
 					{
-						containerInteract.LookedAtContainer = entity;
+						containerInteract.changeLookedAt(entity);
 						containerInteract.State = ContainerInteract.States.Look;
 						if(Input.Pressed("use"))
 						{
@@ -63,13 +62,15 @@ public sealed class Interactor : Component
 					Attributes.Attribute convoAttribute = entity.Attributes.getAttribute("Conversation", "default", false);
 					if(convoAttribute != null)
 					{
-						if(Input.Pressed("use"))
+						Attributes.Attribute healthAttribute = entity.Attributes.getAttribute("Health", "default", false);
+						if(Input.Pressed("use") && healthAttribute.floatValue > 0)
 						{
 							conversationScript.conversation = ResourceLibrary.Get<Conversation>($"gameresources/conversations/{convoAttribute.stringValue}.conv");
 							conversationScript.talkedToEntity = entity;
 						}
 					}
 				}
+
 				interactable = trace.GameObject.Components.Get<Interactable>();
 				if(interactable != null)
 				{

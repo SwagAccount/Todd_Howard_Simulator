@@ -168,7 +168,7 @@ public class Requirement
 public sealed class item : GameResource
 {
     [Property] public float Weight {get;set;}
-    [Property] public float Value {get;set;}
+    [Property] public int Value {get;set;}
 }
 
 [GameResource("EquipTypes", "et", "Types to equip from inventory", Icon = "Description")]

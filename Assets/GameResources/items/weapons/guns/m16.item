@@ -1,7 +1,6 @@
 {
   "Weight": 2.6,
-  "Value": 1200,
-  "ResourceVersion": 0,
-  "__version": 0,
-  "__references": []
+  "Value": 900,
+  "__references": [],
+  "__version": 0
 }

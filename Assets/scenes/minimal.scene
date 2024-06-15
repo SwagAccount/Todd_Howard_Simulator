@@ -141,6 +141,10 @@
                     {
                       "AttributeName": "9mm",
                       "intValue": 1000
+                    },
+                    {
+                      "AttributeName": "s\u0026bux",
+                      "intValue": 500
                     }
                   ]
                 },
@@ -178,12 +182,6 @@
             {
               "__type": "WorldInputAdder",
               "__guid": "da48d3b1-72b5-4683-8525-a9d307dd335e"
-            },
-            {
-              "__type": "Sandbox.WorldInput",
-              "__guid": "80aee385-7d5f-48a5-8fcb-8c5763de4db2",
-              "LeftMouseAction": "use",
-              "RightMouseAction": "Attack2"
             }
           ]
         },
@@ -613,6 +611,10 @@
                       "AttributeName": "Conversation",
                       "attributeType": "STRING",
                       "stringValue": "guard"
+                    },
+                    {
+                      "AttributeName": "s\u0026bux",
+                      "intValue": 100
                     }
                   ]
                 },
@@ -670,10 +672,12 @@
                       ]
                     }
                   ],
+                  "Equips": [],
+                  "PerkEffectors": [],
                   "Container": []
                 },
                 {
-                  "id": 483648,
+                  "id": 4235,
                   "Categories": [
                     "items",
                     "apparel",
@@ -802,6 +806,10 @@
                       "AttributeName": "Conversation",
                       "attributeType": "STRING",
                       "stringValue": "test"
+                    },
+                    {
+                      "AttributeName": "s\u0026bux",
+                      "intValue": 10030
                     }
                   ]
                 },
@@ -809,6 +817,15 @@
                   "setName": "Patrol Points",
                   "attributes": [
                     {}
+                  ]
+                },
+                {
+                  "setName": "Vendor",
+                  "attributes": [
+                    {
+                      "AttributeName": "ContainerID",
+                      "intValue": 10
+                    }
                   ]
                 }
               ],
@@ -843,6 +860,72 @@
             {
               "__type": "Sandbox.ModelHitboxes",
               "__guid": "84cdd28e-4052-4794-aa3d-737c65ab4230"
+            }
+          ]
+        },
+        {
+          "__guid": "1f97375f-f89f-4562-ad66-3b596134e6d7",
+          "Flags": 0,
+          "Name": "VendorBox",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "Components": [
+            {
+              "__type": "Attributes",
+              "__guid": "8c4c6b47-70dc-4193-ac34-a2054dd3e837",
+              "attributeSets": [],
+              "perkEffectors": []
+            },
+            {
+              "__type": "Ids",
+              "__guid": "c29bc235-8428-429c-93d5-72d90b6b2e4b",
+              "Categories": [],
+              "sceneID": 10
+            },
+            {
+              "__type": "Entity",
+              "__guid": "d3a747d2-afd6-4e70-8f49-09f4b877b2ad",
+              "Catagories": [],
+              "Container": [
+                {
+                  "id": 673245,
+                  "Categories": [
+                    "items",
+                    "weapons",
+                    "guns",
+                    "double barrel"
+                  ],
+                  "AttributeSets": [
+                    {
+                      "setName": "default",
+                      "attributes": [
+                        {
+                          "AttributeName": "Ammo",
+                          "attributeType": "STRING"
+                        },
+                        {
+                          "AttributeName": "Current Mode"
+                        },
+                        {
+                          "AttributeName": "Current Bullet"
+                        },
+                        {
+                          "AttributeName": "Condition",
+                          "attributeType": "FLOAT",
+                          "floatValue": 1
+                        }
+                      ]
+                    }
+                  ],
+                  "Equips": [],
+                  "PerkEffectors": [],
+                  "Container": []
+                }
+              ],
+              "ContainerUpdated": 0,
+              "displayContainer": false,
+              "Equips": []
             }
           ]
         }
@@ -956,7 +1039,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-06-13T23:44:51.65156\u002B07:00",
+  "LastSaved": "2024-06-16T05:58:28.1072789\u002B07:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1
