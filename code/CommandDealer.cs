@@ -19,6 +19,10 @@ public sealed class CommandDealer : Component
 			ids.sceneID = nextCode;
 		}
 	}
+	public void FindEntity(int entityID)
+	{
+		
+	}
 	public int CalculatePrice(Entity entity)
 	{
 		item item = CustomFunctions.GetResource<item>(entity.Ids.Categories,"item");

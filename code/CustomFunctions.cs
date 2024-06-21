@@ -32,7 +32,7 @@ public sealed class CustomFunctions
         return ResourceLibrary.Get<T>($"gameresources/{path}.{resourceType}");
     }
 
-    public static SaveClasses.EntitySave SaveEntity(Entity entity)
+    public static SaveClasses.EntitySave SaveEntity(Entity entity, bool withTransform = false)
     {
         SaveClasses.EntitySave newEntity = new SaveClasses.EntitySave(); 
         newEntity.id = entity.Ids.sceneID;
@@ -50,9 +50,15 @@ public sealed class CustomFunctions
 
         newEntity.Container = entity.Container;
 
+        if(withTransform)
+        {
+            newEntity.Position = entity.Transform.Position;
+            newEntity.Rotation = entity.Transform.Rotation;
+        }
+
         return newEntity;
     }
-    public static GameObject SpawnEntity(SaveClasses.EntitySave entitySave)
+    public static GameObject SpawnEntity(SaveClasses.EntitySave entitySave, bool withTransform = true)
     {
 
         GameObject NewEntity = new GameObject();
@@ -71,6 +77,13 @@ public sealed class CustomFunctions
         attributes.perkEffectors = entitySave.PerkEffectors;
         
         NewEntity.Parent = CommandDealer.getCommandDealer().Saved;
+
+        if(withTransform)
+        {
+            NewEntity.Transform.Position = entitySave.Position;
+            NewEntity.Transform.Rotation = entitySave.Rotation;
+        }
+
         return NewEntity;
     }
     

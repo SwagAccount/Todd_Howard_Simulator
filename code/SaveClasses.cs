@@ -1,9 +1,11 @@
 using Sandbox;
 
-public sealed class SaveClasses : Component
+public static class SaveClasses
 {
 	public class EntitySave
 	{
+		public Vector3 Position {get;set;}
+		public Angles Rotation {get;set;}
 		public int id {get;set;}
 		public List<string> Categories {get;set;}
 		public bool displayContainer {get;set;}

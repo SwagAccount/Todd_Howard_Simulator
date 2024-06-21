@@ -6,21 +6,27 @@
 	@if(!aiming)
 	{
 		<div class="centered">
+			@if(Name == "" || Name == null)
+			{
 				<div style="font-size: 10%; font-family: 'Verdana'; ">•</div>
-			</div>
-			<div class="centered">
-				<div style="font-size: 20%; top: 3%">@Name</div>
-			</div>
-			<div class="centered">
-				@foreach(stat stat in stats)
-				{
-					<div style="flex-direction: column; top: 4%;width:5%;align-items: center">
-						<div style="opacity: 0.5; font-size: 10%; text-align: center;">@stat.StatName</div>
-						<div style="font-size: 20%; text-align: center;">@stat.Stat</div>
+			}
+			else
+			{
+				<div class="centered; ">
+					<div style="font-size: 20%; top: 3%">@Name</div>
 					</div>
-				}
-				
-			</div>
+					<div class="centered; flex-direction: row;">
+						@foreach(stat stat in stats)
+						{
+							<div style="flex-direction: column; top: 4%;width:5%;align-items: center">
+								<div style="opacity: 0.5; font-size: 10%; text-align: center;">@stat.StatName</div>
+								<div style="font-size: 20%; text-align: center;">@stat.Stat</div>
+							</div>
+						}
+					</div>
+				</div>
+			}
+			
 		</div>
 	}
 </root>

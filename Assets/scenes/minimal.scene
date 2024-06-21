@@ -29,6 +29,10 @@
               "Completed": []
             }
           ]
+        },
+        {
+          "__type": "Saver",
+          "__guid": "8f657095-00b8-44de-82f8-47f97f2ce305"
         }
       ]
     },
@@ -69,6 +73,12 @@
           "Opacity": 1,
           "Scale": 1,
           "ZIndex": 100
+        },
+        {
+          "__type": "EntitySaver",
+          "__guid": "3edbe837-147f-4808-9228-45620da63c9d",
+          "load": false,
+          "save": false
         }
       ],
       "Children": [
@@ -1039,7 +1049,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-06-16T05:58:28.1072789\u002B07:00",
+  "LastSaved": "2024-06-21T09:24:56.5243872\u002B07:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

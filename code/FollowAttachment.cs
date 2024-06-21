@@ -44,11 +44,12 @@ public sealed class FollowAttachment : Component
 		if(apparelEquipSlot != -1)
 		{
 			int slot = WeaponScript.playerEntity.Equips[apparelEquipSlot].GetContainerIndex(WeaponScript.playerEntity);
-			//ArmApparel.Model = Model.Load($"models/{string.Join("/", WeaponScript.playerEntity.Container[slot].Categories)}-arms.vmdl");
+			ArmApparel.Model = Model.Load($"models/{string.Join("/", WeaponScript.playerEntity.Container[slot].Categories)}-arms.vmdl");
+			ArmApparel.Enabled = true;
 		}
 		else
 		{
-			ArmApparel.Model = null;
+			ArmApparel.Enabled = false;
 		}
 
 		Gun.OnGenericEvent = (a) =>
