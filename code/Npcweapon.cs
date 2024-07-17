@@ -393,12 +393,30 @@ public sealed class Npcweapon : Component
         await Task.DelayRealtimeSeconds(weapon.deployTime);
         pauseGun = false;
 	}
+    float bob;
+    float bobPosY;
+    float bobPosZ;
 	void GunPos()
 	{
+        float flatVel = new Vector3 (aiagent.Controller.characterController.Velocity.x,aiagent.Controller.characterController.Velocity.y,0).Length;
+
+        bob += Time.Delta * flatVel * weapon.BobSpeed;
+        
+        if(flatVel > 0 && aiagent.Controller.characterController.IsOnGround)
+        {
+            bobPosZ = MathF.Sin(bob*0.05f)*weapon.BobDis*0.2f;
+            bobPosY = MathF.Cos(bob*0.025f)*weapon.BobDis*0.1f;
+        }
+        else
+        {
+            bobPosZ = Math.Clamp(bobPosZ-Time.Delta*0.2f,0,1);
+            bobPosY = Math.Clamp(bobPosY-Time.Delta*0.2f,0,1);
+        }
+
 		Rotation lookatRot = Rotation.LookAt(Scene.Camera.Transform.Position-SkinnedModel.Transform.Position );
 		recoilOffsetPos = Vector3.Lerp(recoilOffsetPos,Vector3.Zero,weapon.recoilReset*Time.Delta);
 		recoilOffsetRot = Angles.Lerp(recoilOffsetRot,Angles.Zero,weapon.recoilReset*Time.Delta);
-		GunRotate.Transform.LocalPosition = weapon.targetPosNPC + recoilOffsetPos;
+		GunRotate.Transform.LocalPosition = weapon.targetPosNPC + recoilOffsetPos + new Vector3(0,bobPosY,bobPosZ);
 		GunRotate.Transform.Rotation = lookatRot;
 		SkinnedModel.Transform.LocalRotation = weapon.targetRotIdle + recoilOffsetRot;
 	}

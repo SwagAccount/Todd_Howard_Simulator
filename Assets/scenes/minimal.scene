@@ -5,10 +5,7 @@
       "__guid": "a5c15dd4-959c-4e30-9085-187e55c7c236",
       "Flags": 0,
       "Name": "Global Crap",
-      "Position": "172.295,-149.24,-121.0655",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "CommandDealer",
@@ -33,6 +30,27 @@
         {
           "__type": "Saver",
           "__guid": "8f657095-00b8-44de-82f8-47f97f2ce305"
+        },
+        {
+          "__type": "FactionRelationships",
+          "__guid": "fbc3718a-ae44-4f5e-8fdf-c9f0e1140847",
+          "Relationships": [
+            {
+              "Factions": [
+                "Player",
+                "Soldiers of God"
+              ],
+              "Value": -1
+            }
+          ]
+        },
+        {
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "e81611be-537a-4500-8f94-4cc3559142d0",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
         }
       ]
     },
@@ -44,8 +62,6 @@
       "Rotation": "-0.2459842,0.5938582,0.2931525,0.7077327",
       "Tags": "light_directional,light",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.DirectionalLight",
@@ -63,8 +79,6 @@
       "Flags": 0,
       "Name": "Saved",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.ScreenPanel",
@@ -89,8 +103,6 @@
           "Position": "32.80156,0,32.81264",
           "Tags": "player",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Ids",
@@ -133,6 +145,10 @@
                       "AttributeName": "Carry Weight",
                       "attributeType": "FLOAT",
                       "floatValue": 150
+                    },
+                    {
+                      "AttributeName": "Look Angle",
+                      "attributeType": "VECTOR3"
                     },
                     {
                       "AttributeName": "health",
@@ -184,14 +200,6 @@
               "ContainerUpdated": 0,
               "displayContainer": false,
               "Equips": []
-            },
-            {
-              "__type": "Inventory",
-              "__guid": "dc2d81f1-da5d-4957-9e17-63ac52ae3095"
-            },
-            {
-              "__type": "WorldInputAdder",
-              "__guid": "da48d3b1-72b5-4683-8525-a9d307dd335e"
             }
           ]
         },
@@ -201,8 +209,6 @@
           "Name": "Container",
           "Position": "0,0,32.81264",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Ids",
@@ -211,7 +217,7 @@
                 "containers",
                 "backpack"
               ],
-              "sceneID": 0
+              "sceneID": 2341
             },
             {
               "__type": "Attributes",
@@ -247,8 +253,6 @@
           "Name": "eh5",
           "Position": "-4.194702,44.64445,32.81266",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Ids",
@@ -305,8 +309,6 @@
           "Name": "Double Barrel",
           "Position": "-4.194702,87.70982,32.81266",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Ids",
@@ -363,8 +365,6 @@
           "Name": "casual clothes white",
           "Position": "-46.52471,67.02621,32.81266",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Ids",
@@ -421,8 +421,6 @@
           "Name": "Golden Knight Armour",
           "Position": "-46.52471,90.37116,32.81266",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Ids",
@@ -479,8 +477,6 @@
           "Name": "casual clothes black",
           "Position": "-46.52471,39.64839,32.81266",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Ids",
@@ -491,7 +487,7 @@
                 "clothing",
                 "casual clothes black"
               ],
-              "sceneID": 1433
+              "sceneID": 124237
             },
             {
               "__type": "Attributes",
@@ -532,354 +528,28 @@
           ]
         },
         {
-          "__guid": "2735ee79-dae5-4810-86a2-4bcb913c501e",
-          "Flags": 0,
-          "Name": "TestNPC",
-          "Position": "-87.67211,159.8718,0.000008412673",
-          "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
-          "Components": [
-            {
-              "__type": "Attributes",
-              "__guid": "c281de04-4801-4f5d-af8e-fe717afce7f5",
-              "attributeSets": [
-                {
-                  "setName": "NavMeshController",
-                  "attributes": [
-                    {
-                      "AttributeName": "Height",
-                      "attributeType": "FLOAT",
-                      "floatValue": 72
-                    },
-                    {
-                      "AttributeName": "Radius",
-                      "attributeType": "FLOAT",
-                      "floatValue": 6
-                    },
-                    {
-                      "AttributeName": "Max Speed",
-                      "attributeType": "FLOAT",
-                      "floatValue": 120
-                    },
-                    {
-                      "AttributeName": "Acceleration",
-                      "attributeType": "FLOAT",
-                      "floatValue": 200
-                    }
-                  ]
-                },
-                {
-                  "setName": "Brain",
-                  "attributes": [
-                    {
-                      "AttributeName": "MaxAttackDistance",
-                      "attributeType": "FLOAT",
-                      "floatValue": 136.6
-                    },
-                    {
-                      "AttributeName": "DistanceResistance",
-                      "attributeType": "FLOAT",
-                      "floatValue": 100
-                    },
-                    {
-                      "AttributeName": "RandomMovementDis",
-                      "attributeType": "FLOAT",
-                      "floatValue": 200
-                    },
-                    {
-                      "AttributeName": "RandomMoveChance",
-                      "attributeType": "FLOAT",
-                      "floatValue": 50
-                    }
-                  ]
-                },
-                {
-                  "setName": "default",
-                  "attributes": [
-                    {
-                      "AttributeName": "Health",
-                      "attributeType": "FLOAT",
-                      "floatValue": 100
-                    },
-                    {
-                      "AttributeName": "MaxHealth",
-                      "attributeType": "FLOAT",
-                      "floatValue": 100
-                    },
-                    {
-                      "AttributeName": "Gun Bone Index",
-                      "attributeType": "STRING",
-                      "stringValue": "10,0,0,0"
-                    },
-                    {
-                      "AttributeName": "Stare",
-                      "attributeType": "BOOL",
-                      "boolValue": true
-                    },
-                    {
-                      "AttributeName": "Conversation",
-                      "attributeType": "STRING",
-                      "stringValue": "guard"
-                    },
-                    {
-                      "AttributeName": "s\u0026bux",
-                      "intValue": 100
-                    }
-                  ]
-                },
-                {
-                  "setName": "Patrol Points",
-                  "attributes": [
-                    {}
-                  ]
-                }
-              ],
-              "perkEffectors": []
-            },
-            {
-              "__type": "Ids",
-              "__guid": "8101bb67-330f-4eca-ab24-87a3d07649fd",
-              "Categories": [
-                "npc",
-                "humanoid",
-                "human"
-              ],
-              "sceneID": 4563
-            },
-            {
-              "__type": "Entity",
-              "__guid": "898d1bf2-ec6a-4954-8364-c0d0cbfbd48c",
-              "Catagories": [],
-              "Container": [
-                {
-                  "id": 34645,
-                  "Categories": [
-                    "items",
-                    "weapons",
-                    "guns",
-                    "double barrel"
-                  ],
-                  "AttributeSets": [
-                    {
-                      "setName": "default",
-                      "attributes": [
-                        {
-                          "AttributeName": "Ammo",
-                          "attributeType": "STRING"
-                        },
-                        {
-                          "AttributeName": "Current Mode"
-                        },
-                        {
-                          "AttributeName": "Current Bullet"
-                        },
-                        {
-                          "AttributeName": "Condition",
-                          "attributeType": "FLOAT",
-                          "floatValue": 1
-                        }
-                      ]
-                    }
-                  ],
-                  "Equips": [],
-                  "PerkEffectors": [],
-                  "Container": []
-                },
-                {
-                  "id": 4235,
-                  "Categories": [
-                    "items",
-                    "apparel",
-                    "armour",
-                    "golden knight armour"
-                  ],
-                  "AttributeSets": [],
-                  "Equips": [],
-                  "PerkEffectors": [],
-                  "Container": []
-                }
-              ],
-              "ContainerUpdated": 0,
-              "displayContainer": false,
-              "Equips": [
-                {
-                  "equipType": "weapons",
-                  "ID": 34645
-                }
-              ]
-            },
-            {
-              "__type": "HealthGizmo",
-              "__guid": "136c400e-e88f-4652-9d2c-dd80145d31c2",
-              "DisplayHealth": false,
-              "HealthValue": 0,
-              "Height": 80
-            },
-            {
-              "__type": "Sandbox.ModelHitboxes",
-              "__guid": "da2fe536-ecd0-46a7-a025-a412d15e68e4"
-            },
-            {
-              "__type": "FindEnemy",
-              "__guid": "967001ee-350f-48de-9fec-ec9b9722552c"
-            }
-          ]
-        },
-        {
           "__guid": "e72a1f49-6c74-4113-b3b6-829aade00c85",
           "Flags": 0,
-          "Name": "TestNPC",
+          "Name": "Vendor Test",
           "Position": "-87.67211,0.5835419,0.000008412673",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
-          "Components": [
-            {
-              "__type": "Attributes",
-              "__guid": "854f8aa5-a9cd-479d-9d4f-a109469633af",
-              "attributeSets": [
-                {
-                  "setName": "NavMeshController",
-                  "attributes": [
-                    {
-                      "AttributeName": "Height",
-                      "attributeType": "FLOAT",
-                      "floatValue": 72
-                    },
-                    {
-                      "AttributeName": "Radius",
-                      "attributeType": "FLOAT",
-                      "floatValue": 6
-                    },
-                    {
-                      "AttributeName": "Max Speed",
-                      "attributeType": "FLOAT",
-                      "floatValue": 120
-                    },
-                    {
-                      "AttributeName": "Acceleration",
-                      "attributeType": "FLOAT",
-                      "floatValue": 200
-                    }
-                  ]
-                },
-                {
-                  "setName": "Brain",
-                  "attributes": [
-                    {
-                      "AttributeName": "MaxAttackDistance",
-                      "attributeType": "FLOAT",
-                      "floatValue": 136.6
-                    },
-                    {
-                      "AttributeName": "DistanceResistance",
-                      "attributeType": "FLOAT",
-                      "floatValue": 100
-                    },
-                    {
-                      "AttributeName": "RandomMovementDis",
-                      "attributeType": "FLOAT",
-                      "floatValue": 200
-                    },
-                    {
-                      "AttributeName": "RandomMoveChance",
-                      "attributeType": "FLOAT",
-                      "floatValue": 50
-                    }
-                  ]
-                },
-                {
-                  "setName": "default",
-                  "attributes": [
-                    {
-                      "AttributeName": "Health",
-                      "attributeType": "FLOAT",
-                      "floatValue": 100
-                    },
-                    {
-                      "AttributeName": "MaxHealth",
-                      "attributeType": "FLOAT",
-                      "floatValue": 100
-                    },
-                    {
-                      "AttributeName": "Gun Bone Index",
-                      "attributeType": "STRING",
-                      "stringValue": "10,0,0,0"
-                    },
-                    {
-                      "AttributeName": "Stare",
-                      "attributeType": "BOOL",
-                      "boolValue": true
-                    },
-                    {
-                      "AttributeName": "Conversation",
-                      "attributeType": "STRING",
-                      "stringValue": "test"
-                    },
-                    {
-                      "AttributeName": "s\u0026bux",
-                      "intValue": 10030
-                    }
-                  ]
-                },
-                {
-                  "setName": "Patrol Points",
-                  "attributes": [
-                    {}
-                  ]
-                },
-                {
-                  "setName": "Vendor",
-                  "attributes": [
-                    {
-                      "AttributeName": "ContainerID",
-                      "intValue": 10
-                    }
-                  ]
-                }
-              ],
-              "perkEffectors": []
-            },
-            {
-              "__type": "Ids",
-              "__guid": "daa4644a-c7e2-441e-a2e5-f9af17811531",
-              "Categories": [
-                "npc",
-                "humanoid",
-                "human"
-              ],
-              "sceneID": 4563
-            },
-            {
-              "__type": "Entity",
-              "__guid": "73cc4cd7-9b82-43da-b3b9-952633e61621",
-              "Catagories": [],
-              "Container": [],
-              "ContainerUpdated": 0,
-              "displayContainer": false,
-              "Equips": []
-            },
-            {
-              "__type": "HealthGizmo",
-              "__guid": "8edb60a8-5236-4659-a32f-c1cd90fb27a2",
-              "DisplayHealth": false,
-              "HealthValue": 0,
-              "Height": 80
-            },
-            {
-              "__type": "Sandbox.ModelHitboxes",
-              "__guid": "84cdd28e-4052-4794-aa3d-737c65ab4230"
-            }
-          ]
+          "__Prefab": "prefabs/npc/humanoid/human/vendor test.prefab",
+          "__PrefabVariables": {}
+        },
+        {
+          "__guid": "2735ee79-dae5-4810-86a2-4bcb913c501e",
+          "Flags": 0,
+          "Name": "The Golden Knight",
+          "Position": "-1107.908,391.2925,-0.00005239814",
+          "Enabled": true,
+          "__Prefab": "prefabs/npc/humanoid/human/the golden knight.prefab",
+          "__PrefabVariables": {}
         },
         {
           "__guid": "1f97375f-f89f-4562-ad66-3b596134e6d7",
           "Flags": 0,
           "Name": "VendorBox",
           "Enabled": true,
-          "NetworkMode": 2,
-          "NetworkInterpolation": true,
           "Components": [
             {
               "__type": "Attributes",
@@ -947,8 +617,6 @@
       "Name": "Plane",
       "Scale": "100,100,1",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.ModelRenderer",
@@ -975,8 +643,6 @@
       "Position": "82.47777,-104.1001,0.000004916058",
       "Scale": "1,1,23.9",
       "Enabled": true,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.ModelRenderer",
@@ -1001,8 +667,6 @@
       "Flags": 0,
       "Name": "Npc Spawner",
       "Position": "-101.1829,0,46.17313",
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
       "Components": [
         {
           "__type": "Sandbox.WorldPanel",
@@ -1049,7 +713,6 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-06-21T09:24:56.5243872\u002B07:00",
   "ResourceVersion": 1,
   "__references": [],
   "__version": 1

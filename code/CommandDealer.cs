@@ -8,16 +8,70 @@ public sealed class CommandDealer : Component
 	[Property] public GameObject player {get;set;}
 	[Property] public GameObject Saved {get;set;}
 	[Property] public int nextCode {get;set;}
+	bool inCmd;
+	[Property] public CommandInterface commandInterface {get;set;}
+
+	[Property] public PlayerController playerController {get;set;}
+	[Property] public ContainerInteract containerInteract {get;set;}
 
 	protected override void OnAwake()
 	{
+		commandInterface = Components.Create<CommandInterface>();
+		FindPlayer();
+		
+	}
+	public void FindPlayer()
+	{
 		player = Saved.Children[0];
-		foreach(GameObject c in Saved.Children)
+	}
+	public float lastTime = 0;
+	public bool Colour = true;
+	public static void DebugLog(string log)
+	{
+		CommandDealer commandDealer = getCommandDealer();
+
+		if(commandDealer.lastTime != Time.Now)
 		{
-			Ids ids = c.Components.Get<Ids>();
-			nextCode++;
-			ids.sceneID = nextCode;
+			commandDealer.Colour = !commandDealer.Colour;
 		}
+		commandDealer.lastTime = Time.Now;
+
+		Log.Info(log);
+
+		CommandInterface commandInterface = commandDealer.commandInterface;
+		commandInterface.Logs.Add(log);
+		commandInterface.Colour.Add(commandDealer.Colour);
+		commandInterface.update++;
+		
+
+	}
+	bool lastCmd;
+	protected override void OnUpdate()
+	{
+		if(playerController == null)
+		{
+			playerController = player.Components.Get<PlayerController>();
+			containerInteract = player.Components.Get<ContainerInteract>();
+			if(playerController == null) return;
+		}
+		if(Input.Pressed("Open Console"))
+		{
+			inCmd = !inCmd;
+			commandInterface.update++;
+		}
+		if(inCmd)
+		{
+			commandInterface.enable = true;
+			playerController.weaponScript.canShoot = false;
+			commandInterface.update++;
+		}
+		else if (lastCmd != inCmd)
+		{
+			commandInterface.enable = false;
+			playerController.weaponScript.canShoot = true;
+		}
+		
+		lastCmd = inCmd;
 	}
 	public void FindEntity(int entityID)
 	{
@@ -115,14 +169,14 @@ public sealed class CommandDealer : Component
 						{
 							var set = attributes.ConvertFromString(value, attribute.attributeType);
 							attribute.SetValue(set);
-							Log.Info($"{name} => {set}");
+							DebugLog($"{name} => {set}");
 						}
 					}
 					return;
 				}
 			}
 		}
-		Log.Info("Failed To Retrieve ID");
+		DebugLog("Failed To Retrieve ID");
 	}
 	public void GetAV(string name,string attributeSet = "default")
 	{
@@ -139,14 +193,14 @@ public sealed class CommandDealer : Component
 						Attributes.Attribute attribute = attributes.getAttribute(name, attributeSet);
 						if(attribute != null)
 						{
-							Log.Info($"{name} | {attribute.attributeType} => {attribute.GetValue()}");
+							DebugLog($"{name} | {attribute.attributeType} => {attribute.GetValue()}");
 						}
 					}
 					return;
 				}
 			}
 		}
-		Log.Info("Failed To Retrieve ID");
+		DebugLog("Failed To Retrieve ID");
 	}
 	public void GetAllAV()
 	{
@@ -160,19 +214,19 @@ public sealed class CommandDealer : Component
 					Attributes attributes = ids.Components.Get<Attributes>();
 					foreach(Attributes.AttributeSet attributeSet in attributes.attributeSets)
 					{
-						Log.Info($"┌──{attributeSet.setName}───");
+						DebugLog($"┌──{attributeSet.setName}───");
 						foreach(Attributes.Attribute attribute in attributeSet.attributes)
 						{
-							Log.Info($"├{attribute.AttributeName} | {attribute.attributeType} => {attribute.GetValue()}");
+							DebugLog($"├{attribute.AttributeName} | {attribute.attributeType} => {attribute.GetValue()}");
 						}
-						Log.Info($"└─────");
+						DebugLog($"└─────");
 						
 					}
 					return;
 				}
 			}
 		}
-		Log.Info("Failed To Retrieve ID");
+		DebugLog("Failed To Retrieve ID");
 	}
 	public void AddAV( string value, Attributes.Attribute.AttributeType attributeType,string name,string attributeSet = "default")
 	{
@@ -187,13 +241,13 @@ public sealed class CommandDealer : Component
 					if(attributes != null)
 					{
 						attributes.AddAttribute( value, attributeType,name, attributeSet);
-						Log.Info($"{name} (Added) => {value}");
+						DebugLog($"{name} (Added) => {value}");
 					}
 					return;
 				}
 			}
 		}
-		Log.Info("Failed To Retrieve ID");
+		DebugLog("Failed To Retrieve ID");
 	}
 	public void SetHeatlh(float set)
 	{
@@ -211,14 +265,14 @@ public sealed class CommandDealer : Component
 						if(attribute != null)
 						{
 							attribute.floatValue = set;
-							Log.Info($"Health => {set}");
+							DebugLog($"Health => {set}");
 						}
 					}
 					return;
 				}
 			}
 		}
-		Log.Info("Failed To Retrieve ID");
+		DebugLog("Failed To Retrieve ID");
 	}
 	public void RecalculatePerkEffects()
 	{
@@ -245,7 +299,7 @@ public sealed class CommandDealer : Component
 						if( health != null)
 						{
 							health.floatValue = maxhealth.floatValue;
-							Log.Info($"Health => {maxhealth.floatValue}");
+							DebugLog($"Health => {maxhealth.floatValue}");
 						}
 					}
 					break;
@@ -270,7 +324,7 @@ public sealed class CommandDealer : Component
 			}
 			i++;
 		}
-		Log.Info("Did not find ID.");
+		DebugLog("Did not find ID.");
 	}
 	public Entity GetEntity(int id)
 	{
@@ -288,42 +342,77 @@ public sealed class CommandDealer : Component
 			i++;
 		}
 		
-		Log.Info("Did not find ID.");
+		DebugLog("Did not find ID.");
 		return null;
 	}
 
 	public void SeeAllIDs()
 	{
-		Log.Info($"┌─────");
+		DebugLog($"┌─────");
 		foreach(GameObject c in Saved.Children)
 		{
 			Ids ids = c.Components.Get<Ids>();
-			Log.Info($"├ {ids.sceneID}: {CustomFunctions.CapitalizeWords(ids.Categories[ids.Categories.Count - 1])}");
+			DebugLog($"├ {ids.sceneID}: {CustomFunctions.CapitalizeWords(ids.Categories[ids.Categories.Count - 1])}");
 		}
-		Log.Info($"└─────");
+		DebugLog($"└─────");
 	}
 
 	public static void ValueExamples()
 	{
-		Log.Info("---Value Examples---");
-		Log.Info("INT - 1");
-		Log.Info("FLOAT - 1.5");
-		Log.Info("STRING - {Anything}");
-		Log.Info("VECTOR3 - X,Y,Z");
-		Log.Info("BOOL - True/False (anything not 'True' = False)");
-		Log.Info("------");
+		DebugLog("---Value Examples---");
+		DebugLog("INT - 1");
+		DebugLog("FLOAT - 1.5");
+		DebugLog("STRING - {Anything}");
+		DebugLog("VECTOR3 - X,Y,Z");
+		DebugLog("BOOL - True/False (anything not 'True' = False)");
+		DebugLog("------");
+	}
+	[ConCmd( "_Help" )]
+	public static void Help()
+	{
+		List<string> Commands = new List<string>
+		{
+			"CalcDis",
+			"CalcDamage",
+			"SeeAllIDs",
+			"SelectID",
+			"SetAv",
+			"GetAllAV",
+			"GetAV",
+			"AddAV",
+			"SetHealth",
+			"ResetHealth",
+			"RecalculatePerkEffects"
+		};
+		Commands.Sort();
+
+		DebugLog("To get more details on commands, run the command name with added _Help");
+		foreach(string s in Commands)
+		{
+			DebugLog(s);
+		}
 	}
 
 	[ConCmd( "CalcDis" )]
 	public static void CalcDis(float recoilAngle, float bulletSpread, float targetRadius, float desiredHitProbability, bool auto)
 	{
-		Log.Info(CustomFunctions.CalculateEffectiveDistance(recoilAngle,bulletSpread,targetRadius,desiredHitProbability, auto));
+		DebugLog($"{CustomFunctions.CalculateEffectiveDistance(recoilAngle,bulletSpread,targetRadius,desiredHitProbability, auto)}");
 	}
+
+	
 
 	[ConCmd( "CalcDamage" )]
 	public static void CalcDamage(float velocity, float weight, float diameter)
 	{
-		Log.Info(MathF.Pow(weight,2f)*velocity/(700000*MathF.Pow(diameter,2f))*0.06);
+		DebugLog($"{MathF.Pow(weight,2f)*velocity/(700000*MathF.Pow(diameter,2f))*0.06}");
+	}
+	[ConCmd( "CalcDamage_Help" )]
+	public static void CalcDamageHelp()
+	{
+		DebugLog("Dev command to calculate the damage of a gun");
+		DebugLog("Command Structure: Veclocity(Ft/S) Weight(Grains) Diameter(Inches)");
+		DebugLog("");
+		DebugLog("(Most guns damage is calcualted using this, the reason it is a command is because sometimes I might want to set a guns damage differently)");
 	}
 
 	[ConCmd( "SeeAllIDs" )]
@@ -342,10 +431,10 @@ public sealed class CommandDealer : Component
 	[ConCmd( "SelectID_Help" )]
 	public static void SelectIDHelp()
 	{
-		Log.Info("Selects an ID to peform commands on.");
-		Log.Info("Command Structure: Id");
-		Log.Info("");
-		Log.Info("To see all IDs use SeeAllIDs");
+		DebugLog("Selects an ID to peform commands on.");
+		DebugLog("Command Structure: Id");
+		DebugLog("");
+		DebugLog("To see all IDs use SeeAllIDs");
 	}
 
 	[ConCmd( "SetAV" )]
@@ -357,11 +446,11 @@ public sealed class CommandDealer : Component
 	[ConCmd( "SetAV_Help" )]
 	public static void SetAVHelp()
 	{
-		Log.Info("Change value of an entitys attribute.");
-		Log.Info("Command Structure: setName(most likely default), attribute name, value");
+		DebugLog("Change value of an entitys attribute.");
+		DebugLog("Command Structure: setName(most likely default), attribute name, value");
 		ValueExamples();
 		
-		Log.Info("To get the value type and info use GetAV");
+		DebugLog("To get the value type and info use GetAV");
 	}
 	[ConCmd( "GetAllAV" )]
 	public static void GetAllAVTo()
@@ -380,9 +469,9 @@ public sealed class CommandDealer : Component
 	[ConCmd( "GetAV_Help" )]
 	public static void GetAVHelp()
 	{
-		Log.Info("Returns the value and type of an attribute");
-		Log.Info("Command Structure: setName(most likely default), attribute name");
-		Log.Info("To see all attributes of an entity use GetAllAV");
+		DebugLog("Returns the value and type of an attribute");
+		DebugLog("Command Structure: setName(most likely default), attribute name");
+		DebugLog("To see all attributes of an entity use GetAllAV");
 	}
 	[ConCmd( "AddAV" )]
 	public static void AddAVTo(string attributeSet, string name, Attributes.Attribute.AttributeType attributeType,string value)
@@ -394,8 +483,8 @@ public sealed class CommandDealer : Component
 	public static void AddAVHelp()
 	{
 		CommandDealer commandDealer = getCommandDealer();
-		Log.Info("Adds an attribute to an attribute set.");
-		Log.Info("Command Structure: setName(most likely default), attribute name, attribute type, value");
+		DebugLog("Adds an attribute to an attribute set.");
+		DebugLog("Command Structure: setName(most likely default), attribute name, attribute type, value");
 		ValueExamples();
 	}
 	[ConCmd( "SetHealth" )]
@@ -404,11 +493,22 @@ public sealed class CommandDealer : Component
 		CommandDealer commandDealer = getCommandDealer();
 		commandDealer.SetHeatlh(set);
 	}
+	[ConCmd( "SetHealth_Help" )]
+	public static void SetHeatlhHelp()
+	{
+		DebugLog("Sets the health of the selected ID");
+		DebugLog("Command Structure: Value");
+	}
 	[ConCmd( "ResetHealth" )]
 	public static void ResetHeatlhTo()
 	{
 		CommandDealer commandDealer = getCommandDealer();
 		commandDealer.ResetHeatlh();
+	}
+	[ConCmd( "SetHealth_Help" )]
+	public static void ResetHeatlhHelp()
+	{
+		DebugLog("Resets health of selected ID to the max health");
 	}
 	[ConCmd( "RecalculatePerkEffects" )]
 	public static void RecalculatePerkEffectsTo()
@@ -416,7 +516,12 @@ public sealed class CommandDealer : Component
 		CommandDealer commandDealer = getCommandDealer();
 		commandDealer.RecalculatePerkEffects();
 	}
-	
+	[ConCmd( "RecalculatePerkEffects_Help" )]
+	public static void RecalculatePerkEffectsHelp()
+	{
+		DebugLog("Recalculates the perk effects for everything");
+	}
+
 	public static CommandDealer getCommandDealer()
 	{
 		if(Game.ActiveScene == null) throw new Exception("Did Not Grab Scene");

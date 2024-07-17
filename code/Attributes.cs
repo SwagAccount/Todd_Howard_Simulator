@@ -29,7 +29,18 @@ public sealed class Attributes : Component
 	protected override void OnStart()
 	{
         ids = Components.Get<Ids>();
-		player = CommandDealer.getCommandDealer().player.Components.Get<Attributes>();
+        CommandDealer commandDealer = CommandDealer.getCommandDealer();
+        Attributes playerAttributes = commandDealer.player.Components.Get<Attributes>();
+
+        if(playerAttributes!= null)
+        {
+            player = playerAttributes;
+        }
+		else
+        {
+            commandDealer.FindPlayer();
+            player = commandDealer.player.Components.Get<Attributes>();
+        }
         perkEffectors = new List<PerkEffector>();
         foreach(AttributeSet aS in attributeSets)
         {
@@ -38,6 +49,7 @@ public sealed class Attributes : Component
                 a.attributes = this;
             }
         }
+        Log.Info(player);
         foreach (var attribute in player.getAttributeSet("perks").attributes)
         {
             Perk perk = ResourceLibrary.Get<Perk>($"gameresources/perks/{attribute.AttributeName}.perk");

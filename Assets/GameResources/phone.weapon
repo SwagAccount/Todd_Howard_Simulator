@@ -18,6 +18,7 @@
   "targetPosIdle": "14.79998,-2.899999,-0.5000008",
   "targetRotIdle": "-15.1,-10.6,-6.1",
   "targetPosAim": "14.8,-2.9,-0.5",
+  "targetPosNPC": "0,0,0",
   "targetRotAim": "-15.1,-10.6,-6.1",
   "targetPosRun": "0,0,0",
   "targetRotRun": "0,0,0",
@@ -32,8 +33,12 @@
   "rotSpeed": 10,
   "swayYaw": 0.6,
   "swayPitch": 0.6,
+  "BobSpeed": 0,
+  "BobDis": 0,
+  "AvoidAngle": "1,0,0",
   "leftHand": [],
   "rightHand": [],
+  "interuptReload": false,
   "reloadMount": 0,
   "reloadWarmTime": 0,
   "notReloadable": false,
@@ -46,6 +51,6 @@
   "runReload": false,
   "fovMult": 0.66,
   "sensMult": 1,
-  "__version": 0,
-  "__references": []
+  "__references": [],
+  "__version": 0
 }

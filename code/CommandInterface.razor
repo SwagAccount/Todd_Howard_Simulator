@@ -1,0 +1,45 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+	@if(enable)
+	{
+		<div class="CommandBox">
+			@for(int i = 0; i < Logs.Count; i++)
+			{
+				<div class="Log" style=@(Colour[i] ? "background-color: rgba(255, 255, 255, 0.01);" : "")>@Logs[i]</div>
+			}
+			<div class="Command">
+				<div>@(">")</div>
+				<TextEntry Value:bind="@Command" onsubmit=@Submit></TextEntry>
+			</div>
+		</div>
+	}
+	
+</root>
+
+@code
+{
+
+	[Property] public List<string> Logs { get; set; }
+	[Property] public List<bool> Colour { get; set; }
+	[Property] public bool enable { get; set; }
+	[Property] public string Command { get; set; }
+	[Property] public int update { get; set; }
+
+
+	public void Submit()
+	{
+		try
+		{
+			ConsoleSystem.Run( Command );
+		}
+		catch
+		{
+			CommandDealer.DebugLog("Invalid Command");
+		}
+		Command = "";
+	}
+	protected override int BuildHash() => System.HashCode.Combine(enable, update, Logs, Colour, Command );
+}

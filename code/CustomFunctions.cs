@@ -38,7 +38,7 @@ public sealed class CustomFunctions
         newEntity.id = entity.Ids.sceneID;
         newEntity.Categories = entity.Ids.Categories;
         newEntity.displayContainer = entity.displayContainer;
-
+        newEntity.Name = entity.GameObject.Name;
         newEntity.AttributeSets = new List<Attributes.SavedAttributeSet>();
         foreach(Attributes.AttributeSet attributeSet in entity.Attributes.attributeSets)
         {
@@ -58,25 +58,30 @@ public sealed class CustomFunctions
 
         return newEntity;
     }
-    public static GameObject SpawnEntity(SaveClasses.EntitySave entitySave, bool withTransform = true)
+    public static GameObject SpawnEntity(SaveClasses.EntitySave entitySave, bool withTransform = true, bool newID = true)
     {
 
         GameObject NewEntity = new GameObject();
+        NewEntity.Name = entitySave.Name;
         Entity entity = NewEntity.Components.Create<Entity>();
+        entity.ContainerUpdated = Time.Now;
         entity.Container = entitySave.Container;
         entity.Equips = entitySave.Equips;
 		Ids ids = NewEntity.Components.Create<Ids>();
 		ids.Categories = entitySave.Categories;
-        ids.sceneID = int.Parse($"{DateTime.Now.DayOfYear}{DateTime.Now.Year}{Game.Random.Next(0,1000)}"); 
+        if(newID) ids.sceneID = int.Parse($"{DateTime.Now.DayOfYear}{DateTime.Now.Year}{Game.Random.Next(0,1000)}"); 
+        else ids.sceneID = entitySave.id;
 		Attributes attributes = NewEntity.Components.Create<Attributes>();
         attributes.attributeSets = new List<Attributes.AttributeSet>();
         foreach(Attributes.SavedAttributeSet attributeSet in entitySave.AttributeSets)
         {
             attributes.attributeSets.Add(Attributes.LoadAttributeSet(attributeSet));
         }
-        attributes.perkEffectors = entitySave.PerkEffectors;
         
-        NewEntity.Parent = CommandDealer.getCommandDealer().Saved;
+        attributes.perkEffectors = entitySave.PerkEffectors;
+
+        CommandDealer commandDealer = CommandDealer.getCommandDealer();
+        NewEntity.Parent = commandDealer.Saved;
 
         if(withTransform)
         {
@@ -117,7 +122,6 @@ public sealed class CustomFunctions
     {
         
         bulletSpread = MathF.Atan(bulletSpread) + (recoilAngle * (MathF.PI/180f) * (auto ? 6 : 1));
-        Log.Info(bulletSpread * (180f/MathF.PI));
         for(int i = 0; i < 1000; i++)
         {
             float distance = 1000-i;

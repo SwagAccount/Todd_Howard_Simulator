@@ -1,0 +1,161 @@
+{
+  "RootObject": {
+    "__guid": "e72a1f49-6c74-4113-b3b6-829aade00c85",
+    "Flags": 0,
+    "Name": "Vendor Test",
+    "Position": "-87.67211,0.5835419,0.000008412673",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "NetworkInterpolation": true,
+    "Components": [
+      {
+        "__type": "Attributes",
+        "__guid": "854f8aa5-a9cd-479d-9d4f-a109469633af",
+        "attributeSets": [
+          {
+            "setName": "NavMeshController",
+            "attributes": [
+              {
+                "AttributeName": "Height",
+                "attributeType": "FLOAT",
+                "floatValue": 72
+              },
+              {
+                "AttributeName": "Radius",
+                "attributeType": "FLOAT",
+                "floatValue": 6
+              },
+              {
+                "AttributeName": "Max Speed",
+                "attributeType": "FLOAT",
+                "floatValue": 120
+              },
+              {
+                "AttributeName": "Acceleration",
+                "attributeType": "FLOAT",
+                "floatValue": 200
+              }
+            ]
+          },
+          {
+            "setName": "Brain",
+            "attributes": [
+              {
+                "AttributeName": "MaxAttackDistance",
+                "attributeType": "FLOAT",
+                "floatValue": 136.6
+              },
+              {
+                "AttributeName": "DistanceResistance",
+                "attributeType": "FLOAT",
+                "floatValue": 100
+              },
+              {
+                "AttributeName": "RandomMovementDis",
+                "attributeType": "FLOAT",
+                "floatValue": 200
+              },
+              {
+                "AttributeName": "RandomMoveChance",
+                "attributeType": "FLOAT",
+                "floatValue": 50
+              },
+              {
+                "AttributeName": "Scan Radius",
+                "attributeType": "FLOAT",
+                "floatValue": 800
+              }
+            ]
+          },
+          {
+            "setName": "default",
+            "attributes": [
+              {
+                "AttributeName": "Health",
+                "attributeType": "FLOAT",
+                "floatValue": 100
+              },
+              {
+                "AttributeName": "MaxHealth",
+                "attributeType": "FLOAT",
+                "floatValue": 100
+              },
+              {
+                "AttributeName": "Gun Bone Index",
+                "attributeType": "STRING",
+                "stringValue": "10,0,0,0"
+              },
+              {
+                "AttributeName": "Stare",
+                "attributeType": "BOOL",
+                "boolValue": true
+              },
+              {
+                "AttributeName": "Conversation",
+                "attributeType": "STRING",
+                "stringValue": "test"
+              },
+              {
+                "AttributeName": "s\u0026bux",
+                "intValue": 10030
+              },
+              {
+                "AttributeName": "Faction",
+                "attributeType": "STRING",
+                "stringValue": "Vendor"
+              }
+            ]
+          },
+          {
+            "setName": "Patrol Points",
+            "attributes": [
+              {}
+            ]
+          },
+          {
+            "setName": "Vendor",
+            "attributes": [
+              {
+                "AttributeName": "ContainerID",
+                "intValue": 10
+              }
+            ]
+          }
+        ],
+        "perkEffectors": []
+      },
+      {
+        "__type": "Ids",
+        "__guid": "daa4644a-c7e2-441e-a2e5-f9af17811531",
+        "Categories": [
+          "npc",
+          "humanoid",
+          "human"
+        ],
+        "sceneID": 4563
+      },
+      {
+        "__type": "Entity",
+        "__guid": "73cc4cd7-9b82-43da-b3b9-952633e61621",
+        "Catagories": [],
+        "Container": [],
+        "ContainerUpdated": 0,
+        "displayContainer": false,
+        "Equips": []
+      },
+      {
+        "__type": "HealthGizmo",
+        "__guid": "8edb60a8-5236-4659-a32f-c1cd90fb27a2",
+        "DisplayHealth": false,
+        "HealthValue": 0,
+        "Height": 80
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

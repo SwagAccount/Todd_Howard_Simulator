@@ -1,0 +1,38 @@
+CommandInterface
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	justify-content: center;
+	align-items:flex-end;
+	font-weight: bold;
+	border-radius: 4%;
+	flex-direction: row;
+	color: white;
+	
+
+	.CommandBox
+	{
+		justify-content: flex-end;
+		padding: 0%;
+		width: 100%;
+		height: 100%;
+		flex-direction: column;
+		pointer-events: all;
+		background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 63%, rgba(0,0,0,0) 91%);
+	}
+	.Log
+	{
+		
+		height: 2%;
+	}
+	.Command
+	{
+		background-color: rgba(255, 255, 255, 0.055);
+		height: 2%;
+		font-size: 15%;
+		flex-direction: row;
+	}
+}

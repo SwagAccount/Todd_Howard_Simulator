@@ -50,11 +50,10 @@ public sealed class ContainerInteract : Component
 		from.TableSize = 60;
 		to.Width = 50;
 		to.TableSize = 60;
-		foreach(GameObject child in GameObject.Children)
-		{
-			if(child.Name == "Camera") interactor = child.Components.Get<Interactor>();
-		}
+		
 		playerController = Components.Get<PlayerController>();
+		
+		interactor = playerController.Camera.Components.Get<Interactor>();
 	}
 	void Transfer()
 	{
@@ -142,7 +141,7 @@ public sealed class ContainerInteract : Component
 
 	protected override void OnUpdate()
 	{
-		
+
 		switch(State)
 		{
 			case States.None:

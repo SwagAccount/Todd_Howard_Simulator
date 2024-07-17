@@ -16,6 +16,7 @@ public sealed class EntitySaver : Component
 			Load();
 			load = false;
 		}
+		
 	}
 	public void Save(string saveName = "Quicksave")
 	{
@@ -61,11 +62,11 @@ public sealed class EntitySaver : Component
 		{
 			GameObject.Children[i].Destroy();
 		}
-		string shit = FileSystem.Data.ReadAllText( $"{dirName}enemies.json");
+		string shit = FileSystem.Data.ReadAllText( $"{dirName}{Scene.Name}.json");
 		List<EntitySave> entities = Json.Deserialize<List<EntitySave>>(shit);
 		foreach(EntitySave entitySave in entities)
 		{
-			CustomFunctions.SpawnEntity(entitySave,true);
+			CustomFunctions.SpawnEntity(entitySave,true,false);
 		}
 	}
 }

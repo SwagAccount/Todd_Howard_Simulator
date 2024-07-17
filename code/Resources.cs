@@ -36,6 +36,9 @@ public sealed class Weapon : GameResource
     [Category("Audio and Visual Effects")][Property] public float rotSpeed { get; set; }
     [Category("Audio and Visual Effects")][Property] public float swayYaw { get; set; }
     [Category("Audio and Visual Effects")][Property] public float swayPitch { get; set; }
+    [Category("Audio and Visual Effects")][Property] public float BobSpeed { get; set; } = 1f;
+    [Category("Audio and Visual Effects")][Property] public float BobDis { get; set; } = 1f;
+    [Category("Audio and Visual Effects")][Property] public Angles AvoidAngle { get; set; } = new Angles(1,0,0);
     [Category("Audio and Visual Effects")][Property] public List<int> leftHand { get; set; }
     [Category("Audio and Visual Effects")][Property] public List<int> rightHand { get; set; }
 

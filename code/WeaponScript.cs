@@ -36,6 +36,7 @@ public sealed class WeaponScript : Component
 	protected override void OnStart()
 	{
 		playerController = GameObject.Parent.Parent.Components.Get<PlayerController>();
+        playerController.weaponScript = this;
 		playerEntity = GameObject.Parent.Parent.Components.Get<Entity>();
         bHoleDB = ResourceLibrary.Get<BulletHoleDB>("gameresources/bhole.bhdb");
 	}
@@ -387,6 +388,9 @@ public sealed class WeaponScript : Component
     }
 
     Angles sway;
+    float bob;
+    float bobPosZ;
+    float bobPosY;
 	void GunPosition()
 	{
 		Vector3 targetPos = Vector3.Zero;
@@ -404,26 +408,43 @@ public sealed class WeaponScript : Component
 			targetAngles = weapon.targetRotIdle;
 		}
         float rayDis = Vector3.DistanceBetween(SkinnedModel.Transform.World.Position,(SkinnedModel.GetAttachment("Tip")?? default).Position)+1;
+        Vector3 forward = cam.Transform.World.Forward;//((SkinnedModel.GetAttachment("Tip")?? default).Position - SkinnedModel.Transform.Position).Normal;
         var trace = Scene.Trace.Ray(
-            SkinnedModel.Transform.Position-(SkinnedModel.Transform.World.Forward*5),
-            SkinnedModel.Transform.Position+(SkinnedModel.Transform.World.Forward*rayDis))
+            SkinnedModel.Transform.Position-(forward*5),
+            SkinnedModel.Transform.Position+(forward*rayDis))
             .Size(1f)
             .IgnoreGameObject(playerController.GameObject)
             .UseHitboxes()
             .Run();
-       
         float A = MathF.Sqrt(rayDis+(rayDis+1));
-        
-        float angle = 0;// gunEquipSlot == -1 ? 0 : (trace.Hit && !float.IsNaN(-MathF.Acos(trace.Distance/(rayDis+1))) && !float.IsNaN(-MathF.Acos(trace.Distance/(rayDis+1)))) ? ((-MathF.Acos(trace.Distance/(rayDis+1)) * 180 / MathF.PI) - cam.GameObject.Parent.Transform.LocalRotation.Angles().pitch) : 0f;
-        
+        float angle = gunEquipSlot == -1 ? 0 : (trace.Hit && !float.IsNaN(-MathF.Acos(trace.Distance/(rayDis+1))) && !float.IsNaN(-MathF.Acos(trace.Distance/(rayDis+1)))) ? ((-MathF.Acos(trace.Distance/(rayDis+1)) * 180 / MathF.PI) - cam.GameObject.Parent.Transform.LocalRotation.Angles().pitch) : 0f;
+
         recoilOffsetPos = Vector3.Lerp(recoilOffsetPos,Vector3.Zero,weapon.recoilReset*Time.Delta);
         recoilOffsetRot = Angles.Lerp(recoilOffsetRot,Angles.Zero,weapon.recoilReset*Time.Delta);
+
+        float flatVel = new Vector3(playerController.Velocity.x,playerController.Velocity.y,0).Length;
+        bob += Time.Delta * flatVel * weapon.BobSpeed * 0.75f;
+        
+        if(flatVel > 0 && playerController.IsOnGround)
+        {
+            bobPosZ = MathF.Sin(bob*0.05f)*weapon.BobDis*0.2f * (Input.Down("attack2") ? 0.25f:1) ;
+            bobPosY = MathF.Cos(bob*0.025f)*weapon.BobDis*0.1f * (Input.Down("attack2") ? 0.25f:1);
+        }
+        else
+        {
+            bob = 0;
+            bobPosZ = bobPosZ < 0 ? bobPosZ+Time.Delta*0.2f : bobPosZ-Time.Delta*0.2f;
+            bobPosY = bobPosY < 0 ? bobPosY+Time.Delta*0.2f : bobPosY-Time.Delta*0.2f;
+        }
+        
+
         //cam.FieldOfView = MathX.Lerp(cam.FieldOfView, targetFov,weapon.posSpeed*Time.Delta);
 		gpos = Vector3.Lerp(gpos, targetPos, weapon.posSpeed*Time.Delta);
 		gang = Angles.Lerp(gang, targetAngles, weapon.rotSpeed*Time.Delta);
         sway = playerController.Enabled ? Angles.Lerp(sway,new Angles(Input.AnalogLook.pitch*weapon.swayPitch*Preferences.Sensitivity,Input.AnalogLook.yaw*Preferences.Sensitivity*weapon.swayYaw,0),swaySmooth*Time.Delta) : Angles.Zero;
-        SkinnedModel.Transform.LocalPosition = gpos+recoilOffsetPos;
-        SkinnedModel.Transform.LocalRotation = gang+recoilOffsetRot+(new Angles(1,0,0)*angle)+sway;
+        
+        SkinnedModel.Transform.LocalPosition = gpos+recoilOffsetPos+new Vector3(0,bobPosY,bobPosZ);
+        SkinnedModel.Transform.LocalRotation = gang+recoilOffsetRot+(weapon.AvoidAngle*angle)+sway * (Input.Down("attack2") ? 0.25f:1);
 	}
     async void changeGun()
     {

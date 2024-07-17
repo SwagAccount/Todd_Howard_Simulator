@@ -17,9 +17,11 @@ public sealed class Aiagent : Component
 	public GameObject player {get;set;}
 	protected override void OnStart()
 	{
+
 		npcequipper = Components.Get<Npcequipper>();
 		weapon = Components.Get<Npcweapon>();
 		Controller = Components.GetOrCreate<NavMeshCharacter>();
+		Controller.currentTarget = Transform.Position;
 		Attributes = Components.Get<Attributes>();
 		player = GameObject.Parent.Children[0];
 		Controller.Height = Attributes.getAttribute("Height","NavMeshController").floatValue;

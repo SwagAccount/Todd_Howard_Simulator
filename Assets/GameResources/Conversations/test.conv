@@ -27,13 +27,18 @@
           "ChoiceText": "Ok.",
           "Requirements": [],
           "DirectTo": "ok"
+        },
+        {
+          "ChoiceText": "Let me buy something off you dick head.",
+          "Requirements": [],
+          "DirectToBarter": true
         }
       ]
     }
   ],
   "StartTalkingOrChoosing": true,
   "StartBlock": "Start",
-  "CurrentlyAccessedBlock": "Start",
+  "CurrentlyAccessedBlock": "ok",
   "__references": [],
   "__version": 0
 }

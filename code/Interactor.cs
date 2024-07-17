@@ -34,7 +34,7 @@ public sealed class Interactor : Component
 		var trace = Scene.Trace.Ray(
 			Transform.Position,
 			Transform.Position+(Transform.World.Forward*range)
-		).UseHitboxes().Run();
+		).UseHitboxes().IgnoreGameObject(GameObject.Parent).Run();
 		bool checkgrab = joint == null;
 		if(!checkgrab) checkgrab = !joint.Enabled;
 		if(checkgrab)

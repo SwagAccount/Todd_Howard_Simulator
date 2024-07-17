@@ -4,6 +4,7 @@ public static class SaveClasses
 {
 	public class EntitySave
 	{
+		[KeyProperty] public string Name {get;set;}
 		public Vector3 Position {get;set;}
 		public Angles Rotation {get;set;}
 		public int id {get;set;}

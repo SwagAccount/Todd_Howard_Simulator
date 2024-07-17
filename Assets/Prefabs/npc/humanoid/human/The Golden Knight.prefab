@@ -1,0 +1,197 @@
+{
+  "RootObject": {
+    "__guid": "2735ee79-dae5-4810-86a2-4bcb913c501e",
+    "Flags": 0,
+    "Name": "the golden knight",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "Attributes",
+        "__guid": "c281de04-4801-4f5d-af8e-fe717afce7f5",
+        "attributeSets": [
+          {
+            "setName": "NavMeshController",
+            "attributes": [
+              {
+                "AttributeName": "Height",
+                "attributeType": "FLOAT",
+                "floatValue": 72
+              },
+              {
+                "AttributeName": "Radius",
+                "attributeType": "FLOAT",
+                "floatValue": 6
+              },
+              {
+                "AttributeName": "Max Speed",
+                "attributeType": "FLOAT",
+                "floatValue": 120
+              },
+              {
+                "AttributeName": "Acceleration",
+                "attributeType": "FLOAT",
+                "floatValue": 200
+              }
+            ]
+          },
+          {
+            "setName": "Brain",
+            "attributes": [
+              {
+                "AttributeName": "MaxAttackDistance",
+                "attributeType": "FLOAT",
+                "floatValue": 136.6
+              },
+              {
+                "AttributeName": "DistanceResistance",
+                "attributeType": "FLOAT",
+                "floatValue": 100
+              },
+              {
+                "AttributeName": "RandomMovementDis",
+                "attributeType": "FLOAT",
+                "floatValue": 200
+              },
+              {
+                "AttributeName": "RandomMoveChance",
+                "attributeType": "FLOAT",
+                "floatValue": 50
+              },
+              {
+                "AttributeName": "Scan Radius",
+                "attributeType": "FLOAT",
+                "floatValue": 800
+              }
+            ]
+          },
+          {
+            "setName": "default",
+            "attributes": [
+              {
+                "AttributeName": "Health",
+                "attributeType": "FLOAT",
+                "floatValue": 100
+              },
+              {
+                "AttributeName": "MaxHealth",
+                "attributeType": "FLOAT",
+                "floatValue": 100
+              },
+              {
+                "AttributeName": "Gun Bone Index",
+                "attributeType": "STRING",
+                "stringValue": "10,0,0,0"
+              },
+              {
+                "AttributeName": "Stare",
+                "attributeType": "BOOL",
+                "boolValue": true
+              },
+              {
+                "AttributeName": "Conversation",
+                "attributeType": "STRING",
+                "stringValue": "guard"
+              },
+              {
+                "AttributeName": "s\u0026bux",
+                "intValue": 100
+              },
+              {
+                "AttributeName": "Faction",
+                "attributeType": "STRING",
+                "stringValue": "Soldiers of God"
+              }
+            ]
+          },
+          {
+            "setName": "Patrol Points",
+            "attributes": [
+              {}
+            ]
+          }
+        ],
+        "perkEffectors": []
+      },
+      {
+        "__type": "Ids",
+        "__guid": "8101bb67-330f-4eca-ab24-87a3d07649fd",
+        "Categories": [
+          "npc",
+          "humanoid",
+          "human"
+        ],
+        "sceneID": 456343
+      },
+      {
+        "__type": "Entity",
+        "__guid": "898d1bf2-ec6a-4954-8364-c0d0cbfbd48c",
+        "Catagories": [],
+        "Container": [
+          {
+            "id": 34645,
+            "Categories": [
+              "items",
+              "weapons",
+              "guns",
+              "double barrel"
+            ],
+            "AttributeSets": [
+              {
+                "setName": "default",
+                "attributes": [
+                  {
+                    "AttributeName": "Ammo",
+                    "attributeType": "STRING"
+                  },
+                  {
+                    "AttributeName": "Current Mode"
+                  },
+                  {
+                    "AttributeName": "Current Bullet"
+                  },
+                  {
+                    "AttributeName": "Condition",
+                    "attributeType": "FLOAT",
+                    "floatValue": 1
+                  }
+                ]
+              }
+            ],
+            "Equips": [],
+            "PerkEffectors": [],
+            "Container": []
+          },
+          {
+            "id": 4235,
+            "Categories": [
+              "items",
+              "apparel",
+              "armour",
+              "golden knight armour"
+            ],
+            "AttributeSets": [],
+            "Equips": [],
+            "PerkEffectors": [],
+            "Container": []
+          }
+        ],
+        "ContainerUpdated": 0,
+        "displayContainer": false,
+        "Equips": [
+          {
+            "equipType": "weapons",
+            "ID": 34645
+          }
+        ]
+      }
+    ],
+    "Children": [],
+    "__variables": []
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

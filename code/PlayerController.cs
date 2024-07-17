@@ -49,6 +49,7 @@ public sealed class PlayerController : Component
     [Property, Description("Add 'player' tag to disable collisions with other players.")] public TagSet IgnoreLayers { get; set; } = new TagSet();
     [Property] public GameObject Body {get;set;}
     [Property] public BoxCollider CollisionBox {get;set;}
+    [Property] public WeaponScript weaponScript {get;set;}
 
     // State Bools
     public bool IsCrouching {get;set;} = false;
@@ -56,7 +57,7 @@ public sealed class PlayerController : Component
     public bool IsOnGround {get;set;} = false;
 
     // Internal objects
-	[Property] private CameraComponent Camera; 
+	[Property] public CameraComponent Camera; 
 
     // Internal Variables
     public float Stamina = 80f;
@@ -88,17 +89,13 @@ public sealed class PlayerController : Component
     [Property] private Attributes attributes;
 
 	// Fucntions to make things slightly nicer
-    int ABH;
-    int ABHchanged = -1;
-    int MaS;
-    int MaSchanged = -1;
-    int MoS;
-    int MoSchanged = -1;
-    int SS;
-    int SSchanged = -1;
-    int CS;
-    int CSchanged = -1;
-	protected override void OnStart()
+    Attributes.Attribute ABH;
+    Attributes.Attribute MaS;
+    Attributes.Attribute MoS;
+    Attributes.Attribute SS;
+    Attributes.Attribute CS;
+    Attributes.Attribute LA;
+	protected override void OnAwake()
 	{
         
 
@@ -108,7 +105,8 @@ public sealed class PlayerController : Component
         Height = StandingHeight;
         HeightGoal = StandingHeight;
 		attributes = Components.Get<Attributes>();
-        CollisionBox = Components.Get<BoxCollider>();
+        CollisionBox = Components.GetOrCreate<BoxCollider>();
+        //CollisionBox.Surface = 
         GameObject player = ResourceLibrary.Get<PlayerReference>("gameresources/player.player").gameObject.Clone();
         player.Transform.Position = Transform.Position;
         player.Transform.Rotation = Transform.Rotation;
@@ -126,11 +124,12 @@ public sealed class PlayerController : Component
             child.SetParent(GameObject);
         }
 
-        ABH = attributes.getAttributeIndex("Auto Bunny Hopping");
-        MaS = attributes.getAttributeIndex("Max Speed");
-        MoS = attributes.getAttributeIndex("Move Speed");
-        SS = attributes.getAttributeIndex("Shift Speed");
-        CS = attributes.getAttributeIndex("Crouch Speed");
+        ABH = attributes.getAttribute("Auto Bunny Hopping");
+        MaS = attributes.getAttribute("Max Speed");
+        MoS = attributes.getAttribute("Move Speed");
+        SS = attributes.getAttribute("Shift Speed");
+        CS = attributes.getAttribute("Crouch Speed");
+        LA = attributes.getAttribute("Look Angle");
 	}
 	public void Punch(in Vector3 amount) {
         ClearGround();
@@ -376,11 +375,11 @@ public sealed class PlayerController : Component
     
     void Onfd() {
 
-        AutoBunnyhopping = (float)attributes.attributeSets[0].attributes[ABH].floatValuePerks;
-        MaxSpeed = (float)attributes.attributeSets[0].attributes[MaS].floatValuePerks;
-        MoveSpeed = (float)attributes.attributeSets[0].attributes[MoS].floatValuePerks;
-        ShiftSpeed = (float)attributes.attributeSets[0].attributes[SS].floatValuePerks;
-        CrouchSpeed = (float) attributes.attributeSets[0].attributes[CS].floatValuePerks;
+        AutoBunnyhopping = ABH.floatValuePerks;
+        MaxSpeed = MaS.floatValuePerks;
+        MoveSpeed = MoS.floatValuePerks;
+        ShiftSpeed = SS.floatValuePerks;
+        CrouchSpeed = CS.floatValuePerks;
 
         if (CollisionBox == null) return;
         
@@ -485,7 +484,7 @@ public sealed class PlayerController : Component
 		if ( IsProxy )
 			return;
         
-        
+        LookAngle = LA.vector3Value;
         Vector2 ControllerInput = new Vector2((float)InputAnalog.RightStickX , (float)InputAnalog.RightStickY);
         if (ControllerInput.Length > 1) ControllerInput = ControllerInput.Normal;
         ControllerInput *= 25;
@@ -500,14 +499,14 @@ public sealed class PlayerController : Component
         } else {
             Camera.FieldOfView = Preferences.FieldOfView;
         }
+        LA.vector3Value = LookAngle;
         
-        //
         
-        AutoBunnyhopping = (float)attributes.attributeSets[0].attributes[ABH].floatValuePerks;
-        MaxSpeed = (float)attributes.attributeSets[0].attributes[MaS].floatValuePerks;
-        MoveSpeed = (float)attributes.attributeSets[0].attributes[MoS].floatValuePerks;
-        ShiftSpeed = (float)attributes.attributeSets[0].attributes[SS].floatValuePerks;
-        CrouchSpeed = (float) attributes.attributeSets[0].attributes[CS].floatValuePerks;
+        AutoBunnyhopping = ABH.floatValuePerks;
+        MaxSpeed = MaS.floatValuePerks;
+        MoveSpeed = MoS.floatValuePerks;
+        ShiftSpeed = SS.floatValuePerks;
+        CrouchSpeed = CS.floatValuePerks;
 
         if (CollisionBox == null) return;
         

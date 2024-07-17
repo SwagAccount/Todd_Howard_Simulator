@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("charactercontrollernavmeshagent.unittest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+152cd897960b172e67f65f4451d054d2a7cae860")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7c950b44c2d9be5ded4f2def0b38cd05a188ba9f")]
 [assembly: System.Reflection.AssemblyProductAttribute("charactercontrollernavmeshagent.unittest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("charactercontrollernavmeshagent.unittest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

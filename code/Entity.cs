@@ -35,7 +35,7 @@ public sealed class Entity : Component
 	}
 	public class Catagory
 	{
-		public string CatagoryName {get;set;}
+		[KeyProperty] public string CatagoryName {get;set;}
 		public List<string> Components {get;set;}
 		public List<Catagory> Catagories {get;set;}
 	}
